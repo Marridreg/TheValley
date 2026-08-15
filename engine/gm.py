@@ -143,9 +143,20 @@ class GameMaster:
     # ── prompt assembly ──
 
     def _secret_block(self, state) -> str:
-        """Everything the narrator must never see. Stable for the session, so
-        this is the block worth caching."""
-        cards = {npc: state.get_gm_card(npc) for npc in state.known_npcs()}
+        """Everything the narrator must never see, and stable for the session.
+
+        Deliberately NOT the full text of every card. Loading all seventeen
+        characters complete came to about 120k tokens per turn — architecturally
+        wrong even on a million-token model, and impossible on a local one.
+
+        What lives here instead is the *routing table*: who exists, what can be
+        learned about them, and by which routes. That is all the GM needs to
+        adjudicate a release, because releasing a key does not require the
+        key's body — get_narrator_card() reads the body from disk when the
+        narrator's card is assembled. The bodies of characters actually in the
+        scene are attached separately, below the cache breakpoint, since those
+        change as the player moves.
+        """
         parts = [
             "[WORLD — full reference]",
             dump(state.world_card),
@@ -156,8 +167,13 @@ class GameMaster:
             "[FRAGMENT MAP — trigger conditions and what each fragment leads to]",
             dump(state.fragments),
             "",
-            "[CHARACTER CARDS — complete, both halves, with discovery routes]",
-            dump(cards),
+            "[CAST ROSTER — who exists, and what can be learned about each]",
+            "For each character: their public identity, every private section "
+            "they have, and every route by which each section can be learned. "
+            "To release one, put its key in reveal_this_turn — you do not need "
+            "the section's text in front of you to do that. Full text for the "
+            "characters in the current scene is supplied separately each turn.",
+            dump(self._roster(state)),
         ]
         if state.documents:
             parts += [
@@ -170,19 +186,66 @@ class GameMaster:
             ]
         return "\n".join(parts)
 
+    @staticmethod
+    def _route_tag(route: dict) -> str:
+        """One route as a short tag: 'person:bela', 'document:bela_incident_log'.
+
+        The prose `how` condition is dropped here. Spelling out the condition
+        for all 756 routes costs about 45k tokens, and the GM does not need it
+        for characters who are not in the room — it needs to know that a door
+        exists and roughly who holds the key. Full conditions arrive with the
+        scene cards for whoever is actually present.
+        """
+        target = route.get("who") or route.get("what") or ""
+        kind = route.get("route", "?")
+        y = route.get("yields", "truth")
+        tag = f"{kind}:{target}" if kind == "person" else kind
+        return f"{tag}->{y}"
+
+    def _roster(self, state) -> dict:
+        """Compact index of who exists and what can be learned about them.
+
+        Identity line, section names, and route tags only — no bodies, no route
+        conditions. This is the stable half and it has to stay small, because it
+        is resent (cached) on every turn for every character in the world.
+        """
+        roster = {}
+        for npc in state.known_npcs():
+            public = state._card(npc)["public"]
+            sections = state._private_sections(npc)
+            locked: dict[str, str] = {}
+            released: list[str] = []
+            for name, sec in sections.items():
+                key = f"{npc}.{name}"
+                if any(r.split("#")[0] == key for r in state.revelation_log):
+                    released.append(name)
+                    continue
+                tags = []
+                has_rumour = False
+                if isinstance(sec, dict):
+                    has_rumour = bool(sec.get("rumor"))
+                    tags = [self._route_tag(r) for r in (sec.get("learnable_from") or [])]
+                locked[name] = ("[rumour available] " if has_rumour else "") + ", ".join(tags)
+            entry: dict = {"identity": public.get("identity", ""), "locked": locked}
+            if released:
+                entry["already_released"] = released
+            roster[npc] = entry
+        return roster
+
+    def _scene_cards(self, state) -> dict:
+        """Full private text for the characters in or adjacent to the scene.
+
+        Volatile — it changes as the player moves — so it rides in the message
+        rather than the cached system prefix.
+        """
+        cast = list(state.current_npcs)
+        return {npc: state.get_gm_card(npc) for npc in cast}
+
     def _turn_block(self, state, player_input: str, feedback: list[str]) -> str:
         """The volatile half. Changes every turn, so it goes below the cache
         breakpoint — in the message, not the system prompt."""
-        # What is still gated, per character the player has met. Surfacing this
-        # every turn is what makes the discovery routes usable: the GM can see
-        # at a glance which doors are still shut and match the player's action
-        # against the routes that open them.
-        still_locked = {
-            npc: state.locked_sections(npc)
-            for npc in state.known_npcs()
-            if state.locked_sections(npc)
-        }
-
+        # Locked-section names are already in the cached roster, so they are not
+        # repeated here.
         payload = {
             "turn": state.turn_count + 1,
             "player_action": player_input,
@@ -190,7 +253,6 @@ class GameMaster:
             "world_state": {k: v for k, v in state.world.items() if not k.startswith("_")},
             "npcs_in_scene_last_turn": state.current_npcs,
             "already_revealed_to_narrator": state.revelation_log,
-            "still_locked_per_character": still_locked,
             "discovered_secrets": state.discovered,
             "pending_offscreen": state.offscreen[-10:],
             "recent_narration": [
@@ -198,6 +260,14 @@ class GameMaster:
             ],
         }
         text = dump(payload)
+
+        scene = self._scene_cards(state)
+        if scene:
+            text += (
+                "\n\n[FULL CARDS — characters in this scene, complete text]\n"
+                + dump(scene)
+            )
+
         if feedback:
             text += "\n\n[PLAYER FEEDBACK — steer accordingly]\n" + "\n".join(feedback)
         return text

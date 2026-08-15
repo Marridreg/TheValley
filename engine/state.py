@@ -239,6 +239,28 @@ class StateManager:
                 continue
 
             before = obj.get(leaf)
+
+            # Structure guard. A GM will sometimes target a container rather
+            # than its leaf — `pc.vitals.stamina` instead of
+            # `pc.vitals.stamina.current`. Writing a scalar there replaces the
+            # whole {current, max} dict with a float and silently destroys the
+            # schema for the rest of the session. Descend to the obvious leaf
+            # instead, and say so in the log.
+            if isinstance(before, dict) and not isinstance(value, dict):
+                for candidate in ("current", "level", "value"):
+                    if candidate in before:
+                        obj = before
+                        leaf = candidate
+                        before = obj.get(leaf)
+                        path = f"{path}.{candidate}"
+                        applied.append(f"  ~ corrected path to {path} (target was a container)")
+                        break
+                else:
+                    applied.append(
+                        f"  ! skipped {path}: would overwrite a structure with {value!r}"
+                    )
+                    continue
+
             if u.get("op") == "add" and isinstance(value, (int, float)):
                 base = before if isinstance(before, (int, float)) else 0
                 obj[leaf] = round(base + value, 4)

@@ -25,6 +25,21 @@ from .state import StateManager
 Emit = Callable[[dict], None]
 
 
+def _mood_key(raw) -> str:
+    """Reduce a portrait_state to something usable as a filename.
+
+    The schema asks for a short key like 'cowering', and models will sometimes
+    hand back a paragraph of stage direction instead. Taking the first word
+    means a verbose answer still resolves to the right portrait rather than
+    silently falling through to no image at all.
+    """
+    if not isinstance(raw, str) or not raw.strip():
+        return "default"
+    first = raw.strip().split()[0]
+    cleaned = "".join(c for c in first.lower() if c.isalnum() or c == "_")
+    return cleaned or "default"
+
+
 class Wall:
     def __init__(self, config: dict, root: Path):
         self.root = Path(root)
@@ -187,7 +202,7 @@ class Wall:
             for d in packet.get("npc_direction") or []
         }
         for npc in npcs:
-            mood = states.get(npc) or "default"
+            mood = _mood_key(states.get(npc))
             folder = self.data_dir / "characters" / npc / "portraits"
             path = None
             for candidate in (f"{mood}.webp", f"{mood}.png", "default.webp", "default.png"):

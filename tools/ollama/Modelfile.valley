@@ -1,0 +1,15 @@
+# A derived model with a context window large enough for a GM turn.
+#
+# Ollama defaults to 4096 and its OpenAI-compatible endpoint ignores num_ctx
+# passed in the request body — it SILENTLY TRUNCATES the prompt instead, which
+# produces confident garbage rather than an error. Baking the parameter into a
+# derived model is the reliable fix.
+#
+# Layers are shared with the base model, so this costs no extra disk.
+#
+#   ollama create valley -f tools/ollama/Modelfile.valley
+#   ollama rm valley          # to undo
+
+FROM gemma4:latest
+
+PARAMETER num_ctx 32768
