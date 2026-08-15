@@ -45,85 +45,135 @@ def load_config() -> dict:
     )
 
 
+# The window is held at module level, NOT on the API object.
+#
+# pywebview introspects the js_api object's graph to decide what to expose to
+# JavaScript. If the API holds a reference to the window, that walk reaches
+# window.native -> the WinForms Form -> .Bounds -> a .NET Rectangle, and then
+# pywebview's own `if obj in exposed_objects` comparison raises:
+#
+#   TypeError: No method matches given arguments for Rectangle.op_Equality
+#
+# On pywebview 6 the same doorway produced a wall of recursion errors during
+# injection and left window.pywebview.api empty, which looked exactly like a
+# frozen UI. Keeping the window out of reach of that walk is the fix.
+_WINDOW: "webview.Window | None" = None
+
+
 class GameAPI:
-    """The JS bridge. Every method returns fast."""
+    """The JS bridge. Every method returns fast.
+
+    Anything public on this class is exposed to JavaScript, so keep the surface
+    to the three calls the page actually makes.
+    """
 
     def __init__(self, wall: Wall):
-        self.wall = wall
-        self.commands = CommandRouter(wall)
-        self.window: webview.Window | None = None
+        self._wall = wall
+        self._commands = CommandRouter(wall)
         self._outbox: queue.Queue[dict] = queue.Queue()
-        self._pump: threading.Thread | None = None
-
-    # ── plumbing ──
-
-    def attach(self, window: webview.Window) -> None:
-        self.window = window
-        self._pump = threading.Thread(target=self._drain, daemon=True, name="valley-pump")
-        self._pump.start()
+        self._bridge_ok = False
+        self._bridge_failures = 0
 
     def _drain(self) -> None:
         """Single writer into the page.
 
         Serialising events through one thread means evaluate_js is never
         called concurrently, which some webview backends do not tolerate.
+
+        Failures are LOGGED, not swallowed. An earlier version caught and
+        discarded them, which turned any evaluate_js problem into a perfect
+        imitation of a hung application: the turn ran, the events were dropped,
+        the input never re-enabled, and nothing anywhere said why.
         """
         while True:
             event = self._outbox.get()
-            if self.window is None:
+            if _WINDOW is None:
+                print("[bridge] no window yet, dropped:", event.get("type"))
                 continue
             try:
-                self.window.evaluate_js(f"window.valley.recv({json.dumps(event)})")
-            except Exception:
-                # The window is gone or mid-teardown. Dropping a UI event is
-                # never worth killing the pump over.
-                pass
+                _WINDOW.evaluate_js(f"window.valley.recv({json.dumps(event)})")
+                self._bridge_ok = True
+            except Exception as exc:  # noqa: BLE001
+                self._bridge_failures += 1
+                if self._bridge_failures <= 5:
+                    print(
+                        f"[bridge] evaluate_js FAILED on {event.get('type')!r}: "
+                        f"{type(exc).__name__}: {exc}"
+                    )
+                    if self._bridge_failures == 5:
+                        print("[bridge] (further failures suppressed)")
 
-    def emit(self, event: dict) -> None:
+    def _emit(self, event: dict) -> None:
         self._outbox.put(event)
 
     # ── called from JS ──
 
     def boot(self) -> str:
-        warnings = self.wall.warnings()
+        print("[bridge] boot() called from JS — the JS->Python direction works")
+        # Prove the Python->JS direction too, before a turn depends on it.
+        self._emit({"type": "system", "text": "bridge online."})
+        threading.Timer(1.0, self._report_bridge).start()
+        warnings = self._wall.warnings()
         return json.dumps(
             {
-                "banner": self.wall.banner(),
+                "banner": self._wall.banner(),
                 "warnings": warnings,
-                "preset": self.wall.presets.active,
-                "dev_mode": self.wall.dev_mode,
-                "turn": self.wall.state.turn_count,
-                "opening": self.wall.state.world_card.get("opening_text", ""),
-                "history": self.wall.state.chat_history[-6:],
+                "preset": self._wall.presets.active,
+                "dev_mode": self._wall.dev_mode,
+                "turn": self._wall.state.turn_count,
+                "opening": self._wall.state.world_card.get("opening_text", ""),
+                "history": self._wall.state.chat_history[-6:],
             }
         )
 
+    def _report_bridge(self) -> None:
+        if self._bridge_ok:
+            print("[bridge] Python->JS confirmed working")
+        else:
+            print(
+                "[bridge] WARNING: no successful evaluate_js yet. The UI will "
+                "look frozen because events cannot reach the page."
+            )
+
     def submit(self, text: str) -> str:
         text = (text or "").strip()
+        print(f"[bridge] submit({text[:60]!r})")
         if not text:
             return json.dumps({"ok": False})
 
-        if self.commands.is_command(text):
-            handled, payload = self.commands.execute(text)
+        if self._commands.is_command(text):
+            handled, payload = self._commands.execute(text)
             if handled:
-                self.emit({"type": "system", "text": payload})
-                self.emit({"type": "done", "elapsed": 0})
-                self.emit({"type": "meta", "preset": self.wall.presets.active})
+                self._emit({"type": "system", "text": payload})
+                self._emit({"type": "done", "elapsed": 0})
+                self._emit({"type": "meta", "preset": self._wall.presets.active})
                 return json.dumps({"ok": True})
             # /retry and friends fall through with the action to replay.
             text = payload
 
         threading.Thread(
-            target=self.wall.run_turn,
-            args=(text, self.emit),
+            target=self._wall.run_turn,
+            args=(text, self._emit),
             daemon=True,
             name="valley-turn",
         ).start()
         return json.dumps({"ok": True, "echo": text})
 
     def quicksave(self) -> str:
-        path = self.wall.state.save("quicksave")
+        path = self._wall.state.save("quicksave")
         return json.dumps({"ok": True, "text": f"saved → {path.name}"})
+
+
+def start_pump(api: GameAPI, window: "webview.Window") -> None:
+    """Record the window and start the single writer into the page.
+
+    A module function rather than a GameAPI method: anything public on the API
+    class gets exposed to JavaScript, and a method taking a Window argument is
+    both useless from JS and a route back into the GUI object graph.
+    """
+    global _WINDOW
+    _WINDOW = window
+    threading.Thread(target=api._drain, daemon=True, name="valley-pump").start()
 
 
 def main() -> None:
@@ -147,7 +197,7 @@ def main() -> None:
         min_size=(900, 600),
         background_color="#0a0a0f",
     )
-    api.attach(window)
+    start_pump(api, window)
     webview.start(debug=bool(config.get("dev_mode")))
 
 

@@ -13,6 +13,7 @@ const statusEl = $("status");
 
 let proseBlock = null;      // the block currently being streamed into
 let busy = false;
+let lastEventAt = Date.now();
 const history = [];         // input history for up/down
 let historyIndex = -1;
 
@@ -123,6 +124,7 @@ function placeholder() {
 
 window.valley = {
   recv(e) {
+    lastEventAt = Date.now();
     switch (e.type) {
       case "status":
         setStatus(e.text);
@@ -310,7 +312,18 @@ function showOverlay(title, body) {
 
 /* ── boot ── */
 
-window.addEventListener("pywebviewready", async () => {
+let booted = false;
+
+async function boot() {
+  if (booted) return;
+  // Check for the METHOD, not just the api object. pywebview always creates
+  // window.pywebview.api — if its introspection of the Python object failed it
+  // creates an EMPTY one, which is still truthy. Guarding on the object alone
+  // let boot() proceed and call undefined(), which threw inside this async
+  // function where nothing was listening. That is a silent hang.
+  if (typeof window.pywebview?.api?.boot !== "function") return;
+  booted = true;
+
   const info = JSON.parse(await window.pywebview.api.boot());
   window.__dev = info.dev_mode;
   window.__preset = info.preset;
@@ -330,4 +343,51 @@ window.addEventListener("pywebviewready", async () => {
 
   append("─".repeat(52) + "\n/help for commands. F1-F5 for panels.", "system");
   unlock();
-});
+}
+
+// The bridge may become available before or after this script runs, so try both
+// and poll briefly as a backstop. Waiting only on the event means that if it
+// fired first, boot() never runs and the window sits there empty.
+// boot() is async, so a throw inside it becomes an unhandled rejection that
+// dies in a console nobody is watching. Every call site goes through this.
+function safeBoot() {
+  boot().catch((err) => {
+    booted = false;
+    append("boot failed: " + String(err && err.message ? err.message : err), "error");
+    unlock();
+  });
+}
+
+window.addEventListener("pywebviewready", safeBoot);
+document.addEventListener("DOMContentLoaded", safeBoot);
+safeBoot();
+let bootTries = 0;
+const bootPoll = setInterval(() => {
+  safeBoot();
+  if (booted || ++bootTries > 60) {
+    clearInterval(bootPoll);
+    if (!booted) {
+      append(
+        "could not reach the Python bridge — window.pywebview never appeared. " +
+        "Close and relaunch; if it persists the WebView2 runtime may need updating.",
+        "error"
+      );
+    }
+  }
+}, 250);
+
+// Watchdog. If a turn is in flight and nothing arrives for a long time, release
+// the input rather than leaving it disabled forever with no explanation — a
+// dropped event should cost one turn, not the whole session.
+setInterval(() => {
+  if (!busy) return;
+  if (Date.now() - lastEventAt < 180000) return;
+  append(
+    "no response for three minutes — releasing the input. The turn may still " +
+    "be running; check the terminal for [bridge] messages.",
+    "error"
+  );
+  setStatus("");
+  proseBlock = null;
+  unlock();
+}, 5000);
