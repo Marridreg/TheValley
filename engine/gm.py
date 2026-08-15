@@ -134,10 +134,20 @@ punish them for a plan you did not anticipate.
 
 
 class GameMaster:
-    def __init__(self, provider: Provider, max_tokens: int = 4000, dev_mode: bool = False):
+    def __init__(
+        self,
+        provider: Provider,
+        max_tokens: int = 4000,
+        dev_mode: bool = False,
+        max_scene_cards: int = 3,
+    ):
         self.provider = provider
         self.max_tokens = max_tokens
         self.dev_mode = dev_mode
+        # Full card text is 6-9k tokens each. Three is comfortable on a 32k
+        # local model and generous on anything larger; raise it in config if you
+        # routinely run big ensemble scenes on a long-context backend.
+        self.max_scene_cards = max_scene_cards
         self.last_packet: dict | None = None
 
     # ── prompt assembly ──
@@ -232,14 +242,51 @@ class GameMaster:
             roster[npc] = entry
         return roster
 
-    def _scene_cards(self, state) -> dict:
-        """Full private text for the characters in or adjacent to the scene.
+    def _scene_cards(self, state, player_input: str = "") -> dict:
+        """Full private text for the characters this turn plausibly involves.
 
         Volatile — it changes as the player moves — so it rides in the message
         rather than the cached system prefix.
+
+        Two sources, because last turn's cast alone is not enough. On the very
+        first turn of a session it is empty, and any turn where the player goes
+        looking for someone new ("I go and find Elena") needs that person's card
+        *this* turn, not next. So the player's own words are scanned for
+        character ids and first names too.
         """
-        cast = list(state.current_npcs)
-        return {npc: state.get_gm_card(npc) for npc in cast}
+        cast = set(state.current_npcs)
+
+        # Tokenise rather than substring-match, so trailing punctuation does not
+        # defeat it — "I approach Lady Dimitrescu." must still find alcina.
+        spoken = {
+            "".join(c for c in w.lower() if c.isalpha())
+            for w in player_input.split()
+        }
+        spoken.discard("")
+
+        for npc in state.known_npcs():
+            if npc in cast:
+                continue
+            names = {npc}
+            identity = state._card(npc)["public"].get("identity", "")
+            if identity:
+                # "Salvatore Moreau | age uncertain | ..." -> salvatore, moreau
+                for word in identity.split("|")[0].split():
+                    word = "".join(c for c in word.lower() if c.isalpha())
+                    if len(word) > 3:
+                        names.add(word)
+            if names & spoken:
+                cast.add(npc)
+
+        # Bound the cost. A shared surname can match several people at once —
+        # "Lady Dimitrescu" hits all four — and each full card is 6-9k tokens,
+        # which overruns a local model's whole context. Last turn's cast is
+        # authoritative; name matches fill the remaining slots.
+        ordered = list(state.current_npcs)
+        ordered += sorted(c for c in cast if c not in ordered)
+        ordered = ordered[: self.max_scene_cards]
+
+        return {npc: state.get_gm_card(npc) for npc in ordered}
 
     def _turn_block(self, state, player_input: str, feedback: list[str]) -> str:
         """The volatile half. Changes every turn, so it goes below the cache
@@ -261,7 +308,7 @@ class GameMaster:
         }
         text = dump(payload)
 
-        scene = self._scene_cards(state)
+        scene = self._scene_cards(state, player_input)
         if scene:
             text += (
                 "\n\n[FULL CARDS — characters in this scene, complete text]\n"

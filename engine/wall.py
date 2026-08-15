@@ -25,6 +25,20 @@ from .state import StateManager
 Emit = Callable[[dict], None]
 
 
+def _second_person_slips(prose: str) -> int:
+    """Count second-person pronouns in narration, ignoring quoted dialogue.
+
+    The convention bans them in the narrating voice only — characters address
+    the protagonist normally — so speech has to come out before counting or
+    every conversation reads as a violation.
+    """
+    import re
+
+    narration = re.sub(r'"[^"]*"', "", prose)
+    narration = re.sub(r"[“”][^“”]*[“”]", "", narration)
+    return len(re.findall(r"\b(you|your|yours|yourself)\b", narration, re.I))
+
+
 def _mood_key(raw) -> str:
     """Reduce a portrait_state to something usable as a filename.
 
@@ -57,6 +71,7 @@ class Wall:
             build(gm_block, role="GM"),
             max_tokens=int(gm_block.get("max_tokens") or 4000),
             dev_mode=self.dev_mode,
+            max_scene_cards=int(gm_block.get("max_scene_cards") or 3),
         )
         self.narrator = Narrator(
             build(nar_block, role="narrator"),
@@ -174,6 +189,19 @@ class Wall:
         for banned in self.presets.banned_strings():
             if banned and banned in prose:
                 prose = prose.replace(banned, "")
+
+        # Voice drift check. The prose convention forbids second person in
+        # narration but not in dialogue, so quoted speech is excluded before
+        # counting. Reported, never rewritten — silently editing a model's prose
+        # would hide the problem and read worse than the slip does.
+        if self.dev_mode:
+            slips = _second_person_slips(prose)
+            if slips:
+                emit({
+                    "type": "debug",
+                    "text": f"voice drift: {slips} second-person use(s) in narration "
+                            f"(dialogue excluded). /retry, or raise effort.",
+                })
 
         emit({"type": "prose_end"})
         emit({"type": "usage", "role": "narrator", "text": self.narrator.provider.last_usage.line()})

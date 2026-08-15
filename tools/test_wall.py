@@ -168,6 +168,13 @@ def main() -> int:
     wall.gm = GameMaster(gm_provider, max_tokens=4000)
     wall.narrator = Narrator(nar_provider, max_tokens=3000, history_turns=20)
 
+    # Model a continuing scene rather than turn one. The GM only receives full
+    # card text for characters already in the cast or named in the player's
+    # input — so a fresh state with an action that names nobody would correctly
+    # give it no bodies at all, and the "GM must see the secrets" assertions
+    # below would fail for the right reason but the wrong cause.
+    wall.state.current_npcs = ["moreau"]
+
     events: list[dict] = []
     wall.run_turn("I approach the chapel, keeping low.", events.append)
 
