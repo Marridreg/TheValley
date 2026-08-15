@@ -28,7 +28,54 @@ sys.path.insert(0, str(ROOT))
 
 from engine.commands import CommandRouter  # noqa: E402
 from engine.providers import ProviderError  # noqa: E402
+from engine.state import default_saves_dir  # noqa: E402
 from engine.wall import Wall  # noqa: E402
+
+
+def open_log() -> Path:
+    """Send diagnostics to a file, whatever launched us.
+
+    Two reasons this lives in Python rather than the launcher:
+
+    Under pythonw.exe there is no console at all, so sys.stdout can be None and
+    a bare print() raises. And `start "" prog > file` in a .cmd redirects the
+    start command's own output, not the child's — it looks like logging is on
+    and produces an empty file, which is worse than no logging.
+
+    So the app opens its own log and tees to the console when one exists. Every
+    [bridge] line survives a double-click launch. Never in the project folder:
+    the repo is inside OneDrive.
+    """
+    log_dir = default_saves_dir().parent
+    log_dir.mkdir(parents=True, exist_ok=True)
+    path = log_dir / "launch.log"
+    handle = path.open("a", encoding="utf-8", errors="replace")
+    handle.write(f"\n{'=' * 60}\nlaunch\n{'=' * 60}\n")
+
+    class Tee:
+        def __init__(self, console):
+            self._console = console
+
+        def write(self, text: str) -> int:
+            handle.write(text)
+            handle.flush()  # unbuffered: a crash must not eat the last line
+            if self._console is not None:
+                try:
+                    self._console.write(text)
+                    self._console.flush()
+                except Exception:  # noqa: BLE001 - a dead console must not kill logging
+                    self._console = None
+            return len(text)
+
+        def flush(self) -> None:
+            handle.flush()
+
+        def isatty(self) -> bool:
+            return False
+
+    sys.stdout = Tee(sys.stdout)
+    sys.stderr = Tee(sys.stderr)
+    return path
 
 
 def load_config() -> dict:
@@ -177,6 +224,8 @@ def start_pump(api: GameAPI, window: "webview.Window") -> None:
 
 
 def main() -> None:
+    log_path = open_log()
+    print(f"log      {log_path}")
     config = load_config()
     try:
         wall = Wall(config, ROOT)

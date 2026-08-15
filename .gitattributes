@@ -13,3 +13,6 @@
 
 # The source design docs are authored text; keep them diffable.
 docs/source/*.txt text eol=lf
+
+# cmd.exe mis-parses LF-only batch files: every REM becomes a bad command.
+*.cmd text eol=crlf
