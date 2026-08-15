@@ -44,7 +44,28 @@ from .base import (
 _SCHEMA_HINTS = ("gpt-4o", "gpt-4.1", "gpt-5", "o3", "o4", "grok", "gemini-2", "gemini-3")
 
 # Reasoning models that take an effort level.
-_EFFORT_HINTS = ("o1", "o3", "o4", "gpt-5", "claude-opus", "claude-sonnet", "grok-4", "deepseek-r")
+_EFFORT_HINTS = (
+    "o1", "o3", "o4", "gpt-5",
+    "claude-opus", "claude-sonnet", "claude-fable", "claude-mythos",
+    "grok-4", "deepseek-r",
+)
+
+# Frontier Claude REJECTS temperature/top_p/top_k with a 400 rather than
+# ignoring them, and that is true whether you reach it directly or route to it
+# through OpenRouter. Routing does not change what the upstream model accepts,
+# so these have to be recognised here too — otherwise a preset written for a
+# local model kills the first turn on Claude with a confusing error.
+_NO_SAMPLER_HINTS = (
+    "claude-fable-5",
+    "claude-mythos-5",
+    "claude-opus-5",
+    "claude-opus-4-8",
+    "claude-opus-4-7",
+    "claude-sonnet-5",
+    "claude-fable",
+    "claude-4-8",
+    "claude-4-7",
+)
 
 
 class OpenAICompatProvider(Provider):
@@ -87,18 +108,19 @@ class OpenAICompatProvider(Provider):
 
     def _detect(self, overrides: dict) -> Capabilities:
         m = self.model.lower()
+        samplers_ok = not any(h in m for h in _NO_SAMPLER_HINTS)
         caps = Capabilities(
             # Optimistic: most modern endpoints do support this, and when they
             # don't the repair loop catches it. Set schema_forcing: false in
             # config to skip straight to prompted JSON.
             schema_forcing=any(h in m for h in _SCHEMA_HINTS) or "/" in m,
             caching="implicit",
-            temperature=True,
-            top_p=True,
-            top_k=True,
-            min_p=True,
-            repetition_penalty=True,
-            frequency_presence_penalty=True,
+            temperature=samplers_ok,
+            top_p=samplers_ok,
+            top_k=samplers_ok,
+            min_p=samplers_ok,
+            repetition_penalty=samplers_ok,
+            frequency_presence_penalty=samplers_ok,
             effort=any(h in m for h in _EFFORT_HINTS),
             effort_levels=("low", "medium", "high"),
             mid_conversation_system=False,
