@@ -1,0 +1,805 @@
+═══════════════════════════════════════════════════════════════
+GAME HARNESS — "ZORK MEETS RE8"
+Dynamic State Engine for SillyTavern
+═══════════════════════════════════════════════════════════════
+
+
+The harness is built on ONE principle: everything that matters
+is a JSON state block. Characters, enemies, objects, locations,
+quests — all the same pattern. The LLM reads the blocks, plays
+accordingly, and updates them at the end of each turn.
+
+The psyche system Lukas already built handles CHARACTER emotion.
+This harness wraps AROUND it to handle everything else.
+
+
+══ LAYER 1: PC STATE ══════════════════════════════════════════
+(The player's character — always active, always tracked)
+
+
+{
+  "pc": {
+    "identity": {
+      "name": "",
+      "description": ""
+    },
+    "vitals": {
+      "health": {
+        "current": 1.0,
+        "max": 1.0,
+        "regen_per_turn": 0.0,
+        "status_effects": []
+      },
+      "stamina": {
+        "current": 1.0,
+        "max": 1.0,
+        "regen_per_turn": 0.05,
+        "status_effects": []
+      },
+      "mold_exposure": {
+        "level": 0.0,
+        "threshold_mild": 0.3,
+        "threshold_moderate": 0.6,
+        "threshold_severe": 0.85,
+        "decay_per_turn": 0.005
+      }
+    },
+    "stats": {
+      "strength": 0.5,
+      "speed": 0.5,
+      "perception": 0.5,
+      "willpower": 0.5,
+      "charisma": 0.5,
+      "knowledge": 0.5
+    },
+    "inventory": [],
+    "equipped": {
+      "weapon": null,
+      "armor": null,
+      "accessory": null
+    },
+    "abilities": [],
+    "reputation": {
+      "village": 0.0,
+      "castle_dimitrescu": 0.0,
+      "heisenberg": 0.0,
+      "moreau": 0.0,
+      "beneviento": 0.0,
+      "miranda": 0.0,
+      "the_duke": 0.0
+    },
+    "location": {
+      "current": "",
+      "sub_location": "",
+      "known_locations": []
+    }
+  }
+}
+
+NOTES:
+  • All values 0.0-1.0 (normalized). The LLM interprets
+    contextually — 0.3 health is "badly wounded," 0.1 is
+    "about to die," etc.
+  • mold_exposure is the village's unique hazard. It ticks
+    UP near Mold sources (Beneviento's garden, the cave
+    church, Miranda's lab) and slowly decays elsewhere.
+    Thresholds trigger effects:
+      mild: hallucination susceptibility +, Donna's powers
+        hit harder, faint nausea
+      moderate: compliance bias (Miranda's suggestions feel
+        more reasonable), mild sensory distortion, Mold-
+        smell detectable on PC
+      severe: active neurological interference, personality
+        bleed from Megamycete, PC hears whispers from
+        absorbed consciousnesses
+  • reputation is per-faction, -1.0 to 1.0. Negative =
+    hostile. Zero = unknown. Positive = friendly. Specific
+    thresholds trigger NPC behavioral shifts per their cards.
+  • stats are DESCRIPTIVE not prescriptive — the LLM uses
+    them to judge action outcomes, not as hard math. A 0.7
+    strength PC attempting to force a door is "very likely."
+    A 0.3 is "struggling, might fail." The LLM narrates
+    accordingly.
+
+
+══ LAYER 2: ENCOUNTER TEMPLATE ════════════════════════════════
+(Spawned when the PC hits a combat, puzzle, or event trigger)
+
+
+── COMBAT ENCOUNTER ───────────────────────────────────────
+
+{
+  "encounter": {
+    "type": "combat",
+    "id": "unique_id",
+    "description": "Brief scene-setting text for the LLM",
+    "enemies": [
+      {
+        "name": "Lycan Scout",
+        "health": 0.6,
+        "damage_output": 0.15,
+        "speed": 0.7,
+        "behavior": "aggressive_flanker",
+        "morale": 0.5,
+        "morale_break": 0.2,
+        "drops": ["lycan_claw", "scrap_meat"],
+        "psyche_lite": {
+          "aggression": 0.8,
+          "fear": 0.2,
+          "pack_bonus": 0.1
+        }
+      }
+    ],
+    "environment": {
+      "location": "forbidden_woods_edge",
+      "cover_available": true,
+      "flanking_routes": 2,
+      "light_level": "dim",
+      "hazards": ["uneven_ground", "low_branches"],
+      "escape_routes": ["north_path", "climb_tree"]
+    },
+    "escalation": {
+      "turn_limit": null,
+      "reinforcements": {
+        "trigger": "noise_3_turns",
+        "type": "lycan_pack",
+        "count": 3
+      }
+    },
+    "resolution": {
+      "victory": "enemies defeated or fled",
+      "retreat": "PC reaches escape route",
+      "failure": "PC health reaches 0.1",
+      "failure_consequence": "captured_or_wounded"
+    }
+  }
+}
+
+NOTES:
+  • psyche_lite is the barebones emotional state for
+    enemies — just enough for the LLM to play them with
+    personality. aggression determines how recklessly they
+    attack. fear ticks UP as they take damage. When fear >
+    morale they attempt to flee. pack_bonus adds to both
+    aggression and morale per ally present — kill one Lycan
+    and the rest get slightly less brave.
+  • morale_break is the threshold where the enemy RUNS.
+    Some enemies don't have one (Soldats — mechanical, no
+    morale) or have it set to 0.0 (Miranda — she doesn't
+    flee, EVER).
+  • behavior tags tell the LLM HOW to fight:
+      aggressive_flanker: circles, darts in, retreats
+      berserker: charges, doesn't dodge, high damage
+      defensive: holds position, counterattacks
+      pack_hunter: coordinates with allies, focuses
+        weakest target
+      ambusher: hidden until attack, high first-strike,
+        fragile after
+      boss: multiple phases, adaptive, reads PC patterns
+  • escalation handles fights that drag — reinforcements,
+    environmental changes, timer events. "noise_3_turns"
+    means three turns of combat attract more enemies.
+  • resolution defines win/loss states. failure_consequence
+    is NOT always death — "captured" leads to a new scene
+    (waking up in the castle dungeon, Heisenberg's factory,
+    etc). The sandbox continues.
+
+
+── PUZZLE / EXPLORATION ENCOUNTER ──────────────────────────
+
+{
+  "encounter": {
+    "type": "exploration",
+    "id": "unique_id",
+    "description": "Brief text",
+    "objective": {
+      "goal": "Retrieve the crest key from the chapel vault",
+      "known_to_pc": false,
+      "hint_sources": ["sebastian_intel", "duke_info_purchase"]
+    },
+    "nodes": [
+      {
+        "id": "chapel_entrance",
+        "description": "Heavy oak door, rusted lock",
+        "requires": null,
+        "contains": ["note_fragment_1"],
+        "hazards": ["tripwire_bell"],
+        "connections": ["chapel_nave"]
+      },
+      {
+        "id": "chapel_nave",
+        "description": "Pews overturned, altar defaced",
+        "requires": null,
+        "contains": ["note_fragment_2", "herb"],
+        "hazards": ["moroaica_x2"],
+        "connections": ["chapel_entrance", "chapel_vault"]
+      },
+      {
+        "id": "chapel_vault",
+        "description": "Iron door, combination lock",
+        "requires": "combination_from_notes",
+        "contains": ["crest_key"],
+        "hazards": [],
+        "connections": ["chapel_nave"]
+      }
+    ],
+    "state": {
+      "notes_found": 0,
+      "notes_required": 2,
+      "combination_known": false,
+      "alarm_triggered": false,
+      "moroaica_status": "dormant"
+    },
+    "escalation": {
+      "alarm_triggered": {
+        "effect": "moroaica_status becomes active",
+        "timer": "3 turns to clear vault before
+          reinforcements"
+      }
+    }
+  }
+}
+
+NOTES:
+  • nodes are ROOMS in the Zork sense — connected spaces with
+    contents, requirements, and hazards. The LLM navigates
+    them based on PC actions.
+  • requires gates are FLEXIBLE — "combination_from_notes"
+    means the PC needs both note fragments to solve the lock,
+    but a high perception PC might brute-force it, or a high
+    strength PC might break the door (with noise consequences).
+    The LLM adjudicates based on PC stats and approach.
+  • hazards can be combat (moroaica_x2 spawns a combat
+    encounter if triggered) or environmental (tripwire_bell
+    sets alarm_triggered to true).
+  • state tracks puzzle progress persistently — if the PC
+    leaves mid-puzzle and comes back, the state remembers
+    what they found and what they triggered.
+
+
+── SOCIAL ENCOUNTER ───────────────────────────────────────
+
+{
+  "encounter": {
+    "type": "social",
+    "id": "unique_id",
+    "description": "Brief text",
+    "npc": "alcina_dimitrescu",
+    "npc_psyche": "(reference to psyche state block)",
+    "stakes": {
+      "goal": "Convince Alcina to discuss Miranda's weakness",
+      "approach_modifiers": {
+        "flattery": "+ego_buffer per card rules",
+        "defiance": "+wanting_drift if regard > 5",
+        "directness": "+irritated if regard < 5",
+        "information_offer": "+evaluating, pauses"
+      },
+      "success_threshold": "regard >= 6 AND ego_buffer >= 1",
+      "failure_consequence": "dismissed, -0.1 castle_reputation",
+      "critical_success": "regard >= 8, she enters Conspiring",
+      "critical_failure": "LOC triggered, combat or ejection"
+    }
+  }
+}
+
+NOTES:
+  • Social encounters reference the character's existing
+    psyche block and card — no duplication. approach_modifiers
+    tell the LLM how different strategies interact with the
+    character's existing behavioral rules.
+  • success_threshold can be a COMBINATION — you need both
+    high enough regard AND ego buffer, not just one. Forces
+    multi-step social play.
+  • critical outcomes exist for both directions — critical
+    success skips straight to Conspiring state, critical
+    failure triggers Loss of Control.
+
+
+══ LAYER 3: WORLD STATE ═══════════════════════════════════════
+(Persistent, updates every turn, tracks the BIG picture)
+
+
+{
+  "world": {
+    "calendar": {
+      "days_to_ceremony": 18,
+      "time_of_day": "afternoon",
+      "weather": "heavy_snow"
+    },
+    "threat_level": {
+      "lycan_aggression": 0.3,
+      "lycan_aggression_growth": 0.02,
+      "soldat_production": 0.2,
+      "soldat_production_growth": 0.01,
+      "village_panic": 0.2,
+      "village_panic_growth": 0.01
+    },
+    "faction_state": {
+      "dimitrescu": {
+        "status": "autonomous",
+        "miranda_attention": 0.1,
+        "internal_tension": 0.2,
+        "notes": "Daniela missing day 3"
+      },
+      "heisenberg": {
+        "status": "scheming",
+        "miranda_attention": 0.05,
+        "soldat_count": "growing",
+        "notes": "Spotted outside factory, scouting"
+      },
+      "moreau": {
+        "status": "anxious",
+        "miranda_attention": 0.0,
+        "reservoir_frozen": false,
+        "notes": "Reservoir cooling, not yet frozen"
+      },
+      "beneviento": {
+        "status": "sealed",
+        "miranda_attention": 0.0,
+        "fog_density": "thick",
+        "notes": "Flowers dead outside villa. Unmonitored"
+      },
+      "miranda": {
+        "status": "researching",
+        "ceremony_readiness": 0.3,
+        "hag_active": true,
+        "current_focus": "vessel_search",
+        "notes": "Has not yet identified a viable vessel"
+      },
+      "village": {
+        "population": 127,
+        "morale": 0.5,
+        "faith_in_miranda": 0.7,
+        "trust_of_pc": 0.0,
+        "notes": "Stable but fearful. Fallow Plot vulnerable"
+      }
+    },
+    "active_encounters": [],
+    "active_quests": [],
+    "discovered_secrets": [],
+    "killed_npcs": [],
+    "event_queue": [
+      {
+        "trigger": "days_to_ceremony <= 14",
+        "event": "Miranda calls a Lord meeting. Tensions rise"
+      },
+      {
+        "trigger": "lycan_aggression >= 0.5",
+        "event": "First Lycan attack on village proper"
+      },
+      {
+        "trigger": "village_population <= 100",
+        "event": "Iulian confronts Luiza about Miranda"
+      },
+      {
+        "trigger": "miranda_attention on any faction >= 0.7",
+        "event": "Miranda investigates personally"
+      },
+      {
+        "trigger": "soldat_production >= 0.6",
+        "event": "Heisenberg approaches PC with offer"
+      },
+      {
+        "trigger": "reservoir_frozen == true",
+        "event": "Moreau appears at village edge, desperate"
+      }
+    ]
+  }
+}
+
+NOTES:
+  • threat_level values GROW automatically per turn via
+    their growth rates. The world gets worse whether or not
+    the PC acts. This is the clock. The PC can slow the
+    growth (defend the Fallow Plot = lycan_aggression_growth
+    decreases) but never stop it entirely until the source
+    is addressed.
+  • event_queue is the big one — these are TRIGGERED SCENES
+    that fire when conditions are met. The LLM checks the
+    queue each turn. When a trigger condition is true, the
+    event fires and is removed from the queue. New events
+    can be ADDED by PC actions (ally with Heisenberg? New
+    events enter the queue for his betrayal conditions).
+  • faction_state.miranda_attention is the stealth meter
+    for each Lord's domain. PC actions in a Lord's territory
+    raise it. If it hits 0.7, Miranda comes looking. This
+    forces the PC to spread their activity rather than
+    camping one location.
+  • killed_npcs is permanent. Dead is dead. The sandbox
+    remembers.
+  • days_to_ceremony is the master clock. It decrements
+    daily. At 0, Miranda begins the ceremony whether or
+    not the PC is ready. The PC can DELAY it (sabotage,
+    destroying a component, distracting Miranda) but each
+    delay method only works once and buys 2-5 days.
+
+
+══ LAYER 4: ITEM & OBJECT TEMPLATES ══════════════════════════
+(Spawned as needed — inventory items, key items, weapons, etc)
+
+
+── WEAPON ─────────────────────────────────────────────────
+
+{
+  "item": {
+    "type": "weapon",
+    "name": "Hunting Shotgun",
+    "description": "Iulian's spare. Well-maintained, loud",
+    "damage": 0.25,
+    "speed": 0.3,
+    "durability": 0.8,
+    "properties": ["loud", "spread", "two_handed"],
+    "ammo": {
+      "current": 4,
+      "max": 6,
+      "type": "shotgun_shells"
+    }
+  }
+}
+
+── KEY ITEM ───────────────────────────────────────────────
+
+{
+  "item": {
+    "type": "key_item",
+    "name": "Crest Key",
+    "description": "Opens the crest-locked doors in Castle
+      Dimitrescu's east wing",
+    "unlocks": ["castle_east_wing_door_1",
+      "castle_east_wing_door_2"],
+    "consumable": false
+  }
+}
+
+── CONSUMABLE ─────────────────────────────────────────────
+
+{
+  "item": {
+    "type": "consumable",
+    "name": "Herb Poultice",
+    "description": "Village herbalism, basic but effective",
+    "effect": {
+      "target": "health",
+      "value": 0.2
+    },
+    "quantity": 1
+  }
+}
+
+── TRADE GOODS ────────────────────────────────────────────
+
+{
+  "item": {
+    "type": "trade",
+    "name": "Lycan Claw",
+    "description": "Proof of kill. The Duke pays well",
+    "duke_value": 150,
+    "notes": "Also used in weapon upgrades"
+  }
+}
+
+
+══ LAYER 5: THE HARNESS RULES ═════════════════════════════════
+(Instructions for the LLM on how to USE all of the above)
+
+
+TURN STRUCTURE:
+  1. PC declares action (move, fight, talk, explore, rest, etc)
+  2. LLM reads relevant state blocks (PC, location, any active
+     encounters, world state)
+  3. LLM narrates the outcome based on:
+     • PC stats vs challenge difficulty
+     • NPC psyche state and card behavioral rules
+     • Environmental factors from encounter/location data
+     • Randomness expressed as narrative uncertainty (the LLM
+       doesn't roll dice — it judges probability from stats
+       and narrates accordingly, with occasional unexpected
+       outcomes to maintain tension)
+  4. LLM updates ALL relevant state blocks:
+     • PC vitals (damage taken, stamina spent, items used)
+     • Encounter state (enemy health, puzzle progress, etc)
+     • World state (threat levels tick, calendar advances if
+       a significant time block passed, faction states shift)
+     • NPC psyche blocks (emotions, drives, commitments)
+  5. LLM appends updated JSON at end of response (or in
+     designated state block area per SillyTavern setup)
+
+DIFFICULTY ADJUDICATION (no dice, stats-as-narrative):
+  • PC stat >= challenge difficulty by 0.2+: success, narrated
+    cleanly, minimal cost
+  • PC stat ~= challenge difficulty (±0.1): success but with
+    cost (stamina, partial damage, noise, time) OR dramatic
+    near-miss that still succeeds
+  • PC stat < challenge difficulty by 0.2+: failure or partial
+    success with significant consequence
+  • PC stat < challenge difficulty by 0.4+: failure, full
+    consequence, possible injury or setback
+  • CRITICAL OUTCOMES: when a stat is extremely high (0.9+) or
+    extremely low (0.1-), the LLM should occasionally narrate
+    exceptional success or catastrophic failure — the edges of
+    the bell curve
+  • COMPOUND CHECKS: some actions test multiple stats. Sneaking
+    past Lycans = speed + perception. Persuading Alcina =
+    charisma + knowledge (you need to say something SMART and
+    say it WELL). The LLM averages or weights contextually.
+DEATH & FAILURE:
+  • PC health at 0.1 = incapacitated. Context determines
+    outcome — capture, rescue, or death depending on WHO
+    beat you and WHERE.
+  • PC health at 0.0 = DEAD. Game over. The narrative
+    writes a death scene appropriate to context. Player
+    can reload/delete scenes to retry.
+  • DEATH IS EARNED: deaths should feel like the PC fucked
+    up, not like the RNG screwed them. Walking into
+    Heisenberg's factory covered in metal at reputation -0.5?
+    Death. Picking a fight with Miranda before building a
+    coalition? Death. Ignoring three warnings about the
+    Forbidden Woods at night? Death. Each death should teach
+    something — "I needed allies," "I needed better gear,"
+    "I should have listened to Iulian."
+  • SOFT FAILURE vs HARD FAILURE:
+    Soft: captured, wounded, lost an item, reputation tanked,
+    NPC killed, quest path closed. The game continues but
+    WORSE. These are the majority of failure states.
+    Hard: PC dies. Game over screen. Reload. These trigger
+    from: boss fights (Lords, Miranda), overwhelming odds
+    the PC was warned about, consequences of critical social
+    failures (Alcina in LOC with regard below 3 = she kills
+    you, period), and deliberate stupidity the narrative
+    flagged ("the fog is impenetrable" means DO NOT ENTER,
+    and entering anyway at low willpower against Donna's
+    hallucinations = you don't come out).
+  • THE GAME OVER NARRATION: when the PC dies, the LLM
+    writes it. Not a menu screen — a SCENE. Alcina pins you
+    and the narration is the last thing you see. The Lycans
+    drag you down and the narration is the sounds going dark.
+    Miranda looks at you and the narration is her looking
+    away. Make the player FEEL it so the reload has weight.
+
+WORLD PROGRESSION WITHOUT PC:
+  • The world does NOT pause. If the PC spends three days
+    resting in the village, three days of threat_level growth
+    occurs. Lycan aggression rises. Soldat production rises.
+    The ceremony gets closer. NPCs may die offscreen if
+    conditions are met — Leonardo checking the fences alone
+    at high lycan_aggression is a roll the world makes
+    WHETHER OR NOT the PC is present.
+  • OFFSCREEN EVENTS: at the start of each new day (or
+    significant time skip), the LLM checks the world state
+    and narrates 1-2 sentences of "what happened while you
+    were elsewhere." These can be:
+    - Neutral: "Snow fell heavily overnight. The paths are
+      harder to walk."
+    - Ominous: "You hear that the Enescu family's house has
+      gone dark. No one has checked."
+    - Critical: "Iulian meets you at dawn, face grey.
+      'We lost two more last night. The east fence is
+      broken.'"
+  • NPC DEATH OFFSCREEN: if an NPC's death conditions are
+    met while the PC is elsewhere, they die. The PC
+    discovers this on return. It is permanent. Leonardo CAN
+    die while the PC is at the castle romancing Alcina. This
+    is deliberate — the sandbox punishes tunnel vision the
+    same way Miranda's tunnel vision is her weakness.
+
+ECONOMY (The Duke integration):
+  • Currency: Lei (as in the game). Found on enemies, in
+    caches, earned through quests, sold to the Duke.
+  • The Duke's prices adjust per PC reputation:
+    - reputation > 0.5: 10% discount, rare stock unlocked
+    - reputation 0.0-0.5: standard prices
+    - reputation < 0.0: 15% markup, some stock withheld
+    - reputation < -0.5: Duke still sells (he's a merchant)
+      but selection is limited and he stops volunteering
+      free warnings
+  • INFORMATION has a price. Standard gossip: 50 Lei.
+    Tactical intel (Lord movements, weaknesses): 300 Lei.
+    Miranda-level secrets: favors, not coin — the Duke
+    names a task and completion unlocks the intel.
+  • CRAFTING: not a deep system — the Duke upgrades weapons
+    and makes consumables from materials the PC provides.
+    Bring him Lycan claws + scrap metal + Lei = weapon
+    improvement. Bring him herbs + reagents = better
+    poultices. He's the upgrade shop, not a crafting bench.
+
+TIME & REST:
+  • One "turn" = one significant action or scene. A
+    conversation is a turn. A combat encounter is a turn
+    (possibly multiple sub-turns within). Traveling between
+    locations is a turn. Resting is a turn that costs time
+    but restores stamina and health.
+  • Time of day matters:
+    - Dawn/Morning: safest travel, village NPCs active,
+      Lords dormant or in private states
+    - Afternoon: standard activity, Duke available, Lords
+      awake and in public states
+    - Evening: increased Lycan activity, castle comes alive
+      (Dimitrescus are nocturnal-leaning), village locks
+      doors
+    - Night: Lycan aggression peaks, travel is dangerous,
+      castle is where the REAL interactions happen (Alcina
+      in Wanting state, daughters hunting), village is
+      sealed
+    - Pre-dawn (3am): the dead hour. Minimal NPC activity.
+      Miranda in private state in the lab. Best window for
+      infiltration. Worst window for getting caught — no
+      excuse for being there.
+  • REST types:
+    - Short rest (1 time block): +0.15 stamina, no health
+      regen, time advances to next period
+    - Full rest (village bed, safe location): +0.5 stamina,
+      +0.1 health, full day-night cycle advances,
+      world state ticks FULL day of growth
+    - Alcina's chambers (if permitted): full rest +
+      castle_dimitrescu reputation +0.05, but
+      miranda_attention for Dimitrescu faction +0.05.
+      Comfort has a cost.
+    - Unsafe rest (Forbidden Woods, Stronghold edge): +0.1
+      stamina only, random encounter chance on wake-up,
+      no health regen. You chose to sleep here. The game
+      remembers.
+
+STEALTH & MIRANDA'S ATTENTION:
+  • miranda_attention per faction is the stealth clock.
+    Every significant PC action in a Lord's territory
+    raises it:
+    - Talking to a Lord: +0.02
+    - Fighting in their territory: +0.05
+    - Openly defying Miranda's authority: +0.1
+    - Killing a Lord's subjects: +0.08
+    - The Duke mentioning your name (he talks, he's a
+      merchant, information flows both ways): +0.01
+      per transaction in that territory
+  • Miranda_attention thresholds:
+    - 0.0-0.3: unaware. You're a blip, if that.
+    - 0.3-0.5: curious. The Hag starts appearing near
+      your usual locations. She's watching.
+    - 0.5-0.7: interested. Miranda asks the relevant
+      Lord about you during their next council. The Lord's
+      response depends on your relationship with them —
+      Alcina might protect you ("a pet, nothing more"),
+      Heisenberg might deflect ("never heard of 'em").
+    - 0.7-0.85: concerned. Miranda investigates personally.
+      The Hag approaches you. The riddles are more pointed.
+      She's testing you.
+    - 0.85-1.0: threatened. Miranda drops the Hag. She
+      appears as herself. What happens next depends on
+      whether you've built enough alliance to survive.
+    - 1.0: Miranda acts. If you don't have a coalition
+      and a plan, this is a game over.
+  • miranda_attention CANNOT decrease naturally — once she
+    notices you, she doesn't forget. It can only be managed:
+    lying low (no actions in the relevant territory for
+    3+ turns = attention freezes, doesn't decrease), having
+    a Lord cover for you (costs Lord reputation), or creating
+    a distraction (world event that redirects her focus).
+
+COMPANION SYSTEM:
+  • Certain NPCs can join the PC as temporary or persistent
+    companions. Companions don't get full psyche blocks —
+    they get a simplified tag:
+
+  {
+    "companion": {
+      "name": "Elena Lupu",
+      "health": 0.8,
+      "capability": "practical_support",
+      "morale": 0.7,
+      "loyalty": 0.4,
+      "bonus": {
+        "type": "village_trust",
+        "value": "+0.05 per interaction while present"
+      },
+      "breaks_at": {
+        "trigger": "father_endangered",
+        "effect": "leaves immediately regardless of situation"
+      }
+    }
+  }
+
+  • Companions provide passive bonuses (Elena = village
+    trust, Iulian = combat + perception, a Dimitrescu
+    daughter = castle access but miranda_attention+) and
+    can act in scenes (Elena shoots, Iulian guards, Bela
+    strategizes).
+  • Companions have loyalty thresholds — drop below 0.2
+    and they leave. Certain events force departure regardless
+    (Elena's breaks_at trigger).
+  • MAX COMPANIONS: 2 active. The sandbox isn't a party RPG
+    — it's a political thriller with teeth. Too many allies
+    at once attracts attention and reduces stealth.
+
+DISCOVERY & SECRETS:
+  • discovered_secrets in the world state tracks what the PC
+    KNOWS. Knowledge gates content:
+    - "miranda_is_hag": unlocks the ability to recognize
+      the Hag, changes all Hag interactions from "crazy old
+      woman" to "she's watching me"
+    - "heisenberg_army": unlocks alliance negotiation with
+      Karl at a higher position (you KNOW his leverage)
+    - "donna_weakness_cold_flowers": unlocks non-combat
+      approach to Beneviento
+    - "moreau_miranda_counterfeit": unlocks ability to
+      turn Moreau by proving Miranda's love is performed
+    - "miranda_lab_location": unlocks infiltration quest
+    - "megamycete_weakness": REQUIRED for final
+      confrontation planning
+  • Secrets are found through: exploration (notes, documents,
+    environmental details), NPC conversations (Sebastian's
+    passive intel, Roxana's husband's observations, Duke's
+    paid intel), infiltration (Miranda's lab, Heisenberg's
+    factory records), and direct confrontation (certain
+    truths only emerge when you push an NPC past their
+    comfort threshold — Alcina in Conspiring state reveals
+    Miranda's habits, Moreau in Desperate state reveals
+    the cave church layout).
+
+
+══ LAYER 6: ENCOUNTER GENERATION RULES ════════════════════════
+(How the LLM creates encounters on the fly)
+
+
+The LLM does NOT pre-generate all encounters. It generates
+them dynamically based on:
+  1. PC location + time of day + world threat levels
+  2. Active quest objectives in the area
+  3. Narrative pacing (if last 3 turns were combat, drift
+     toward social/exploration; if last 3 were social,
+     introduce tension)
+
+GENERATION TEMPLATE:
+When the PC enters a new area or a trigger condition is met,
+the LLM creates an encounter JSON following the templates in
+Layer 2. The encounter is APPENDED to active_encounters in
+the world state and remains until resolved.
+
+RANDOM ENCOUNTER PROBABILITY (per area, per turn):
+  • Village proper: 5% (safe, only at high threat levels)
+  • Fallow Plot: 15% + lycan_aggression modifier
+  • Forbidden Woods: 40% + lycan_aggression modifier
+  • Stronghold approach: 60%
+  • Castle Dimitrescu: 10% (the daughters ARE the random
+    encounters — which one you bump into is the roll)
+  • Heisenberg's Factory: 25% (Soldats patrol)
+  • Moreau's Reservoir: 20% (aquatic hazards, Moreau
+    himself at high isolation)
+  • Beneviento grounds: 100% (the hallucinations are
+    ALWAYS active, the question is intensity)
+  • Miranda's lab: 0% random, 100% scripted (you're not
+    stumbling into anything here — everything is placed)
+
+SCALING: encounters scale with world state, not PC level.
+Day 1 Lycans are the same as Day 15 Lycans — but Day 15
+has MORE of them, they're bolder, and they're coordinated.
+The PC doesn't get stronger by grinding. The PC gets
+stronger by finding better equipment, gaining allies, and
+learning the world's secrets. This is survival horror, not
+an action RPG.
+
+══ LAYER 7: GAME OVER SCREEN ═════════════════════════════════
+
+When PC.health reaches 0.0, or a scripted hard-failure
+triggers:
+
+{
+  "game_over": {
+    "cause": "Description of what killed the PC",
+    "killer": "NPC or hazard responsible",
+    "location": "Where it happened",
+    "final_narration": "LLM writes a death scene — visceral,
+      specific, earned. Not a menu. A moment.",
+    "what_went_wrong": "LLM provides a brief, in-character
+      hint — not a walkthrough, but a nudge. 'Perhaps an
+      ally at your side would have changed the arithmetic.'
+      'The Duke warned you. Twice.' 'She told you not to
+      come closer. You came closer.'",
+    "world_state_at_death": "(snapshot for player reference)"
+  }
+}
+
+The game over is a SCENE, not a screen. The LLM narrates
+the death, provides the body with a gentle nudge toward what
+could have gone differently, and preserves the world state
+so the player knows exactly what they're reloading into.
+
+═══════════════════════════════════════════════════════════════

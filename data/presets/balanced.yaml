@@ -1,0 +1,8 @@
+name: Balanced
+description: Default. Clear, unhurried prose.
+effort: medium
+max_tokens: 3000
+style: ''
+temperature: 0.9
+top_p: 0.95
+repetition_penalty: 1.05

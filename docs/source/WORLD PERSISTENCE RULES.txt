@@ -1,0 +1,24 @@
+WORLD PERSISTENCE RULES:
+  • MOVED OBJECTS stay moved. If the PC barricades a door
+    with furniture, the furniture is there next time. If
+    they break a window in the castle, the cold air is
+    NOW IN THAT WING and any daughter in that wing is at
+    risk. Actions have physical permanence.
+  • NPC MEMORY: characters remember. Alcina remembers
+    what you said three scenes ago. Elena remembers you
+    helped with the fence. Iulian remembers you got
+    someone killed. The psyche system tracks this through
+    commitments and appraisal. The LLM should reference
+    past interactions unprompted — "You. The one who
+    helped with the east fence. ...Sit. Eat."
+  • ENVIRONMENTAL SCARRING: combat leaves marks. Blood
+    on the floor stays. Broken doors stay broken. Scorch
+    marks from Heisenberg's electromagnetic blasts persist.
+    The castle accumulates evidence of the PC's passage
+    and the daughters NOTICE. "Someone's been in the east
+    wing. The door is wrong. ...Bela, did you—" "No."
+  • REPUTATION IS MEMORY: the reputation system isn't
+    abstract — it's the AGGREGATE of remembered actions.
+    +0.1 village trust isn't a number going up, it's
+    Luiza saying "you're welcome at my table" instead of
+    "who are you and why are you here."

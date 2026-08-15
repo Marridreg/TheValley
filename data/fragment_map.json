@@ -1,0 +1,27 @@
+{
+  "_warning": "GM ONLY. The narrator receives one fragment's content at a time and never learns what it connects to.",
+  "fragments": [
+    {
+      "id": "frag_001",
+      "trigger": "seeing military insignia, uniforms, or ordered rows of equipment",
+      "content": "Hands on a rifle that is not this rifle. Someone laughing to your left. The taste of dust and the smell of hot oil.",
+      "leads_to": "frag_007",
+      "dead_end": false
+    },
+    {
+      "id": "frag_002",
+      "trigger": "antiseptic, bleach, or any clean chemical smell indoors",
+      "content": "A white room. A table with a channel cut down the middle of it. A voice, very calm: hold still.",
+      "leads_to": "frag_012",
+      "dead_end": false
+    },
+    {
+      "id": "frag_003",
+      "trigger": "church bells, or hearing Miranda's name spoken in reverence",
+      "content": "Kneeling. Not praying — the floor is cold and your knees hurt and you are being made to wait.",
+      "leads_to": null,
+      "dead_end": true,
+      "note": "deliberate dead end; not every thread goes somewhere"
+    }
+  ]
+}

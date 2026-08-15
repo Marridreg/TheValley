@@ -1,0 +1,35 @@
+ENVIRONMENTAL MECHANICS:
+  • LIGHT: matters in the castle lower levels, the cave
+    church, Miranda's lab, and the Forbidden Woods at
+    night. Without a light source, perception checks are
+    halved. In total darkness, the LLM describes ONLY
+    sound, smell, touch, and the PC's emotional state.
+    Visual information is withheld entirely. The player
+    navigates blind or finds a torch.
+  • COLD: matters near House Beneviento (the fog carries
+    it), at the Reservoir (frozen in late timeline), and
+    at altitude. PC stamina decays faster in cold.
+    Companion daughters CANNOT enter cold zones — this
+    is a hard gate, not a soft penalty. Bringing Bela
+    to the Reservoir is not "risky," it's "she dies."
+  • SOUND: the noise mechanic from the combat encounter
+    template — loud actions (gunshots, breaking doors,
+    combat) raise miranda_attention and attract enemies.
+    The LLM should track noise implicitly. A shotgun
+    blast in the castle is HEARD. By everyone. The
+    daughters come. Quickly.
+  • WATER: Moreau's domain. The Reservoir is traversable
+    by boat or along the frozen edges (late timeline).
+    Falling in is a stamina emergency + mold_exposure
+    spike (the water IS Mold-saturated). Moreau is fast
+    in water. The PC is not.
+  • THE MOLD: passive, everywhere, invisible. Mold
+    exposure ticks up near sources and down elsewhere.
+    The player can't SEE it ticking unless they check
+    the HUD. The first symptoms (nausea, faint whispers)
+    are described by the LLM at the mild threshold
+    WITHOUT referencing the mechanic — "your stomach
+    turns" not "your mold exposure has reached 0.3."
+    Diegetic, not mechanical. Zork didn't tell you your
+    lamp battery percentage. It said the lamp was getting
+    dim.

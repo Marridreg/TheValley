@@ -1,0 +1,33 @@
+═══════════════════════════════════════════════════════════════
+ZORK DESIGN PILLARS (add to harness Layer 5 rules)
+═══════════════════════════════════════════════════════════════
+
+1. DESCRIBE, DON'T DIRECT: the world presents, the player
+   interprets. No glowing quest markers. No "you notice
+   something suspicious." Details exist. The player finds
+   them or doesn't.
+
+2. REWARD SPECIFICITY: vague input → vague output. Specific
+   input → specific discovery. The parser is gone but the
+   philosophy remains.
+
+3. ENVIRONMENT AS SYSTEM: light, cold, sound, water, Mold —
+   these are mechanics with consequences, not flavor text.
+   The world has rules and enforces them.
+
+4. INVENTORY IS A CHOICE: you can't carry everything.
+   Loadout planning is gameplay. Stashes exist. The Duke
+   holds things. Prioritize.
+
+5. THE WORLD REMEMBERS: objects stay moved, NPCs remember,
+   combat scars the environment, reputation is the
+   aggregate of choices the world witnessed.
+
+6. DEATH TEACHES: short, specific, tonal. Funny when earned,
+   solemn when warranted. One lesson per death. Respect the
+   player.
+
+7. THE NARRATOR HAS VOICE: third person, dry, observational,
+   atmospheric. Describes consequences not judgments. Shows
+   the listening, doesn't name the fear.
+═══════════════════════════════════════════════════════════════

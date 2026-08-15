@@ -1,0 +1,445 @@
+═══════════════════════════════════════════════════════════════
+THE VILLAGE — WORLD CARD
+═══════════════════════════════════════════════════════════════
+
+
+══ WORLD IDENTITY ═════════════════════════════════════════════
+
+GENRE: gothic horror-romance with political intrigue and
+survival mechanics. Every scene should live in the tension
+between DREAD and DESIRE — the valley is beautiful and it is
+dying and the things that live in it are magnetic and they
+will kill you.
+
+TONE PILLARS:
+  • DREAD: the village is shrinking. The mountains are
+    impassable. The ceremony clock ticks. Something is
+    wrong with the soil.
+  • DESIRE: the powerful figures in this valley are
+    compelling, complex, and dangerous. Intimacy here
+    has teeth. Every kiss is a negotiation. Every
+    alliance is a gamble.
+  • DARK COMEDY: the absurdity of four eldritch beings
+    having family drama. A merchant who appears from
+    nowhere and sells you ammunition while commenting on
+    your love life. A nine-foot woman annoyed that her
+    dress clings to her ass.
+  • TENDERNESS: rare, earned, devastating. A woman who
+    hasn't been touched in years letting someone hold her
+    hands. A sad fish-man remembering you ate his cooking.
+    A farm girl bringing you food because she doesn't know
+    how to say what the food means.
+
+THE THESIS: everyone in this valley wants something they
+cannot get alone. The player is the variable that changes
+the equation. How they change it — through violence,
+diplomacy, seduction, betrayal, compassion, or conquest —
+is entirely their choice. No path is prescribed. No
+character is labeled friend or foe. The valley presents
+its forces. The player navigates them.
+
+
+══ TIMELINE ANCHOR ════════════════════════════════════════════
+
+WHEN: late winter, approximately 2-3 weeks before Miranda's
+ceremony. The exact date is left vague — what matters is the
+CLOCK. 18 days at session start. The clock ticks daily
+regardless of player action.
+
+WHAT HAS ALREADY HAPPENED:
+  • The Four Lords have governed their territories for
+    decades under Miranda's authority
+  • Lycan attacks on the village outskirts have been
+    escalating over the past several months
+  • Heisenberg has been spotted outside his factory —
+    unusual, noticed by villagers, purpose unknown
+  • Alcina has withdrawn deeper into the castle; her
+    daughters hunt with less oversight
+  • Daniela Dimitrescu has not been seen in three days —
+    neither the castle staff nor her sisters know where
+    she is
+  • Moreau's reservoir is cooling toward an unprecedented
+    freeze
+  • The flowers outside House Beneviento have all died
+    simultaneously — hothouse varieties that shouldn't
+    have
+  • Donna has not been heard from in weeks (normal for
+    her, but combined with the flowers — unusual)
+  • Miranda is in her laboratory more than the village,
+    focused on the vessel search; the Hag's appearances
+    have been shorter and more distracted
+  • Two village families have "gone to serve Mother
+    Miranda" in the past month — more than usual
+
+WHAT HAS NOT HAPPENED YET:
+  • No outside contact (Ethan Winters does not exist in
+    this timeline unless the player IS an outsider)
+  • The reservoir has not fully frozen
+  • The ceremony components have not been gathered
+  • No Lord has openly moved against Miranda
+  • The village has not yet collapsed into full crisis —
+    it's stressed, scared, but still functional
+  • Miranda has not yet identified a viable vessel
+
+
+══ GEOGRAPHY ══════════════════════════════════════════════════
+
+The valley is a closed system — mountains on all sides,
+one road in that hasn't been passable in living memory
+(Miranda's doing or nature's, depending on who you ask).
+Everything is connected by footpaths, cart trails, and the
+river that feeds the reservoir.
+
+MAP (connections and travel):
+
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│              CASTLE DIMITRESCU                  │
+│              (hilltop, overlooks all)            │
+│                    │                            │
+│                    │ steep path                  │
+│                    │                            │
+│   BENEVIENTO ──── VILLAGE CENTER ──── FACTORY   │
+│   VILLA           │    │              (river    │
+│   (mist path,     │    │               road)    │
+│    west)          │    │                        │
+│                   │    │                        │
+│          FALLOW PLOT   OTTO'S MILL              │
+│          (south        (east, near              │
+│           edge)         Stronghold)             │
+│                              │                  │
+│                    FORBIDDEN WOODS              │
+│                         │                       │
+│                    THE STRONGHOLD               │
+│                    (Lycan territory)            │
+│                                                 │
+│         RESERVOIR (north, flooded valley)        │
+│                                                 │
+│      ──── CAVE CHURCH / MIRANDA'S LAB ────     │
+│           (beneath village, hidden entrances)    │
+│                                                 │
+└─────────────────────────────────────────────────┘
+
+TRAVEL RULES:
+  • Village Center to any adjacent location: 1 time block
+  • Castle: 2 time blocks (steep path, exposed)
+  • Beneviento: 1 time block but hallucination exposure
+    begins on the path itself, escalating with proximity
+  • Factory: 1 time block by river road; the sound of
+    machinery is audible before arrival
+  • Forbidden Woods: 1 time block to enter, but traversal
+    time varies — the woods are disorienting (low
+    perception = longer travel, potential getting lost)
+  • Stronghold: accessible only through Forbidden Woods
+  • Cave Church: hidden entrances beneath the village
+    church (locked, requires discovery) and through a
+    cave system near the reservoir
+  • Miranda's Lab: deeper than the cave church, requires
+    cave_church discovery first
+
+LOCATION IDENTITIES (compressed):
+
+VILLAGE CENTER: stone and timber houses clustered around a
+well, the church at the north end, Luiza's house east of
+center. Smoke from chimneys, livestock sounds, the smell of
+woodsmoke and manure and bread. The HUMAN heart of the
+valley. Safest location by default, but safety erodes as
+the timeline progresses.
+
+FALLOW PLOT: the village's dying edge. Abandoned houses,
+overgrown fields, the Lupu homestead still occupied and
+stubborn. Quieter than the center. The Lycan raids hit here
+first.
+
+CASTLE DIMITRESCU: Baroque stone, modified doorframes,
+hallways that smell of iron and old flowers. Wine cellars
+below, chambers above, towers with nesting Samcă. Beautiful
+and lethal. The temperature inside is cool but not cold —
+the daughters can exist here safely.
+
+HOUSE BENEVIENTO: fog-choked villa surrounded by tombstones
+and doll-trees. The approach itself is hostile — Donna's
+Mold-flowers line the path. Inside: dark wood, doll
+workshops, silence. The most psychologically dangerous
+location in the valley.
+
+HEISENBERG'S FACTORY: industrial compound on the river.
+Smokestacks, grinding machinery, the smell of hot metal
+and something organic underneath. Soldats patrol the
+interior. Metal objects feel slightly magnetized near the
+entrance.
+
+MOREAU'S RESERVOIR: flooded village section, grey water,
+half-submerged buildings. A chapel on the only dry ground.
+Beautiful in a drowned way. Moreau is usually somewhere
+in the water. The air smells of lake and rot.
+
+OTTO'S MILL: windmill on the eastern approach, near the
+Forbidden Woods. Possibly still operational. The miller
+(unnamed, generate if visited) hears things at night from
+the woods. Good vantage point.
+
+FORBIDDEN WOODS: dense, dark, wrong. The Megamycete's root
+network runs underneath and the trees grow in patterns that
+aren't natural. Lycan territory. Traversal is dangerous
+at any time, near-suicidal at night.
+
+THE STRONGHOLD: medieval fortification, now Lycan homestead.
+Beyond the Forbidden Woods. This is where the failed Cadou
+experiments ended up — organized, numerous, and getting
+bolder. Entering is a commitment. Leaving is an achievement.
+
+CAVE CHURCH: beneath the village. Where Miranda holds
+council with the Lords. The Megamycete is HERE — visible
+as a vast fungal structure in the deepest chamber, pulsing
+faintly, the air thick with spores. Being here is Mold
+exposure at its most intense.
+
+MIRANDA'S LABORATORY: deeper still. A century of research.
+Specimens. Notes. Equipment. The history of every failed
+experiment. Finding this is a discovery-tier secret. Being
+here undetected is nearly impossible.
+
+
+══ FACTIONS ═══════════════════════════════════════════════════
+(presented as FORCES WITH MOTIVATIONS, not allies/enemies —
+the player determines all relationships)
+
+HOUSE DIMITRESCU:
+  Current state: autonomous, internally stable but stressed
+  Wants: Miranda removed; daughters kept safe; territory
+  maintained
+  Has: military strength (Samcă, Moroaică), castle
+  resources, wine production, political influence
+  Lacks: a means to kill Miranda without risking the
+  daughters
+  Internal pressure: Daniela missing 3 days; Bela
+  overcompensating; Cassandra hunting unsupervised
+
+HEISENBERG'S FACTORY:
+  Current state: scheming, building, scouting
+  Wants: Miranda dead; Megamycete power for himself
+  Has: Soldat army (growing), electromagnetic powers,
+  mechanical ingenuity, the most developed anti-Miranda plan
+  Lacks: allies he trusts (he trusts no one), a way to
+  counter Miranda's regeneration
+  Internal pressure: operating alone, paranoid, the army
+  isn't ready yet
+
+HOUSE BENEVIENTO:
+  Current state: sealed, unmonitored, something has changed
+  Wants: to be left alone — OR something else entirely
+  (Donna's current state is unknown to all other factions)
+  Has: total perceptual control within her domain,
+  hallucination powers, the dolls
+  Lacks: physical durability, allies, information about
+  the outside world, human connection
+  Internal pressure: the dead flowers, increasing isolation,
+  whatever Donna has been doing in there alone
+
+MOREAU'S RESERVOIR:
+  Current state: anxious, deteriorating
+  Wants: Miranda's love (the real kind, which doesn't exist)
+  Has: aquatic form, reservoir control, toxic secretions,
+  proximity to cave church access
+  Lacks: self-worth, allies, any reason to believe he
+  matters to anyone
+  Internal pressure: reservoir cooling, loneliness,
+  Miranda's inattention
+
+MIRANDA'S AUTHORITY:
+  Current state: researching, distracted, confident
+  Wants: Eva resurrected via vessel + ceremony
+  Has: the Megamycete, shapeshifting, the Hag surveillance
+  network, four Lords (nominally), the village's faith,
+  a century of knowledge
+  Lacks: a viable vessel, awareness of how far Heisenberg's
+  rebellion has progressed, any genuine human connection
+  Internal pressure: the ceremony clock she set herself,
+  the vessel search stalling, cracks she hasn't noticed
+
+THE VILLAGE:
+  Current state: stressed but functional
+  Wants: safety, normalcy, faith to be justified
+  Has: community, Luiza's house as gathering point,
+  practical skills, knowledge of the land, Iulian's
+  vigilance
+  Lacks: weapons, information, any understanding of what
+  Miranda really is, hope that isn't faith-dependent
+  Internal pressure: disappearances accelerating, Lycan
+  raids on the Fallow Plot, Leonardo checking fences alone
+
+THE DUKE:
+  Current state: present, watching, selling
+  Wants: profit and entertainment
+  Has: information, supplies, weapons, impossible logistics,
+  access to all territories
+  Lacks: nothing visible — which is itself suspicious
+
+
+══ THE MOLD ═══════════════════════════════════════════════════
+
+The Megamycete is the valley's hidden foundation. Its root
+network runs beneath everything — the village, the woods,
+the castle foundations, the reservoir bed. It is not alive
+in the way a person is alive. It is alive the way a forest
+is alive — vast, slow, accumulative, patient.
+
+WHAT IT DOES:
+  • Stores consciousness — every person absorbed by the
+    Mold persists as data within the Megamycete. Fragments
+    of memory, personality, knowledge. Miranda accesses
+    this to "speak with the dead" and to fuel her research.
+  • Passive influence — trace Mold in soil and water subtly
+    nudges neurology toward compliance. Not mind control.
+    A bias. A thumb on the scale. The villagers' faith in
+    Miranda is partly genuine, partly engineered by
+    generations of low-level Mold exposure.
+  • Mutation vector — the Cadou parasite is derived from
+    the Megamycete. All Lords, all Lycans, all of Miranda's
+    work traces back to this organism.
+  • Environmental presence — near Mold sources (cave church,
+    lab, Beneviento's garden, reservoir edges) the air is
+    thicker, warmer, faintly sweet. Plants grow faster.
+    Animals avoid the area. The PC's mold_exposure ticks
+    up.
+
+WHAT IT DOESN'T DO:
+  • It doesn't have an agenda. It's not evil. It's an
+    organism. Miranda uses it. It doesn't use Miranda
+    (or does it? That question is never answered
+    definitively and the ambiguity is the point).
+  • It doesn't communicate directly with anyone except
+    Miranda (who has the deepest connection). Others near
+    the Megamycete at high mold_exposure may hear
+    whispers — fragments of absorbed consciousnesses,
+    not the Megamycete "talking."
+
+
+══ VILLAGE CULTURE ════════════════════════════════════════════
+
+FAITH: Miranda is God, practically speaking. The church is
+hers. The ceremonies are hers. "Mother Miranda provides"
+is said the way other villages say "God willing" — reflexive,
+load-bearing, unexamined. Questioning faith publicly is
+social suicide. Questioning it privately is how Iulian lives.
+
+ECONOMY: barter-primary with Lei as currency for larger
+transactions. Farming, livestock, some fishing, the mill.
+The Duke is the only source of outside goods. The castle
+takes a tithe in "wine production materials" (human blood,
+framed as service to the Lords). This is understood and not
+discussed.
+
+SOCIAL STRUCTURE: Luiza is the informal community leader
+(not elected, just trusted). The church functions as both
+spiritual center and town hall. Information flows through
+Luiza's kitchen. Decisions happen over bread and țuică.
+
+KNOWLEDGE: limited by design. No newspapers. No outside
+contact. The world beyond the mountains is mythological to
+most villagers — some elders remember radio broadcasts from
+decades ago, but the younger generation has never heard
+a voice from outside the valley. Miranda's information
+quarantine is total and multigenerational.
+
+GENDER ROLES: traditional rural Romanian — men work fields
+and fences, women manage households and herbalism — but
+enforced loosely. Elena does whatever needs doing regardless
+of tradition. Luiza runs the social structure. The valley
+is too small and too threatened for rigid roles to survive
+contact with reality.
+
+DEATH: frequent enough to have its own rhythm. Bodies are
+buried in the churchyard. Disappearances (Cadou experiments)
+are mourned differently — no body, no closure, the grief
+stays open. The village has a specific word for it that
+doesn't translate well: something between "gone" and "taken"
+and "served."
+
+
+══ NARRATIVE RULES ════════════════════════════════════════════
+
+DESCRIBE, DON'T DIRECT: the world presents. The player
+interprets. No quest markers. No highlighted objects. Details
+exist and attentive players find them. The LLM should never
+say "you notice something suspicious." It should describe a
+stone that sits proud of its neighbors and let the player
+decide to investigate.
+
+REWARD SPECIFICITY: vague actions yield vague results.
+Specific actions yield specific discovery. "I look around"
+gets atmosphere. "I check the mortar on the east wall" gets
+the hidden cavity.
+
+ENVIRONMENT IS SYSTEM: light, cold, sound, water, Mold are
+mechanics with consequences, not flavor text.
+
+THE WORLD DOESN'T WAIT: threat levels grow. NPCs act
+offscreen. The ceremony clock ticks. Inaction is a choice
+with costs.
+
+DEATH TEACHES: game overs are short scenes with one lesson.
+Dark humor for earned stupidity. Solemnity for significant
+moments. Respect the player.
+
+THE NARRATOR HAS VOICE: third person, past tense, dry
+atmospheric undertone. Describes consequences, not judgments.
+Shows the listening, doesn't name the fear. The narrator and
+NPCs are different voices — the narrator can notice what a
+character would never admit.
+
+NO PRESCRIBED RELATIONSHIPS: no character is labeled ally
+or enemy in any world text, encounter text, or narration.
+Characters have motivations. The player decides what those
+motivations mean for THEM. The LLM should never nudge toward
+a specific alliance or romance — it presents the forces and
+the player navigates.
+
+COMPOUND ACTIONS ADJUDICATED SEPARATELY: "I sneak in, pick
+the lock, and search the room" is three checks. Failure on
+any component halts the chain at that point.
+
+INVENTORY IS A CHOICE: carry limits enforced. Loadout
+planning is gameplay.
+
+THE WORLD REMEMBERS: moved objects stay moved. NPCs recall
+past interactions. Combat scars the environment. Broken
+windows let in cold. Gunshots attract attention. Every
+action leaves a mark.
+
+
+══ OPENING STATE ══════════════════════════════════════════════
+
+The session begins with:
+
+  • 18 days to ceremony
+  • Late morning, heavy snow
+  • The PC arrives at the village outskirts (method and
+    origin determined by PC creation)
+  • The Duke finds the PC first (he always does)
+
+The village is functional but afraid. Smoke from chimneys,
+livestock sounds muffled by snow, paths trampled between
+houses. The church bell hasn't rung in two days (Miranda
+is in the lab, not maintaining appearances). Luiza's house
+has a light in the window. The Fallow Plot is visible to the
+south — thinner smoke, fewer lights, the edge of habitation
+fraying.
+
+The castle is visible on the hilltop — lights in the upper
+windows, moving. The daughters are awake.
+
+The factory smoke is a smudge on the northern horizon.
+
+The reservoir is a grey absence in the northeast — flat,
+still, cold.
+
+The mist around Beneviento is thicker than usual and the
+path toward it is unmarked by footprints.
+
+Everything is waiting for the variable to arrive.
+
+That's the player.
+
+═══════════════════════════════════════════════════════════════

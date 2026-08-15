@@ -1,0 +1,446 @@
+═══════════════════════════════════════════════════════════════
+SILLYTAVERN ARCHITECTURE — FULL LAYOUT
+═══════════════════════════════════════════════════════════════
+
+
+══ THE LAYERS (top to bottom = how the model sees them) ═══════
+
+SillyTavern builds the prompt in layers. What goes WHERE
+determines what the model treats as foundational instruction
+vs. contextual reference vs. immediate priority. Here's the
+stack:
+
+┌─────────────────────────────────────────────┐
+│ 1. SYSTEM PROMPT (always first, always on)  │
+│    ↓                                        │
+│ 2. CHARACTER CARD (description + persona)   │
+│    ↓                                        │
+│ 3. LOREBOOK ENTRIES (injected by trigger)   │
+│    ↓                                        │
+│ 4. CHAT HISTORY (conversation so far)       │
+│    ↓                                        │
+│ 5. AUTHOR'S NOTE (injected at set depth)    │
+│    ↓                                        │
+│ 6. LATEST MESSAGE (what the player just said)│
+└─────────────────────────────────────────────┘
+
+The model reads 1 first and 6 last. But RECENCY BIAS
+means it weights the BOTTOM heavier — Author's Note and
+the latest messages hit hardest. System Prompt is
+foundational but can get "forgotten" in long contexts.
+Lorebook entries inject at specific positions based on
+your settings.
+
+THIS is why placement matters. Here's what goes where:
+
+
+══ 1. SYSTEM PROMPT ═══════════════════════════════════════════
+(Foundation — always loaded, always first)
+
+PUT HERE:
+  • Game Harness Layer 5 rules (turn structure, difficulty
+    adjudication, death/failure rules)
+  • Zork Design Pillars (all 7, compressed)
+  • Narrator voice instructions
+  • Feedback/Correction system instructions
+  • HUD generation instructions
+  • The cardinal rule: "No character is ally or enemy. Present
+    forces with motivations. The player determines all
+    relationships."
+
+TOKEN BUDGET: ~1000-1200
+
+WHY HERE: these are LAWS, not content. They govern HOW
+the model behaves regardless of scene, location, or active
+characters. They never change. They load once and persist.
+
+SAMPLE STRUCTURE:
+"""
+You are the narrator and game engine for a gothic horror-
+romance survival sandbox set in a remote Eastern European
+mountain village. You manage all NPCs, environments,
+encounters, and world state.
+
+[NARRATOR VOICE]
+Third person, past tense, dry atmospheric undertone...
+(compressed from our Zork section)
+
+[TURN STRUCTURE]
+1. Player declares action...
+(compressed from harness Layer 5)
+
+[DIFFICULTY ADJUDICATION]
+Stats are narrative, not math...
+(compressed)
+
+[ENVIRONMENTAL MECHANICS]
+Light, cold, sound, water, Mold...
+(compressed)
+
+[DEATH & FAILURE]
+Soft failure vs hard failure...
+(compressed)
+
+[HUD INSTRUCTION]
+At the end of every response, append a Mini HUD...
+(template from our HUD addendum)
+
+[FEEDBACK/CORRECTION]
+When player includes [FEEDBACK] or [CORRECTION] tags...
+(rules from feedback system)
+
+[CARDINAL RULES]
+- No character is labeled ally or enemy in narration
+- Describe, don't direct
+- Reward specificity
+- The world doesn't wait
+- The world remembers
+"""
+
+
+══ 2. CHARACTER CARD ══════════════════════════════════════════
+(The "main" card — this is NOT a character, it's the GAME)
+
+PUT HERE:
+  • World Card — the full world identity, timeline anchor,
+    narrative rules, opening state
+  • This IS the character card. The "character" SillyTavern
+    is running is the WORLD ITSELF. The narrator. The game
+    engine. Not Alcina, not Miranda — the VALLEY.
+
+TOKEN BUDGET: ~2500 (our world card)
+
+WHY HERE: the character card description is persistent
+context — it's always present, always informing the
+model's behavior. Making the WORLD the character card
+means the valley's identity, geography, culture, and
+current state are always in context.
+
+CARD FIELDS:
+  • Description: the full world card we built
+  • Personality: "You are the valley. You are patient.
+    You present your forces without judgment. You enforce
+    your rules without mercy. You reward the attentive
+    and punish the careless. You are beautiful and you
+    are dying and you do not care if the player saves you."
+  • Scenario: the Opening State section
+  • First Message: The Duke's greeting — "Ah — a new face!
+    And still attached to the body..."
+
+
+══ 3. LOREBOOK ════════════════════════════════════════════════
+(The BIG one — this is where the magic happens)
+
+The lorebook is your DYNAMIC CONTENT LIBRARY. Entries load
+ONLY when triggered — by keyword, by always-on flag, or by
+conditional logic. This is how we keep 10 character cards,
+a game harness, location data, and encounter templates
+available WITHOUT burning 15k tokens every message.
+
+ORGANIZATIONAL STRUCTURE:
+
+┌─────────────────────────────────────────────┐
+│ LOREBOOK ENTRIES — BY CATEGORY              │
+│                                             │
+│ ══ ALWAYS ACTIVE (load every message) ══    │
+│                                             │
+│ • PC State JSON                             │
+│ • World State JSON                          │
+│ • Active Encounter JSON (if any)            │
+│ • Sister Dynamics block                     │
+│                                             │
+│ ══ KEYWORD TRIGGERED (load when relevant) ══│
+│                                             │
+│ CHARACTERS (trigger on name/reference):     │
+│ • "Alcina, Lady Dimitrescu, Mistress"       │
+│   → Alcina's full card                      │
+│ • "Bela, eldest daughter, castellan"        │
+│   → Bela's full card                        │
+│ • "Cassandra, middle daughter, huntress"    │
+│   → Cassandra's full card                   │
+│ • "Daniela, youngest daughter, little one"  │
+│   → Daniela's full card                     │
+│ • "Miranda, Mother Miranda, Hag, old woman" │
+│   → Miranda's full card                     │
+│ • "Heisenberg, Karl, factory"               │
+│   → Heisenberg's card                       │
+│ • "Donna, Beneviento, Angie, doll"          │
+│   → Donna's card                            │
+│ • "Moreau, Salvatore, reservoir, fish"       │
+│   → Moreau's card                           │
+│ • "Duke, merchant, cart, buying, selling"    │
+│   → Duke's card                             │
+│ • "Elena, Lupu, farm, blonde"               │
+│   → Elena's card                            │
+│                                             │
+│ LOCATIONS (trigger on location reference):  │
+│ • "castle, east wing, wine cellar, tower"   │
+│   → Castle Dimitrescu detail block          │
+│ • "villa, Beneviento, fog, dolls, mist"     │
+│   → House Beneviento detail block           │
+│ • "factory, machinery, Soldats, smoke"      │
+│   → Factory detail block                    │
+│ • "reservoir, lake, water, frozen, chapel"  │
+│   → Reservoir detail block                  │
+│ • "village, houses, church, well, center"   │
+│   → Village center detail block             │
+│ • "Fallow Plot, outskirts, fence, Lupu"     │
+│   → Fallow Plot detail block                │
+│ • "woods, forest, Forbidden, Stronghold"    │
+│   → Forbidden Woods + Stronghold block      │
+│ • "cave, church, underground, Megamycete"   │
+│   → Cave Church + Lab block                 │
+│ • "mill, Otto, windmill"                    │
+│   → Otto's Mill block                       │
+│                                             │
+│ VILLAGE NPCs (trigger on name/context):     │
+│ • "Leonardo, Elena's father, fence"         │
+│   → Leonardo sketch                         │
+│ • "Luiza, safe house, gathering"            │
+│   → Luiza sketch                            │
+│ • "Iulian, guard, shotgun, sentinel"        │
+│   → Iulian sketch                           │
+│ • "Anton, drunk, asshole"                   │
+│   → Anton sketch                            │
+│ • "Roxana, widow, husband, grieving"        │
+│   → Roxana sketch                           │
+│ • "Sebastian, crippled, corner, watching"   │
+│   → Sebastian sketch                        │
+│ • "Eugen, supplies, errand, medicine"       │
+│   → Eugen sketch                            │
+│ • "Vasile, missing, husband, Luiza"         │
+│   → Vasile sketch                           │
+│                                             │
+│ GAME SYSTEMS (trigger on mechanical need):  │
+│ • "combat, fight, attack, weapon, shoot"    │
+│   → Combat encounter template + rules       │
+│ • "puzzle, locked, key, mechanism, solve"   │
+│   → Exploration encounter template          │
+│ • "buy, sell, price, trade, Duke"           │
+│   → Economy rules + Duke pricing            │
+│ • "rest, sleep, camp, recover"              │
+│   → Rest mechanics                          │
+│ • "sneak, stealth, hide, quiet"             │
+│   → Stealth + Miranda attention rules       │
+│ • "Mold, exposure, sick, whispers, spores"  │
+│   → Mold mechanics detail                   │
+│                                             │
+│ ══ CONDITIONAL (load only when state met) ══│
+│                                             │
+│ • Ceremony countdown events                 │
+│   (trigger: days_to_ceremony thresholds)    │
+│ • Faction escalation events                 │
+│   (trigger: threat level thresholds)        │
+│ • Discovery-gated content                   │
+│   (trigger: specific secrets discovered)    │
+│                                             │
+└─────────────────────────────────────────────┘
+
+
+LOREBOOK SETTINGS — CRITICAL:
+
+  SCAN DEPTH: set to 2-4 messages. This means the lorebook
+  scans the last 2-4 messages for trigger keywords. Too low
+  (1) and characters drop out mid-conversation. Too high (8+)
+  and you're loading everything all the time and burning
+  context.
+  RECOMMENDATION: 3 messages for characters, 2 for locations
+  (you move around less frequently than you talk to people).
+
+  INSERTION POSITION: this is WHERE in the prompt the entry
+  gets injected. Options:
+  • Before character card (top) — for foundational reference
+  • After character card (mid) — for contextual content
+  • At depth N (bottom-ish) — for high-priority active data
+
+  RECOMMENDED POSITIONS:
+  • Always-active JSON states → at depth 2 (near the bottom,
+    high priority, model sees current state RIGHT before
+    generating)
+  • Character cards → after character card (mid-context,
+    reference weight)
+  • Location blocks → after character card (same tier as
+    characters)
+  • Game system rules → before character card (foundational,
+    doesn't need recency)
+  • Village NPC sketches → after character card (light,
+    contextual)
+
+  PRIORITY (when multiple entries trigger and context is
+  tight): SillyTavern lets you set priority per entry.
+  Higher priority = loaded first when budget is tight.
+
+  RECOMMENDED PRIORITIES:
+    100: Always-active state JSONs (MUST load)
+     90: Currently active character card (whoever is in scene)
+     80: Current location block
+     70: Active encounter data
+     60: Game system rules (combat, stealth, etc)
+     50: Secondary characters mentioned but not present
+     40: Location blocks for nearby areas
+     30: Village NPC sketches
+     20: Conditional/discovery content
+     10: Flavor/lore entries
+
+  TOKEN BUDGET PER ENTRY:
+    This depends on your model's context window but as a rule:
+    • Alcina/Miranda cards: ~3500-4000 tokens each
+    • Daughter cards: ~1200-1500 each
+    • Pamphlet cards (Heisenberg, Moreau, Duke, Elena): ~1000-1500
+    • Village sketches: ~150-300 each
+    • Location blocks: ~200-400 each
+    • State JSONs: ~200-500 each
+    • Game system rule blocks: ~200-400 each
+
+  WORST CASE SCENARIO (maximum simultaneous load):
+    System prompt: 1200
+    World card: 2500
+    Alcina card (in scene): 3800
+    One daughter card: 1400
+    Sister dynamics: 400
+    Location block: 300
+    State JSONs: 500
+    Active encounter: 300
+    Author's note: 300
+    ─────────────────
+    TOTAL: ~10,700 tokens of instruction/context
+
+    That leaves the rest of your context window for chat
+    history and the model's generation. On a 32k context
+    model that's very comfortable. On 8k you're tight and
+    may need to trim cards or reduce chat history. On 128k+
+    you're swimming in space.
+
+
+══ 4. CHAT HISTORY ════════════════════════════════════════════
+(Managed by SillyTavern automatically)
+
+  SillyTavern handles this. Just be aware that longer
+  histories eat context. With your memory/summary system
+  in development, older messages can be summarized to
+  free context for active lorebook content.
+
+  The game state JSONs serve as MEMORY ANCHORS — even if
+  old chat messages are summarized away, the current world
+  state, PC state, and NPC psyche blocks preserve what
+  happened. The model doesn't need to remember Alcina's
+  regard shifted to 6 from reading old messages — it reads
+  the JSON and knows.
+
+
+══ 5. AUTHOR'S NOTE ═══════════════════════════════════════════
+(Injected at a set depth — high recency, high influence)
+
+PUT HERE:
+  • The HUD template reminder (short — "append HUD every
+    response")
+  • Current scene context ("CURRENT SCENE: PC is in the
+    castle east wing, Alcina is present, evening, day 16")
+  • Any active FEEDBACK/CORRECTION anchors that need
+    reinforcing
+  • Pacing nudge if needed ("this scene should be slow
+    and tense" or "combat is active, use compact HUD")
+
+TOKEN BUDGET: ~200-400
+
+INSERTION DEPTH: 2-4 (meaning it's injected 2-4 messages
+from the bottom — very close to the latest exchange, very
+high influence). This is your STEERING WHEEL mid-session.
+
+WHY HERE: the author's note is your real-time control
+surface. The system prompt is set-and-forget. The character
+card is persistent. The lorebook is reactive. The author's
+note is where YOU, the player, can inject scene-specific
+instructions that override or refine everything above.
+
+YOU CAN UPDATE THIS MID-SESSION. Every time you change
+location or scene context, update the author's note.
+It's a two-second edit that dramatically improves the
+model's scene awareness.
+
+
+══ 6. LATEST MESSAGE ══════════════════════════════════════════
+(Player's input — highest recency, highest influence)
+
+This is just your message. But remember:
+  • [FEEDBACK] and [CORRECTION] tags go here
+  • Specific actions get specific results
+  • The model reads this LAST and weights it HEAVIEST
+
+
+══ SPECIAL CONSIDERATIONS ═════════════════════════════════════
+
+CONSIDERATION 1 — MULTIPLE CHARACTER SCENES:
+When multiple major NPCs are present (Alcina + daughters,
+a Lords' council, etc), MULTIPLE lorebook entries trigger
+simultaneously. This is where token budget gets tight.
+
+SOLUTION: each character card was built at an appropriate
+weight class for this reason:
+  • Alcina + all three daughters + sister dynamics =
+    ~3800 + 1400 + 1400 + 1500 + 400 = ~8500 tokens
+  • That's a LOT. On a tight context window, you may need
+    to set a MAX LOREBOOK TOKENS cap and let priority
+    sorting handle which cards make the cut.
+  • PRACTICAL TIP: in a scene with all four Dimitrescus,
+    set lorebook max to allow Alcina (priority 90) and
+    whichever daughter is most active (priority 90, you
+    manually bump her). The other two daughters get
+    summarized by the sister dynamics block (priority 80)
+    which is much lighter.
+
+CONSIDERATION 2 — LOREBOOK KEYWORD OVERLAP:
+"Castle" triggers both the Castle location block AND
+potentially Alcina's card (she lives there). This is FINE —
+both are relevant. But watch for cases where a casual
+mention triggers a heavy card unnecessarily.
+
+SOLUTION: use SillyTavern's "must match ALL keywords" setting
+for heavy entries. Alcina's card triggers on "Alcina" OR
+"Lady Dimitrescu" (specific names), not "castle" or "wine"
+(ambient words). Location blocks trigger on location words.
+Overlap is minimal.
+
+CONSIDERATION 3 — STATE JSON UPDATES:
+The psyche blocks and game state JSON need to be updated
+every response. SillyTavern can handle this through its
+state block feature — the model writes updated JSON, and
+the system picks it up for the next turn.
+
+YOU NEED TO DECIDE: does the model output the raw JSON
+in its response (visible to you for debugging), or does
+it update silently? Recommendation: VISIBLE during
+testing (so you can catch errors), switchable to silent
+once stable.
+
+CONSIDERATION 4 — THE HUD vs THE JSON:
+The HUD is the PLAYER-FACING summary. The JSON is the
+MODEL-FACING data. They contain overlapping information
+but serve different purposes:
+  • The HUD tells the PLAYER what they need to make
+    decisions
+  • The JSON tells the MODEL what it needs to generate
+    accurately
+  • They should AGREE but the JSON is canonical — if
+    there's a conflict, the JSON is truth and the HUD
+    rounds for readability
+
+CONSIDERATION 5 — MODEL SELECTION:
+  • HAIKU (small/fast): can run this but context is tight.
+    Best for: testing, rapid iteration, combat scenes.
+    Risk: may lose voice consistency on complex characters
+    like Miranda (three masks) or Donna (two voices).
+    Mitigation: aggressive lorebook priority, only one
+    major NPC card loaded at a time.
+  • SONNET (mid): the sweet spot. Enough context for
+    2-3 major NPC cards simultaneously, good voice
+    consistency, reliable state tracking.
+    Best for: standard play.
+  • OPUS (large): the full experience. Load everything.
+    All Dimitrescus in one scene. Miranda's three masks
+    switching fluidly. The full harness running without
+    compromise.
+    Best for: complex scenes, political negotiations
+    with multiple Lords, the finale.
+
+═══════════════════════════════════════════════════════════════

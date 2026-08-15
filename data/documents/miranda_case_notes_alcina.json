@@ -1,0 +1,15 @@
+{
+  "id": "miranda_case_notes_alcina",
+  "title": "Clinical notes, subject designation D-1",
+  "kind": "case notes",
+  "found_at": "The laboratory beneath the village church. Filed, not hidden — Miranda does not expect anyone literate to reach the cabinet.",
+  "requires": "Reaching the lab, and reading well enough to get through the terminology.",
+  "language": "Romanian and Latin, in a small precise hand that never crosses anything out",
+  "reveals": [
+    "alcina.dragon_nature",
+    "alcina.cadou_degeneration",
+    "alcina.daughters_leash"
+  ],
+  "text": "Subject D-1. Hereditary haemophilic disorder, terminal, presented 1958.\n\nCadou integration: exceptional. Host metabolism restructured to haemic dependency within eleven weeks. Note the *cooperation* of the tissue — no rejection, no necrosis. The parasite did not colonise this one so much as it was welcomed.\n\nSecondary morphology confirmed 1961: full chiropteran-reptilian expression under duress, mass increase approx. twentyfold, flight viable. Subject finds the expression distressing and suppresses it. I have not corrected this. A tool that dislikes its own edge stays in the drawer where I put it.\n\nTertiary: mycelial advance through the dermal layer, wrists and temples, consistent 0.4% annual. Subject monitors this and believes the monitoring private. Terminal at current rate, though not soon. She has perhaps forty years. She does not know the figure and has never asked, which tells me she has calculated it herself and prefers her own number.\n\nOn the daughters. Parthenogenic budding via distributed Cadou; three viable, all swarm-form with stable anthropomorphic cohesion. They are hers in the sense that a garden is the gardener's. They remain *mine* in the sense that I supplied the seed and can withdraw it. D-1 understands this. It has never needed saying aloud, and I have never said it, and that is the most efficient arrangement I have with any of the four.",
+  "gm_notes": "The single most valuable document in the game. Yields three truths at once — the dragon, the degeneration, and the leash — because Miranda wrote them down plainly for her own reference. Place it accordingly: reaching the lab should be genuinely hard. Note the last paragraph gives the player leverage over Alcina that Alcina does not know they have."
+}

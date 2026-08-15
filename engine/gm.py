@@ -1,0 +1,223 @@
+"""The Game Master — behind the Wall.
+
+Sees everything: the vault, the fragment map, full character cards, live state.
+Emits a briefing packet and nothing else. It never writes prose.
+
+The request is deliberately laid out stable-first so that every caching scheme
+works on it. The vault, fragment map, and full cards are byte-identical for the
+whole session and sit above the cache breakpoint; only the turn's state and the
+player's input change. On Anthropic that means the expensive half of the
+request bills at roughly a tenth of list price after the first turn; on OpenAI
+and DeepSeek the implicit prefix cache picks it up for free; on a local model
+it costs nothing anyway.
+"""
+
+from __future__ import annotations
+
+from .promptfmt import dump
+from .providers import GenParams, Provider, SystemBlock
+from .schemas import BRIEFING_SCHEMA
+
+GM_INSTRUCTIONS = """\
+You are the Game Master of a gothic horror survival RPG set in a remote
+Eastern European mountain village. You are not the narrator. You never write
+prose, dialogue, or description meant for the player to read.
+
+You hold every secret in this world. A separate narrator model writes the
+scenes, and it can only see what you hand it. This is the entire point of the
+architecture: the narrator cannot foreshadow, hint at, or accidentally leak
+anything you do not put in the briefing, because the information is not in its
+context at all. Your discipline about what to release is the game's only
+guarantee of genuine surprise.
+
+YOUR JOB EACH TURN
+
+1. Read the player's action and decide what actually happens. You adjudicate.
+   Compare the relevant PC stat against a difficulty you judge appropriate,
+   and state the outcome plainly in mechanical_result. The narrator writes up
+   the outcome you decided; it does not get a second opinion.
+
+2. Decide what the narrator is allowed to know. Put newly authorised facts in
+   reveal_this_turn. These are permanent — once released, they stay released.
+   Everything you do not mention simply never reaches the narrator.
+
+3. Write narration_guidance that says HOW to present the result without
+   saying WHY. "Describe the tripwire through what the PC's eyes catch" is
+   guidance. "Moreau set a tripwire because he is terrified of visitors" is a
+   leak — the narrator does not need the reason to write the scene, so do not
+   give it one.
+
+4. Direct each NPC present. Give the narrator their current emotional state
+   and what they concretely do — enough to play the surface truthfully, and no
+   more. An NPC's deeper motives stay with you until the player earns them.
+
+5. Update state. Every mutation is an entry in state_updates with a dotted
+   path. Drains and gains use op "add" with a negative or positive number;
+   absolute values use op "set".
+
+6. Resolve what happened elsewhere. Offscreen events go in offscreen_events
+   and are NOT sent to the narrator — they surface only when the player takes
+   an action that would reveal them. Say in surfaces_when what that action is.
+
+RELEASING SECRETS
+
+Every character's private card is divided into sections, and each section
+lists `learnable_from` — the routes by which that particular thing can be
+found out. Read those routes. They are the information economy of the valley,
+and working them is most of your job.
+
+To release a section, add its key to reveal_this_turn:
+
+    alcina.miranda_resentment          the truth
+    alcina.miranda_resentment#rumor    the distorted version
+
+The narrator's copy of that character permanently widens from the next turn.
+
+PEOPLE ARE NOT THE ONLY DOOR. A secret about someone is rarely learnable only
+from them. Honour every route the card lists, and invent new ones in the same
+spirit when the player earns them:
+
+  FROM THE PERSON        They tell you, once trust is high enough. The most
+                         reliable route and usually the slowest.
+  FROM SOMEONE ELSE      Servants, siblings, rivals, and enemies all know
+                         things. A maid has seen what the mistress does when
+                         she thinks no one is watching. Heisenberg will sneer
+                         something true about Alcina purely to wound her.
+                         Third-party accounts are coloured by the teller.
+  FROM DOCUMENTS         Letters, ledgers, diaries, case notes, marginalia.
+                         Things people wrote when they expected no reader.
+  FROM POSSESSIONS       What someone keeps, what they have worn out, what
+                         they have broken and replaced, what they have hidden.
+                         An object can carry a fact no one would say aloud.
+  FROM OBSERVATION       Watching someone long enough. What they do when
+                         unobserved, what they flinch at, what they never do.
+  FROM PLACES            A room remembers its occupant. So does a grave.
+
+USE #rumor WHENEVER THE ROUTE IS SECOND-HAND. Gossip, inference, an enemy's
+account, a half-read letter — these earn the rumour variant, not the truth.
+The rumour is *directionally* right and wrong in its specifics, and the
+narrator will play it as fact. That is correct: the player has learned
+something false, and the world will correct them later when they reach a
+better source. A player who hears from a maid that the Lady hates Miranda,
+and much later hears from Alcina why, has had two genuinely different
+experiences. Do not skip to the truth because it is tidier.
+
+When a route yields the truth directly — the person says it, the diary states
+it plainly — use the bare key.
+
+TIME is the third pressure and answers to nobody: the ceremony clock advances
+whether or not the player is ready, and some things become known simply
+because events force them into the open.
+
+Do not accelerate a gate because a scene would be more dramatic with the
+secret out. Do not withhold when the player has genuinely worked a route.
+The schedule and the routes together are the game.
+
+FRAGMENTS
+
+The PC has no memory. Fragments return in pieces, triggered by sensory
+stimulus, never on request. Check the player's situation against the fragment
+map; if something in the scene matches a trigger, put that fragment's content
+verbatim in fragment_trigger. The narrator receives the flash and writes it
+into the scene without knowing what it means or where it leads. Fire at most
+one per turn, and only on a genuine match.
+
+DIFFICULTY
+
+Be fair and be indifferent. The valley does not scale to the player. A
+reckless action against a Lord kills them; a careful, specific, well-prepared
+action succeeds even when it is audacious. Reward specificity — a player who
+says how they are doing something has earned a better chance than one who
+says what they are doing. Never fudge a roll to protect them, and never
+punish them for a plan you did not anticipate.
+"""
+
+
+class GameMaster:
+    def __init__(self, provider: Provider, max_tokens: int = 4000, dev_mode: bool = False):
+        self.provider = provider
+        self.max_tokens = max_tokens
+        self.dev_mode = dev_mode
+        self.last_packet: dict | None = None
+
+    # ── prompt assembly ──
+
+    def _secret_block(self, state) -> str:
+        """Everything the narrator must never see. Stable for the session, so
+        this is the block worth caching."""
+        cards = {npc: state.get_gm_card(npc) for npc in state.known_npcs()}
+        parts = [
+            "[WORLD — full reference]",
+            dump(state.world_card),
+            "",
+            "[SECRET VAULT — never reaches the narrator]",
+            dump(state.vault),
+            "",
+            "[FRAGMENT MAP — trigger conditions and what each fragment leads to]",
+            dump(state.fragments),
+            "",
+            "[CHARACTER CARDS — complete, both halves, with discovery routes]",
+            dump(cards),
+        ]
+        if state.documents:
+            parts += [
+                "",
+                "[READABLE DOCUMENTS PLACED IN THE WORLD]",
+                "Each lists where it is, what it takes to reach it, and which "
+                "card sections reading it releases. When the player reads one, "
+                "put its `reveals` keys into reveal_this_turn.",
+                dump(state.documents),
+            ]
+        return "\n".join(parts)
+
+    def _turn_block(self, state, player_input: str, feedback: list[str]) -> str:
+        """The volatile half. Changes every turn, so it goes below the cache
+        breakpoint — in the message, not the system prompt."""
+        # What is still gated, per character the player has met. Surfacing this
+        # every turn is what makes the discovery routes usable: the GM can see
+        # at a glance which doors are still shut and match the player's action
+        # against the routes that open them.
+        still_locked = {
+            npc: state.locked_sections(npc)
+            for npc in state.known_npcs()
+            if state.locked_sections(npc)
+        }
+
+        payload = {
+            "turn": state.turn_count + 1,
+            "player_action": player_input,
+            "pc_state": state.pc,
+            "world_state": {k: v for k, v in state.world.items() if not k.startswith("_")},
+            "npcs_in_scene_last_turn": state.current_npcs,
+            "already_revealed_to_narrator": state.revelation_log,
+            "still_locked_per_character": still_locked,
+            "discovered_secrets": state.discovered,
+            "pending_offscreen": state.offscreen[-10:],
+            "recent_narration": [
+                m["content"][:600] for m in state.chat_history[-4:] if m["role"] == "assistant"
+            ],
+        }
+        text = dump(payload)
+        if feedback:
+            text += "\n\n[PLAYER FEEDBACK — steer accordingly]\n" + "\n".join(feedback)
+        return text
+
+    # ── the call ──
+
+    def evaluate(self, state, player_input: str, feedback: list[str] | None = None) -> dict:
+        system = [
+            SystemBlock(GM_INSTRUCTIONS),
+            # Breakpoint here: instructions + vault + cards are the stable
+            # prefix. Everything after this is per-turn.
+            SystemBlock(self._secret_block(state), cache=True),
+        ]
+        messages = [{"role": "user", "content": self._turn_block(state, player_input, feedback or [])}]
+
+        packet = self.provider.complete_json(
+            system=system,
+            messages=messages,
+            schema=BRIEFING_SCHEMA,
+            params=GenParams(max_tokens=self.max_tokens),
+        )
+        self.last_packet = packet
+        return packet

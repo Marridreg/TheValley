@@ -1,0 +1,29 @@
+{
+  "calendar": {
+    "days_to_ceremony": 18,
+    "time_of_day": "late morning",
+    "weather": "heavy snow"
+  },
+  "threat": {
+    "lycan": 0.2,
+    "moroaica": 0.0
+  },
+  "attention": {
+    "dimitrescu": 0.0,
+    "village": 0.05,
+    "miranda": 0.0
+  },
+  "factions": {
+    "village": {
+      "regard": 0.0
+    },
+    "dimitrescu": {
+      "regard": 0.0
+    },
+    "duke": {
+      "regard": 0.1
+    }
+  },
+  "flags": {},
+  "_scene_npcs": []
+}

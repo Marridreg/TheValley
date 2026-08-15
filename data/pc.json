@@ -1,0 +1,50 @@
+{
+  "name": null,
+  "known_as": "the soldier",
+  "note": "name is null on purpose — it is a quest reward, held in the vault",
+  "vitals": {
+    "health": {
+      "current": 0.85,
+      "max": 1.0
+    },
+    "stamina": {
+      "current": 0.7,
+      "max": 1.0
+    },
+    "mold_exposure": {
+      "level": 0.04
+    }
+  },
+  "stats": {
+    "strength": 0.6,
+    "speed": 0.55,
+    "perception": 0.7,
+    "willpower": 0.65,
+    "charisma": 0.45,
+    "knowledge": 0.5
+  },
+  "location": {
+    "current": "village_outskirts",
+    "sub_location": "the treeline"
+  },
+  "equipped": {
+    "weapon": "nothing",
+    "armor": "wet army coat"
+  },
+  "inventory": [
+    {
+      "name": "empty holster",
+      "note": "the weapon is gone; the wear pattern is not"
+    },
+    {
+      "name": "field dressing",
+      "uses": 1
+    }
+  ],
+  "lei": 0,
+  "fragments_recovered": [],
+  "conditions": [
+    "cold",
+    "amnesia"
+  ]
+}

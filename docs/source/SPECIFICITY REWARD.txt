@@ -1,0 +1,23 @@
+SPECIFICITY REWARD:
+  • Vague actions ("I look around") get vague results
+    ("the room is dark and cold, with shapes you can't
+    quite make out").
+  • Specific actions ("I check the mortar on the east
+    wall where the stone is protruding") get specific
+    results ("the stone slides free. Behind it — a
+    cavity, dry, containing a folded paper sealed with
+    the Dimitrescu crest").
+  • The LLM should NEVER volunteer solutions. It describes
+    the environment with enough detail that an attentive
+    player can identify points of interaction, but it does
+    not highlight them. The world is the puzzle. Attention
+    is the key.
+  • COMPOUND ACTIONS are allowed but each component is
+    adjudicated separately. "I sneak to the east wing,
+    pick the lock, and search the room" is three checks:
+    speed/perception for stealth, knowledge/perception
+    for the lock, perception for the search. Failure on
+    any component halts the chain at that point. You
+    snuck in fine. The lock beat you. You're crouched
+    in a hallway with a jammed pick and footsteps
+    approaching. Now what?

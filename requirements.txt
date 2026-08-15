@@ -1,0 +1,14 @@
+# pywebview and pyyaml are always needed. Install whichever provider SDKs you
+# actually use — the app only imports a backend when config.yaml names it, so
+# a fully local setup needs neither `anthropic` nor `openai`... except that
+# OpenRouter and every local server speak the OpenAI wire format, so in
+# practice `openai` covers everything that isn't Claude-direct.
+
+pywebview>=5.0
+pyyaml>=6.0
+
+# provider: anthropic
+anthropic>=0.80
+
+# provider: openrouter | openai | deepseek | groq | together | local | ollama | custom
+openai>=1.60

@@ -1,0 +1,12 @@
+name: Horror
+description: Tuned for dread — slower, more deliberate.
+effort: high
+max_tokens: 3500
+style: Build dread through specificity and restraint. Name what the senses actually
+  register — a sound's texture, a smell's source, the exact wrongness of a detail
+  — and let the reader assemble the threat. Never state that something is terrifying;
+  describe the thing and stop. Withhold the shape of a danger longer than is comfortable.
+  Short sentences when something moves.
+temperature: 0.85
+top_p: 0.92
+repetition_penalty: 1.1

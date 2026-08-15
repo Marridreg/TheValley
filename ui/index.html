@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Valley</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="titlebar">
+      <span class="mark">T H E &nbsp; V A L L E Y</span>
+      <span id="meta"></span>
+    </header>
+
+    <div id="main">
+      <aside id="cast">
+        <div id="portraits"></div>
+      </aside>
+
+      <main id="scroll">
+        <div id="narrative"></div>
+        <div id="status"></div>
+      </main>
+    </div>
+
+    <div id="hud"></div>
+
+    <div id="inputbar">
+      <span class="caret">&gt;</span>
+      <input id="input" type="text" autocomplete="off" spellcheck="false"
+             placeholder="what do you do?" autofocus>
+    </div>
+
+    <footer id="keys">
+      <span>[F1] status</span><span>[F2] inventory</span><span>[F3] journal</span>
+      <span>[F4] presets</span><span>[F5] debug</span><span>[F9] quicksave</span>
+      <span>[/help]</span>
+    </footer>
+  </div>
+
+  <div id="overlay" class="hidden">
+    <div id="overlay-title"></div>
+    <pre id="overlay-body"></pre>
+    <div id="overlay-hint">esc to close</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

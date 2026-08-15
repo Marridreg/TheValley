@@ -1,0 +1,25 @@
+{
+  "_warning": "GM ONLY. If any of this reaches the narrator, the Wall is down.",
+  "pc_truth": {
+    "true_name": "TODO — decide now, reveal around day 8",
+    "service": "TODO",
+    "why_he_is_here": "TODO — the load-bearing secret",
+    "miranda_connection": "TODO — decide whether she recognises him, and lock it"
+  },
+  "revelation_schedule": {
+    "name": "not before day 8",
+    "why_he_is_here": "not before day 12",
+    "miranda_connection": "not before day 15, or the final act"
+  },
+  "npc_secrets": {
+    "moreau": {
+      "loyalty": "absolute, and unreciprocated. He knows it and cannot stop.",
+      "capability": "he can enter the water and change. He is ashamed of it.",
+      "knows": "the cave church entrance is behind the drowned chapel"
+    }
+  },
+  "world_secrets": {
+    "ceremony_true_requirements": "TODO — what Miranda actually needs, versus what she tells the Lords she needs",
+    "megamycete_agenda": "TODO — or decide it has none. Deepest secret either way."
+  }
+}

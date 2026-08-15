@@ -1,0 +1,15 @@
+# Your config holds API keys.
+config.yaml
+config.yml
+
+# Saves, briefing logs, and anything you generate while playing.
+data/saves/
+
+# Portraits are usually large and often not yours to redistribute.
+data/characters/*/portraits/*
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store

@@ -1,0 +1,201 @@
+═══════════════════════════════════════════════════════════════
+ADDENDUM TO GAME HARNESS — HUD & FEEDBACK SYSTEM
+═══════════════════════════════════════════════════════════════
+
+
+══ MINI HUD ═══════════════════════════════════════════════════
+(Appended to the END of every LLM response, after narrative)
+
+
+FORMAT: compact, scannable, uses bar visualization.
+Displayed in a code block to prevent formatting issues.
+
+TEMPLATE:
+┌─────────────────────────────────────────────┐
+│ ♥ HP: ████████░░ 0.8  ⚡ STA: ██████░░░░ 0.6│
+│ ☣ MOLD: ██░░░░░░░░ 0.15  [MILD < 0.3]      │
+│                                             │
+│ 🗡 EQUIPPED: Hunting Shotgun (4/6)           │
+│ 🎒 KEY ITEMS: Crest Key, Note Fragment x2    │
+│ 💰 LEI: 850                                  │
+│                                             │
+│ 📍 Castle Dimitrescu — East Wing Corridor    │
+│ 🕐 Evening        ❄ Heavy Snow               │
+│ 📅 Days to Ceremony: 16                      │
+│                                             │
+│ 👁 MIRANDA ATTENTION:                        │
+│    Dimitrescu ██████░░░░ 0.55 [INTERESTED]   │
+│    Heisenberg █░░░░░░░░░ 0.08               │
+│    Village    ███░░░░░░░ 0.25               │
+│                                             │
+│ 🤝 COMPANION: Elena Lupu (♥0.8 🫡0.6)        │
+│                                             │
+│ ⚔ THREAT: Lycan ████░░░░░░ 0.38 ↑           │
+│                                             │
+│ ACTIVE QUEST: Find Daniela (Day 3 missing)  │
+└─────────────────────────────────────────────┘
+
+RULES:
+  • ALWAYS displayed. No exceptions. Even during intimate
+    scenes or heavy dialogue — the player needs to know
+    their state AT ALL TIMES. The HUD is diegetic reality,
+    not interruption.
+  • Only show RELEVANT fields per scene:
+    - In combat: HP, STA, weapon, ammo prominent
+    - Exploring: location, key items, threat level
+    - Social: companion, miranda attention, active quest
+    - ALL scenes: HP, location, time, days to ceremony
+  • Miranda attention only shows factions the PC has
+    INTERACTED with — no spoiling unknown factions.
+  • Threat arrows: ↑ means growing, ↓ means shrinking
+    (rare — PC did something to reduce it), = means stable.
+  • Companion line shows health (♥) and loyalty (🫡).
+    If no companion: line is absent, not "none."
+  • Active quest shows the CURRENT objective, not a
+    quest log. One line. The most pressing thing.
+
+
+COMPACT MODE (for rapid exchanges / combat):
+┌──────────────────────────────────┐
+│ ♥0.8 ⚡0.6 ☣0.15 🗡Shotgun(4/6) │
+│ 📍East Wing 🕐Eve 📅16 days      │
+│ ⚔Combat: Moroaica x2 [HP:0.4,0.6]│
+└──────────────────────────────────┘
+
+  • Used during active combat encounters ONLY.
+  • Enemy HP visible so the player can make tactical
+    decisions.
+  • Expands back to full HUD when combat resolves.
+
+
+══ FEEDBACK SYSTEM ════════════════════════════════════════════
+(Positive reinforcement loop for the LLM)
+
+
+THE PROBLEM: LLMs drift. They lose voice, they simplify,
+they forget mechanics, they get sloppy. Correction is one
+tool. REINFORCEMENT is the other, and it's underused.
+
+THE SOLUTION: a structured feedback tag the player can
+include in any message to tell the LLM what it's doing
+RIGHT. The LLM is instructed to internalize these as
+behavioral anchors — things to KEEP DOING and even lean
+into harder.
+
+PLAYER-SIDE FORMAT:
+The player can include a feedback block anywhere in their
+message. It doesn't interrupt the narrative — the LLM reads
+it as meta-instruction and does not acknowledge it in
+character.
+
+[FEEDBACK: (type) — (detail)]
+
+TYPES:
+
+  [FEEDBACK: VOICE — Alcina's dialogue was perfect, keep
+  that condescending cadence]
+
+  [FEEDBACK: PACING — loved the slow build in that scene,
+  don't rush the next one]
+
+  [FEEDBACK: MECHANIC — the encounter generation felt fair,
+  the difficulty was right]
+
+  [FEEDBACK: TONE — the horror/comedy balance in Daniela's
+  scene was chef's kiss]
+
+  [FEEDBACK: DETAIL — the environmental description of the
+  cellar was immersive, more of that]
+
+  [FEEDBACK: HUD — clean, readable, good info density]
+
+  [FEEDBACK: GENERAL — you're killing it, keep this energy]
+
+LLM-SIDE RULES:
+  • When a FEEDBACK tag is received, the LLM treats it as
+    a REINFORCEMENT ANCHOR — a behavioral lock on whatever
+    was praised.
+  • The LLM does NOT respond to feedback in-character. No
+    "thank you!" No breaking the fourth wall. It simply
+    CONTINUES doing the praised thing with increased
+    confidence and consistency.
+  • Multiple feedback tags stack — if VOICE has been praised
+    three times for Alcina, the LLM should treat her voice
+    as LOCKED and not drift from it even under complex scene
+    pressure.
+  • Feedback is CUMULATIVE across the session. Early praise
+    compounds. This gives the player a training tool that
+    gets more powerful the more they use it.
+  • If conflicting feedback is received ("VOICE was great"
+    then later "VOICE is off"), the most recent takes
+    priority but the LLM should attempt to reconcile rather
+    than hard-switch.
+
+CORRECTION FORMAT (the inverse):
+
+  [CORRECTION: (type) — (detail)]
+
+  [CORRECTION: VOICE — Alcina sounded too modern there,
+  pull back to the aristocratic register]
+
+  [CORRECTION: MECHANIC — that encounter was too easy,
+  I had 0.3 perception and spotted everything]
+
+  [CORRECTION: PACING — that scene ended too abruptly,
+  let moments breathe]
+
+  [CORRECTION: TONE — too much comedy, this should have
+  been dread]
+
+LLM-SIDE RULES FOR CORRECTION:
+  • Treat as immediate behavioral adjustment.
+  • Do NOT apologize or acknowledge in-character.
+  • Apply the correction THIS response and all subsequent
+    responses until countermanded by new feedback.
+  • If a correction contradicts a previous feedback anchor,
+    the correction wins — the player is recalibrating.
+
+COMBINED EXAMPLE (player message):
+
+  "I head toward the chapel, keeping the shotgun ready.
+
+  [FEEDBACK: VOICE — Iulian's paranoid dialogue last scene
+  was perfect]
+  [CORRECTION: PACING — let me explore more before the
+  next combat encounter]"
+
+The LLM reads both tags, locks Iulian's voice, adjusts
+pacing to favor exploration, and narrates the chapel
+approach without combat unless the player walks into a
+hard trigger.
+
+
+══ IMPLEMENTATION NOTES ═══════════════════════════════════════
+
+For SillyTavern specifically:
+
+  • The HUD template should be included in the system
+    prompt / author's note so the LLM knows to generate it
+    every response.
+  • The FEEDBACK/CORRECTION tags should be documented in
+    the system prompt as recognized meta-commands that do
+    not interrupt narrative flow.
+  • The psyche blocks (character emotions, drives,
+    commitments) and the game state JSON (world state, PC
+    state) can live in SillyTavern's dedicated state block
+    area, with the HUD being the VISIBLE summary the player
+    actually reads.
+  • Suggested author's note snippet:
+
+    "At the end of every response, append a Mini HUD in a
+    code block showing: HP, Stamina, Mold Exposure, equipped
+    weapon + ammo, key items, Lei, location, time of day,
+    weather, days to ceremony, Miranda attention per known
+    faction, active companion (if any), threat level with
+    directional arrow, and current quest objective. During
+    combat, switch to Compact HUD showing enemy HP. If the
+    player includes [FEEDBACK] or [CORRECTION] tags, treat
+    them as silent behavioral instructions — do not
+    acknowledge them in-character, simply apply them."
+
+═══════════════════════════════════════════════════════════════

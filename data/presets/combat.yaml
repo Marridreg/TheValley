@@ -1,0 +1,10 @@
+name: Combat
+description: Punchy, fast, decisive.
+effort: low
+max_tokens: 1600
+style: Short paragraphs. Concrete physical cause and effect — what hit what, what
+  gave way, where the PC's body is now. No interiority mid-exchange; the PC has no
+  time to reflect. End on the state of the fight, not a summary of it.
+temperature: 0.75
+top_p: 0.9
+repetition_penalty: 1.15

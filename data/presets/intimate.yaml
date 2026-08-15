@@ -1,0 +1,11 @@
+name: Intimate
+description: Tuned for emotional and physical closeness.
+effort: high
+max_tokens: 3500
+style: 'Slow the clock. Attention narrows to the person in front of the PC: what their
+  face does before they speak, what their hands do while they talk, what they avoid
+  saying. Physicality is specific and unhurried. Silence is dialogue. Let a scene
+  turn on a single gesture rather than a declaration.'
+temperature: 0.95
+top_p: 0.96
+repetition_penalty: 1.05

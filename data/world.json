@@ -1,0 +1,20 @@
+{
+  "setting": "A remote valley in the Eastern European mountains, early 1980s. One village, snowed in, ringed by forest. A castle on the north ridge, a reservoir west, a derelict factory east, a house in the woods south. The valley has one road out and it is not passable.",
+  "tone": "Gothic horror. Cold, wet, and physical. The supernatural is mundane here — the villagers have theology for it, not disbelief.",
+  "language": "Villagers speak Romanian among themselves and broken English to outsiders. The nobility speak both fluently.",
+  "the_village": {
+    "population": "Forty-odd, down from three hundred. Everyone is armed and nobody goes out after dark.",
+    "faith": "They venerate Mother Miranda. Not metaphorically — she is the church, and the church is the only building maintained.",
+    "economy": "Barter, plus lei for the Duke, who is the only merchant and arrives when he chooses."
+  },
+  "locations": {
+    "village_center": "Well, church, a dozen houses. The gate east is barred.",
+    "castle": "Castle Dimitrescu on the north ridge. Lit at night.",
+    "reservoir": "West. A drowned chapel stands in the shallows.",
+    "factory": "East, past the fence. Machinery still runs some nights.",
+    "house": "South, in the woods. Nobody talks about it.",
+    "cave_church": "Rumoured. Below."
+  },
+  "the_mold": "Something in the soil and water. Long exposure makes people compliant, then something else. Everyone here has some.",
+  "opening_text": "Cold woke you before the pain did.\n\nSnow, packed against one cheek. Grey sky through black branches. Your coat was army surplus and soaked through, and there was a weight on your hip that turned out to be a holster, empty. You could not remember lying down here. You could not remember standing up anywhere else, either.\n\nSomewhere below, downhill, a cart wheel was complaining about a rut. The sound stopped. Then a voice, unhurried, pitched to carry:\n\n\"Ahh — a new face! And still attached to the body. Come down, friend, before the cold makes the introduction for me.\""
+}

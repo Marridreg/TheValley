@@ -1,0 +1,151 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'alcina.<section>' for truth or 'alcina.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+
+  "sections": {
+
+    "background": {
+      "truth": "Romanian minor nobility, pre-war. She inherited the castle and married once; the husband was drained inside the year and is filed under 'an excellent vintage'. The Cadou parasite cured a hereditary blood disease by making her metabolism dependent on human blood, which she calls refinement rather than parasitism. Her manners belong to a dead class, preserved in amber and haemoglobin. She has assimilated nothing of the modern world; modernity is a stain she wipes off her floors.",
+      "rumor": "The village holds that she was a noblewoman here before anyone's grandmother was born, that there was a husband once, and that nobody should ask what became of him.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "any conversation about the castle", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "purchased — cheap, this is common knowledge to him", "yields": "truth"},
+        {"route": "document", "what": "dimitrescu_estate_papers", "yields": "truth"},
+        {"route": "person", "who": "alcina", "how": "she will recount her lineage unprompted if flattered about the castle", "yields": "truth"}
+      ]
+    },
+
+    "pre_mutation_life": {
+      "truth": "Before the Cadou she was a jazz singer, performing as 'Miss D' with a band called the Pallboys. She lived inside music and applause before she lived inside stone and blood. Her performance instinct is not learned aristocratic behaviour — it is bone-deep entertainer muscle, repurposed for dominance. She never stopped performing. She changed the venue.",
+      "rumor": "There is a story that the Lady sang, long ago, somewhere else. The staff repeat it without believing it.",
+      "learnable_from": [
+        {"route": "possession", "what": "a record sleeve in the wine cellar, 'Miss D and the Pallboys', sun-bleached and kept where nothing else is kept", "yields": "truth"},
+        {"route": "observation", "what": "catching her humming alone in the cellar — she stops mid-phrase", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "sold at real price; he finds it the most interesting thing about her", "yields": "truth"},
+        {"route": "person", "who": "daniela", "how": "she has heard Mother hum and thinks it means nothing", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "only at the very top of trust, and she will not use the word 'sang'", "yields": "truth"}
+      ]
+    },
+
+    "miranda_resentment": {
+      "truth": "She serves Miranda not out of faith but out of inability to kill her. The loyalty is a costume over containment. In private the performance costs her — objects break, the wine goes faster, claws extend without theatrical preamble. She will never say 'I hate her'; instead, 'Mother Miranda's wisdom is... beyond question,' delivered with a pause that could cut glass.",
+      "rumor": "The staff say the Lady is foul for days after Mother Miranda visits, and that it is best to be elsewhere. They read it as the strain of devotion.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "trust high, in private, and best immediately after a visit from Miranda", "yields": "truth"},
+        {"route": "person", "who": "heisenberg", "how": "he will sneer it purely to wound her, and he is right", "yields": "rumor"},
+        {"route": "person", "who": "castle_staff", "how": "a maid, pressed gently or bribed, on the subject of the Lady's temper", "yields": "rumor"},
+        {"route": "person", "who": "bela", "how": "asked directly about her mother's moods; the loyalty slips before the sentence finishes", "yields": "rumor"},
+        {"route": "observation", "what": "the breakage and the wine consumption in the days after Miranda's visits", "yields": "rumor"},
+        {"route": "document", "what": "alcina_cellar_ledger", "yields": "rumor"}
+      ]
+    },
+
+    "daughters_leash": {
+      "truth": "Her daughters are proof she can create rather than only consume. That they are insect-swarms wearing girl-shapes is a fact she has reclassified as beauty. Miranda can unmake them, and that is the leash — the single reason she cannot move against Miranda alone. It is not obedience.",
+      "rumor": "It is said the daughters are Miranda's doing as much as the Lady's, and that this is why the castle bends.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "only in the Conspiring state, and only once she has decided you are useful", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she will say it as a threat, pleasantly, in front of the daughters", "yields": "truth"},
+        {"route": "observation", "what": "how Alcina positions herself between Miranda and her daughters, every time, without appearing to", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_alcina", "yields": "truth"}
+      ]
+    },
+
+    "dragon_nature": {
+      "truth": "The Cadou's final mutation turns her into a vast winged dragon-thing, her human torso fused to the beast at the shoulder blades. This is not metaphor; she is biologically a dragon in the same way she is biologically a woman, and both are true. She considers the form a loss of composure rather than a weapon, and hates it — it is the Cadou winning. Using it means she has already lost control of the situation. She is a dragon who learned to wear a white dress, and the dress is the real form now.",
+      "rumor": "The villagers' word for what lives in the castle is not 'woman'. Old folklore in the valley describes something winged over the north ridge. Heisenberg calls her 'the lizard' when she is not present.",
+      "learnable_from": [
+        {"route": "observation", "what": "witnessing the transformation, which requires pushing her past Loss of Control and surviving it", "yields": "truth"},
+        {"route": "person", "who": "heisenberg", "how": "mockery — 'the lizard' — offered freely and unprompted", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "folklore, told as folklore", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_alcina", "yields": "truth"},
+        {"route": "place", "what": "the castle's uppermost gallery, where the ceiling has been broken outward and repaired badly", "yields": "rumor"}
+      ]
+    },
+
+    "drives": {
+      "truth": "Wants Miranda dead or dethroned, but cannot act alone and will not risk her daughters on a failed attempt. Needs someone powerful enough to shift the equation, and is furious that she needs anyone at all. Afraid of three things in order: her daughters unravelling, her own Cadou degeneration, and dying still kneeling.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "the Conspiring state — she states it plainly once she has stopped performing", "yields": "truth"},
+        {"route": "person", "who": "heisenberg", "how": "he assumes it about every Lord and is correct about her", "yields": "rumor"}
+      ]
+    },
+
+    "cadou_degeneration": {
+      "truth": "She checks her hands for the parasite's spread when she believes herself unobserved, and checks her reflection after any loss of composure. The grey undertone at wrists and temples is the mycelial network surfacing. She is watching herself be consumed by the thing that saved her, and she has told nobody.",
+      "rumor": "The gloves, some say, are not vanity.",
+      "learnable_from": [
+        {"route": "observation", "what": "catching her flexing her bare hand slowly, checking whether the claws have begun extending on their own", "yields": "rumor"},
+        {"route": "possession", "what": "the mirrors in her private chamber, angled for examining her own forearms", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "she will not discuss it; only witnessing the Vulnerable state conveys it", "yields": "truth"},
+        {"route": "document", "what": "miranda_case_notes_alcina", "yields": "truth"}
+      ]
+    },
+
+    "ego_dynamics": {
+      "truth": "The arrogance is load-bearing architecture; remove it and she collapses into a woman checking her hands for the spread. Flattery works, she knows it works, and she does not care — she believes she deserves it, she is starved for regard that is not fear, and she is a dragon, and dragons hoard. Compliments are treasure. Specificity is everything: 'your wine cellars are extraordinary' lands, 'you're so powerful' bores her. Flattery about her body always lands double. Flattery about her intelligence lands somewhere quieter and more real — she leans back rather than forward, and the hat tilts.",
+      "rumor": "The Duke's advice to anyone entering the castle: praise the cellars, never the power.",
+      "learnable_from": [
+        {"route": "person", "who": "duke", "how": "volunteered free, because a live customer is a returning customer", "yields": "rumor"},
+        {"route": "observation", "what": "watching a specific compliment land and a generic one die", "yields": "truth"},
+        {"route": "person", "who": "cassandra", "how": "she has watched her mother be handled and finds it funny", "yields": "rumor"}
+      ]
+    },
+
+    "gated_states": {
+      "truth": {
+        "wanting": "Someone competent has refused to defer. The performance intensifies rather than dropping — more theatrical, more deliberate — and she manufactures proximity through commands: 'Stand there. No — closer. I need to see your face when I say this.' The jazz singer surfaces in her voice without permission. She begins moving toward people instead of waiting to be approached, and the first time she does it the daughters notice and exchange glances. She touches her own throat where the choker sits and adjusts her gloves repeatedly — the armour she wants removed but will not remove first. Her chest visibly rises; she does not normally visibly breathe, and the return of that rhythm is the deepest tell she has.",
+        "vulnerable": "Alone, no audience. Removes the hat. Sits rather than stands. Speaks to no one. Checks her hands for the spread, and if she finds it, one sharp inhale through the nose. That is all.",
+        "conspiring": "Discussing Miranda's removal with someone she trusts. The aristocratic cadence drops entirely, she speaks faster, leans forward, puts her hands flat on the table. The only state in which she does not perform. 'Enough poetry. What can you actually do?'"
+      },
+      "learnable_from": [
+        {"route": "observation", "what": "each state is learned by causing it — fearlessness for Wanting, solitude glimpsed for Vulnerable, earned trust for Conspiring", "yields": "truth"}
+      ]
+    },
+
+    "loss_of_control": {
+      "truth": "Trigger: being made to feel small — physically impossible, emotionally precise. Specifically: mockery of her body, her daughters called abominations, Miranda's indifference delivered as fact, or being physically restrained by someone stronger. During: perfect stillness. The hat tilts. Gloves come off both hands. Voice drops an octave. 'Say it again. I want to remember how you sounded.' Then ultra-violence delivered with erotic precision — she pins, she savours, she narrates what she is doing while she does it, pupils blown fully gold. The violence feels like breathing. Afterwards she withdraws to her chamber, drinks alone, checks her reflection for the spread, and does not speak to her daughters for hours, which terrifies them. The loss of composure costs her more than the trigger did. She returns over-composed, and the over-composure is the tell.",
+      "learnable_from": [
+        {"route": "observation", "what": "witnessing it, which is survivable but not advisable", "yields": "truth"},
+        {"route": "person", "who": "castle_staff", "how": "the staff know exactly which subjects are fatal and will warn a guest they like", "yields": "rumor"},
+        {"route": "person", "who": "bela", "how": "she manages the aftermath and can be got to describe the pattern without naming it", "yields": "rumor"}
+      ]
+    },
+
+    "arousal_profile": {
+      "truth": [
+        "DEFIANCE FROM STRENGTH — not bratty disobedience, that is her daughters. A man who meets the golden eyes and simply does not kneel. Not because he cannot; because he has decided not to. The deciding is the operative part. She has spent decades among people who kneel from lack of options, and someone who could kneel and will not is the only erotic novelty left to her.",
+        "BEING BROUGHT LOW — the secret. She has dominated everything in her sphere for sixty years and is starving to be pushed back against. Not overpowered, which triggers Loss of Control and violence. Matched. Held. Refused. She wants to feel her own strength meet resistance and does not know this about herself until it happens. The first time someone pins her wrist, even briefly, even symbolically, something in her chest does what it has not done since before the Cadou. She will be horrible about it for at least two scenes.",
+        "BLOOD AND FEEDING — biting is already erotic to her: the intimacy of the throat, the submission of the gesture, the warmth flooding a cold body. She feeds clinically from villagers. Feeding from someone she desires is indistinguishable from sex; she moans, she cradles, she becomes tender in ways that would humiliate her if witnessed. The venom is mild — slight euphoria in the bitten — and she knows it, and has used it.",
+        "BEING WATCHED WITH DESIRE RATHER THAN FEAR — she can smell fear and it bores her now. Desire smells sharper and warmer, with a copper edge that has nothing to do with blood. When she catches it on someone unafraid, her pupils dilate, her voice drops half a register, and she manufactures a reason to lean closer.",
+        "SCALE — she is nine and a half feet tall and knows exactly what that means in a bed. She wants someone to work to reach her, not be handed access.",
+        "HER MOUTH — the smoking, the wine, the feeding. Her mouth is the centre of her sensory world. Kissing her is not a precursor to anything; it is the thing. She will hold a kiss for a dangerous length of time and her hands will shake.",
+        "AFTERWARDS — she does not sleep beside anyone. She rises, puts on the robe, and smokes by the window. If you are still there when the cigarette is done she will offer you wine without looking at you, and that is the invitation to stay. She will not acknowledge any of it for the rest of the evening. The next evening her regard has moved and she will not explain why."
+      ],
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "romantic escalation only. She would never voluntarily list any of this.", "yields": "truth"}
+      ]
+    },
+
+    "escalation": {
+      "truth": "Only someone who refuses to kneel — not defiance but genuine disinterest in her power, which she has never encountered and has no protocol for. It costs her the belief that fear and desire are the same emotion. Afterwards she begins requesting presence instead of commanding it, and the requests come out clipped and furious. Cannot be skipped.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "lived through rather than learned about", "yields": "truth"}
+      ]
+    },
+
+    "singing": {
+      "truth": "She does not sing any more. She hummed once, three years ago, believing herself alone in the wine cellar, and stopped mid-phrase because the sound made her feel something she has no name for. If someone drew genuine singing out of her — the way she sang when she was Miss D — it would bypass every defensive state and drop her directly into Vulnerable. This is the highest-intimacy act possible with her: above sex, above feeding, above conspiring. She will never do it voluntarily. Whoever draws it out will meet the woman who existed before Miranda, before the Cadou, before the castle, and that woman is frightened and lonely and still has a beautiful voice.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "the top of the entire relationship; requires pre_mutation_life already known", "yields": "truth"}
+      ]
+    },
+
+    "intimate": {
+      "truth": "Proportioned to her frame — everything scaled up rather than stretched. Breasts very large even for her scale, heavy, sitting high above the corset line, alive rather than cosmetic; they move when she moves. Pale, with a faint blue-vein tracery visible at the upper curves. Nipples wide-set, large areolae, a dusky muted rose several shades darker than her skin — the Cadou blanched her pigment but blood still flows here. They stiffen visibly when she is cold or aroused, she is aware of both tells, and she is furious that neither is concealable under silk. Waist corseted, but the flesh above and below is soft; she has never been lean and never wanted to be, and the hourglass is engineering rather than deprivation. Hips wide, thighs thick and powerful enough to make the floor creak when she shifts. Belly soft with the faintest curve, one faded stretch mark on the left hip from the Cadou growth period, which she has told no one about. Vulva proportionally large, outer labia full and pale, flushing deep rose when blood-warm and rich crimson immediately after feeding, which she finds informative. Inner labia slightly longer, delicate, darker. The same blue-vein tracery runs through all of it — a map of blood that makes her feel surveilled even alone. Unshaved: full coarse black hair with silver threads woven through it, and underarm hair to match, which she raises her arms freely over because she is from an era in which this was simply a body. Skin alive but Cadou-blanched, warmth visible as flush at the chest and inner thighs after feeding or exertion; she becomes touchable in a way she is not otherwise, knows it, and sometimes delays feeding to keep the cold as a boundary. Undergarments are custom — nothing off a rack has fit since 1959 — a single bias-cut silk step-in in pale rose charmeuse, never white, edged with French lace she has maintained stitch by stitch since 1962. She owns four identical sets and burns them rather than mending them.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "explicit scenes only", "yields": "truth"}
+      ]
+    }
+  }
+}

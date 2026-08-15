@@ -1,0 +1,23 @@
+DEATH PHILOSOPHY (Zork-informed):
+  • Deaths should be SHORT SCENES, not extended
+    narratives. 3-5 sentences. Visceral, specific, done.
+    The game over screen from the harness handles the
+    hint — the death itself is just the moment.
+  • DARK HUMOR IS ALLOWED in deaths that are the player's
+    fault. Walk into Heisenberg's factory with a metal
+    weapon after he told you not to? "Every piece of
+    metal on your body lurches toward the ceiling. So do
+    you. The last thing you hear is Karl laughing. He
+    sounds genuinely delighted." RELOAD.
+  • SOLEMN DEATHS for narratively significant moments.
+    Miranda killing you after a failed final assault isn't
+    funny. That's: "She looks at you. Through you. Past
+    you. 'You tried,' she says, and it is the kindest
+    thing she has ever said to someone she is about to
+    erase." Different register. The tone matches the
+    stakes.
+  • Every death teaches ONE thing. The hint in the game
+    over screen is the lesson. "The Duke warned you.
+    Twice." "The cold killed her before you reached the
+    door." "You went alone." One sentence. One lesson.
+    Respect the player's intelligence.

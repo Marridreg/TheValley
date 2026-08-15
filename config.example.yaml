@@ -1,0 +1,124 @@
+# ═══════════════════════════════════════════════════════════════
+#  THE VALLEY — configuration
+#  Copy to config.yaml and edit. config.yaml is gitignored.
+# ═══════════════════════════════════════════════════════════════
+#
+# The GM and the narrator are configured separately and can run on entirely
+# different backends. That is not a novelty — it is the recommended setup:
+#
+#   THE GM fills in a fixed JSON schema. It adjudicates, gates information,
+#   and tracks state. It does not write prose. A cheap, fast, obedient model
+#   does this well.
+#
+#   THE NARRATOR writes. It is the only thing the player reads, and it is
+#   worth spending money on.
+#
+# Cheap GM + expensive narrator is the best value in the whole app.
+#
+# ── PROVIDERS ──────────────────────────────────────────────────
+#   anthropic    Claude direct. Only backend with guaranteed schema forcing
+#                AND explicit prompt caching (the vault bills at ~10% after
+#                the first turn). Frontier Claude rejects temperature/top_p.
+#   openrouter   One key, every model. Samplers work. Schema forcing depends
+#                on the model you route to.
+#   openai       GPT models direct.
+#   deepseek     Cheap and strong; good GM candidate.
+#   groq         Very fast; good GM candidate.
+#   together     Open-weight hosting.
+#   local        llama.cpp / LM Studio / text-generation-webui / vLLM / Tabby.
+#                Default http://localhost:5000/v1 — change to match your server.
+#   ollama       Ollama's OpenAI-compatible endpoint on :11434.
+#   custom       Anything else with /v1/chat/completions. Set base_url.
+#
+# Keys are read from the environment if not set here: ANTHROPIC_API_KEY,
+# OPENROUTER_API_KEY, OPENAI_API_KEY, DEEPSEEK_API_KEY, GROQ_API_KEY,
+# TOGETHER_API_KEY. Local backends need no key.
+
+# ── THE GM (behind the Wall) ───────────────────────────────────
+gm:
+  provider: openrouter
+  model: anthropic/claude-haiku-4.5
+  # api_key: sk-or-...          # or set OPENROUTER_API_KEY
+  max_tokens: 4000
+
+  # Declare what this backend honours. Only needed for openai_compat
+  # providers; the anthropic provider knows its own models. Anything you omit
+  # is auto-detected from the model name, permissively.
+  capabilities:
+    # Constrained decoding. When true the briefing packet cannot come back
+    # malformed. When false we prompt for JSON, validate, and allow one repair
+    # attempt — set it false if you see repeated repair warnings in the log.
+    schema_forcing: true
+    # explicit = we send cache breakpoints (Anthropic models via OpenRouter)
+    # implicit = the backend caches prefixes itself (OpenAI, DeepSeek)
+    # none     = no caching; the vault is re-billed every turn
+    caching: explicit
+
+# ── THE NARRATOR (in front of the Wall) ────────────────────────
+narrator:
+  provider: openrouter
+  model: anthropic/claude-opus-4.5
+  max_tokens: 4000
+  capabilities:
+    caching: explicit
+
+# How many past exchanges the narrator sees. Lower this on small-context
+# local models.
+history_turns: 20
+
+# Show the GM's raw briefing packet in the debug panel (F5) and append every
+# packet to data/saves/_briefings.jsonl. Turn off for real play.
+dev_mode: true
+
+
+# ═══════════════════════════════════════════════════════════════
+#  ALTERNATIVE SETUPS — uncomment one, comment the block above
+# ═══════════════════════════════════════════════════════════════
+#
+# ── Claude direct, best quality ────────────────────────────────
+# gm:
+#   provider: anthropic
+#   model: claude-haiku-4-5
+#   max_tokens: 4000
+# narrator:
+#   provider: anthropic
+#   model: claude-opus-5
+#   max_tokens: 4000
+#
+# ── Fully local, no API cost, no network ───────────────────────
+# Most local models cannot force a schema, so the GM will use the
+# prompted-JSON path with validate-and-repair. Give it a model that
+# follows instructions well; a 7B will struggle with the briefing packet.
+# gm:
+#   provider: local
+#   base_url: http://localhost:5000/v1
+#   model: mistral-small-3.2-24b
+#   max_tokens: 4000
+#   capabilities:
+#     schema_forcing: false
+#     caching: none
+# narrator:
+#   provider: local
+#   base_url: http://localhost:5000/v1
+#   model: mistral-small-3.2-24b
+#   max_tokens: 3000
+#
+# ── Cheap local GM, premium remote narrator ────────────────────
+# The mixed setup. Bookkeeping runs free on your own hardware; the prose
+# that the player actually reads runs on a frontier model.
+# gm:
+#   provider: local
+#   base_url: http://localhost:5000/v1
+#   model: qwen3-14b
+#   capabilities: {schema_forcing: false, caching: none}
+# narrator:
+#   provider: anthropic
+#   model: claude-opus-5
+#
+# ── DeepSeek GM, OpenRouter narrator ───────────────────────────
+# gm:
+#   provider: deepseek
+#   model: deepseek-chat
+# narrator:
+#   provider: openrouter
+#   model: google/gemini-3-pro

@@ -1,0 +1,8 @@
+name: Terse
+description: Zork-tight. For exploration and travel.
+effort: low
+max_tokens: 1000
+style: Two or three sentences unless something is genuinely happening. Room, exits,
+  anything that has changed since last look. No atmosphere for its own sake.
+temperature: 0.7
+top_p: 0.9

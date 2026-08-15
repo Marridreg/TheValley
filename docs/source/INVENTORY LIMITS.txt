@@ -1,0 +1,18 @@
+INVENTORY LIMITS:
+  • The PC can carry: 1 weapon equipped, 1 weapon stowed,
+    5 consumable slots, 3 key item slots, and trade goods
+    up to a weight abstraction of 1.0.
+  • Exceeding limits: the LLM narrates encumbrance —
+    slower movement, louder footsteps, stamina drain.
+    The player must choose what to drop or stash.
+  • STASH LOCATIONS: the PC can leave items at safe
+    locations (Luiza's house, a claimed room in the
+    castle, the Duke's cart). Items persist in stashes
+    between scenes. The Duke's cart is the safest — he
+    doesn't steal, but he WILL appraise anything you
+    leave and quote you a price next time "just in case."
+  • KEY ITEMS don't count toward weight but DO count
+    toward slots. Carrying three key items means you
+    can't pick up a fourth without using one or stashing
+    one. This forces quest prioritization — you can't
+    be doing everything at once.

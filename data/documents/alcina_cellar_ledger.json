@@ -1,0 +1,11 @@
+{
+  "id": "alcina_cellar_ledger",
+  "title": "A cellar ledger in a looping, impatient hand",
+  "kind": "ledger",
+  "found_at": "Castle Dimitrescu — the wine cellar, on a lectern beside the racks. Not hidden.",
+  "requires": "Access to the cellar, which means either invitation or not being caught.",
+  "language": "Romanian, with dates in a European hand",
+  "reveals": ["alcina.miranda_resentment#rumor"],
+  "text": "Most of it is inventory — vintages, volumes, names of the sources ruled through when spent. The hand is even and bored for pages at a time.\n\nWhat a careful reader notices is the arithmetic. Consumption runs steady, four to six units a week, for months. Then a week of eleven. Then fourteen. Then steady again.\n\nThe heavy weeks are dated. Someone has also noted, in the margin of each, a single word: *vizită*. Visit.\n\nThe last such week is recent. Beside it, pressed hard enough to tear the paper, the pen has gone through the page twice.",
+  "gm_notes": "Yields the RUMOUR of her resentment: something about Miranda's visits costs her, badly. It does not yield why, or that she wants Miranda dead. A player who works this out has done real work and should be rewarded with the rumour, not the truth. If they later hear it from Alcina herself, the truth supersedes."
+}

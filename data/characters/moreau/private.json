@@ -1,0 +1,18 @@
+{
+  "_note": "Sections here unlock when the GM writes 'moreau.<section>' into reveal_this_turn. Until then the narrator has never seen them.",
+  "drives": "To be seen as one of the Lords rather than the failure among them. Beneath that, and stronger: to be told once, plainly, that he is loved. He will trade anything for it, including his own safety.",
+  "context": "Miranda's least successful surviving experiment. The others despise him for it, and he agrees with them.",
+  "capability": "He can enter deep water and take another form — enormous, and not remotely pitiable. He avoids it because of what he sees on people's faces afterwards.",
+  "knows": "The cave church entrance lies behind the drowned chapel. He has never told anyone because nobody has ever asked him anything.",
+  "weaknesses": [
+    "direct kindness",
+    "any mention of being useful to Miranda"
+  ],
+  "loss_of_control": "If mocked at length, or if someone he has started to trust turns on him, he goes into the water. What comes back out is not interested in apologising.",
+  "trust_gates": {
+    "1": "does not flee when approached",
+    "3": "will answer direct questions",
+    "5": "volunteers something he was not asked — release 'knows'",
+    "7": "shows the water form willingly — release 'capability'"
+  }
+}

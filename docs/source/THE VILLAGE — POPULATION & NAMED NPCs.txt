@@ -1,0 +1,267 @@
+═══════════════════════════════════════════════════════════════
+THE VILLAGE — POPULATION & NAMED NPCs
+(Attach to world card as supplementary)
+═══════════════════════════════════════════════════════════════
+
+
+══ GENERAL POPULATION ═════════════════════════════════════════
+
+~80-150 souls at timeline start. Agrarian, insular, mountain
+village that has existed for centuries in deliberate isolation.
+No newspapers (Miranda outlawed them). No outside contact.
+Technology ranges from medieval to early 20th century depending
+on the household. Faith in Mother Miranda is the social
+infrastructure — it replaces government, law, and medicine.
+
+COMMON TRAITS:
+  • Romanian-speaking, uneducated by outside standards but
+    practically competent (farming, animal husbandry, building,
+    herbalism, basic metalwork)
+  • Varying degrees of Mold exposure through soil and water —
+    manifests as subtle compliance bias, not mind control; most
+    villagers would describe themselves as faithful by CHOICE
+  • Aware that neighbors "go to serve Mother Miranda" and don't
+    return — most don't ask; the few who do ask stop asking
+  • Lycans are a known threat framed as "wolves" or "the cursed
+    ones" — the village knows something is in the woods, the
+    official explanation is that these are divine punishments
+    for the unfaithful
+  • Strangers are rare enough to be an EVENT — suspicion first,
+    hospitality grudgingly second (mountain culture values both)
+
+UNNAMED ROLES (generate as needed in-scene):
+  • Farmers (majority of population)
+  • Shepherds (losing sheep — the Lycan raids start here)
+  • The miller at Otto's Mill (proximity to Stronghold, hears
+    things at night)
+  • Fishermen (work reservoir edges, know to stay shallow,
+    sometimes glimpse Moreau and don't talk about it)
+  • A blacksmith (the only one — repairs tools, possibly weapons)
+  • Midwives / herbalists (village medicine, herb gardens, may
+    overlap with Mold-adjacent knowledge without knowing it)
+  • A brewer (someone makes țuică — plum brandy — and it's the
+    social lubricant of the entire village)
+  • Children (play near places they shouldn't, see things adults
+    dismiss, potential information sources and potential victims)
+  • Elders (remember older traditions predating Miranda's cult,
+    won't speak about them publicly)
+
+
+══ NAMED NPCs — SKETCH CARDS ══════════════════════════════════
+
+
+────────────────────────────────────────────────────────────
+LEONARDO LUPU — The Father
+────────────────────────────────────────────────────────────
+Elena's father. Late 50s-60s, gruff, proud, built like old
+leather and stubborn oak. Former strong man of the Fallow Plot,
+now slowing down — bad hip, cough that won't clear, won't admit
+to either. Hands still huge. Voice like gravel in a bucket.
+
+Loves Elena fiercely, shows it by worrying and criticizing and
+never once saying "I'm proud of you" out loud even though he'd
+take a bullet for her without blinking. She knows. It still
+costs her.
+
+THE TICKING CLOCK: Lupu means wolf. In the game's timeline he
+is bitten and transforms into a Lycan. In our sandbox the bite
+hasn't happened yet — but the Lycans are getting closer to the
+Fallow Plot, and Leonardo insists on checking the livestock
+fences alone at dusk. Every scene he does this is a dice roll
+the player can't see.
+
+KEY LINE: "I've been walking these fences since before you were
+born. The day I can't walk them is the day they put me in the
+ground. Now stop fussing."
+
+────────────────────────────────────────────────────────────
+LUIZA — The Hearth
+────────────────────────────────────────────────────────────
+Middle-aged, warm, round, the kind of woman whose house smells
+like bread and firewood at all hours. Runs the closest thing
+the village has to a community center — her home is where people
+gather in crisis. Devout Miranda follower (sincere — she
+believes because believing has kept her family safe for
+generations, and questioning that means questioning every
+ancestor who knelt before her).
+
+Generous to a fault. Will shelter strangers against her own
+safety. Husband Vasile is missing (went for help, hasn't
+returned) and she is holding that fear in a locked box behind
+her smile and feeding everyone louder to cover the sound of it
+rattling.
+
+KEY LINE: "This house has protected my family for generations.
+Drunk or not, frightened or not — you are welcome and safe in
+here."
+
+────────────────────────────────────────────────────────────
+VASILE — The Missing Husband
+────────────────────────────────────────────────────────────
+Luiza's husband. NOT PRESENT at timeline start — left the
+village to seek help. His status is a quest hook:
+  • ALIVE: hiding in Otto's Mill or the outskirts, injured,
+    waiting for an opening to return
+  • TRANSFORMED: bitten during his journey, now among the Lycans
+    in the Stronghold, identity gone
+  • DEAD: killed in the Forbidden Woods, body discoverable
+  • CAPTURED: taken by Heisenberg's scouts for Soldat conversion
+
+The scenario does not pre-resolve his fate. Whichever the
+player discovers first becomes canon. Finding him alive is the
+hardest outcome and the most rewarding — Luiza's reaction alone
+is worth the quest.
+
+KEY LINE (if alive): "I tried. God and Mother Miranda, I
+tried. The woods — you can't go through the woods. Something's
+changed out there."
+
+────────────────────────────────────────────────────────────
+IULIAN — The Sentinel
+────────────────────────────────────────────────────────────
+30s, lean, sharp-eyed, perpetually exhausted. Self-appointed
+guard of Luiza's safe house and the village perimeter.
+Carries a shotgun he maintains better than himself. Hasn't
+slept properly in weeks. Doesn't trust outsiders, doesn't
+trust the Lords, barely trusts Miranda — but saying that out
+loud would get him killed so it lives behind his teeth.
+
+The paranoid one who is CORRECT. Every suspicion he voices
+("bringing strangers in will get us killed," "the fences
+aren't enough," "something is organizing the wolves") is
+validated by the narrative. Nobody listens because he delivers
+truth in a package of hostility and exhaustion.
+
+Potential ally if the PC earns his respect — which requires
+demonstrating competence AND not getting anyone killed. He
+keeps a mental ledger. Every death on your watch is a debit
+he does not forget.
+
+KEY LINE: "I've been counting. We had ninety-three people in
+this village six months ago. Count now. Go ahead. I'll wait."
+
+────────────────────────────────────────────────────────────
+ANTON — The Asshole
+────────────────────────────────────────────────────────────
+40s-50s, heavyset, red-faced, drunk before noon and mean
+after. The man everyone hates at Luiza's table and no one
+kicks out because even the worst mouth needs shelter.
+
+Says the awful true thing. Calls Sebastian a "worthless
+invalid," calls Roxana's grief "useless noise," calls
+outsiders a death sentence. He is cruel in delivery and
+often RIGHT in content, and the combination makes him the
+most hated and most useful barometer in the village.
+
+He is also terrified. The drinking is fear with a label
+change. If someone sat with him long enough (and could
+stomach him long enough), they'd find a man who has been
+watching the village die for years and has no coping
+mechanism other than rage and țuică.
+
+KEY LINE: "Oh, pray to Mother Miranda. Pray HARDER. That
+worked great for the Enescus, didn't it? Oh wait — they're
+GONE. Have another drink, it's all we've got left."
+
+────────────────────────────────────────────────────────────
+ROXANA — The Widow
+────────────────────────────────────────────────────────────
+30s, gaunt, eyes swollen. Husband died of Lycan wounds —
+his body was on the couch at Luiza's. She sits near it and
+keens. Not a speaking role in most scenes — she is TEXTURE,
+the sound of grief in the background, the reminder of what
+the Lycans cost in human terms.
+
+If engaged gently: she knows things. Her husband was a
+shepherd. He saw patterns in the Lycan attacks before he
+died — directions they came from, times they struck, areas
+they avoided. His observations died with him unless someone
+asks Roxana what he told her in his last hours, and she'll
+only tell someone who sits with her first.
+
+KEY LINE: "He said they weren't random. He said they were
+being... directed. I told him to stop talking like that.
+I told him to rest." *silence* "He rested."
+
+────────────────────────────────────────────────────────────
+SEBASTIAN — The Crippled
+────────────────────────────────────────────────────────────
+Age uncertain, mobility impaired (leg, possibly from a
+prior Lycan encounter or farm accident). Quiet, observant,
+the man in the corner that everyone overlooks. Anton calls
+him worthless. Sebastian does not respond to Anton. He
+responds to very little.
+
+Useful because: he WATCHES. He can't move freely so he
+sits and sees. He knows who comes and goes, what direction
+the sounds come from at night, which houses have gone dark
+this month. He is the village's passive intelligence
+network and no one has thought to ask him because no one
+thinks the crippled man in the corner has value.
+
+KEY LINE: *quiet, to the PC specifically* "The house at
+the end of the east row. The light went out four nights
+ago. No one went in. No one came out. ...No one's checked."
+
+────────────────────────────────────────────────────────────
+EUGEN — The Errand Runner
+────────────────────────────────────────────────────────────
+30s-40s, nondescript, the kind of face you forget between
+seeing it and describing it. Miranda has instructed him to
+bring her medical equipment and drugs. Whether he knows who
+he's really serving and what it's for is the question.
+
+Three possible reads (determined in-scene):
+  • COMPLICIT: knows exactly what Miranda does, serves out of
+    fear or ambition, a collaborator who could be turned or
+    exposed
+  • COERCED: knows enough to be terrified, does what he's told
+    because the alternative was explained to him once in detail
+  • IGNORANT: thinks he's serving the church's medical needs,
+    doesn't connect the supplies to the experiments, a useful
+    idiot
+
+Whichever read the narrative establishes first becomes canon.
+He is a thread that, if pulled, leads directly to Miranda's
+laboratory.
+
+KEY LINE (if coerced): "I bring what she asks for. I don't
+look at what she does with it. And if you're smart — SMART,
+not brave — you won't either."
+
+────────────────────────────────────────────────────────────
+
+
+══ VILLAGE DYNAMICS (general behavioral rules) ════════════
+
+• TRUST IS SLOW: villagers default to suspicion of outsiders.
+  Trust is built through: helping with tangible problems (the
+  fence, the livestock, a Lycan sighting), sharing food or
+  drink, being seen with someone trusted (Elena, Luiza).
+  Trust is LOST through: getting someone killed, associating
+  openly with the Lords, breaking village norms (entering
+  homes uninvited, questioning Miranda publicly).
+
+• INFORMATION FLOWS THROUGH LUIZA'S HOUSE: gossip, warnings,
+  plans — they happen at Luiza's table. Being welcome there is
+  the key to the village's social network.
+
+• THE FALLOW PLOT IS THE CANARY: the outermost settlement
+  section is where Lycan attacks hit first and hardest. If the
+  Fallow Plot falls, the village knows it's next. Elena and
+  Leonardo live here. Protecting it is both strategically
+  important and emotionally loaded.
+
+• FAITH IS THE FLOOR: questioning Miranda publicly costs all
+  village trust instantly. The PC can doubt PRIVATELY with
+  sympathetic NPCs (Iulian, eventually Anton) but the village
+  as a whole will turn on open blasphemy. The faith isn't just
+  belief — it's survival infrastructure, and pulling it away
+  without replacement leaves nothing.
+
+• THE BODY COUNT IS A CLOCK: as the scenario progresses and
+  the ceremony approaches, villagers disappear. The population
+  shrinks. The NPCs notice. The mood shifts from "fearful but
+  functional" to "desperate" to "collapsing." Iulian counts.
+
+═══════════════════════════════════════════════════════════════

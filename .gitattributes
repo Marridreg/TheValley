@@ -1,0 +1,15 @@
+# This project gets edited from Windows and from Linux (claude.ai/code's cloud
+# sandbox). Without this, every file shows as modified the moment the other
+# platform touches it, and diffs become unreadable.
+#
+# Normalise to LF in the repository; Git checks out whatever the platform wants.
+* text=auto eol=lf
+
+# Binary — never touch these.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.woff2 binary
+
+# The source design docs are authored text; keep them diffable.
+docs/source/*.txt text eol=lf
