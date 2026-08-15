@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import time
 import traceback
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
@@ -37,6 +38,22 @@ def _second_person_slips(prose: str) -> int:
     narration = re.sub(r'"[^"]*"', "", prose)
     narration = re.sub(r"[“”][^“”]*[“”]", "", narration)
     return len(re.findall(r"\b(you|your|yours|yourself)\b", narration, re.I))
+
+
+@dataclass
+class _LastTurn:
+    """What a swipe needs to re-tell the current moment.
+
+    The packet is kept verbatim on purpose. Re-running the GM would decide the
+    turn again — different events, different state — and that is a different
+    feature. Holding the briefing fixed is what makes a swipe a swipe.
+    """
+
+    player_input: str
+    packet: dict
+    feedback: list[str]
+    swipes: list[str] = field(default_factory=list)
+    index: int = 0
 
 
 def _mood_key(raw) -> str:
@@ -70,6 +87,11 @@ class Wall:
         # resuming is the default and starting over is the explicit act: delete
         # the slot, or /load another one. resumed_from feeds the banner, because
         # silently continuing someone else's session would be its own surprise.
+        # Swipes belong to the moment you are in, so they live in memory and
+        # start empty on launch — a resumed session has a transcript, not a set
+        # of alternates for a turn taken yesterday.
+        self.last_turn: _LastTurn | None = None
+
         self.resumed_from: str | None = None
         if (self.state.saves_dir / "_autosave.json").exists():
             try:
@@ -203,15 +225,138 @@ class Wall:
         # ── 3. Narrator writes, in front of the Wall ──
         emit({"type": "status", "text": "…"})
         emit({"type": "prose_start"})
+        prose = self._narrate(packet, player_input, feedback, emit)
+        emit({"type": "prose_end"})
 
-        style = self.presets.style
-        params = self.presets.gen_params(self.narrator.max_tokens)
-        chunks: list[str] = []
-        for piece in self.narrator.stream(
-            self.state, packet, player_input, style=style, params=params, feedback=feedback
-        ):
-            chunks.append(piece)
-            emit({"type": "delta", "text": piece})
+        # ── 4. Commit the turn ──
+        self.state.chat_history.append({"role": "user", "content": player_input})
+        self.state.chat_history.append({"role": "assistant", "content": prose})
+        self.state.current_npcs = npcs
+        self.state.turn_count += 1
+
+        fragment = (packet.get("information_release") or {}).get("fragment_trigger")
+        if fragment:
+            emit({"type": "fragment", "text": fragment})
+
+        # Everything a re-roll needs, and nothing else. Held in memory only: a
+        # swipe is a "give me that again" about the moment you are in.
+        self.last_turn = _LastTurn(player_input, packet, feedback, [prose])
+
+    # ── swipes ──
+
+    def run_swipe(self, direction: int, emit: Emit) -> None:
+        """Re-roll the narration, or step between takes already generated.
+
+        Prose only. The GM's briefing is reused exactly as it was, so the same
+        things happened — they are just told differently. Nothing re-applies:
+        no second helping of state updates, no re-logged discovery, no second
+        turn on the clock. Only the words change.
+
+        Direction +1 past the newest take generates a new one, which is how a
+        swipe reads in every other client. -1 walks back through takes already
+        paid for, and costs nothing.
+        """
+        if self.busy:
+            emit({"type": "system", "text": "still working on the last turn."})
+            emit({"type": "done", "elapsed": 0})
+            return
+
+        lt = self.last_turn
+        if lt is None:
+            emit({"type": "system", "text": "nothing to swipe yet — take a turn first."})
+            emit({"type": "done", "elapsed": 0})
+            return
+
+        target = lt.index + direction
+        if 0 <= target < len(lt.swipes):
+            lt.index = target
+            self._commit_swipe(lt, emit, regenerated=False)
+            return
+        if direction < 0:
+            emit({"type": "system", "text": "that's the first take."})
+            emit({"type": "done", "elapsed": 0})
+            return
+
+        self.busy = True
+        started = time.time()
+        try:
+            emit({"type": "swipe_begin"})
+            prose = self._narrate(lt.packet, lt.player_input, lt.feedback, emit, held_back=1)
+            lt.swipes.append(prose)
+            lt.index = len(lt.swipes) - 1
+            self._commit_swipe(lt, emit, regenerated=True, elapsed=time.time() - started)
+        except ProviderError as exc:
+            emit({"type": "error", "text": str(exc)})
+            self._show_swipe(lt, emit)  # put the take that still exists back on screen
+            emit({"type": "done", "elapsed": 0})
+        except Exception as exc:  # noqa: BLE001
+            emit({"type": "error", "text": f"{type(exc).__name__}: {exc}"})
+            if self.dev_mode:
+                emit({"type": "debug", "text": traceback.format_exc()})
+            self._show_swipe(lt, emit)
+            emit({"type": "done", "elapsed": 0})
+        finally:
+            self.busy = False
+
+    def _commit_swipe(self, lt: "_LastTurn", emit: Emit, regenerated: bool,
+                      elapsed: float = 0.0) -> None:
+        """Point the transcript at the selected take and persist it.
+
+        The chat history is what the narrator reads next turn and what the save
+        holds, so the selected swipe has to replace the assistant message rather
+        than sit beside it. Otherwise the story continues from a take you
+        swiped away from.
+        """
+        chosen = lt.swipes[lt.index]
+        for msg in reversed(self.state.chat_history):
+            if msg.get("role") == "assistant":
+                msg["content"] = chosen
+                break
+        if not regenerated:
+            self._show_swipe(lt, emit)
+        else:
+            emit({"type": "swipe_info", "index": lt.index, "total": len(lt.swipes)})
+        saved = self.state.autosave()
+        if saved is None:
+            emit({"type": "error", "text": "autosave failed — this swipe is not on disk."})
+        emit({"type": "done", "elapsed": round(elapsed, 1)})
+
+    def _show_swipe(self, lt: "_LastTurn", emit: Emit) -> None:
+        emit({
+            "type": "swipe_set",
+            "text": lt.swipes[lt.index],
+            "index": lt.index,
+            "total": len(lt.swipes),
+        })
+
+    # ── helpers ──
+
+    def _narrate(self, packet: dict, player_input: str, feedback: list[str],
+                 emit: Emit, held_back: int = 0) -> str:
+        """Stream one take of narration. The only place prose is generated.
+
+        held_back exists for swipes. The narrator reads state.chat_history for
+        context, and by the time a swipe runs, this turn's own exchange is
+        already in there — so a re-roll would be shown its own previous take as
+        history and asked to continue from it. Lifting that exchange out for the
+        duration puts the model in exactly the position it was in the first
+        time.
+        """
+        stash: list[dict] = []
+        if held_back:
+            stash = self.state.chat_history[-held_back * 2:]
+            del self.state.chat_history[-held_back * 2:]
+        try:
+            style = self.presets.style
+            params = self.presets.gen_params(self.narrator.max_tokens)
+            chunks: list[str] = []
+            for piece in self.narrator.stream(
+                self.state, packet, player_input, style=style, params=params, feedback=feedback
+            ):
+                chunks.append(piece)
+                emit({"type": "delta", "text": piece})
+        finally:
+            self.state.chat_history.extend(stash)
 
         prose = "".join(chunks)
         for banned in self.presets.banned_strings():
@@ -228,23 +373,11 @@ class Wall:
                 emit({
                     "type": "debug",
                     "text": f"voice drift: {slips} second-person use(s) in narration "
-                            f"(dialogue excluded). /retry, or raise effort.",
+                            f"(dialogue excluded). swipe, or raise effort.",
                 })
 
-        emit({"type": "prose_end"})
         emit({"type": "usage", "role": "narrator", "text": self.narrator.provider.last_usage.line()})
-
-        # ── 4. Commit the turn ──
-        self.state.chat_history.append({"role": "user", "content": player_input})
-        self.state.chat_history.append({"role": "assistant", "content": prose})
-        self.state.current_npcs = npcs
-        self.state.turn_count += 1
-
-        fragment = (packet.get("information_release") or {}).get("fragment_trigger")
-        if fragment:
-            emit({"type": "fragment", "text": fragment})
-
-    # ── helpers ──
+        return prose
 
     def _portraits(self, packet: dict, npcs: list[str]) -> list[dict]:
         """Resolve portrait paths, falling back to default then to nothing.

@@ -17,6 +17,9 @@ HELP = """\
   GAME     /save [slot]  /load [slot]  /saves  /preset [name]  /status
   INFO     /inventory  /journal  /providers  /where
   META     /note <text>  /feedback <text>  /retry  /undo  /help
+  SWIPE    /swipe        re-tell the last turn (same events, new prose)
+           /swipe back   step back through takes already written
+           Ctrl+Right / Ctrl+Left do the same thing
   MODEL    /model gm <name>       switch the GM's model
            /model narrator <name> switch the narrator's model
   DEBUG    /state [pc|world]  /vault  /briefing  /reveal <key>

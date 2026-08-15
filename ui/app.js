@@ -12,6 +12,8 @@ const input = $("input");
 const statusEl = $("status");
 
 let proseBlock = null;      // the block currently being streamed into
+let lastProse = null;       // the newest finished prose block, for swipes
+let swipeBar = null;        // the "< 2/3 >" counter under it
 let busy = false;
 let lastEventAt = Date.now();
 const history = [];         // input history for up/down
@@ -132,6 +134,8 @@ window.valley = {
 
       case "prose_start":
         setStatus("");
+        // Only the newest turn can be swiped, so the old counter goes away.
+        if (swipeBar && swipeBar.parentNode) swipeBar.remove();
         proseBlock = append("", "prose");
         break;
 
@@ -142,7 +146,34 @@ window.valley = {
         break;
 
       case "prose_end":
+        // Remember the block so a swipe can rewrite it in place rather than
+        // appending a second copy of the same moment.
+        lastProse = proseBlock || lastProse;
         proseBlock = null;
+        break;
+
+      case "swipe_begin":
+        // Stream the new take over the old one, in the same block.
+        if (lastProse) {
+          proseBlock = lastProse;
+          proseBlock.textContent = "";
+        } else {
+          proseBlock = append("", "prose");
+          lastProse = proseBlock;
+        }
+        setStatus("");
+        break;
+
+      case "swipe_set":
+        if (!lastProse) lastProse = append("", "prose");
+        lastProse.textContent = e.text;
+        showSwipeCount(e.index, e.total);
+        stick();
+        break;
+
+      case "swipe_info":
+        proseBlock = null;
+        showSwipeCount(e.index, e.total);
         break;
 
       case "fragment":
@@ -199,6 +230,38 @@ window.valley = {
     }
   },
 };
+
+/* ── swipes ── */
+
+function showSwipeCount(index, total) {
+  if (!lastProse) return;
+  if (!swipeBar || swipeBar.parentNode !== narrative) {
+    swipeBar = document.createElement("div");
+    swipeBar.className = "swipes";
+  }
+  // One take is not a choice worth showing a counter for.
+  if (!total || total < 2) {
+    if (swipeBar.parentNode) swipeBar.remove();
+    return;
+  }
+  swipeBar.textContent = `< ${index + 1} / ${total} >`;
+  swipeBar.title = "Ctrl+Left / Ctrl+Right";
+  if (lastProse.nextSibling !== swipeBar) {
+    lastProse.parentNode.insertBefore(swipeBar, lastProse.nextSibling);
+  }
+}
+
+async function doSwipe(direction) {
+  if (busy) return;
+  lock();
+  setStatus(direction > 0 ? "again, differently" : "");
+  try {
+    await window.pywebview.api.swipe(direction);
+  } catch (err) {
+    append(String(err), "error");
+    unlock();
+  }
+}
 
 function refreshMeta() {
   const bits = [];
@@ -263,6 +326,14 @@ const PANELS = {
 };
 
 document.addEventListener("keydown", async (ev) => {
+  // Ctrl+arrows swipe. Plain arrows stay with input history, and plain
+  // Left/Right stay with text editing in the input box.
+  if (ev.ctrlKey && (ev.key === "ArrowRight" || ev.key === "ArrowLeft")) {
+    ev.preventDefault();
+    doSwipe(ev.key === "ArrowRight" ? 1 : -1);
+    return;
+  }
+
   if (ev.key === "Escape") {
     $("overlay").classList.add("hidden");
     input.focus();

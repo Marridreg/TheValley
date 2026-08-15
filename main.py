@@ -188,6 +188,13 @@ class GameAPI:
         if not text:
             return json.dumps({"ok": False})
 
+        # /swipe is a model call, not an instant command, so it cannot go
+        # through the router — that path returns a string synchronously.
+        low = text.lower()
+        if low.startswith("/swipe"):
+            back = any(w in low for w in ("back", "prev", "left", "<"))
+            return self.swipe(-1 if back else 1)
+
         if self._commands.is_command(text):
             handled, payload = self._commands.execute(text)
             if handled:
@@ -205,6 +212,21 @@ class GameAPI:
             name="valley-turn",
         ).start()
         return json.dumps({"ok": True, "echo": text})
+
+    def swipe(self, direction: int) -> str:
+        """Re-roll the last narration, or step between takes already generated.
+
+        Same shape as submit(): hand off to a worker and return at once, because
+        the JS bridge is synchronous and a swipe is a model call.
+        """
+        print(f"[bridge] swipe({direction})")
+        threading.Thread(
+            target=self._wall.run_swipe,
+            args=(int(direction), self._emit),
+            daemon=True,
+            name="valley-swipe",
+        ).start()
+        return json.dumps({"ok": True})
 
     def quicksave(self) -> str:
         path = self._wall.state.save("quicksave")
