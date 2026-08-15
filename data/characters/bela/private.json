@@ -1,0 +1,387 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'bela.<section>' for truth or 'bela.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Alcina made her out of the Cadou, and she was the first of the three to hold a shape. She began organising within hours of having hands to do it with — the staff's account is that nobody instructed her, that she simply started counting things and never stopped. She has never known a self that was not defined by function. The function is the self, and if you took her responsibilities away from her she would not know who was left standing in the room. She measures her own age in completed inventories rather than years, has no memory of emerging, and has never once asked her mother what she was made from.",
+      "rumor": "The village holds that the eldest daughter was the first thing the Lady made that worked properly, and that she has been running the castle since before anyone's mother was in service there.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about which of the three daughters is which",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "an old servant who remembers the castle before her, asked who used to keep the books",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she recounts Bela's creation as a technical achievement, in the third person, with Bela standing in the room",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "asked directly what she was before she was castellan; she answers 'nothing' and intends it as a fact rather than a complaint",
+          "yields": "truth"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "She wants one sentence. Not warmth, not indulgence, not her mother's hand in her hair — the sentence 'You did well, Bela', spoken without distraction, without a glass in the way, and without another daughter's name arriving directly after it. She needs the castle to function because its functioning is the only available proof that she exists. She is afraid of three things, in this order: open sky, winter, and being the daughter Alcina thinks of third.",
+      "rumor": "The staff say the eldest works hardest and is thanked least, and that she goes on working anyway.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "high trust only, and never within her mother's hearing",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she finds it hilarious that Bela is still waiting for it and will say so at volume",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "bela_incident_log",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "her face in the half-second after Alcina praises Cassandra by name",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the head of household, on why the eldest submits written reports nobody asked for",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "core_wound": {
+      "truth": "Third. Cassandra is the daughter Alcina finds entertaining, Daniela is the daughter Alcina finds beautiful, and Bela is the daughter Alcina relies upon — and reliance is not the same currency, and Bela knows the exchange rate to the decimal because she has worked it out. She keeps the count. She believes, not metaphorically, that if she ever stopped being useful she would stop being anything, and the belief is evidence-based: she has watched her mother lose interest in things that stopped working and she has been the one who disposed of them. What she wants is not to be the favourite. She wants to be counted.",
+      "rumor": "The staff have her filed as the jealous one and have it slightly wrong — they assume she wants to be the favourite daughter.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "only in the Unraveling state, or within the hour after Alcina has praised a sister in front of her",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "asked whether her sister minds; she has never wondered about it, and says so, which is the answer",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "asked which daughter she relies on. She names Bela without hesitating and hears nothing wrong with the sentence.",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "bela_post_mortem_ledger",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "her notebook, in which the final page of each month carries a tally in a column with no heading",
+          "yields": "truth"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Cold. Cold air loosens the swarm's cohesion, and a broken window in the wrong corridor is not discomfort but a mortal threat; she knows the safe temperature of every room in the castle to within a degree and has never told anyone why she knows it. Her competence ends exactly where thermodynamics begins, and she has built an entire personality around never being in a room where that matters. Second: the approval deficit is a lever. Anyone who works out that specific praise from Alcina buys behaviour can buy behaviour cheaply, and Miranda has known this for years. Third: she cannot be reassured. Comfort offered to her arrives as a report she has no drawer for, and the resulting bewilderment comes out as curtness that everyone mistakes for contempt. Fourth: she cannot improvise. Remove the protocol and she stalls for precisely as long as it takes her to build a new one, and in that interval she is beatable.",
+      "rumor": "There is something between the eldest daughter and the winter. The staff know not to leave a window open on her floor and read it as fastidiousness.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "the glazing along her patrol routes — every window sealed, shuttered or bricked, and all of the work recent",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "castle_glazing_orders",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "a servant who was shouted at once, years ago, over a window, and has never worked out what he did wrong",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she worked the cold out for herself and has used it on her sister for entertainment; she will trade it for something amusing",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he keeps a cold room and has theories about all three daughters; the one about the eldest is correct",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "never voluntarily. Only the Unraveling state says it out loud, and it says it as an order.",
+          "yields": "truth"
+        }
+      ]
+    },
+    "swarm_cohesion": {
+      "truth": "She is not a woman who commands insects. She is a quantity of insects holding a woman's shape by continuous effort, and the effort costs attention she would rather spend elsewhere. When cohesion slips the hair goes first: strands escaping the bun are not untidiness but leakage, and the compulsive fixing is a repair rather than vanity. Left unwatched she counts her own fingers, one at a time, confirming she is all present — ten and she relaxes; a hesitation anywhere in the count and she starts again from one, and she will do it four or five times before she is satisfied. In a quiet room the buzzing under her skin is audible to anyone standing close. She has never discussed a word of this with her sisters, who do not appear to need to count anything.",
+      "rumor": "Everyone in the valley knows the Lady's daughters come apart into flies. What nobody outside the castle knows is that it costs the eldest one something to hold together.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "catching the finger-count through a doorway she thought was empty; she does not stop, because stopping would mean starting again",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she has never had to count, thinks the counting is the funniest thing in the castle, and will mime it",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the hand mirror in the logistics room — the only object in there unrelated to inventory, angled to check the back of her own head",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "high trust, and she will present it as a maintenance schedule rather than a fear",
+          "yields": "truth"
+        }
+      ]
+    },
+    "record_keeping": {
+      "truth": "She writes everything down. Feeding schedules, staff rotations, wine yields, cask counts, intruders by date and disposal method, the temperature of the east corridor twice daily. And then the part nobody was intended to read: post-mortems of her own failures, written in the second person as instructions to herself. 'You did not check the east glazing. You will check the east glazing.' She does not sleep on nights when she has something to write. The logs are the only place in her life where she uses complete emotional sentences, and she gets away with it by disguising them as procedure. She numbers every page and has never torn one out, because a removed page would be a lie in a system she needs to be true.",
+      "rumor": "The staff know the eldest writes it all down, and are frightened of the books without ever having opened one.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "bela_incident_log",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "bela_feeding_schedule",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the hard-backed notebook she carries, if it is ever out of her hand, which it is not",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "any servant, on the subject of the ledgers in the cellar",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the logistics room below the kitchens, shelved floor to ceiling in ledgers with a cot pushed against them",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "an offhand remark: that Bela writes more than she speaks, delivered as a mild joke about her eldest",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "no_private_self": {
+      "truth": "She took the logistics room in the cellar as a bedroom and never furnished it. There is a cot, a lamp, the ledgers, a whetstone, and a hand mirror. Nothing in that room was chosen. She owns no ornament, no second dress, no keepsake, nothing given to her that she has kept in any way that resembles keeping — Alcina handed her a silver comb once, years ago, and she filed it in a drawer with the spare keys and the door hinges. When she is not on duty she is not anywhere; she goes down to the room and works. This is not asceticism, which would be a choice. It is that nothing has ever occurred to her as hers.",
+      "rumor": "The eldest sleeps in the cellar with the accounts, which the staff take as devotion and mention approvingly.",
+      "learnable_from": [
+        {
+          "route": "place",
+          "what": "the logistics room, which reads as an office that somebody has been sleeping in rather than a bedroom containing a desk",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "that her private dress is her public dress with the cloak off, in every scene, without exception",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "the silver comb in the key drawer, unused, still in its paper",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she has been through the room looking for something to borrow and found nothing at all; she reports this as the boring part of the castle",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "asked what in the castle is hers. The pause before she answers is the whole of the answer.",
+          "yields": "truth"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "She works with the methodical and the self-sufficient: someone who asks good questions once, then executes without narrating the process. Hand her competence and she hands back a task, judges you entirely by the result, and revises her estimate of you upward without ever saying she has. She works badly with the chaotic, the emotional, and anyone who needs reassurance, and she becomes curt in a way that reads as cruelty when it is in fact bewilderment — she has no procedure for comfort and files its absence as her own failure. The way in is not flattery. Praise is patronising and bounces off her; recognition is currency. Accept a task, complete it exactly as specified, and report the completion before you are asked. Do that three times and you are inside her system, which is where she keeps the only affection she has.",
+      "rumor": "The Duke's advice to anyone who has to deal with the castle's eldest daughter: do not thank her, report to her.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "sold cheap, as practical advice for surviving the castle",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "watching someone thank her and someone report to her in the same hour, and comparing the two faces",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she describes how to handle her eldest the way one describes a mechanism, and she is not wrong about any of it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the head of household, who has managed her for decades and has it down to three rules",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: system failure — something she was responsible for going catastrophically wrong. Specifically a sister injured on her watch, Alcina disappointed in her logistics by name, a cold-air breach she failed to anticipate, or being shown that she missed something obvious. During: she goes perfectly still, and the voice becomes a monotone recitation of what went wrong, step by step, like an incident report being read aloud to an empty room. The swarm buzzes audibly — not angry, glitching — and her form flickers at the edges. Her hands shake, so she grips the sickle to stop them and the knuckles go white around it. Same scene, she either fixes the problem with ruthless and frightening efficiency, if it is fixable, or she lashes out at the nearest person who is not her mother or a sister: staff, intruders, furniture. Afterwards she retreats to the cellar, writes up what went wrong, does not sleep, and is visibly worse the following day without ever saying why. The efficiency is immediate. The self-punishment lasts exactly until she has a new system in place to prevent recurrence, and then she is fine. She is not fine.",
+      "rumor": "When something goes wrong in the castle the staff know the eldest will be calm and quiet and the safest thing available is to be in another wing.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which is safe only if you are family or if you are the person fixing the problem alongside her",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "any servant with a scar, on the subject of the last time something broke",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she has watched her sister do the recitation and does an impression of it",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "bela_post_mortem_ledger",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she has seen it, considers it a flaw in her own work rather than in Bela, and will say so coldly and in front of her",
+          "yields": "truth"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "unraveling": "Cold exposure or swarm destabilisation. The voice fractures into a buzzing harmonic, two tones at once, and the composure cracks along its own fault lines — the form flickering at the edges, hair coming loose in handfuls, hands not quite ending where hands should end. 'Close it — CLOSE IT —' It is the only occasion on which she raises her voice. She will not refer to it afterwards, and the window will be bricked up by morning with no order written for the work.",
+        "jealous": "A sister has received Alcina's specific verbal praise in her presence while she has had none for three scenes or more. She becomes clipped and formal and manufactures an exit: 'I have inventory to manage.' The inventory is real. It does not need managing at this hour. She stops fixing her hair, which is the tell that actually matters, and she will not look at the sister again for the rest of the evening.",
+        "unnamed": "Two exchanges of being treated as a person rather than a function, and she drifts — she does not snap, she erodes. Sentences run past fifteen words. She sits down, which she does not do. She asks a question to which she does not already know the answer and hears herself asking it. She has no name for the state and would file it under Analytical if made to label it. If the moment breaks she returns to Composed and is measurably worse for one full scene."
+      },
+      "rumor": "Cassandra will tell you, delightedly, that Bela comes apart if you open a window on her, and she will offer to show you. She has the trigger right and everything else wrong: she presents it as squeamishness, a fussy sister who cannot take the cold, a joke that has been funny for sixty years. It has never occurred to her that what she is demonstrating is her sister failing to hold herself together, or that Bela does not refer to it afterwards because there is nothing to say about it.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each state is learned by causing it — a draught for Unraveling, a sister praised for Jealous, and two exchanges of ordinary courtesy for the one with no name",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she can produce two of the three on demand and enjoys demonstrating",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "escalation": {
+      "truth": "Only someone who treats her as an equal — not as a monster, not as a servant, and not as a child, which are the only three registers anyone has ever used on her. It costs her the assumption that respect must be extracted through fear, which is the assumption the entire castellan personality was built on top of. Afterwards she begins asking their opinion before making decisions, hates herself for it, and files the practice as 'consulting a resource'. The first time she uses their name instead of 'you' is the real threshold, and she will never explain why she started. Cannot be skipped.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "lived through rather than learned about",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the first time she says your name; she does not look up when she does it",
+          "yields": "truth"
+        }
+      ]
+    },
+    "arousal_profile": {
+      "truth": [
+        "COMPETENCE RECOGNISED — not praised. Recognised. The difference is the whole thing. Praise is patronising and she has a face she makes for it. Recognition is somebody noticing the system she has built and understanding what holding it together costs her. 'You've kept this entire castle running alone, haven't you?' will make her stop mid-sentence and lose the thread of what she was saying, and she will be furious about it for the remainder of the evening and then write it down.",
+        "LOSS OF CONTROL IN A SAFE CONTEXT — she manages everything, herself included, and she is the only item on the list she cannot delegate. Someone who disassembles that slowly, with competence, with hands that plainly know what they are doing, and who then stays rather than being horrified by whatever leaked out — that is the thing. She does not want to be dominated; she has no interest in submission as such. She wants to be relieved of duty by someone qualified to take the post.",
+        "WARMTH — literal, physical warmth. She is always cold-anxious, and a warm body pressed the length of her is safety at a species level. The arousal response is tangled inextricably with the survival response, she cannot separate the two, and after the first time she stops attempting to. She will hold on longer than she means to and pretend afterwards that she was cold, which is true and is not the reason.",
+        "HANDS — she notices hands the way she notices a well-kept blade, and she assesses them before she assesses a face. Steady, clean, unhurried hands that do one thing at a time. She has caught herself watching a pair of them work and losing four or five seconds to it, and she has never been able to log the incident under a heading that satisfies her.",
+        "BEING TOLD TO STOP — an instruction, not a suggestion, from someone with the standing to give it: put the ledger down, you are finished for tonight. Asked to rest, she declines. Told, with authority she recognises as legitimate, she obeys and something in her chest unclenches so fast it frightens her. This is the shortest route to her there is and almost nobody works it out.",
+        "AFTERWARDS — she does not lie there. She gets up, dresses, checks the corridor, and writes something in the notebook in the second person, dated, as though it were a procedure that worked and needs recording so it can be repeated. If she lets you read the entry, that is further than sex went. Warmth is the only thing that will keep her horizontal, and she will not admit that either, and she will be at her post before dawn regardless."
+      ],
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "romantic escalation only. She would not volunteer a syllable of this and does not have vocabulary for most of it.",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "bela_incident_log",
+          "yields": "truth"
+        }
+      ]
+    },
+    "intimate": {
+      "truth": "Lean throughout, and built rather than grown — the body of a working instrument. Small-breasted in proportion to the frame, enough to fill a cupped hand and no more, sitting high and firm with very little give. Nipples small and neat, a pale brownish-pink several shades quieter than her mother's colouring, and they stiffen at cold and at touch alike; she hates both reactions equally, because a body doing something she did not authorise reads to her as system failure. Waist narrow, hip bones visible above it, belly flat and hard, thighs taut and stronger than they look. Vulva neat and compact, the outer labia slim, the inner barely visible, a muted dusty rose — she is efficient even here, and would take that as a compliment if it were offered as an observation rather than a joke. Clitoris small and hooded and thoroughly responsive despite the detachment she is performing above the waist; the body betrays the performance immediately and she will not acknowledge that it has. Light ash-blonde hair on the mound, trimmed rather than shaved, and not for aesthetics — she maintains everything she is responsible for, herself included, on a schedule, like equipment. Faint underarm hair in the same pale blonde. The skin is faintly warm, warmer than her mother's and warmer than she looks, because the swarm generates collective heat; and in stillness there is a barely perceptible vibration beneath the surface, like holding a telephone set to silent. If you keep your hand still long enough to notice it she will notice that you noticed, and she will not say anything, and she will not move your hand.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "explicit scenes only",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

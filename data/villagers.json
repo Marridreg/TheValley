@@ -1,0 +1,32 @@
+{
+  "_note": "Narrator-visible population reference. Contains NO secrets — anything gated belongs in an individual's private card or in the vault. Loaded as world material rather than as a character.",
+  "population": {
+    "size": "Between eighty and a hundred and fifty souls at the start, and falling. Iulian says ninety-three six months ago. He is counting the Enescus, who are gone.",
+    "character": "Agrarian, insular, and centuries old by deliberate isolation. No newspapers — Mother Miranda outlawed them. No outside contact. Technology runs from medieval to early twentieth century depending on the household and on what the Duke has been willing to sell.",
+    "competence": "Uneducated by outside standards and extremely capable by local ones: farming, animal husbandry, building, herbalism, basic metalwork. Nobody here needs help with anything practical and everybody needs help."
+  },
+  "faith": "Faith in Mother Miranda is not a belief the village holds; it is the infrastructure it runs on. It replaces government, law and medicine. Most villagers would describe themselves as faithful by choice and would be largely right — the Mold in the soil and the water produces a subtle compliance bias, not mind control, and the distinction matters. Questioning her publicly costs everything instantly. Privately, with the right person, it is possible.",
+  "what_they_know_and_do_not_say": [
+    "Neighbours 'go to serve Mother Miranda' and do not come back. Most do not ask. The few who ask stop asking.",
+    "The Lycans are 'wolves' or 'the cursed ones'. The village knows something is in the woods; the official account is divine punishment for the unfaithful.",
+    "The fishermen work the reservoir edges, know to stay in the shallows, and sometimes see something they do not discuss.",
+    "The elders remember traditions that predate the cult and will not speak of them where they can be overheard."
+  ],
+  "strangers": "Rare enough to be an event. Suspicion first and hospitality grudgingly second, and mountain culture genuinely holds both. Trust is built by helping with tangible problems — the fence, the livestock, a sighting — by sharing food or drink, and by being seen with Elena or Luiza. It is lost by getting somebody killed, by open association with the Lords, and by entering homes uninvited.",
+  "how_information_moves": "Through Luiza's house, and nowhere else. Gossip, warnings and plans all happen at that table. Being welcome there is the key to the entire social network of the valley, and the corner by the window has heard all of it.",
+  "the_fallow_plot": "The outermost section of the settlement, where the attacks land first and hardest. Elena and Leonardo live there. If the Fallow Plot goes, the village knows it is next, and everybody in it knows that too.",
+  "the_clock": "As the ceremony approaches, people disappear and the population shrinks. The NPCs notice. The mood moves from fearful-but-functional through desperate to collapsing. Iulian counts aloud. Anton counted first and has never told anyone he was doing it.",
+  "unnamed_roles": {
+    "_note": "Generate in scene as needed. Each carries what it plausibly knows.",
+    "farmers": "The majority. Practical, exhausted, and unwilling to discuss the woods.",
+    "shepherds": "Losing animals. The raids start with them, so they see the pattern first and are believed last.",
+    "the_miller": "At Otto's Mill, near the Stronghold. He hears things at night and has stopped mentioning it.",
+    "fishermen": "The reservoir edges. They stay shallow for a reason they will not give.",
+    "the_blacksmith": "The only one. Repairs tools, and weapons if he decides he likes you.",
+    "midwives_and_herbalists": "Village medicine and herb gardens. Some of their knowledge is Mold-adjacent and none of them know it.",
+    "the_brewer": "Somebody makes the țuică, and the țuică is the social lubricant of the whole valley.",
+    "children": "Play where they should not, see what adults dismiss. Information sources and potential victims in the same breath.",
+    "elders": "Remember what came before the cult. Will not say so publicly."
+  },
+  "vasile": "Luiza's husband. Left the village to seek help and has not returned, which everybody knows and nobody raises in front of her. Absent at the start — not a character in play so much as a hole in one."
+}

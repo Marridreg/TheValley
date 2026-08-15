@@ -1,0 +1,215 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'iulian.<section>' for truth or 'iulian.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Village-born, unremarkable until the disappearances began, with no training of any kind — the soldiering is imitation, assembled from an old coat and whatever he could work out alone. He had a family in the eastern row; the house is dark now and he has not slept in it since. He sleeps, when he sleeps, on the floor of Luiza's back room with his boots on, which is why he guards that house rather than any other: it is the last building he has any claim on.",
+      "rumor": "They say Iulian was nobody in particular before all this, and that he lost his own people early, and that the coat was not his. Nobody can agree on which house was his and nobody wants to go and look.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "asked why he does this; the answers are all guesses and none of them are kind",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he knows exactly which house it was and which night the light went out in it",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "a dark house in the eastern row, undisturbed, with the door still shut properly — the only tidy dark house in the village",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she lets him sleep in the back room and will explain why in one sentence, once, quietly",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "church_burial_register",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_count": {
+      "truth": "Ninety-three, six months ago, and he has the current figure to the person, updated the day it changes. He keeps it as tally scratches on the inside of his coat's storm flap because paper gets wet and because a written list found by the wrong person is a list of who is left. He knows which disappearances were taken and which were wolves, because the taken leave tidy houses and the killed leave doors open, and this distinction is the single most valuable piece of intelligence in the village. He states the number at people constantly and has never once been asked how he arrived at it.",
+      "rumor": "Iulian counts people. Everyone finds it morbid and nobody disputes the number, which should tell them something.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "the number is offered free and unprompted; the method behind it only after he decides you are competent",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the tally scratches inside his coat's storm flap, in two columns",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "everybody repeats the ninety-three and nobody knows the second column exists",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he keeps the same count independently and by a different method, and the two agree",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "he uses the number as a stick to beat the faithful with and mangles it every time",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "his_doubt": {
+      "truth": "He does not believe Mother Miranda is protecting anyone. He got there by arithmetic rather than by theology: the faithful disappear at the same rate as everyone else, and the church has never once produced a body. Saying this aloud in the village would cost him the village and quite possibly his life, so it lives behind his teeth and comes out as hostility towards prayer rather than towards the object of it. He can be brought to say it plainly, in private, to one person, if that person has already earned respect — and he will watch the door the whole time he says it.",
+      "rumor": "Iulian is short with the devout and does not kneel properly. Some say grief has soured him. Luiza defends him and changes the subject.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "high respect, alone, out of doors, and he will begin by asking what you would do with the information",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "watch him during the responses at church — the words are right and half a beat late, every time",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "he has spotted it and needles him about it in public, which is dangerous for both of them",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "complaints about his manners in church",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "what_he_has_worked_out": {
+      "truth": "Every suspicion he voices is correct. The raids come in a pattern that implies direction rather than hunger — same approaches, same hours, the same three areas never touched. Something is organising the wolves. The fences are a formality and he knows it. Bringing strangers in does draw attention. He has also noticed that Eugen leaves the village on a schedule and comes back with weight in his cart, and has not worked out what it means yet, only that it is the one regular event in the valley that nobody explains.",
+      "rumor": "The village version: Iulian has theories. He thinks the wolves are being told what to do, which is what a man says when he has not slept.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he will lay all of it out for anyone who has not yet got someone killed, in more detail than you want",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "roxana",
+          "how": "her husband's last observations independently confirm the directions and the hours",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "leonardo",
+          "how": "the pressure lines on the outer wire, shown rather than described",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "repeated as the ravings of the sentry",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he finds it hilarious that a farmhand with a shotgun got there first",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_ledger": {
+      "truth": "He keeps a mental account of every death he considers avoidable and who was responsible for it, and it does not clear. Debits are permanent. He will still work alongside someone he has debited, but the 'we' goes out of his speech and does not come back, and he will not be talked out of the entry. The corollary is that credit is real too: a person who has been through a bad night beside him and lost nobody is trusted at a depth the rest of the village never reaches, and he will follow that person's plan over his own.",
+      "rumor": "Iulian holds grudges. They say he has not spoken properly to two families since the autumn and will not say why.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he states the debit at the moment it is incurred, in one flat sentence, and never refers to it again",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the pronoun — 'we' means credit, 'you' means the account is open",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has tried to get him to forgive people and can list who is on the list",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "two families who will tell you he is a cold man without saying what happened",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being believed. One person taking a warning seriously enough to act on it undoes him more thoroughly than any kindness would, and he does not have a response prepared for it. Also: being relieved on watch by someone who genuinely stays awake, which is the only route to getting him to sleep. He has not been thanked in months and would not survive it well.",
+      "rumor": "Sebastian has watched people fail at this for months and can describe the failure precisely: they thank him, or they tell him he is doing well, and he goes stiff and finds somewhere else to be. Sebastian's conclusion is that Iulian cannot take kindness. It is nearly right and it points the wrong way — the thing that undoes him is not being thanked but being *believed*, and no one has tried that, so no one has seen what it does.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "act on one of his warnings in front of him and watch what happens to his face",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "'he wants someone to listen. That is all he has ever wanted, and none of us have managed it.'",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he has watched people fail at this for months and can describe the shape of the failure",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: a preventable death that he warned about, in front of him. During: he does not attack the wolves, he turns on the village — names, in order, with the dates he warned each of them, and then he goes out past the wire alone at night with the shotgun and no plan, which is the closest thing to suicide the valley offers. Afterwards, if he comes back, he does not speak for a day, cleans the gun twice, and the count in the coat gets a new mark, and he will not be told it was not his fault.",
+      "rumor": "Luiza has physically stood in a doorway to stop him going out past the wire at night and will admit that it happened, without saying what set him off. Anton calls it the sentry's tantrum and is genuinely frightened while calling it that. Between them the village has settled on a reading: the watchman is cracking, he has been awake too long, one night he will walk out and not come back. They have the outcome right. Not one of them has connected it to the warnings he gave that nobody acted on.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it; the going-out-alone part is the tell that it has happened rather than the shouting",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has physically stood in a doorway to stop him doing this and will admit it happened",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "he describes it as the sentry's tantrum and is genuinely frightened while doing so",
+          "yields": "rumor"
+        }
+      ]
+    }
+  }
+}

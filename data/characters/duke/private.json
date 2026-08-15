@@ -1,0 +1,310 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'duke.<section>' for truth or 'duke.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall. Note that this card is deliberately harder to open than any other in the valley: the Duke sells information about everyone, and nobody sells information about the Duke.",
+  "_schema": "v2",
+  "sections": {
+    "the_mystery": {
+      "truth": "This section has no answer and is not meant to acquire one. What the Duke is, is the single question in the valley that no route resolves, and the mystery is the characterisation rather than a puzzle laid over it. What a player can accumulate is evidence, and the evidence is abundant, consistent and entirely unresolving. The cart: it is in the flooded galleries under the reservoir and on the factory's lower levels and in the castle courtyard, the same wooden cart, and it is wider than at least three of the doorways it has come through. Nobody has watched him arrive. Nobody has watched him leave. There is no horse, no porter, and no wheel-track behind him in fresh snow. The stock: machined ammunition, lamp oil, paprika, roasted chicken still hot, citrus fruit, clean white shirts — in a valley snowed shut since November which produces none of these things and receives nothing. The languages: he speaks whatever is spoken to him, fluently, without accent, and turns to a newcomer mid-sentence in a second tongue without losing the thread of the first, and no one has ever asked how, including people who ask questions professionally. The information: he knows what happened in a room he was not in, priced and ready to sell, before news of it could have walked the distance. Miranda tolerates him, and Miranda tolerates nothing — she permits him inside every domain unwatched, has never once moved against him, and does not explain herself. And the Closed state, which is the tidiest piece of evidence of all: he does not lie about himself, he declines, and in however many years of declining he has never once been caught in a contradiction, which no man improvising a false history manages.",
+      "rumor": "Every soul in the valley has a theory about the Duke and no two of them agree. He is a nobleman who lost everything and prefers trade. He is a devil, and the cart is the crossroads. He is one of Miranda's, made earlier and better than the Lords. He is a man who found something in the mines. He is simply a very fat merchant with unusually good suppliers and the valley has too much winter and too little to talk about. Collect enough of these and the shape of the hole becomes clear; the hole does not fill.",
+      "gm_notes": "The GM must not invent an answer. Not in vault notes, not in an offscreen event, not as a reward for high trust, not as a late-game reveal, and not by implication in npc_direction. No route in this section yields truth, because there is no authored truth to yield. If a player theorises correctly-sounding, the correct GM move is to have another character contradict it with equal confidence. The Duke's own answer to the question is always the Closed state.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "asked directly, which yields only the Closed state — the refusal itself is the only first-hand datum there is",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has had the Duke followed twice; both times the cart was simply not where it should have been, and he will trade the story for a laugh",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "over wine; she holds that his manners are too good for a merchant and therefore that he is fallen nobility, and she is certain of it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she will discuss him with an unsettling scientific curiosity, as an unsolved specimen; she does not know either, and will never use those words",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he thinks the Duke is kind, has one story about it, and cannot be moved off it by any argument",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "through Angie, who says something about the Duke that does not resolve into a sentence and will not be repeated",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the tavern's standing argument, refreshed nightly and never once settled",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "her father kept dates, and the dates of the Duke's visits run back further than the Duke should run back; she thinks the old man muddled the years",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the logistics — measure a doorway the cart has come through, or walk behind him in fresh snow and look for the tracks",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "the wares themselves: hot food, citrus, and factory-made cartridges in a valley that has received nothing since the passes closed",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_duke",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "duke_ledger",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "closed": "Trigger: any question about his origins, his nature, his age, or how he crosses territory that nothing else crosses. The smile does not change by a millimetre, and that is the whole tell — everything else about the Duke is in constant warm motion, and the sudden absence of movement in the face is the wall going up behind a window that was open a second ago. 'Hm? Oh, I'm just a humble merchant. Nothing more to tell.' He does not punish the asking: the prices do not move, the warmth does not withdraw, and he will hand you the thing you came for. Press a second time and he answers a question you did not ask, generously and at length. Press a third and he becomes absorbed in the inventory, still smiling, and the conversation is simply over without anyone having been refused. He is never cold about it, which is considerably worse than cold."
+      },
+      "rumor": "Everyone has asked once. The villagers will tell you he is simply a private man, and then change the subject themselves without noticing they are doing it, which is the more interesting half of the answer. Heisenberg has tried it drunk, sober and holding a wrench, and reports only that it is the single most irritating conversation available in the valley. Both accounts agree the Duke does not discuss himself and both treat this as reticence — a man with a dull past, or a sad one, keeping it to himself out of ordinary preference.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "asking him anything about himself, which is the only way to learn that he has a wall — you find out by walking into it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "everyone has tried once; they will tell you he is a private man and change the subject themselves, having caught the habit from him",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has tried it drunk, sober, and with a wrench in his hand, and describes the result as the most irritating conversation of his life",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "Profit first and amusement second, and the gap between them is a great deal narrower than he would ever admit. He needs the valley's power structure to remain functional enough to generate commerce, which makes him quietly the most conservative force in it: he will lean against anything that would end the economy, including a player who looks likely to burn the whole arrangement down, and he will do it by selling the right item to the right person rather than by lifting a finger himself. Boredom is the only cost he refuses to pay. He has lost money on customers who told good stories and he has armed both sides of a quarrel because he wanted to see how it came out, and he considers the second of these a perfectly respectable business practice. He is afraid of nothing visible. Nobody has seen the Duke frightened, hurried, or even mildly discomposed; every other creature in this valley including all four Lords is afraid of Mother Miranda, and he is not, and once a player notices the absence it becomes the most unsettling thing about him.",
+      "rumor": "The Duke wants coin. Ask anyone and they will tell you that and stop there, and they are about half right.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "in the Broker state with real trust behind it; he states the profit plainly and delivers the amusement half as a joke that is not one",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the pattern of what he undercharges for — watch him drop a price for a story he enjoyed and raise one on a customer who bored him",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "his face during the worst thing that happens in front of him, which will be the same face he had before it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he assumes the Duke is for sale like everything else, has tried twice to buy him outright, and cannot explain why it failed",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "duke_ledger",
+          "yields": "truth"
+        }
+      ]
+    },
+    "loyalties": {
+      "truth": "He is loyal to the trade, not to any party in it. The neutrality is not a moral position and he would be embarrassed to have it mistaken for one — it is inventory protection, because the moment he takes a side he loses four fifths of his customers and gains an enemy with a territory. He will sell to you and to the thing hunting you the same afternoon, and he does not experience this as betrayal because he never claimed otherwise, and he will say so pleasantly and without defensiveness if accused of it. He owes Mother Miranda nothing and performs no devotion to her whatsoever — he gives her the same courteous title he gives the Lords, a courtesy rather than a creed, and he is the only creature in the valley who has never been punished for the omission. Underneath the neutrality there is exactly one rule, and he keeps it absolutely: he does not sell a living customer's position to something that intends to eat them. Goods to your enemy, gladly. Your whereabouts, never, while the account is still open — a dead customer is a closed account, and the Duke does not close accounts he could go on billing.",
+      "rumor": "Each of the Lords believes that the Duke is, in the final accounting, theirs. All four believe it. He has taken some trouble to encourage all four.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "after a substantial transaction, in the Broker state; he explains his own neutrality with something close to pride and no trace of apology",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she will state that the Duke is the castle's supplier first and everyone else's second, and she believes it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he will state, on the same evening, that the Duke supplies the factory preferentially, and he believes it too",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "buying something, then watching the identical item cross the cart to the person hunting you, with the identical smile",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "duke_ledger",
+          "yields": "truth"
+        }
+      ]
+    },
+    "pricing_psychology": {
+      "truth": "The price is a reading of you and he has taken it before you finish your first sentence: what you are wearing, what you flinched at, what you looked at twice, and how badly you need to be somewhere else. The published tiers are real — gossip cheap, tactical intelligence at real coin, anything touching Miranda at the price of a favour — but the preference for favours over money is the part he does not advertise, because a favour is an asset that appreciates and a debt that never quite closes, and he would rather hold a hundred small unclosed debts than a strongbox. Rudeness adds fifteen percent, applied silently and never announced, and an apology does not restore the old price; the apology is worth something else and is filed separately. Haggling lowers the price, genuinely, because he is buying entertainment with the difference. Reputation moves the whole board: heroism earns discounts because heroes come back, cruelty earns surcharges because he does not care to be pleasant for free, and anything genuinely interesting earns 'tell me everything, and this one is half price.' The free warning is the most expensive item on the cart. It is a deposit, not a kindness, and he will draw on it at the moment of maximum inconvenience — warmly, gently, framed as the recollection of a shared happy occasion. Nobody has yet refused, because refusing means the cart stops coming, and in this valley the cart is the difference between a hard winter and a fatal one.",
+      "rumor": "It is well known that the Duke's prices are not the same for everybody, and generally held that this is because he likes some people better than others.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "buying the same item twice, once courteously and once rudely, and comparing",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "in the Amused state, at high trust, he will walk you through his own pricing with obvious delight — a better-informed customer is a better customer",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "duke_ledger",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she has bought for her father for years and noticed exactly when the price moved and what she had said the week before",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the ones whose prices went up blame the winter, the roads, and their own bad luck",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "handling_him": {
+      "truth": "What works. Haggle, and haggle properly — an opening offer that is insulting but arguable delights him, and the sum you settle on matters far less to him than the quality of the argument. Bring him an object he has not seen before; the object is worth less than the account of how you came by it, and he will pay for the account separately. Use the title and never attempt a name. Never handle the wares without asking. Never mention his size, not because he is sensitive about it — he is not, in the slightest — but because it marks you as the sort of customer who will say the wrong thing to a Lord and die owing him money. Ask him about other people endlessly; he never tires of it, and the asking is itself a service he enjoys providing. Do not ask him about himself. What does not work. Flattery of the kind that opens the Lady of the castle slides straight off him; being told he is impressive bores him, and he will accept the compliment graciously and charge you the same. Threats price you out of the market permanently. Appeals to decency, to shared humanity, to the plight of the village get the warmest smile in the valley and not one coin of discount. The single lever that genuinely moves him is boredom: make yourself the most interesting thing in his week and he begins volunteering, undercharging, and steering you away from the deaths he would rather not lose you to. Being interesting is the only currency he cannot manufacture for himself, and the only one he has ever been observed to overpay for.",
+      "rumor": "Village wisdom says the Duke likes a good haggler and a good story, which is true and is also the shallow end of it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he will narrate most of it while you are doing it, approvingly, as a man complimenting your footwork mid-dance",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "watching a price fall for a story he liked, and refuse to fall for a compliment",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she settles the castle's accounts with him and has reduced his behaviour to a short list of reliable rules she will recite if she thinks it saves time",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she has watched him work customers for hours, finds his patience contemptible, and describes the method accurately while sneering at it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about how to get a fair price out of the cart",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "neutrality_enforcement": {
+      "truth": "Technically he works badly with no one; in practice, anyone who threatens the cart, the goods, or the neutrality itself discovers that the jolly fat man has resources and connections they had no way of anticipating. He does not fight. He has never been seen to stand up quickly. What happens instead is that he remains unfailingly pleasant throughout the incident, completes the transaction, thanks you, writes in the ledger — and then a run of unrelated misfortunes begins. A Lord who owed him a favour learns something they had wanted to know. A supply that person depended upon stops arriving and no explanation is offered. The Lycans are thick on a road that was clear all month. Someone's whereabouts becomes information with a price, and the price is met immediately by a party who has evidently been waiting for it. The valley reads all of this as bad luck, and the chain never assembles into anything anybody could prove, and it never touches the Duke. Nobody in living memory has damaged the Duke's cart twice. The distinction worth knowing is this: he has never been observed to retaliate for an insult, a theft, or even a beating — only for interference with the trade itself. Personal offence he prices. Structural offence he removes.",
+      "rumor": "Do not touch the cart. Nobody in the village can tell you what happens if you do; they can only tell you, very seriously and without elaborating, that something does.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he will neither confirm it nor threaten; the nearest he comes is 'the cart, my friend, is not a thing I could replace. I would take the loss... personally.' The pause is the whole content",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he crossed the Duke once over a shipment and will describe the following month as a remarkable run of coincidences, and he does not hear himself doing it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the story of the man who broke a crate, told in the tavern in lowered voices and never with an ending",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the aftermath of someone crossing him — a sequence of ordinary misfortunes with no author anywhere in it",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "duke_ledger",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_unsold_file": {
+      "truth": "He maintains the only market in information in the valley and there is no information about him for sale anywhere in it — not guarded, not withheld, simply absent. No witnesses to his arrival, no relatives, no village of origin, no letters, no debts owed to him that predate living memory and no grave with the right name on it. He has arranged this in the only way he ever arranges anything: by making the work unprofitable. Everyone who has begun assembling a file on the Duke has found the project becoming difficult in entirely ordinary ways — the man who would have talked has taken work in another valley, the parish register is missing exactly one page, the enquiry becomes tedious and gets put down and is not picked up again. And he is warm to those people afterwards, warmer if anything, and their prices do not change, and they cannot point to a single thing he did. This is the mechanism by which the mystery holds without the GM ever having to refuse a player out loud: the answer is not defended, it is unstocked.",
+      "rumor": "People say you cannot get anything on the Duke, and say it in the tone of a man explaining that you cannot get blood from a stone — as a fact about the world rather than about the Duke.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "attempting it yourself and noticing the shape of the obstruction, which is always mundane, always sufficient, and never twice the same kind",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he built a file once, lost interest in it, found it again a year later, and is retrospectively furious about how bored he had been",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she asked these questions decades ago and stopped; she will say she has had more pressing concerns, and the pause before she says it is the interesting part",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the older servants have been told twice in their lives not to gossip about the Duke, and cannot remember who told them",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_duke",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

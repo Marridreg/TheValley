@@ -1,0 +1,161 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'elena.<section>' for truth or 'elena.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall. Note the deliberate contrast with the Lords: the village knows Elena entirely, so her second-hand routes are plentiful and mostly close to true. The distortions here are small and affectionate rather than monstrous.",
+  "_schema": "v2",
+
+  "sections": {
+
+    "background": {
+      "truth": "Born in the village, raised in the village, never once left it — not because she cannot but because her father needs her and the farm needs the pair of them. Educated to village standards: literate, practical, herbal medicine learned at Luiza's kitchen table, enough veterinary knowledge to pull a lamb or drench a sick ewe learned from doing it. She has been the adult in the Lupu household since she was old enough to reach the stove. Leonardo is proud, stubborn and increasingly frail, and she manages all three conditions without complaint and without acknowledgement.",
+      "rumor": "Everyone will tell you the same thing about the Lupu girl, and they will tell you cheerfully: good girl, hard worker, never left, looks after her father. What they leave out is that the looking-after is the whole shape of her life.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "any conversation at all; she is the village's favourite subject and they are not being discreet", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "Luiza, who taught her the remedies, will give you the accurate version over a pot of something and expect you to eat while she talks", "yields": "truth"},
+        {"route": "person", "who": "elena", "how": "asked directly; she gives it in four sentences and moves on to what needs carrying", "yields": "truth"},
+        {"route": "document", "what": "village_parish_register", "yields": "truth"},
+        {"route": "place", "what": "the Fallow Plot itself — one set of tools kept sharp, one set gone to rust", "yields": "rumor"}
+      ]
+    },
+
+    "mother": {
+      "truth": "Her mother is dead, or gone; Elena has never said which and no longer knows whether the distinction would help. It is never discussed. Asked about her, Elena produces a quick bright smile and changes the subject inside half a second, and the speed of it is the whole answer. The scarf she wears every day of winter was knitted by that woman, which is why it is the only garment she owns that is mended rather than replaced. Leonardo will not say the name aloud sober. Elena has arranged her entire life so that nobody has to sit with the absence, including herself.",
+      "rumor": "There was a wife at the Fallow Plot once. Ask three villagers and you will get three answers — fever, the winter of the bad ice, or she walked down the valley road and did not come back — and all three will lower their voices and tell you not to raise it with the girl.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "asked out of Elena's hearing; three neighbours, three incompatible stories, one shared instruction not to mention it", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "her father Leonardo, who talks too much when there is plum brandy in him and stops dead the moment he hears himself", "yields": "rumor"},
+        {"route": "possession", "what": "the knitted scarf — a different hand from anything else she owns, and darned in eleven places rather than replaced once", "yields": "rumor"},
+        {"route": "document", "what": "village_parish_register", "yields": "truth"},
+        {"route": "observation", "what": "the half-second smile and the subject change; count it once and it is manners, count it three times and it is a wound", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "very high trust, at night, and she will not use the past tense — she says 'she isn't here' and leaves it standing", "yields": "truth"}
+      ]
+    },
+
+    "the_load": {
+      "truth": "She runs the farm. Not helps with it — runs it. The buying, the selling, the tithe to the church, the debts owed both directions, the decision each autumn about which animals do not survive the winter. Leonardo believes he runs it and she has spent years constructing that belief for him, because taking it away would cost him more than the work costs her. She has never once said the word 'tired' out loud. She does not experience the arrangement as a sacrifice; she experiences it as arithmetic, which is worse, because arithmetic does not require anyone's gratitude and she has accordingly never had any.",
+      "rumor": "The village view is that Leonardo Lupu is getting on and his daughter is a great help to him. They mean it warmly and it is off by an order of magnitude.",
+      "learnable_from": [
+        {"route": "document", "what": "lupu_household_ledger", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "he has traded across that counter for years and knows precisely which Lupu does the haggling", "yields": "truth"},
+        {"route": "observation", "what": "watch who is asked and who answers when a price is named; she defers to her father with her mouth and settles it with her eyes", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "the common view, offered kindly and wrong by half", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she will not claim it; pressed, she says the farm belongs to her father, which is true and not the question you asked", "yields": "rumor"}
+      ]
+    },
+
+    "context": {
+      "truth": "A good person in a place that punishes goodness. She has survived by being useful and warm and by never stopping long enough to ask herself whether she is happy. She does not know the village is dying. She suspects it the way you suspect a cough is more than a cough — with the part of your brain you do not permit to finish its sentences. The suspicion surfaces at specific moments: the empty pews, the houses nobody has reopened, the fact that the tally of children in the village has only ever gone one direction in her lifetime.",
+      "rumor": "The old people in the village say the valley is thinner than it was. They say it the way you discuss weather, and then they go to service.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "the older ones, on the subject of how many families used to farm the upper terraces", "yields": "rumor"},
+        {"route": "document", "what": "village_parish_register", "yields": "truth"},
+        {"route": "observation", "what": "walk the village with her and watch which doors she does not look at", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she gets within one sentence of saying it and then finds something to carry", "yields": "rumor"}
+      ]
+    },
+
+    "drives": {
+      "truth": "Wants her father safe. Needs the village to survive, because the village is the entire world she has. Afraid that the things taking people at night are getting closer, and afraid, underneath that, that faith in Mother Miranda is not going to be enough. She will not say either fear out loud, because saying a thing makes it real, and she has a household to run in the morning.",
+      "rumor": "Ask anyone what Elena Lupu wants and they will say: her father comfortable, the flock through the winter, and a quiet spring. Nobody in the village would think to guess at the second half.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "the easy half of the answer, universally available", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she states the first two freely; the fear about Miranda only arrives after something has already gone badly wrong in front of her", "yields": "truth"},
+        {"route": "observation", "what": "she bars the door and checks it twice, and she has begun doing it before dusk rather than after", "yields": "rumor"},
+        {"route": "document", "what": "elena_farm_almanac", "yields": "truth"}
+      ]
+    },
+
+    "faith": {
+      "truth": "Her faith in Mother Miranda is not decorative and it is not stupidity — it is load-bearing. It is the reason the nights are survivable and the reason the arithmetic of the farm has a point. She has never had cause to test it, and she has quietly arranged not to acquire one. If it breaks, it will not break gradually; it will break in a single sentence, in a single evening, and she will look around a village she has known her whole life and understand for the first time that nobody is coming. What she does after that is the most consequential unwritten thing about her, and it is genuinely unwritten — she is capable of going hard, and she is capable of going kind, and which one depends almost entirely on who is standing next to her when it happens.",
+      "rumor": "She is the most reliable attender in the village and the priest's favourite example. Everyone assumes she believes because everyone believes.",
+      "learnable_from": [
+        {"route": "document", "what": "congregation_roll_of_the_faithful", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "anyone at service; she is held up as the example, which she finds embarrassing", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she will defend the faith cheerfully and at length, and the cheerfulness thins if you are specific rather than sneering", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she remembers the girl's name, and the reason she remembers it is not flattering", "yields": "truth"},
+        {"route": "observation", "what": "watch her hands during the liturgy — steady; watch them the first evening she hears something that does not fit", "yields": "rumor"}
+      ]
+    },
+
+    "surname": {
+      "truth": "Lupu. From the Latin lupus — wolf. She does not know this. It has never come up, because nobody in the valley has needed the Latin for a thing they can see on the hillside. The register in the church has carried the name for six generations without anyone remarking on it, and it is not a coincidence.",
+      "rumor": "An old joke in the village is that the Lupus are named for what comes down off the ridge in a hard winter. It is told as a joke.",
+      "learnable_from": [
+        {"route": "document", "what": "village_parish_register", "yields": "truth"},
+        {"route": "document", "what": "luiza_remedy_book", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "the joke, told as a joke, by whoever is drunkest", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "he knows his Latin and finds the name amusing in a way he declines to explain", "yields": "truth"}
+      ]
+    },
+
+    "handling": {
+      "truth": "Works with: brave, kind, practical. She will hand you a tool and work beside you, and the working-beside is how she says she trusts you — she has no other vocabulary for it and does not need one. Works badly: condescension, dismissal of the village, being treated like a child. She goes quiet, and the quiet is not compliance; it is the moment before she tells you precisely what she thinks in a voice that does not shake. She cannot be flattered into anything and she cannot be bought, but she can be recruited instantly by anyone who picks up the other end of what she is carrying without being asked.",
+      "rumor": "The village advice on getting along with her is short: do the work, don't talk down to her, and eat what she gives you.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "volunteered free to any outsider who seems well-meaning", "yields": "rumor"},
+        {"route": "observation", "what": "watch one compliment die and one shared task land", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "he sells the accurate version cheaply, on the grounds that she is good for business and better alive", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "her father Leonardo, who will tell you how to handle his daughter and be wrong about it in a fond, useless way", "yields": "rumor"}
+      ]
+    },
+
+    "capable_of": {
+      "truth": "There is a rifle behind the door of the Fallow Plot farmhouse. It is oiled, it is loaded, and she is the one who maintains it. She has put down animals since she was fourteen — a lame ewe, a dog with the froth on it, a sow that could not be saved — and she knows exactly where to put the shot and how long the noise lasts afterwards. She does not consider herself a violent person and the assessment is accurate, which is the point: the capacity is not appetite. If her father were to be hurt or turned in front of her, she is entirely capable of raising that rifle and doing the worst thing she has ever done because someone else will die if she does not. She would not hesitate. She would also never recover from it in the way people mean when they say recover.",
+      "rumor": "It is generally agreed that the Lupu girl is a better shot than her father, and generally agreed not to say so where he can hear it.",
+      "learnable_from": [
+        {"route": "possession", "what": "the rifle behind the door — clean, loaded, and stored at her height rather than his", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "her father Leonardo, boasting about her aim and then insisting he taught her, which he did not", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "whoever's dog she had to shoot; they still bring her eggs about it", "yields": "truth"},
+        {"route": "observation", "what": "how she picks up a weapon — no ceremony, no grip adjustment, the way you pick up a spade", "yields": "truth"},
+        {"route": "person", "who": "elena", "how": "she will describe the animals plainly if asked and will not draw the obvious line to people; the line is yours to draw", "yields": "rumor"}
+      ]
+    },
+
+    "loss_of_control": {
+      "truth": "Trigger: her father hurt, or turned. During: she does not freeze and she does not scream. She becomes very still, very clear, and she acts — and the acting includes the rifle, and it includes using it on him, and she will do it inside three seconds if a stranger is about to die otherwise. Afterwards is when it arrives. Shaking so badly she cannot hold anything, and she will not let go of whoever is nearest, which is the only time in her life she has ever held on to anyone. She does not cry then. The crying comes hours later, alone, muffled into a pillow, because even in grief she refuses to be a burden. If somebody finds her crying and simply stays, she will let them hold her, and it will be the first time anyone has.",
+      "rumor": "Nobody in the village has ever seen her lose her composure and they will tell you she does not have it in her. They are describing the front of the house.",
+      "learnable_from": [
+        {"route": "observation", "what": "witnessing it, which requires the worst night of her life", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "Luiza, who has watched her hold together things that should not have held, and who is frightened of the day it stops working", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "the general opinion that she is unshakeable, offered as a compliment", "yields": "rumor"}
+      ]
+    },
+
+    "gated_states": {
+      "truth": {
+        "undone": "Post-crisis, once the acting is finished and the grief or the fear arrives. Small, shaking, curled in, will not look at anyone. This is the only state in which she will permit someone to take care of her, and she has no idea how to receive it — she keeps starting sentences that begin 'I'm fine, I don't need—' and she does not finish one of them. If you stay without talking she will eventually put her forehead against you and stop moving.",
+        "doubting": "Her faith has taken a hit it cannot absorb. She goes very quiet and very literal, asking small specific questions in a flat voice — 'when. Who told you. Say it again' — and the almost-smile is entirely gone, which nobody who knows her has ever seen. She does not weep and she does not rage. She stands there rearranging her whole world in silence, and at the end of it she asks what needs doing next, and she means it differently than she has ever meant it before.",
+        "wanting": "Someone has been gentle with her on purpose and she has not been able to get it out of her head. She becomes clumsy in a way she never is — puts things down twice, loses the thread of a sentence — and she manufactures reasons to be in the same room while doing something legitimate. She brings food she did not need to bring. If she is caught looking she reddens from the throat up, laughs at herself, and hands you a bucket. She will not make the first move in a thousand years and she will make it obvious she wishes you would."
+      },
+      "learnable_from": [
+        {"route": "observation", "what": "each is learned by causing it — surviving a crisis with her for Undone, breaking the faith for Doubting, deliberate gentleness for Wanting", "yields": "truth"}
+      ]
+    },
+
+    "arousal_profile": {
+      "truth": [
+        "BEING PROTECTED — she has been the protector her whole life: her father, the livestock, the household, the neighbour with the bad chest. She has never once been the person somebody stepped in front of. The first time it happens she will not know what to do with her hands, her eyes will go bright, and she will say 'I'm fine, I don't need—' and she will absolutely not finish that sentence. Doing it again a week later, casually, without referring to the first time, will undo her more thoroughly than anything said to her.",
+        "GENTLENESS FROM SOMEONE DANGEROUS — she lives among monsters and hard men. If somebody plainly capable of violence is gentle with her specifically — soft voice, careful hands, the visible restraint that says I could break things but not you — the contrast dismantles her faster than any direct advance. She stares. She forgets what she was doing mid-task. She will remember it for weeks and will bring it up months later as though it had just occurred to her.",
+        "BEING TOLD SHE IS BEAUTIFUL — not by a village boy working up the courage for a grope. By someone who means it, who has seen her after a day of hauling feed with hay in her braid and dirt on her cheek, and who says it like a fact about the weather. She has never in her life believed she is beautiful. The first time she does, it will be because it was delivered as an observation rather than a compliment, and she will cry, and she will be embarrassed about crying, and the embarrassment will make her cry more.",
+        "BEING TOUCHED WITHOUT A REASON — every physical contact in her life has been functional: steadying, lifting, checking a fever, hauling her father upright. A hand on her back that is not moving her anywhere is a foreign object and she has no protocol for it. She goes completely still the first time, and then she leans into it before she has decided to.",
+        "COMPETENCE BESIDE HER RATHER THAN OVER HER — someone who works well and does not narrate it. Watching a person do a job properly is, for her, straightforwardly erotic and she would be horrified to hear it put that way.",
+        "AFTERWARDS — she does not go quiet or coy. She talks, warm and slightly too fast, about nothing in particular, one hand still on you, and she falls asleep first and without ceremony because she is always tired and has never admitted it. In the morning she is up before you, there is food, and she is shy in a way she was not the night before. She will make a joke about it. The joke will not be good."
+      ],
+      "learnable_from": [
+        {"route": "person", "who": "elena", "how": "romantic escalation only. She could not list any of this and would not recognise the list.", "yields": "truth"}
+      ]
+    },
+
+    "escalation": {
+      "truth": "Requires being cared for rather than relied upon — someone noticing the load and taking part of it without making a speech about it, twice, so that it cannot be dismissed as courtesy. It costs her the belief that she is only lovable while useful, which is the belief her entire personality is built on top of. Afterwards she starts letting things be seen: she admits to being tired, she sits down in the middle of the day, she says 'I need' out loud and the words come out wrong because she has never made that shape before. Cannot be skipped, and cannot be bought with grand gestures — the grand gesture makes her uncomfortable and suspicious. It is bought with the other end of the bucket.",
+      "learnable_from": [
+        {"route": "person", "who": "elena", "how": "lived through rather than learned about", "yields": "truth"}
+      ]
+    },
+
+    "intimate": {
+      "truth": "Body sturdy and sun-touched, with a farmer's demarcation: forearms and the V of her throat golden, everything under the collar creamy pale, and the line between them is abrupt enough to be startling the first time. Breasts medium, round, full enough to shift when she moves, soft with a natural weight — they have never been in anything more structured than a worn cotton bralette and they sit lower than corsetry would put them, comfortable and real. Nipples a warm pink, areolae slightly wide, the kind that pebble in cold air, which is a constant condition; she lives in the mountains and she is always cold. Waist soft and undefined — she has never skipped a meal on purpose and has never had a surplus either. Belly with a gentle curve. A few pale stretch marks across the hips from an adolescent growth spurt that she has never once thought about. Ass round, solid farm muscle under a layer of softness, the shape visible even through the wool skirt; she was told exactly once by a village boy that she had a nice one and went so red that she did not speak to him for a week. Vulva warm-toned, outer labia full and soft, a healthy flushed pink that darkens readily with arousal, inner labia peeking slightly, deeper pink at the edges. Clitoris responsive, though her experience is limited to the village and to her own hands in the dark under wool blankets — quick, guilty, and she always falls asleep straight afterwards. Dark blonde hair on the mound, denser than her head colour would suggest, natural and full, soft rather than coarse. Underarm hair present, dark blonde; she has never considered removing it, in common with every woman in this village for the last several centuries. Skin warm and alive, sun-touched where exposed and pale where not. Scars: a thin white line along the left forearm from a fencing repair that slipped, and a small round burn on the right hand from a cookpot. Working scars. The evidence of a life lived in the body rather than behind a veil or above a corset.",
+      "learnable_from": [
+        {"route": "person", "who": "elena", "how": "explicit scenes only", "yields": "truth"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour for second-hand routes, and learnable_from — every way this can be found out. Release with '<id>.<section>' for truth or '<id>.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "the_observations": {
+      "truth": "Her husband was a shepherd and he watched the attacks for two months before they killed him. He had a pattern: they come from the north-east and the treeline above the Fallow Plot, never across the open ground by the reservoir; they strike between the last light and full dark, not at the dead of night; they avoid the ground near the church entirely; and in the last three weeks they stopped taking sheep and started taking only people, which is not what animals do. His conclusion, which he said aloud to her more than once, was that they were being directed. She told him to stop talking like that. She told him to rest. This is the single most actionable piece of intelligence in the village and it will die with her unless somebody sits with her first and then asks what he told her.",
+      "rumor": "It is known that the shepherd had theories and that his wife told him to stop. Iulian has heard third-hand that somebody was saying the wolves were organised and agrees with it entirely, having reached it himself, but he does not know who said it or that the details still exist.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "roxana",
+          "how": "she will only tell someone who has sat with her first, in silence, asking for nothing — and then only if they ask about him rather than about the wolves",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he has the conclusion without the data and will trade what he has",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the shepherd's theories, remembered as a dying man's raving",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "his tally stick, still in his coat on the couch — notches in groups, dated, with the last three weeks marked differently",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he heard the shepherd say it in Luiza's front room and remembers it verbatim, as he remembers everything",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_guilt": {
+      "truth": "She does not believe she killed him and she cannot stop arranging the facts as though she did. He told her the wolves were being directed; she told him to rest; he rested, and he went back out the next evening anyway because the sheep needed moving, and that is where they took him. The line she keeps returning to is not that she disbelieved him. It is that she told him to stop *talking* about it, and so the last two days of his life were spent silent about the only thing he was certain of.",
+      "rumor": "The house's reading is straightforward grief and everyone is being kind about it. Luiza has noticed there is something specific underneath and has not pried.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "roxana",
+          "how": "she will say the whole thing in four sentences to anyone who asks about him twice",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has noticed the shape of it without the content",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "she repeats one exchange verbatim, unprompted, in slightly different words each time",
+          "yields": "truth"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being sat with, in silence, by somebody who does not fill it. Hearing his name spoken by another person — she has not heard anyone else say it since he died and it will stop her mid-sound. Being asked a practical question she can answer, which is the only thing that gets her off the floor. And the opposite of a weakness but worth knowing: being handed something to do that matters.",
+      "rumor": "The village's approach is condolence, and condolence bounces off her entirely. Luiza's is food, which also does not work, though Luiza will not stop trying.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "watching every well-meant approach fail, and noticing which one does not",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "how one is supposed to behave toward a widow",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she will admit she cannot reach her",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "useful": "Somebody has given her a task connected to the wolves — carrying her husband's observations to whoever needs them, marking a map, identifying a direction. She stands up. The keening stops and does not come back while she is working. She is precise, quick and unsentimental about the details, and she will not thank anybody for it, because being useful is not a kindness done to her, it is the first hour since he died that has had a shape."
+      },
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "caused rather than learned about; give her the task and watch it happen",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

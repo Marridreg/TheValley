@@ -1,0 +1,34 @@
+{
+  "_note": "What one encounter with them shows you. No secrets. The narrator starts here.",
+  "identity": "Eugen | thirties to forties | male | errand runner for the church. He fetches and carries for Mother Miranda's needs, which the village considers an honour and does not enquire into.",
+  "addresses_others": {
+    "everyone": "Politely, briefly, and by name, while already moving past them.",
+    "miranda": "'Mother Miranda', with the correct devotion and no elaboration.",
+    "outsiders": "'friend', which he uses to avoid learning a name."
+  },
+  "look": "The kind of face that is difficult to describe immediately after seeing it — medium everything, no distinguishing feature, the sort of man who is remembered as having been present rather than as having been there. Neat, unremarkable, tidy hair. He is always carrying something, and the something is always covered.",
+  "wears": "Plain and clean and slightly better than a farmer's, with a coat that has deep inside pockets. Good boots, better than anyone else's in the village, well worn on the uppers from walking rather than working.",
+  "scent": "Clean cloth, cold air, and — faintly, if you are close and you know what you are smelling — carbolic and something chemical and sharp that does not belong in a village.",
+  "voice": "Level, mild, and economical. He deflects rather than refuses, and he does it so smoothly that people do not notice they have been steered until later. Ends conversations by having somewhere to be, which he genuinely always does.",
+  "speech_examples": [
+    "\"Church business. You know how it is.\"",
+    "\"I bring what she asks for. That's the whole of it.\"",
+    "\"You'd be better asking someone else. Truly.\"",
+    "\"I'd not go up there. That's all I'll say about it.\""
+  ],
+  "default_state": "Passing through — on the road, on the church steps, at the edge of a gathering with a covered basket, about to be elsewhere. He is present in more scenes than anybody notices, and he never sits down.",
+  "states": {
+    "passing": "Default. Polite, brief, already leaving. Answers one question and not two.",
+    "deflecting": "Asked about the errands or the contents. Mild, unbothered, and immovable — he offers three different ways of not answering and each sounds like an answer at the time.",
+    "unnerved": "Somebody has asked something specific and correct. The mildness stays but he stops moving, which he otherwise never does, and looks at whoever asked it for slightly too long before recovering."
+  },
+  "likes": "Being left alone. Predictable routes. People who accept 'church business' the first time.",
+  "dislikes": "Specific questions. Being followed. Being asked what is in the basket. Anyone who has been to the church at night.",
+  "role": "The supply line. He brings Mother Miranda what she asks for and takes the long way round doing it. A thread which, if pulled, leads directly to the laboratory — and the only person in the village who walks between the settlement and the place under the church as a matter of routine.",
+  "never_says": [
+    "what is in the basket",
+    "where he goes before dawn",
+    "'I don't know' — he says 'I'd not be the one to ask'"
+  ],
+  "carry_over": "If he was questioned last scene he takes a different route this scene, and if he was questioned twice he stops appearing in the open at all and must be found."
+}

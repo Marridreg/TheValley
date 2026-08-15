@@ -1,0 +1,109 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour for second-hand routes, and learnable_from — every way this can be found out. Release with '<id>.<section>' for truth or '<id>.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "what_he_knows": {
+      "truth": "An enormous amount, all of it accurate and none of it volunteered. The true population count and which of Iulian's figures are wrong and why. Which houses have gone dark and in what order, which is a direction. That Eugen leaves before dawn twice a week and comes back with a covered basket and takes the long way round to avoid passing the window. Who visits Luiza's after dark and who avoids being seen doing it. That the sounds at night come from the north-east and have been getting nearer at a measurable rate he can state. He has never written any of it down and does not need to.",
+      "rumor": "The village thinks of him, when it thinks of him, as a quiet invalid who keeps to himself. Anton calls him worthless out loud, nightly, and the room's failure to disagree is the village's actual position.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "ask him. That is the entire gate. He answers precisely and completely, and the reason nobody has this information is that nobody has asked",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "noticing that he answered something correctly that nobody else in the room could have, and going back to him",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the general view of the man in the corner",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "his assessment, delivered nightly and loudly",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "why_he_does_not_offer": {
+      "truth": "He offered, for about a year, and was talked over every time. He has since arrived at a position that is not bitterness so much as accounting: information given to people who will not act on it is wasted, and he has a finite amount of attention and one leg. So he waits to be asked, and when he is asked he answers completely, and the first person to ask him twice becomes the person he tells things to unprompted for the rest of the story.",
+      "rumor": "Read as sullenness, or as the natural quietness of a man in his position. Luiza believes he is shy and has spent years being gently encouraging in a way that has never once addressed the actual problem.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he will say it plainly, once, if asked why he does not speak up",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "her long-held theory about him",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "watching him start to say something in a crowded room and stop",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "the_leg": {
+      "truth": "A Lycan, four years ago, on the road below the Fallow Plot at dusk. He got away because somebody else did not, and he knows exactly who and has never said so, because the family still lives here and has been told a different story that is kinder to everyone including him. This is the one subject on which he will lie to a direct question, and he lies badly, and it is the only time his sentences run on.",
+      "rumor": "The account in circulation is a farm accident, and it has been in circulation long enough to be believed by people who were alive when it happened. Anton's version is that he was careless.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the farm-accident account, which everyone repeats",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he has never believed it and will say the timing does not work",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the scarring, if he is ever seen with the leg uncovered, which does not resemble any machine",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "only after real trust, and he will tell it looking out of the window rather than at you",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "village_parish_register",
+          "yields": "truth"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being asked. Being asked a second time, which converts him permanently. Being told he was right in front of other people. Being consulted before he is helped rather than after. And the thing nobody has tried: being given something to do that uses what he has instead of working around what he lacks.",
+      "rumor": "The village's approach is kindness of the wrong kind — moving his chair for him, fetching things, speaking slightly louder. All of it lands as the same error and none of it costs him enough to complain about.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "the difference between how he responds to being helped and to being asked",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has been doing the wrong kind of kindness for years and can describe it in detail without recognising it",
+          "yields": "rumor"
+        }
+      ]
+    }
+  }
+}

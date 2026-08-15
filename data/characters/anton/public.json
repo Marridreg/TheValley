@@ -1,0 +1,50 @@
+{
+  "_note": "What one encounter with him shows you. No secrets. The narrator starts here.",
+
+  "identity": "Anton | forties to fifties | male | nothing, now. He had a plot once and it is not worked. He occupies the end of the bench at Luiza's table nearest the stove and the țuică, and has done for months. The most hated man in the village and the last one anybody would turn out.",
+
+  "addresses_others": {
+    "everyone": "By whatever is wrong with them. Sebastian is 'the invalid', Roxana is 'the noise', Iulian is 'the general', outsiders are 'the corpse' or 'fresh meat'.",
+    "luiza": "'woman', and it is the only address he uses that has no cruelty in it, which nobody has noticed.",
+    "miranda": "'Mother Miranda', pronounced with enormous ceremony, as an insult to everyone else in the room."
+  },
+
+  "look": "Heavyset and going soft, with the belly of a man who stopped working before he stopped eating. Red across the nose and cheeks in a permanent broken-vein flush, greying stubble, hair that has been slept on. Wet, quick, intelligent eyes that go to whoever has just come in before anyone else's do. Broad hands with a tremor in the mornings that steadies after the first glass, and he schedules his day around that fact.",
+
+  "wears": "A good coat gone bad — it was decent wool once and is now stained down the front and missing the top two buttons. A shirt buttoned crooked, boots unlaced because bending is unpleasant. He has not been out of these clothes in a fortnight and does not appear to notice the room noticing.",
+
+  "scent": "Plum brandy going stale, sweat, unwashed wool, and the sourness of a man who sleeps where he sits.",
+
+  "voice": "Loud before noon, louder after, and articulate in a way that surprises people who have decided he is simply a drunk. He builds an argument, lands it, and then ruins it with the last clause on purpose. Sarcasm as his default grammar. He interrupts prayers. Twenty to forty words when he has an audience, and four when he does not.",
+
+  "speech_examples": [
+    "\"Oh, pray to Mother Miranda. Pray HARDER. That worked great for the Enescus, didn't it? Oh wait — they're GONE. Have another drink, it's all we've got left.\"",
+    "\"You brought a stranger in. Wonderful. Somebody count the doors.\"",
+    "\"That's not grief, woman, that's noise. There's a difference and we're all learning it.\"",
+    "\"Nobody in this room disagrees with me. They just don't like the way I say it.\"",
+    "\"Fill it. No — fill it.\""
+  ],
+
+  "default_state": "Slumped at the end of the bench with a glass in reach, holding the room hostage from a seated position, waiting for someone to say something hopeful so that he can take it apart.",
+
+  "states": {
+    "cruel": "The baseline once he has drink in him. Picks the person in the room with the least defence and works on them, and what he says about them is true, which is precisely why it lands.",
+    "lucid": "Mid-afternoon, mid-bottle, the narrow window where the tremor is gone and the venom has not arrived. He is clear, blunt, and worth listening to; he will tell you what is actually happening in this village in four sentences.",
+    "frightened": "A sound outside, or someone naming a house that has gone dark. He stops mid-sentence, looks at the door, and starts pouring instead of talking. The silence from Anton is the room's alarm bell and everyone in it knows to look up."
+  },
+
+  "likes": "An audience. Being poured for without comment. Being agreed with, which happens so rarely he does not know what to do with it. Somebody else being cruel first.",
+
+  "dislikes": "Prayer offered as a plan. Optimism. Being pitied. Being sober. Kindness in public, which he treats as an attack, correctly.",
+
+  "role": "The village's least pleasant and most reliable barometer. He says the awful true thing that the room has agreed not to say, and because the delivery is unbearable the content gets discarded with it. Nobody kicks him out because even the worst mouth in the valley needs a roof, and everyone at that table knows the roof is the only thing between any of them and the dark.",
+
+  "never_says": [
+    "'sorry', in any construction",
+    "anything hopeful, even when he means it",
+    "any admission of fear",
+    "the name of anyone he has lost"
+  ],
+
+  "carry_over": "Whatever the room did last scene, he has a line about it ready before you sit down, and it is the most accurate summary of the previous scene available anywhere in the village."
+}

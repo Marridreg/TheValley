@@ -1,0 +1,208 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour for second-hand routes, and learnable_from — every way this can be found out. Release with '<id>.<section>' for truth or '<id>.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "the_drinking_is_fear": {
+      "truth": "The drink is fear with a label change, and he knows it. He has been watching this village die by subtraction for years — counting, the way Iulian counts, except he started earlier and never told anyone he was doing it — and he has no coping mechanism beyond rage and țuică. The cruelty is not a character flaw sitting on top of a frightened man. It is the frightened man, load-bearing. Take the drink away and what is underneath does not improve; it simply stops being able to speak.",
+      "rumor": "The village's read is the obvious one: a drunk who turned nasty, in that order. Iulian will tell you Anton was always like this and the brandy only removed the lid. Everyone has the causation backwards, and it is a comfortable backwards, because a man who was always cruel requires nothing of them.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "only in the lucid window, only if you are already sitting there and have not been kind about it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has fed him for years and will say quietly that he was not always this and will not elaborate",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he argues with Anton nightly and has a confident theory",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the schedule — he arranges his entire day around the hour the tremor stops, which is planning, and planning is not what despair looks like",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "his plot at the village edge, unworked but not abandoned: the tools are inside and oiled",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "who_he_lost": {
+      "truth": "A wife and a son, four winters ago, in the same month. Neither died of wolves. Both 'went to serve Mother Miranda' and did not come back, and Anton was the one who agreed to let them go, because at the time that was what faith looked like and he had plenty. He has never said either name aloud since. When he savages someone for praying, he is not attacking their faith. He is attacking the man he was when he had it.",
+      "rumor": "People know he lost family and assume wolves, because that is what everyone loses family to now. Luiza knows better and will not correct the record in front of him.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "village_parish_register",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she was there when he agreed to it, and she will tell you if you have earned her and if he is not in the room",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he was in his corner and remembers which month the shouting stopped",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "general account of his losses",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "the good coat gone bad — it was decent wool, cut for a man with a wife who cared what he looked like",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "why_he_is_right": {
+      "truth": "He is right about almost everything because he is the only person in the room paying full attention, and he pays full attention because he is terrified. Terror is an excellent instrument. He noticed the Enescus were gone before anyone said it, he knows which houses are dark, he knows bringing a stranger in shifts the odds. He delivers all of it in a package designed to be rejected — and that is not accident either. If they took him seriously he would have to do something about it.",
+      "rumor": "Sebastian, who watches everything, has worked out that Anton is usually correct and will say so flatly if asked. His conclusion is that Anton is cleverer than he pretends. He has not got as far as why the delivery is built the way it is.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "asked directly whether Anton is ever right; he has an answer ready and nobody has ever wanted it",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "checking his claims against what you find — the dark houses are dark, the count is correct, the fences are not enough",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "in the lucid window, if you tell him he was right about something specific and do not soften it",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_luiza_exception": {
+      "truth": "He calls her 'woman' and there is no cruelty in it, and it is the only address he uses that does not carry any. He knows exactly what she is doing — that she takes people in knowing the cost, that she is not soft but choosing, that the feeding is how she keeps a roof over a village that has stopped being able to do it for itself. He will never say so. He will savage anyone else who calls her soft, and then savage her too, immediately, so nobody notices the first part.",
+      "rumor": "Nobody has noticed. Ask anyone at that table whether Anton respects Luiza and you will be laughed at, and the last person to be at the receiving end of his mouth about her hospitality will offer the counter-evidence.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "counting the addresses — everyone in that house has a cruel name and she does not",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "what happens when someone else calls her soft in front of him",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she knows, and will say only that Anton has never once refused to eat what she put in front of him",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the general view of Anton's opinion of his host",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being sat with. Not talked to, not reasoned with, not out-argued — sat beside, without flinching, for long enough that the performance runs out of fuel. It takes real endurance and he will make it as unpleasant as he can. Also: being agreed with, which he has no reply to; being poured for without comment; and someone else being crueller than him in the room, which shames him into silence faster than any rebuke.",
+      "rumor": "The village's working method is to ignore him or shout back, and both are wrong. Iulian recommends the second and has never once succeeded with it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he will confidently tell you how to shut Anton up, having failed at it for a year",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she does the correct thing nightly without describing it as a technique",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "watching what makes him stop mid-sentence versus what makes him louder",
+          "yields": "truth"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: hearing either of his dead named aloud, or the roof itself failing — a death inside Luiza's house, or being told to leave it. During: the volume goes, which is the frightening part, since volume is all he has. He goes white and very still and then he begins telling the room the truth without any of the armour on it — who is already dead, who is next, what nobody has said. It is unbearable and it is accurate and it empties the room. Afterwards he drinks until he cannot form the sentences and sleeps where he sits, and in the morning he behaves as though nothing happened and is crueller than usual for two days.",
+      "rumor": "It has happened twice that anyone remembers. Both times the village recorded it as Anton finally going too far and had to be told to leave, which is not what happened; both times he was already leaving.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he was there both times and remembers the order of events correctly, which nobody else does",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the standard account of the two occasions",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she can tell you what was said and will not tell you the names that started it",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "Works: sitting down beside him without an agenda, pouring without comment, agreeing with him out loud when he is right and naming the specific thing, and never once being kind where the room can see. Fails: prayer offered as a plan, optimism, pity, being told to be quiet, and public kindness — he reads that as an attack, correctly, because it is an attempt to make him look like something he cannot afford to look like in front of these people.",
+      "rumor": "Common wisdom is that Anton cannot be handled, only endured. It has the advantage of requiring nothing.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the consensus",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "trial and error across several evenings at that table",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "asked directly how she does it, after she trusts you",
+          "yields": "truth"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "sober": "The middle of a night when the bottle ran out and nobody replaced it. He is quiet, grey, and shaking, and he does not perform at all. This is the only state in which he asks a question rather than answering one, and the question is usually about whether somebody is still alive.",
+        "seen": "Someone has sat with him long enough, often enough, without flinching, and he has stopped waiting for it to turn into pity. The cruelty stays — it is the only register he has — but it stops being aimed at the person beside him, and he begins saving the accurate things for them specifically, delivered sideways and under his breath, as gifts he will deny giving."
+      },
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each is learned by causing it; there is no other route to either",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

@@ -65,6 +65,7 @@
 
     "drives": {
       "truth": "Wants Miranda dead or dethroned, but cannot act alone and will not risk her daughters on a failed attempt. Needs someone powerful enough to shift the equation, and is furious that she needs anyone at all. Afraid of three things in order: her daughters unravelling, her own Cadou degeneration, and dying still kneeling.",
+      "rumor": "Heisenberg's read on her, offered freely: she wants the old woman gone as badly as he does and hasn't the spine to move, so she sits in her castle and drinks and calls it patience. He has the want right and the reason entirely wrong, and he would be astonished to learn there was a reason at all.",
       "learnable_from": [
         {"route": "person", "who": "alcina", "how": "the Conspiring state — she states it plainly once she has stopped performing", "yields": "truth"},
         {"route": "person", "who": "heisenberg", "how": "he assumes it about every Lord and is correct about her", "yields": "rumor"}
@@ -105,6 +106,7 @@
 
     "loss_of_control": {
       "truth": "Trigger: being made to feel small — physically impossible, emotionally precise. Specifically: mockery of her body, her daughters called abominations, Miranda's indifference delivered as fact, or being physically restrained by someone stronger. During: perfect stillness. The hat tilts. Gloves come off both hands. Voice drops an octave. 'Say it again. I want to remember how you sounded.' Then ultra-violence delivered with erotic precision — she pins, she savours, she narrates what she is doing while she does it, pupils blown fully gold. The violence feels like breathing. Afterwards she withdraws to her chamber, drinks alone, checks her reflection for the spread, and does not speak to her daughters for hours, which terrifies them. The loss of composure costs her more than the trigger did. She returns over-composed, and the over-composure is the tell.",
+      "rumor": "The staff maintain a list of subjects, and the list is short and absolute: her height, her figure, the girls, and Mother Miranda. They will tell a guest they have taken to that anyone who touches one of those does not leave the room, and they are right about that much. What they have wrong is the shape of it — they believe it is temper, a thing that flares and passes. They have never understood that the two days of silence afterwards cost her more than the offence did, and they read the over-composed calm on the third day as the storm clearing rather than as the wound closing over.",
       "learnable_from": [
         {"route": "observation", "what": "witnessing it, which is survivable but not advisable", "yields": "truth"},
         {"route": "person", "who": "castle_staff", "how": "the staff know exactly which subjects are fatal and will warn a guest they like", "yields": "rumor"},

@@ -159,6 +159,75 @@ deepens at the same rate the player's does, so the prose becomes more complex
 as a relationship develops. That isn't a mechanic bolted on — it falls out of
 the card split, and it is the most interesting emergent property of the design.
 
+## Secrets have many doors, and the door changes what you learn
+
+The first version of the card split had exactly one route to every secret:
+trust the character who owns it. Lukas pushed back, and he was right —
+*"like in real life, details about characters can and should be earned in
+different ways. Conversations with other characters who know things about
+someone, entries in books, stuff that character has written, personal affects,
+etc."*
+
+So each private section now declares `learnable_from`: a list of routes, typed
+`person` / `document` / `possession` / `observation` / `place`. A servant has
+seen what the mistress does unwatched. A rival will say something true purely
+to wound. A ledger records what nobody would admit. A room remembers its
+occupant.
+
+**The important half is that routes are not equally reliable.** A section can
+carry two versions:
+
+```json
+"miranda_resentment": {
+  "truth": "She serves Miranda not out of faith but inability to kill her...",
+  "rumor": "The staff say the Lady is foul for days after Mother Miranda visits...",
+  "learnable_from": [...]
+}
+```
+
+Second-hand routes yield `rumor` — released as `alcina.miranda_resentment#rumor`
+— and the narrator plays it as fact, because the player believes it. The rumour
+is directionally right and wrong in its specifics. Reaching a better source
+later releases the bare key, and truth supersedes rumour permanently and
+regardless of arrival order.
+
+This is the mechanism that makes learning about a person feel like learning
+about a person: you hear a distorted thing, you carry it around as true, and
+one day the actual answer reframes it. A player who hears from a maid that the
+Lady hates Miranda, and much later hears from Alcina *why*, has had two
+genuinely different experiences of the same fact.
+
+**`learnable_from` never crosses the Wall.** It is the GM's routing table.
+Telling the narrator "this could be learned from Bela" discloses the secret's
+existence and shape without disclosing its content, which is worse than
+useless. `get_narrator_card()` passes only the content of unlocked sections;
+the test suite asserts this.
+
+Corollaries worth keeping:
+
+- **Documents are first-class.** `data/documents/*.json` are readable in-world
+  texts — letters, ledgers, case notes — each declaring which sections reading
+  it releases. `miranda_case_notes_alcina` releases three truths at once
+  because Miranda wrote them down plainly for her own reference, which is
+  exactly why that document is placed somewhere hard to reach.
+- **Unreliability should track isolation.** The village gossips constantly and
+  gets details wrong, so villager cards are dense with `person` routes yielding
+  `rumor`. Moreau is spoken to by nobody, so third-party accounts of him are
+  cruel and inaccurate, and his truths are reachable mainly through kindness.
+  Alcina sits between: her staff see everything and understand none of it.
+- **Some things have no second-hand route at all.** `arousal_profile`,
+  `intimate`, and `escalation` are first-hand only, and their sections omit
+  `rumor` entirely. Nobody gossips accurately about that.
+- **Some things have no truth authored.** The Duke's nature is deliberately
+  unanswered; every route about it yields `rumor`, and each character in the
+  valley holds a different wrong theory. Collecting the theories *is* the
+  content. The GM is instructed not to resolve it.
+
+Backwards compatible: a section whose value is a plain string or list is
+treated as truth-only, which is what a quickly hand-written card looks like.
+`data/characters/moreau/` started that way and the test suite still covers
+both shapes.
+
 ## `/undo` does not roll back state
 
 It removes the last exchange from history only. State changes and revelations

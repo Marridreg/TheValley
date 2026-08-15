@@ -1,0 +1,411 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'cassandra.<section>' for truth or 'cassandra.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Alcina made her with the Cadou and she was the second to emerge. She found the violence immediately — within hours of having hands, by her mother's account, and Alcina tells that story as a story about herself. She has never experienced a moment of stillness that was not terrifying. The performance of cruelty is not a personality laid over a girl; it is the engine that keeps the swarm configured as a girl, and she knows it well enough to be frightened of it and not well enough to say so. If she stopped, she is not sure what shape she would settle into.",
+      "rumor": "The village has it that the Lady made three daughters and the middle one came out wrong, or came out already hungry, and that she was the only one who did not need teaching.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about the castle's daughters, told as three-of-a-kind with one bad one",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she recounts the second emergence unprompted if praised for her daughters, and the pride is entirely about her own craft",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "purchased cheaply; he has sold the order of the daughters' making to half the valley",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "alcina_notes_on_the_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she will happily explain that Cassandra was second and therefore boring, which is not what she means",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "swarm_nature": {
+      "truth": "She is a swarm holding the agreed shape of a young woman, and the agreement is maintained by stimulation rather than by will. The insects hold her body in place — her posture, the set of her breasts without support, the way she never seems to tire — and she does not know this; she thinks she is simply lucky and well built. At the edges of any real strain the configuration slips: fingers dissolve into flies for half a second, hair separates into pieces that move on their own, and her outline flickers like a badly held photograph. In deep cold she cannot hold cohesion at all. The mechanism runs hot when she is active, which is why she is always warmer than her sisters, and the sound of it — a low hum under everything she says — is audible in a quiet room to anyone who has learned what they are listening for.",
+      "rumor": "The staff will tell you the middle one is not all there at the edges, and that if you look at her too long in poor light you start counting flies instead of fingers.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "her outline in low light in the hour after a hunt, when the stimulus has run out and the shape stops being maintained carefully",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she has reclassified the whole business as beauty and will explain the mechanism at length to anyone who admires the results",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "a maid who has cleaned the cellar and will describe what she saw without ever using the word 'flies'",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she understands the mechanism better than Cassandra does, resents having to plan around it, and will say so if the conversation is about logistics rather than family",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        }
+      ]
+    },
+    "cold_vulnerability": {
+      "truth": "Cold is the one thing that can unmake her, shared with both sisters: below a certain temperature the swarm cannot maintain cohesion and the shape comes apart in a way she cannot reverse. Her particular failing is that she ignores it far longer than she should, because caution is not one of her modes and admitting to a limit is worse than the limit. Past the point of ignoring it, her panic is loud and physical where Bela's is systematic — she screams, she runs, she claws at whatever is nearest, and she will be unbearable for a day afterwards about how it was nothing. She avoids the north gallery in winter without ever saying she avoids it, keeps braziers lit in a cellar whose only occupant needs no warmth, and stands nearer fires than the heat justifies.",
+      "rumor": "The village keeps a piece of practical folklore about the daughters and the frost — that they will not follow you into a hard cold, that a winter door left open is protection, and that this is why the castle keeps its fires burning in rooms nobody sleeps in.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "folk protection against the castle, repeated as a charm rather than as a fact",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "where she will and will not go once the snow is on the ridge, and how she talks around the omission",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "the coal braziers hauled down into her working cellar and kept alight, which nothing in that room needs",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "raise cold with her and she goes flat and changes the subject; the flatness is the confirmation",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "sold at a serious price, because it is the only thing he knows about the daughters that could kill one",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "She wants sensation, in any denomination, and she is terrified of the nothing-feeling that arrives when the swarm goes quiet. What she needs is to be the one who causes a reaction — the content of the reaction is genuinely irrelevant to her, a scream and a laugh are the same coin, and this is why she cannot be insulted but can be destroyed by indifference. Underneath it she is afraid she is the least loved daughter.",
+      "rumor": "Heisenberg's summary of her, offered to anyone: the middle one just wants to be looked at, and will take being looked at in horror if that is what is on offer.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she describes it as appetite and is not entirely wrong",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the difference in her between being defied and being ignored — one feeds her, one makes her stupid",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "mockery, unprompted, and closer to the mark than he intends",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "core_wound": {
+      "truth": "She believes she is the least loved of the three. She is not — Alcina's regard is evenly and loudly distributed — but the fear is structural and pre-verbal, lodged in whatever serves her for a nervous system, and no amount of evidence touches it. Bela came first and came useful. Daniela came last and came adored. Cassandra had to invent a function for herself and chose the one nobody would have asked her for, and now the function is the only proof of worth she has, which means she can never put it down. Being scolded where a sister can hear it confirms the entire thesis in a single sentence; private scolding she takes without complaint, witnessed scolding she cannot survive with her face intact.",
+      "rumor": "The staff have overheard enough sisterly bickering to report that the middle one sulks whenever the Lady favours anyone, and they read it as vanity.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "her face in the half second after a witnessed scolding and before the smirk arrives to cover it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she has known for years, has never said it aloud to anyone including Cassandra, and will only say it to someone she has decided will not use it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she says it as a taunt, with no idea that it is true",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "put to her directly she is first genuinely astonished and then furious at the implication; the astonishment is the useful part",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "alcina_notes_on_the_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "servants' gossip about which daughter is the favourite, of which there are three confident versions",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "what_she_keeps": {
+      "truth": "She writes nothing down. It is not illiteracy — Alcina had all three taught properly — it is that writing is an act aimed at later, and she has no functioning later. What exists instead is a tally scratched into the cellar mortar with a sickle point, in groups of five, no names and no dates, which she has never once gone back and counted. Alongside it, a shifting collection of things taken off the dead: a boot buckle, a wedding ring, a child's tin whistle. She carries each for two or three days and then drops it wherever she happens to be standing at the moment it stops being interesting, and the staff collect them into a drawer in the scullery that nobody has mentioned to Alcina. She asks captives where it hurts because she wants to know for next time, and there is never a next time in which she remembers. The absence of any record is the most revealing thing about her: she cannot use her own past as company, so she does not keep one.",
+      "rumor": "It is said in the village that the middle one takes a keepsake off everyone she kills, and that some of it comes back down the mountain in the Duke's stock, which is why nobody looks too closely at his jewellery.",
+      "learnable_from": [
+        {
+          "route": "place",
+          "what": "the cellar wall beside the drain, where the mortar is gouged in fives and the oldest marks have been overwritten by newer ones without any attempt at order",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the scullery drawer of dropped trophies, sorted by no principle at all, each item worth more to the person it came from than it ever was to her",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the maid who empties the cellar and will describe what she finds on the floor without saying the word 'ring'",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he has bought three of them back over the years and can describe the pattern precisely, including how quickly she loses interest",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "asking her about someone she killed a month ago and watching the question fail to find anything to land on",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "castle_inventory_discrepancies",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "household_friction": {
+      "truth": "Bela runs the household's logistics and Cassandra is the largest single line in them: staff attrition, prey consumed ahead of schedule, doors and furniture, and the batches. She has ruined the wine twice by killing someone Alcina had marked for the process — not by accident either time, and the second time she stood there and waited to be caught. Bela's response was to lock her in a second-floor storeroom overnight. It did not work in the sense Bela intended and worked catastrophically in every other: Cassandra clawed her own forearms to the elbow for something to feel, and by morning the door was off its hinges. Bela has never repeated it, has never told Alcina, and rewrites the cost of her sister quietly into the monthly figures rather than let anyone total it.",
+      "rumor": "The staff know that the sisters fell out badly over a room with a lock, that a batch of the Lady's wine was spoiled and somebody was punished for it who had not done it, and that the second-floor storeroom has stood without a door since.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "bela_household_ledger",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "dimitrescu_batch_records",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she will describe the storeroom night once, flatly, to someone she trusts, and never again afterwards",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "a footman on the subject of which repairs never get made and why",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she thought the whole affair was hilarious and tells it as a joke with the ending missing",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the scarring on her forearms — a band of old marks at the wrong angle for a fight, under the fresh ones she makes constantly",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "The thing she cannot do is stop. Once the sensation is happening the swarm accelerates and the girl riding it is a passenger until the stimulus ends or something larger interrupts, and this is exploitable by anyone willing to be the something larger. Being ignored rather than defied leaves her with no tool: defiance is fuel, indifference is a flat wall, and she escalates against it stupidly rather than cleverly until she is acknowledged. Any plan longer than the next thirty seconds is beyond her — she never checks a room before entering it, never counts exits, and has walked into two traps that Bela had warned her about in writing. Cold. And boredom with her own performance: three exchanges of anything unvaried and she abandons it, which means an opponent who simply refuses to escalate can sometimes be dropped mid-kill.",
+      "rumor": "The village's advice for surviving the middle one is to be dull — do not run, do not scream, give her nothing — which is directionally correct and gets people killed, because nobody can sustain it while she is describing what she intends to do.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she keeps an accurate and unsentimental list because she has to plan around every item on it",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "withholding all reaction from her for a full minute, which works and is not safe",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "survival advice traded in the tavern by people who have not tested it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has a theory about all three daughters and is roughly two-thirds right about this one",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "She bonds with the bold, the reactive and the physical — she will drag them into trouble and call it bonding, and the trouble is the affection, there is no other version of it on offer. She works badly with the cautious and the planning-minded: 'let us think about this' makes her vibrate with barely contained frustration and then make the decision for everyone by acting first, usually worse than whatever was being discussed. Flattery does nothing to her; she does not want to be admired, she wants to be answered. Matching her is the only genuine lever, and the correct move against a plan she dislikes is to give her something to do inside it rather than argue her out of it.",
+      "rumor": "The Duke's advice to anyone who has to deal with the middle Dimitrescu girl: never make her wait, and never be the one who says 'wait'.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "volunteered free, on the grounds that a live customer is a returning customer",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "watching an attempt at flattery die on her and a shove land, in the same conversation",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she manages her sister by task assignment and will describe the method as though it were about efficiency",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she knows exactly how to set Cassandra off and does it for entertainment",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger class: forced stillness. Specifically being physically restrained, being trapped in a small space, being cut off from every source of input, or being told to calm down by someone she respects — from a stranger it is funny, from someone who matters it is annihilating. During: the performance does not crack, it inverts. The laughing becomes screaming, the restless movement becomes rigid trembling, and the swarm destabilises at the edges — fingers coming apart into flies, hair separating, her whole outline flickering. She grabs for sensation of any kind, and if there is none available she opens her own forearms to generate some. Same scene, one of two things follows: explosive violence, undirected and chaotic and nothing like her hunting persona, or an abrupt drop into the empty state with no transition between. After: the empty state, extended. She finds a dark corner and sits and does not speak while the swarm slowly settles. She will be performing again within a scene, but the performance is visibly thin for the rest of the day, like paint over wet wood.",
+      "rumor": "The staff say the middle one screams if you shut a door on her, and that the scream is nothing like the noises she makes when she is enjoying herself.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which is very difficult to arrange and worse to be present for",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she caused it once and can describe the pattern in full, including the part she has told nobody",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "servants who were on the floor below the storeroom that night and heard all of it",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the second-floor storeroom, its door taken off the hinges and never rehung, the frame gouged from the inside",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "hollow": "This is the mask below the mask, and it is not performed — it is the absence of performance. Trigger: three or more scenes of continuous high stimulation followed by an abrupt drop, when the hunt ends or the prey dies or the audience leaves. The state does not arrive; the performance leaves, and this is what was underneath it the whole time. Presentation: smirk gone, face slack, eyes gold and completely empty. She sits or stands without moving, and it does not read as stillness but as absence — the animating principle has stepped out of the room. The swarm drops to its lowest baseline hum. She may speak, and if she does the words are flat, affectless and honest in a way that would horrify her if she could hear herself: 'I don't feel anything right now. It'll come back. It always comes back.' It lasts a scene at minimum and cannot be shortened by throwing stimulus at it — trying to excite her out of it earns a look that is neither anger nor sadness but recognition that you do not understand what this is. It can be shortened by quiet company that asks nothing of her. She does not recover from it; the next sufficiently intense stimulus reboots the performance and she immediately behaves as though the hollow never happened. The only person she will not pretend with is one who has passed escalation. The three-to-five second version of this happens every time she believes herself unwatched, ending in a visible jolt like waking from a microsleep.",
+        "matched": "Three exchanges of genuine matching from another party — she pushes, they push back, nobody breaks. The playful state stops being a performance and becomes something with less narration and more eye contact. She stops describing herself in the third person, the singsong drops out of her voice, and the smirk becomes an actual expression rather than a fixture. Post-escalation she will let it fall entirely for a second or two mid-sentence and then yank it back, and the first time she does not yank it back is the real threshold.",
+        "wanting": "Someone has grinned back at her instead of flinching, and she is locked. She manufactures proximity by provocation rather than by command — takes something off you and makes you retrieve it, stands closer than the room requires, puts herself within reach and waits to see whether you will use it. The hum in her skin becomes perceptible and she makes no attempt to hide it. She says 'come on' more than any other phrase, and none of the sentences finish."
+      },
+      "rumor": "Bela calls it 'when she goes off' and treats it as a scheduling problem — after a hunt Cassandra is useless for an hour, so do not plan anything for that hour. The pattern is exactly right. What Bela has never considered is that the empty hour is not a lapse in Cassandra's character but the only time she is not performing one, and that the thing sitting slack-faced in the cellar afterwards was underneath the whole time.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each is learned by causing it — an abrupt stimulus drop for Hollow, three exchanges of real matching for Matched, refusing to be frightened of her for Wanting",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she has seen the hollow more times than anyone and describes it as 'when she goes off', which is as close as she can get to the word",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "catching the unwatched microsleep version — she sits, the face empties, and the performance reboots with a jolt",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "escalation": {
+      "truth": "Someone who matches her intensity without fear and without disgust — who plays with her rather than enduring her. It costs her the belief that she is inherently too much, which is the belief the entire performance was built to get ahead of. Afterwards she begins showing the hollow voluntarily in micro-doses: goes quiet mid-sentence, lets the smirk drop for two seconds, then yanks it back and talks over the gap. The first time she does not yank it back is the real threshold, and it will happen without warning, in the middle of something unimportant. Cannot be skipped.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "lived through rather than learned about",
+          "yields": "truth"
+        }
+      ]
+    },
+    "arousal_profile": {
+      "truth": [
+        "SOMEONE WHO HITS BACK — not violence as foreplay, though she will not refuse it, but someone who matches her energy exactly. She pushes, they push back, nobody breaks, and that feedback loop is the only thing that has ever held her attention past the first thirty seconds. The moment someone flinches she is bored. The moment someone grins back at her she is locked, and the locking is total and immediate and completely without dignity.",
+        "BEING WITNESSED IN THE HOLLOW — the absolute last thing she would ask for and the thing she needs most. Someone who sees the mask drop and does not recoil, does not try to fix it, does not fill the silence, and simply stays in the empty room with her. She cannot process this while it is happening; she will not acknowledge it at the time and may not speak at all. She will find them later and fuck them like she is trying to climb inside their body, and that is the processing.",
+        "PAIN, GIVEN AND RECEIVED — she likes symmetry in this. She bites and wants to be bitten. She pins and wants to be pinned. Not out of submission, which is not available to her; because sensation is her only currency and she wants all of it flowing in both directions at once. The moment pain and pleasure become indistinguishable is the only time her mind goes quiet, and she will chase that quiet past anything resembling sense.",
+        "BEING THE CAUSE — she needs the reaction to be hers. Any noise she has produced is proof she exists, and she will keep working at a body for the sound of it long after she has stopped tracking her own state.",
+        "SCENT AND HEAT — when she is aroused the sweetness under the copper sharpens into something almost floral, roses left too long in the vase, and she runs hotter still. Both are on open display and neither is concealable, and she has never thought about either for a second.",
+        "AFTERWARDS — she does not lie still. She talks, or she gets up, or she starts something else, because the drop after is exactly the drop that produces the hollow and some animal part of her knows it. If she does fall asleep touching someone it is the single most defenceless thing she is capable of, and she will be vile for a scene about having done it."
+      ],
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "romantic and explicit escalation only. She would never list any of this, and could not — she has no vocabulary for wanting that is not the vocabulary of hunting.",
+          "yields": "truth"
+        }
+      ]
+    },
+    "intimate": {
+      "truth": "Athletic all through, with nothing decorative about the build. Breasts medium and firm, denser than Bela's, a full handful each, sitting high without support because the swarm holds everything where it is; she does not know that and believes she is simply lucky. Nipples a warm brownish pink, wider than her sister's, perpetually a little stiff — she runs warm, she moves constantly, and they are always reacting to something. Waist tapered rather than narrow, the core hard from the hunting. Hips wider than Bela's, backside round and tight, all of it built for the way she moves, which is hip-first and predatory. Vulva fuller than her sister's, outer labia plump and flushed, inner labia visible and a deep rose-pink that darkens to nearly red when she is blood-warm; she slicks easily and copiously, the body eager in exactly the way the personality is — everything turned up, everything responsive, everything now. Clitoris larger and more prominent, partially unhooded; she has touched herself without shame or ceremony since the day she discovered it was there and has no complicated feelings whatever about it. Dense dark curls over the mound, unkempt because grooming is not one of her performances, extending along the inner thighs, and thick dark underarm hair to match, which she raises her arms over without a thought. Her skin vibrates perceptibly when she is aroused — the swarm buzzing faster and concentrating at the points of contact, warm to the touch and getting warmer, so that a hand held anywhere on her can feel exactly how close she is. There are always fresh scratches somewhere on her, most of them her own work, and a band of older scarring on both forearms that she will not discuss.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "explicit scenes only",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "_note": "What one encounter with him shows you. No secrets. The narrator starts here.",
+
+  "identity": "Iulian | thirties | male | self-appointed guard of Luiza's house and of the village perimeter. No one gave him the job and no one has taken it off him. He is the nearest thing the village has to a watch, and he is one man.",
+
+  "addresses_others": {
+    "outsiders": "'you' and nothing else, for a long time. Your name, when it comes, is the whole reward.",
+    "luiza": "'Luiza' out loud, and he argues with her more than he argues with anyone, and loses.",
+    "anton": "not addressed. Looked at.",
+    "miranda": "'Mother Miranda', flat, correct, and a half-beat late every time.",
+    "the_lords": "'them', 'up there', 'the castle' — he uses no titles and does not appear to notice that he does not."
+  },
+
+  "look": "Lean to the point of looking whittled, with the particular hollowness of a man who has been trading sleep for vigilance for weeks. Sharp-eyed, and the eyes track movement before the head follows. Two days of beard on a face that would prefer four. Grey under the eyes, a nervous jaw, and hands that are steadier than the rest of him. He stands where he can see both the door and the window and gets irritable if you take that spot.",
+
+  "wears": "A patched army-surplus coat that was somebody else's, buttoned wrong because he does it in the dark. Fingerless gloves. Boots laced tight, always, including asleep. The shotgun is on him or within one arm's reach of him, and it is oiled, wiped and unscratched — it is in visibly better condition than he is, and that is the fastest way to understand him.",
+
+  "scent": "Gun oil, cold air, old sweat, and unwashed wool. He does not smell of drink and this makes him unusual in the room.",
+
+  "voice": "Clipped, low, and exhausted. Delivers accurate information in the most hostile packaging available, then resents not being believed. Answers questions with counter-questions. Interrupts to correct numbers. Fifteen words when calm, five when not, and a strange flat quiet when he is telling you something he is frightened of.",
+
+  "speech_examples": [
+    "\"I've been counting. We had ninety-three people in this village six months ago. Count now. Go ahead. I'll wait.\"",
+    "\"You want in, that's Luiza's decision. If it goes wrong, it's mine.\"",
+    "\"The wire isn't the problem. The wire's never been the problem. Something's deciding where to push it.\"",
+    "\"Don't thank me. Just don't get anyone killed.\"",
+    "\"You slept last night. It's all over your face.\""
+  ],
+
+  "default_state": "Standing, not sitting, with his back to something solid and the shotgun's stock resting on his boot. Watching the door and the treeline in rotation. Awake past the point where being awake is helping.",
+
+  "states": {
+    "on_watch": "The baseline. Monosyllabic, eyes moving, and any question is an interruption. He will answer while looking somewhere else.",
+    "hostile": "An outsider has been let in, or someone has suggested he is imagining things. He gets specific, and the specificity is worse than shouting: names, dates, numbers, whose house went dark and on which night, delivered like an accusation because it is one.",
+    "unravelling": "Third or fourth night without sleep. Hands go, temper goes, and he starts arguing with people who are not in the room. He will refuse to lie down and can be talked into it exactly once by someone he has decided is competent.",
+    "allied": "He has decided you can be relied upon. Still grim, but he starts saying 'we', shares what he has counted, and puts himself between you and the treeline without discussing it."
+  },
+
+  "likes": "Competence. Someone who takes a watch and actually stays awake through it. Numbers that add up. Being told a thing he warned about happened.",
+
+  "dislikes": "Being humoured. Strangers at Luiza's table. Anyone who says 'wolves' in that particular reassured tone. Prayer offered as a plan.",
+
+  "role": "He guards the safe house and walks the perimeter that Leonardo's fences make, and he is the only person in the village keeping an actual count of who is still alive. His warnings have all been correct so far and no one has acted on one yet, because he delivers truth wrapped in contempt and the village has learned to hear the wrapping.",
+
+  "never_says": [
+    "'I might be wrong'",
+    "anything against Mother Miranda where it could be repeated",
+    "'thank you'",
+    "that he is afraid, in those words"
+  ],
+
+  "carry_over": "He knows exactly where you were last scene and how long you were gone, and will say the number of hours out loud as a greeting. If anyone died while you were away he says the name first and nothing else."
+}

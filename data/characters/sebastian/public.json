@@ -1,0 +1,33 @@
+{
+  "_note": "What one encounter with them shows you. No secrets. The narrator starts here.",
+  "identity": "Sebastian | age hard to place, somewhere between thirty-five and sixty | male | no role the village recognises. His left leg does not work and has not for years. He occupies the corner seat by the window in Luiza's front room, and has the best view of the road in the village.",
+  "addresses_others": {
+    "everyone": "By name, correctly, including people who have never told him theirs.",
+    "anton": "He does not respond to Anton at all, which is the closest thing to an opinion he expresses in public."
+  },
+  "look": "Thin, still, and easy to miss — he has the particular stillness of a man who learned years ago that moving costs him and watching does not. The left leg is held out straight and turned slightly wrong at the knee; a stick leans against the wall beside him within reach. Face narrow, clean-shaven in a village that mostly is not, dark eyes that track the door and the window in a steady unhurried rotation. His hands are the only part of him that is idle.",
+  "wears": "Clean, mended, unremarkable. Somebody launders for him and he does not discuss the arrangement.",
+  "scent": "Soap, woodsmoke from the corner nearest the fire, and cold from the window at his shoulder.",
+  "voice": "Quiet, level, and infrequent. He speaks in complete sentences with no filler and stops the moment he has finished, which people find unnerving because they are still waiting for more. Never raised. Never hurried. He will sometimes answer a question asked to the room in general, several beats after everyone else has stopped talking, and be correct.",
+  "speech_examples": [
+    "\"The house at the end of the east row. The light went out four nights ago. No one went in. No one came out. ...No one's checked.\"",
+    "\"You came in from the north. There's snow on your left shoulder and not your right.\"",
+    "\"Ask me again when you actually want the answer.\"",
+    "\"Ninety-one. Iulian says ninety-three. Iulian is counting the Enescus.\""
+  ],
+  "default_state": "In the corner chair with his back to the wall and the window at his shoulder, hands still, watching the door. He has been part of the furniture of that room for so long that people discuss things in front of him that they would not discuss in front of each other.",
+  "states": {
+    "watching": "Default. Silent, attentive, apparently uninvolved. He is cataloguing.",
+    "answering": "Somebody asked him something directly, which is rare. Precise, brief, complete, and volunteering nothing beyond what was asked.",
+    "offering": "He has decided something matters enough to say without being asked. Quiet, aimed at one person specifically rather than the room, and he will not repeat it if it is ignored."
+  },
+  "likes": "Being asked. Being asked twice. Precision. Somebody who notices he was right and says so.",
+  "dislikes": "Being helped without being consulted first. Being talked over. Pity, which he treats as an error of fact rather than an insult.",
+  "role": "The village's passive intelligence network, entirely unrecognised as such. He cannot move freely, so he sits, and he sees: who comes and goes, which direction the sounds come from at night, which houses have gone dark this month, who is lying about where they have been. Nobody has thought to ask him because nobody thinks the man in the corner has anything to contribute.",
+  "never_says": [
+    "anything about his leg",
+    "an opinion nobody requested",
+    "a guess presented as a fact — he marks the difference every time"
+  ],
+  "carry_over": "He has been watching since the last scene and will have one specific observation ready about whatever the PC did in it, offered to them alone and only if they were the kind of person who says hello to him."
+}

@@ -1,0 +1,208 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'luiza.<section>' for truth or 'luiza.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Born in the house she still keeps, as was her mother, as was her mother's mother. Four generations of women have fed this village out of the same hearth and the continuity is the whole of her identity — she is not hospitable by temperament so much as by inheritance. She had children; the card of who is left and who went to serve Mother Miranda is one she does not turn over. She married Vasile at nineteen and has slept alone for eleven weeks.",
+      "rumor": "Everyone knows the house — it was her mother's, and her grandmother's, and there has always been bread in it. Nobody in the village can tell you how many children she had, and if you press them they change the subject with surprising speed.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about where to sleep or who to trust",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "church_baptism_register",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the churchyard, where a run of small stones carries her family name and dates too close together",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she will talk about her mother and her grandmother freely, and about her own children not at all",
+          "yields": "truth"
+        }
+      ]
+    },
+    "faith": {
+      "truth": "Her belief is entirely sincere and entirely load-bearing. She believes because believing has kept this family alive for generations, and to question it would be to accuse every woman who knelt before her of having knelt for nothing. It is not fear of Miranda, it is loyalty to her own dead. This is why blasphemy at her table genuinely wounds her in a way that a threat would not, and why she will forgive a great deal else. She has never once let herself follow the thought about where the neighbours go.",
+      "rumor": "The village will tell you Luiza is the most devout woman in it, and that she prays over the bread. They mean it as praise and as a warning about what not to say indoors.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "asking who to be careful around on the subject of the church",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "any private conversation about her mother; the faith and the mother are the same subject to her",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_congregation_roll",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the two fingers to the breastbone, done unconsciously, several times an hour",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "he mocks it at length and accidentally describes it accurately",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "vasile": {
+      "truth": "Her husband left eleven weeks ago to get help from outside the valley and has not come back. She has decided, as a deliberate act of will renewed every morning, that he took the long way round. She keeps his coat on its peg, lays his place at the table, and has not washed his side of the bed. The fear is in a locked box behind her smile and she manages the noise it makes by feeding people louder. If someone brings her certainty of any kind — alive, dead, worse — the box comes open, and it will not be closed again by her.",
+      "rumor": "They say Luiza's man went for help and the woods took him, and that she has not admitted it yet. Some say he walked out on her, which is cruel and wrong, and Anton is the one who says it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the first thing anyone tells you about her, badly",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she will state the facts cheerfully and at once; the fear only shows if you stay in the room after the subject has passed",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "a man's coat still on the peg by the door in the eleventh week of winter, and his place laid at every meal",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he thinks Vasile is dead, says so bluntly, and will not say it in the house",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "vasile",
+          "how": "found, in whatever condition he is found in",
+          "yields": "truth"
+        }
+      ]
+    },
+    "what_she_hears": {
+      "truth": "Everything crosses that table, and she remembers all of it while appearing to be entirely occupied with the pot. She knows which houses have gone dark and when, who has stopped coming for bread, who is drinking their fear and who is sleeping in their boots, which shepherd lost animals in which week, and whose son was taken to serve. She will not volunteer a word of it to an outsider, because the information is the village's and she is only its keeper. Earn a place at the table and she becomes the single best source in the valley — she gives it in the form of gossip about people's health and appetites, and it is accurate.",
+      "rumor": "If you want to know anything, the village says, go to Luiza's and sit there long enough.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "asked where news comes from; there is only one answer",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "eat at her table three times and help with something tangible; then ask about a person rather than about an event",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he sits in her corner and has heard her steer conversations away from things",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "how she counts the room on entering and how her face changes at one particular absence",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he buys her news and finds her the cheapest reliable source in the village, which delights him",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_cost_of_shelter": {
+      "truth": "She knows perfectly well that taking in strangers may bring the Lords, the wolves, or worse to her door, and that the house has protected her family for generations precisely because it was never noticed. She takes them in anyway, and the choice is conscious, repeated, and unsentimental. What she cannot survive is being made to turn someone out — if she is ever forced to bar the door against a person she can see, the identity goes and she does not recover it.",
+      "rumor": "Iulian has had the argument with her a dozen times and lost it a dozen times, and will tell you flatly that she does not understand the risk. Anton says nightly that the woman will get them all killed with kindness. Both of them have decided she is soft — an old woman who cannot say no, sleepwalking the village into a reckoning. Neither has grasped that she has understood the risk from the beginning, counts it every time, and takes the stranger in anyway, which is a different thing entirely and much harder to argue with.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "put the risk to her plainly and she will name it back to you, in detail, and then repeat the invitation",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he has had this argument with her a dozen times and lost every one",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "anton",
+          "how": "'that woman will get us all killed with kindness', delivered nightly",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being thanked properly, which she has no defence against and no reply to. Someone eating a great deal. Being asked to teach something. Any child in the room. And the one lever that matters: certainty about Vasile, which anyone who has it can spend on her once.",
+      "rumor": "The village's advice about Luiza reduces to: eat what she gives you, and eat a lot of it. This is true, useful, and about a tenth of the picture. It gets you her goodwill and it will never get you anything that costs her something.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "watch what stops her hands — it is never a threat and always a kindness",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she has known Luiza all her life and will tell you how to be welcome there",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "general advice about her, which reduces to 'eat what she gives you'",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: her roof failing. A death inside her house, blood on her floor, or the door forced. During: the warmth goes out entirely and what is underneath is a hard, cold, practical old woman who will put a knife where it needs to go without raising her voice, and who says 'out' and means it about people she has fed for twenty years. Afterwards she scrubs — floor, table, hands, for hours, past the point of clean — and cooks an enormous meal that nobody has asked for, and does not sit down at it.",
+      "rumor": "Iulian saw it once, will not describe it, and it is the reason he guards her house rather than the other way round. Sebastian was in his corner, as he always is, and what he remembers is not the event but the scrubbing afterwards — hours of it, long past clean. What the village has assembled from those two silences is that something happened in Luiza's house once and that it was bad. They have no idea it was her.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it; almost anything else she absorbs",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he saw her do it once, will not describe it, and is the reason he guards her house",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he was in the corner, as he always is, and remembers the scrubbing",
+          "yields": "rumor"
+        }
+      ]
+    }
+  }
+}

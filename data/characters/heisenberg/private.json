@@ -1,0 +1,454 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'heisenberg.<section>' for truth or 'heisenberg.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "German-Romanian lineage, and a working engineer or machinist long before Miranda took an interest in him. The skills predate the mutation entirely — the factory is not a gift of the Cadou, it is a trade he already had, wired afterwards to a power that could operate it at scale. He survived the Cadou when better-behaved subjects did not, and the survival is the only thing about Miranda's project he will grant any credit to, because it was his body that did the work. What she gave him was electromagnetism. What he does with it he learned with his hands.",
+      "rumor": "The village holds that the man in the factory was a mechanic from somewhere else, brought in or dragged in, and that he was making things down there before Mother Miranda ever blessed him.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about the factory's noise, or about who lived there before",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "purchased cheaply; the Duke has sold him steel for years and knows precisely how much of it was ordered by a man who understood it",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_subject_designations",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "a set of hand tools kept oiled and squared away on the workshop wall — pre-war, worn to the shape of his grip, and maintained better than anything else he owns",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he will talk about the trade freely and at length if you show him you know a tolerance from a guess; it is the one biography he is proud of",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_engineer_beneath": {
+      "truth": "Beneath the Lord and the arsenal there is a man who liked making things that worked. His earliest drawings in the factory are not weapons: a water pump, a governor for a mill wheel, a prosthetic hand articulated at every joint, drawn and redrawn with a patience nothing else in his life receives. He has never destroyed them and he has never shown them to anyone. In the Scheming state this man is the one talking, which is why that state is the only one in which he is not performing. The showmanship is armour over a craftsman who was told his work was raw material.",
+      "rumor": "Some of the older villagers say the factory used to make things a person could use, before it started making soldiers.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "heisenberg_early_drawings",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the articulated hand itself, half-finished on a bench in a part of the workshop that is otherwise clear of clutter",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "watching what he does with his hands when he is thinking and believes nobody is reading him — he builds, absently, out of whatever is on the bench, and then pockets it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "an old man who remembers a pump that worked",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "high trust, in Scheming, and only if you ask about a specific drawing rather than about him",
+          "yields": "truth"
+        }
+      ]
+    },
+    "miranda_hatred": {
+      "truth": "He fantasises daily about killing her with the powers she gave him, and the symmetry of that is most of the pleasure. It is not the rage of a man who was wronged once; it is maintenance, performed every morning, like oiling a machine he intends to use. What he cannot forgive is not the pain of the Cadou but the category she filed him under: a tool, and a promising one. He performs exactly as much loyalty as keeps her from looking closely, and he is very precise about the amount. Miranda reads the noise and the insolence as venting — a difficult instrument that needs to make a sound to keep working — and that misreading is the single largest blind spot she has regarding the Four Lords.",
+      "rumor": "Everyone in the valley knows the man in the factory hates Mother Miranda. He says so constantly, and the other Lords have long since stopped finding it interesting; it is treated as his personality rather than his intention.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "freely, unprompted, as gossip about the loud blasphemer in the factory",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she will describe the shouting with distaste and dismiss it in the same breath — 'the loud one barks at Mother and Mother lets him'",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she will characterise him fondly as a temperamental asset; every word of it is wrong and she does not doubt it",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_heisenberg",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he needs almost no prompting to say he hates her; the truth is the difference between the way he says it in company and the way he says it once, quietly, with the cigar unlit",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the gap between his performance at a gathering of Lords and his conduct in the factory an hour later — the loyalty is calibrated, not felt",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_cage": {
+      "truth": "Miranda caged him. That is the wound and the whole architecture of the man is built around not being caged again — the factory with its hundred exits, the refusal to be anyone's subordinate, the army. He is afraid of nothing he will admit to, and what he is actually afraid of is being held: restrained, negated, made to wait somewhere he cannot leave. He will burn the entire valley before he lets anyone put him back in. There is still a cell in the factory's lower levels — kept, not repaired, not removed — with marks scored into the inside of the metal where he counted something, and the scoring is deep enough that it was not done with a fingernail.",
+      "rumor": "Moreau was made to watch part of it and cannot get through a sentence about it without apologising for having been there. What comes out in fragments is that Mother Miranda had to correct Karl once, that it was terrible, and that Karl had brought it upon himself by refusing her — which is the only version of the story in which Miranda is still good, and therefore the only version Moreau can hold. He has the event. He has the cause exactly backwards, and he will defend the backwards version if pressed.",
+      "learnable_from": [
+        {
+          "route": "place",
+          "what": "the holding cell in the factory sub-levels, deliberately preserved, marks scored on the inside of the door",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_heisenberg",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "witnessing the Cornered state, or noticing that he never lets a door close fully behind him and never sits with his back to one",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he was made to watch part of it and has never been able to talk about it without apologising for having watched",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he will never raise it. Only after the Cornered state, and only if you do not name it — he answers a question that was not asked and then makes a mean joke",
+          "yields": "truth"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "He wants Miranda dead by his hand and on his terms — the hand and the terms matter as much as the death, and an ally who kills her for him has robbed him. He needs allies and refuses categorically to be anyone's subordinate in acquiring them, which makes every alliance he attempts structurally unsound before it starts. Underneath: he intends to take the Megamycete's power for himself once she falls, and he is not afraid of anything he would name aloud. What he is afraid of is the cage.",
+      "rumor": "The other Lords assume he wants what any of them would want — Mother Miranda's place, and the noise is him building up his nerve.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "the Recruiting state gives you the first half within minutes; he leads with it because it is his pitch",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she assumes ambition in every Lord and is broadly right about him, though she badly underrates how far along he is",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "sold at a fair price, phrased as advice: 'He does not want a partner. He wants a lever he can respect.'",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "noticing that he corrects people who offer to do the killing for him, every single time, and cannot explain why without sounding sentimental",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_plan": {
+      "truth": "Build the Soldat army. Recruit someone powerful enough to distract or weaken Miranda. Strike during the chaos. Seize the Megamycete. He has been at step one for years, under cover of serving the project, and the army in the factory's lower halls is orders of magnitude larger than anything Miranda has been told about — the sanctioned production figures and the actual racks disagree by a factor he keeps in his head and has written down exactly once. The plan is good. The plan is, in engineering terms, sound. Its only flaw is step two, and the flaw is him: he needs help, he despises needing help, and so he presents the alliance as 'you work for me' rather than 'we work together'. That framing has cost him allies before and he has not yet accepted that it was the framing.",
+      "rumor": "It is said the factory is making an army, and that it is Mother Miranda's army, for whatever she is preparing the valley for.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "everyone has heard the hammering at night and drawn the obvious wrong conclusion about whose army it is",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the deep assembly halls — get far enough down and the scale answers the question by itself; there are more racks than the project could ever have ordered",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "factory_production_tally",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "heisenberg_soldat_schematics",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "the Recruiting state, once he has decided you are powerful enough to be step two. He will describe it as an opportunity he is generously extending",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "expensive, and he will not be drawn twice on it — he knows the tonnage of steel he has moved and what it does not add up to",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "megamycete_ambition": {
+      "truth": "After Miranda falls he intends to take the Megamycete's power himself. This is the part he does not mention when recruiting, and the omission is deliberate rather than forgetful — he has a form of words ready for the moment someone asks, and it is evasive enough that a careful listener will notice the evasion. He does not consider this a betrayal of anyone. He considers it the reason the plan is worth executing.",
+      "rumor": "Miranda speculates about his intentions freely, being the only other person who understands what the Megamycete can be used for. Her conclusion is that he wants to destroy it — that his rebellion is vandalism, an ungrateful animal wanting to break the thing it was made from. She is certain enough to say it aloud. It has never entered her consideration that he might want to *use* it, because she cannot picture anyone coveting her position rather than merely resenting it, and that blind spot is the widest gap in her defences.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "heisenberg_contingency_notes",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "asking him, mid-pitch, what happens to the Megamycete afterwards, and watching him answer a slightly different question",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she is the only other person who understands what the Megamycete can be used for, and she will speculate about which of her Lords would try it — she does not suspect him first",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "only in Something-like-respect, and he says it as though you had obviously already worked it out",
+          "yields": "truth"
+        }
+      ]
+    },
+    "needing_help": {
+      "truth": "He cannot execute step two alone and he knows it, and the knowing is intolerable. So every alliance is offered as employment: 'you work for me', terms already set, no negotiation invited. Push back on the framing and he gets louder, then quieter, then he changes the framing without acknowledging that he has done it — the concession arrives disguised as a joke. Accept the framing and he will use you exactly as stated. The people who have lasted longest around him are the ones who refused the first offer.",
+      "rumor": "The Duke's read: nobody has ever taken Karl Heisenberg's first offer and been glad of it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "volunteered free to anyone heading for the factory, because a live customer is a returning customer",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "refusing his terms once and watching the terms quietly improve",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she has been offered the partnership and found the phrasing so insulting that she can quote it verbatim",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he will never state it. 'You're useful' is the closest he comes, and it means the whole of it",
+          "yields": "truth"
+        }
+      ]
+    },
+    "betrayal_profile": {
+      "truth": "He will betray anyone who is not useful to him after Miranda falls. This is not malice, it is architecture: he has designed a plan with one throne at the top and in his head he is already sitting in it, and there is no second chair in the drawing. The betrayal arrives the moment she dies and the power vacuum opens — not from a change of heart, but because that is the point at which the design requires it. He does not experience himself as treacherous, which is precisely what makes him dangerous to trust; ask him whether he would turn on you and he will say no and mean it, because in his head the turning is not a decision, it is a step in a sequence.",
+      "rumor": "It is put about that Karl Heisenberg has never had the same partner twice, and the usual explanation is that he is impossible to work with. That explanation flatters him.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "very expensive, and all he will sell is the pattern rather than the reason — he has watched collaborators arrive and not leave",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she says he would sell his own hands, and she says it to wound rather than to inform; she is right for the wrong reasons",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "heisenberg_contingency_notes",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "a corner of the workshop where the effects of a previous collaborator are still stacked, dusty and unsorted, next to a bench that was cleared for two people and has since been cleared for one",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "reading the plan's own structure once the_plan and megamycete_ambition are both known — the seat count is the whole tell, and no conversation will produce it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "the deepest thing on the card. He will only ever admit it once the betrayal is already off the table — in Something-like-respect, all three prevention gates passed, and he frames it in the past tense as though describing an earlier draft: 'There was only one chair. You noticed.'",
+          "yields": "truth"
+        }
+      ]
+    },
+    "betrayal_prevention": {
+      "truth": "The betrayal can be prevented, but only by someone who has earned enough respect that his mental architecture has to restructure to accommodate a second chair. Three things, all of them, in order. First: match him in a fight or a standoff — not defeat him, match him, so that he cannot file you as a tool or an obstacle. Second: call out the plan to his face without flinching, including the part about the Megamycete he did not mention. Third: propose something better that still leaves him free, because a proposal that ends with him managed or contained is the cage and he will burn it and you. Skip one and the betrayal is back on the table, silently, with no warning given. Do them out of order and the later ones do not register — the fight has to come first, because until it has happened he is not listening to a person.",
+      "rumor": "The Duke has noticed a third of it and drawn a confident wrong conclusion, which he will sell you cheaply: hit him once, properly, and he will love you for it. The first part is real — matching Karl physically does change how he files you. The Duke has not seen the two steps after it, and does not know there are two steps after it, so anyone who buys this and stops there has bought a man's respect and left his plan entirely intact.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "lived rather than learned; the sequence can only be discovered by doing it, and the only confirmation offered is a cigar handed over without comment",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he has noticed one third of it and drawn the wrong conclusion — 'hit him once and he'll love you for it' — which will get someone killed at gate two",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he will never articulate this and does not consciously know it. The cigar is the articulation",
+          "yields": "truth"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "Works with: bold, practical, anti-Miranda, and does not flinch. For those he adopts a gruff almost-camaraderie — shoulder-claps, insults that are nearly affectionate, the volume turned up rather than the edge. Works badly: cautious, diplomatic, patient, anything that smells like Miranda's manner of speaking. 'You sound like HER. Don't ever sound like her.' Being managed is the fastest route to the Hostile state, and being pitied is the fastest route to something worse. Flattery does nothing. Competence does everything, and competence with your hands does it twice.",
+      "rumor": "The Duke's standing advice for the factory: swear at him, do not soothe him, and never say the words 'let us be reasonable'.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "volunteered free and repeated to anyone who did not listen the first time",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "watching one direct answer land and one diplomatic one curdle in the same conversation",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he has been on the wrong end of it for years and can list every subject that makes it worse, mostly by having said them",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the ones who deliver to the factory gate have worked out exactly how to speak to him and will pass it on for a kindness",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being managed — he can smell it and it makes him stupid. Being pitied, which is worse, because it briefly stops him functioning. Anyone who fails to be categorisable as either a tool or an obstacle occupies a disproportionate amount of his attention, and that attention is exploitable. His powers require ferrous material and someone who has stripped the metal off themselves is, for the first few seconds, a person he has no plan for. And the deepest one: restraint or negation of the field drops him straight into Cornered, which is a weakness in the sense that it makes him lethally unpredictable rather than harmless.",
+      "rumor": "Alcina knows condescension works on him and deploys it at every gathering without ever having wondered why it works; her account is that he is a thin-skinned mechanic who can be reduced to shouting by being spoken to slowly. Donna, who has watched him from a distance for years, has the stranger and closer read — that being handled kindly does something worse to him than being handled badly — but she cannot articulate it, and what reaches you through Angie is mangled into an insult.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "arriving carrying nothing ferrous and watching him recalculate",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "she has watched him from a distance for years and understands, in her own oblique way, that being handled kindly hurts him more than being fought",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_heisenberg",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she knows condescension works on him and deploys it at every gathering; she has never wondered why it works",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: being physically restrained, or having his powers negated — the cage, the thing Miranda did to him. During: every scrap of performance drops away and the sarcasm simply stops, which is the most frightening thing about it. What is underneath is feral, panicked fury — an animal in a trap — with the electromagnetic field spiking wildly and every piece of metal in the room shaking loose, dangerous to everyone present including anyone he likes. After: he will not mention it. He lights a new cigar and his hands are unsteady for a full scene. Bring it up and he makes a joke, and the joke is mean, and the eyes behind the glasses are flat.",
+      "rumor": "There is a section of factory plating torn outward from the inside and bolted back on crooked, never properly repaired, and anyone who has been that deep into the building has seen it. Moreau saw the thing that did it and describes it in fragments, badly, still frightened years later: that Karl went wrong, that the metal came off the walls, that it was not aimed at anybody. The conclusion drawn from the wall and the stammering together is that Heisenberg has a temper that occasionally takes the building with it — a big man's rage, scaled up. Nobody outside that room knows it was panic.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which is survivable only with distance and something non-ferrous to stand behind",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she caused it once, deliberately, and refers to the result as a calibration",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he saw it happen and describes it in fragments, badly, still frightened",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "a section of the factory wall where the plating was torn outward from the inside and then bolted back on crooked, never properly repaired",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "cornered": "Trapped, restrained, or the field negated. See loss_of_control — this is not a mood, it is the trap closing. The performance goes, the volume goes, and what is left does not recognise anybody in the room.",
+        "something_like_respect": "Someone has passed all three betrayal-prevention gates, in order. The sarcasm stays — it is load-bearing and it is not going anywhere — but the edge softens out of it. He brings you a cigar without being asked. He leans shoulder-to-shoulder instead of standing across from you, and he starts saying your name instead of a nickname, without ceremony, as though he always had. He will never articulate any of this. The cigar is the articulation."
+      },
+      "rumor": "He denies both of them exist, in exactly the same tone, which is the most informative thing he does. Ask whether anything gets under his guard and you get the same flat sardonic dismissal you get for asking whether he has ever respected anyone — and the identical delivery for two very different questions is itself a tell, if you are counting.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each state is learned by causing it — restraint or field negation for Cornered, the full three-gate sequence for Something-like-respect",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he denies both states exist, in the same tone, which is itself informative",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "escalation": {
+      "truth": "One thing changes him, and it cannot be skipped or rushed: somebody who refuses to be his subordinate and then does not leave. He is entirely equipped for people who submit and entirely equipped for people who walk out; he has no protocol whatsoever for someone who says no to the terms, says it once, and is still standing in his factory the following week. It costs him the belief that every relationship is either a lever or a load. Afterwards he starts asking rather than instructing, and the asking comes out clipped and irritable and he will not explain it. He will also, without announcing it, begin building for two.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "lived through rather than learned about",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the tooling on the second bench, and who it is sized for",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

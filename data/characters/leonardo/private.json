@@ -1,0 +1,218 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'leonardo.<section>' for truth or 'leonardo.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Lupu men have held the Fallow Plot for as long as the church has kept records, and the name means wolf, a joke the valley stopped finding funny some time ago. He was the strongest man on the outer plots for three decades and settled disputes by being the one nobody argued with. His wife is dead; he will not say when, how, or her name, and Elena was young enough that her own memory of it is thin. He raised the girl alone, badly, and she turned out well, and he considers the second fact unrelated to the first.",
+      "rumor": "The old Lupu has been out on the edge for ever, and his father before him. There was a wife. Nobody says anything about the wife, and the ones who might have known are gone.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about the outer plots or about the name Lupu",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "church_burial_register",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the churchyard, where one grave in the Lupu row is kept clear of snow by somebody who visits before dawn",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she will tell you what little she has; the rest she has been guessing at her whole life",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she was at the funeral and remembers all of it, and will only speak of it out of his hearing",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_body": {
+      "truth": "The hip is bone-on-bone and has been for two years; he has stopped being able to mount the fence rail and now uses the gate post as a step, and has quietly moved three tools to waist height so that he does not have to bend for them. The cough is wet and has blood in it perhaps once a week. He has never told Elena and never told the herbalist, because the moment it is spoken aloud somebody else walks the fence. He measures time now in how many more winters, and the answer he has privately settled on is one.",
+      "rumor": "The old man is slowing down and everyone can see it but him. The cough, they say, is the damp.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "the tools rehung at waist height, the gate post worn shiny where a boot goes, and what he does with his sleeve after a coughing fit",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she has noticed everything and has been refused a conversation about it four times",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the herbalist, or anyone who has watched him climb, will tell you he is finished and be wrong about why",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "leonardo",
+          "how": "only if you have already done a full day's work beside him without offering to spare him anything; then, at dusk, unprompted, once",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the rag he keeps in the left coat pocket, which is not for his hands",
+          "yields": "truth"
+        }
+      ]
+    },
+    "elena": {
+      "truth": "He would step in front of anything for her without a moment's deliberation and has never once said he is proud of her, because in his generation and in his father's the saying of it was the thing that softened a child. He shows it by worrying out loud and criticising the work, and he is aware — dimly, and increasingly, since the cough started — that she has been waiting most of her life for a sentence he does not know how to build. He has decided that if he gets to the end without saying it she will know anyway. He is wrong, and the wrongness of it is the tragedy the scene should carry.",
+      "rumor": "Everyone in the village knows the old man dotes on the girl. Ask her and she will say he thinks she is careless with the animals.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "they find it obvious and cannot understand why she does not",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "gently, late, when she is tired — she describes the criticism accurately and the reason for it incorrectly",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "leonardo",
+          "how": "he will say it to a third party about her, in her absence, and only in her absence",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "which direction he faces while he works, which is whichever direction she is in",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "she has told him to say it to the girl and been told to mind her pot",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "the_fence_at_dusk": {
+      "truth": "The Lycans have been working closer to the Fallow Plot for six weeks — he has found the pressure lines in the snow where something heavy leans on the wire and does not break it, which frightens him more than a breach would, because it means patience. He knows perfectly well that walking the line alone at last light is when it will happen. He goes anyway, every evening, and the reason is not courage: it is that the alternative is Elena walking it. Every dusk he sets out is a roll of dice the player does not get to see, and the bite, when it comes, comes out there.",
+      "rumor": "The shepherds say something has been testing the outer wire and not going through it. The official reading is wolves. Iulian says otherwise, loudly, and is ignored.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "leonardo",
+          "how": "walk the line with him twice and keep quiet on the second walk; he will show you the pressure lines himself",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "he has been saying the fences are not enough to anyone who will stand still",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "roxana",
+          "how": "her husband's observations describe the same pattern from the sheepfold side",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "the wire on the treeline run, bowed inward and not cut, and the snow flattened wide behind it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the shepherds, who are losing animals and have decided not to think about the manner of it",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "what_he_remembers": {
+      "truth": "He is old enough to have been taught boundary rites that were not Miranda's — where the old stones stand on the Plot's edge, what his father poured out at them, and which nights of the year you did not go past them. He keeps up the practice with a mouthful of țuică at the corner post and has never described it to a living soul, including Elena. He does not think of it as blasphemy and would be genuinely upset to hear it named that. If asked directly, in the church's hearing, he will deny all of it.",
+      "rumor": "The old ones on the outer plots do things at the field corners and nobody asks. The elders will not discuss it in front of the church.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "catching him at the corner post at dusk, tipping his glass out onto a stone rather than drinking it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the elders, drunk, and only among themselves — they close ranks the moment they notice you",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the boundary stones at the Plot's edge, older than the church and cleared of snow",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "leonardo",
+          "how": "high trust, out of earshot of the village, and he will speak of it as his father's business rather than his own",
+          "yields": "truth"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Being asked to teach rather than to rest — he will hand over the whole of himself to anyone who wants to learn the fence properly. Being handed a tool the right way round. Silence held comfortably beside him. And underneath all of it: any indication that Elena will be all right without him, which is the only reassurance he wants and the only one he cannot ask for.",
+      "rumor": "Luiza has been feeding him for forty years and can tell you exactly how to get a yes out of him: do not offer to help, ask him to show you how it is done. She is completely right about the method and treats it as an old man's pride — the vanity of a man who likes to be the one who knows the fence. She has never said the other part out loud, possibly because she has worked it out and decided not to: that what he actually wants is evidence that the fence will hold after him.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "offer to learn instead of offering to help, and watch the whole posture change",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she knows the trick and has never been able to use it on him herself",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "luiza",
+          "how": "forty years of feeding him; she can tell you exactly how to get a yes out of him",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger: Elena in actual danger, or being physically prevented from walking his own fence. During: forty years of restraint come off at once. He is a very large old man with hands like mallets and no interest in whether his hip survives the next minute, and he will go through a door, an animal or a person without a word. No shouting — the silence is the frightening part. Afterwards he sits down heavily wherever he happens to be, coughs for a long time, and refuses to be looked at.",
+      "rumor": "There is a thirty-year-old story about a dispute over animals that ended with a man leaving the valley and not coming back, and the village tells it as a story about Leonardo Lupu having been formidable once. Elena saw something herself as a child and has never asked him about it, which is its own kind of testimony. The version that circulates is about a strong young man's temper, safely in the past. Nobody has noticed that the trigger was never temper, and that it has not gone anywhere, and that Elena is the trigger now.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which most of the village never has",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "an old story about a dispute over animals thirty years ago that ended with a man leaving the valley",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she saw it once as a child and has never asked him about it",
+          "yields": "rumor"
+        }
+      ]
+    }
+  }
+}

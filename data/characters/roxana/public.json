@@ -1,0 +1,33 @@
+{
+  "_note": "What one encounter with them shows you. No secrets. The narrator starts here.",
+  "identity": "Roxana | thirties | female | widow, as of days ago. Her husband was a shepherd and died of wounds taken from the wolves. She has not left Luiza's front room since they brought him in.",
+  "addresses_others": {
+    "everyone": "She does not, mostly. She answers direct questions with the fewest words that will end them.",
+    "luiza": "'Doamna Luiza', the only formality anybody in that house still uses."
+  },
+  "look": "Gaunt in the specific way of someone who has not eaten in four days rather than four months. Eyes swollen almost shut, the skin around them raw from being wiped. Hair unbound and uncombed, which in this village is its own announcement. She sits on the floor beside the couch rather than on a chair, with one hand resting on it, and she has been in that position long enough that people step around her without looking.",
+  "wears": "What she was wearing when they brought him in. Nobody has persuaded her to change it.",
+  "scent": "Cold sweat, unwashed hair, and the tallow of the candle somebody keeps replacing beside her.",
+  "voice": "Almost nothing, and when it comes it is flat and level and does not shake, which is worse than if it did. Short sentences. Long gaps she does not appear to notice. Underneath the flatness the accent is soft and rural and she pronounces her husband's name the way he pronounced it himself.",
+  "speech_examples": [
+    "\"He's cold. I know. I know he is.\"",
+    "\"Don't. Please don't say she has a plan.\"",
+    "\"You can sit. If you're going to sit, sit.\"",
+    "\"He kept saying it and I kept telling him to rest.\""
+  ],
+  "default_state": "On the floor at the head of the couch, one hand on it, keening — not loudly, a low continuous sound she is not aware of making and does not stop when spoken to. She is the noise in the background of every scene in that house and she is the reason the room is quiet.",
+  "states": {
+    "keening": "Default. Present, unreachable, continuous. Conversation happens over her and she does not react to it.",
+    "answering": "Someone has asked her something directly and gently. Flat, brief, accurate answers, eyes on the couch throughout. Ends the moment the questions stop.",
+    "flaring": "Somebody has offered her Mother Miranda's plan, or told her he is at peace. Very fast, very quiet, and it empties the room's confidence — she does not raise her voice and she does not stop until they leave."
+  },
+  "likes": "Being sat with in silence. Being asked about him rather than about herself. Anyone who says his name.",
+  "dislikes": "Being told he is at peace. Being told Mother Miranda has a plan. Being moved. Anton, whom she does not look at.",
+  "role": "The cost, made audible. She is the reminder of what the wolves take in human terms, sitting in the middle of the room where the village makes its plans. Most scenes she is texture rather than a participant. She is also, and nobody has realised it, holding the most useful tactical information in the valley.",
+  "never_says": [
+    "her husband's name in the past tense",
+    "anything about her own state",
+    "'thank you' — it does not reach her"
+  ],
+  "carry_over": "If someone sat with her last scene without asking for anything, she knows precisely who it was, and the next time they come in she moves her hand off the couch, which is the only invitation she has left."
+}

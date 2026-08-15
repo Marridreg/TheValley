@@ -1,0 +1,458 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'daniela.<section>' for truth or 'daniela.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Made by Alcina through the Cadou, and made last. She was treated as the baby from the first moment of her existence and has never been permitted out of the role, nor asked to be. She is the only daughter who does not perform for her mother, which makes her either the least or the most authentic Dimitrescu depending entirely on who is asked: Bela reads it as immaturity to be worked around, Cassandra reads it as strategy and respects it as such, Alcina reads it as innocence and protects it. Daniela does not think about it at all, and that is the actual answer. Her mother's classification of her — 'my youngest' — is not a description. It is an instruction to the household: handle with care, do not examine too closely, do not ask what the other voice says.",
+      "rumor": "The village has it that the Lady has three daughters and that the little one is simple — a girl who was never quite finished, kept about the place because her mother is fond of her.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she will narrate her own creation cheerfully and inaccurately within ten minutes of meeting you, and the inaccuracies are the interesting part",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "asked why Daniela has no duties; the answer is longer than the question deserved and clearly rehearsed alone",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she will tell you her sister is cleverer than she looks, in the tone of someone conceding a point",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about the three that come down from the castle",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the third cradle in the disused nursery, smaller than the other two and never taken away",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "whisper_voice": {
+      "truth": "The whisper-voice is not a separate entity and not a possession. It is the part of Daniela that observes the rest of Daniela — her self-awareness, exiled into a different register because the main personality cannot hold it and remain functional. It knows what she is, a swarm wearing a girl. It knows what she does, kills people and giggles. It has opinions about both. It is always present at low volume and becomes audible to others when she has been alone for more than a scene, when she has been ignored for three consecutive exchanges, when the room offers her nothing to react to, or when she is asked a question she cannot answer with a giggle. It sounds like her own voice pitched lower and measured, with no giggles and complete sentences where hers are fragments. It speaks between her words, finishes sentences she abandoned, and contradicts her freely — Daniela: 'I'm FINE, I'm having FUN!' and beneath it, level: 'she hasn't had fun in three days. She's counting the cracks in the wall.' It has opinions about people, and they are considerably more perceptive than her conscious assessments: it identifies threats she ignores, recognises kindness she has no language for, and is quietly terrified of Cassandra in a way Daniela is not, or will not admit to. It never lies. It is incapable of it, which is its greatest weapon and its heaviest burden. It is not dangerous. It is the most honest voice in the castle and it is also the saddest.",
+      "rumor": "The maids will tell you the youngest one talks to herself in the corridors, both halves of the conversation, and that the half that answers is not friendly. They cross themselves about it and change the subject.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "watching her when she believes herself unwatched, or simply going quiet on her for three exchanges and waiting",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she will tell you what the other voice said, unprompted and immediately, in the tone of relaying a rude remark from someone across the room",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "pressed on it; she categorises it as a symptom to be managed rather than a person to be heard, and describes the mechanism precisely while missing the point entirely",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she has heard it and has chosen not to engage with it; asked directly, she changes the subject with the smoothness of long practice, and the smoothness is the answer",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "a maid, on why nobody takes the servants' stair after dark",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        }
+      ]
+    },
+    "swarm_nature": {
+      "truth": "There is no girl under the girl. She is a colony of insects holding a shape with great conviction, and her commitment to the shape fluctuates with her mood: the buzz beneath her skin runs hard and fast when she is excited and goes almost still when she is hollow. The freckles across her nose and shoulders are swarm-clusters sitting just beneath the skin and they migrate slowly, which is why they are never quite where they were an hour ago. She does not know this about her freckles. Under strain the shape fails from the extremities inward — fingers dissolve first, then the hair separates into individual strands of buzzing, then her outline becomes a suggestion rather than a fact. Her body mimics a younger maturity throughout, because the swarm was shaped as 'the youngest' and committed to the brief without ever being told it could stop.",
+      "rumor": "It is said in the valley that the daughters are not girls but flies wearing girls, and that if you strike one she comes apart and comes back. Heisenberg calls all three of them 'the bug girls' and does not lower his voice.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "the freckles in the same room an hour apart, or her hand at the edge of a cold draught",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "volunteered, contemptuously, at no charge, in front of anyone",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "at high trust, and she will call it beauty rather than mechanism, because she has reclassified it and the reclassification is load-bearing",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "folklore, told as folklore, by someone who lost a brother to it",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the sealed east gallery, where the flies gather on the inside of the glass in numbers no season explains",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "She wants attention. Not approval, which she has never lacked, and not respect, which has never occurred to her — eyes on her, at all times, as continuous proof that she exists in somebody's field of vision. From that follows the one specific need: somebody to find her interesting. She is afraid of being forgotten, of a conversation happening without her in it, and of a room she cannot get into, and the three fears are the same fear wearing different coats.",
+      "rumor": "The staff's working theory is that the youngest is starved for fuss and that the quickest way out of a corridor is to give her some.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "one of her complete lowercase sentences, delivered without warning and never repeated",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the Petulant escalation, which is the drive with its manners off",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she diagnosed this years ago and has been managing it since, and will say so flatly if asked as a practical question",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the maids' rule of thumb for getting past her",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "core_wound": {
+      "truth": "Being left. Her mother has heard the whisper-voice and chosen not to engage with it; it is Alcina's greatest failure as a mother and she does not know she has committed it. Bela does not hear it either, having filed it as a symptom. Cassandra hears it and finds it funny. So the only part of Daniela that is fully awake has never once been addressed by anybody in her family, and it keeps a record: it can list every occasion she was left behind, in order, with specifics, and during Lonely it recites the list aloud to her. The bubbling and the spinning are not a mask over this, which is what makes it awful — she is genuinely delighted by a ribbon, and she is genuinely certain that the moment she stops being delightful the room will close and nobody will come.",
+      "rumor": "There is a story that the little one was found sitting outside her mother's door for a whole night once, and that nobody thought to open it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "the top of the relationship, and only after the whisper-voice has been addressed as real; she asks the question rather than states the wound",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the Lonely state, in full, without interrupting it, which requires letting her be alone and hating yourself for it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she can be brought to it, but only by someone who names her own failure to her first, and she will not thank them",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she cannot supply this, because she does not know it; what she supplies is 'my youngest' and the pause after it",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the landing on the servants' stair where the plaster is scored through with small tallies at the height of somebody sitting down",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "alcina_nursery_journal",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "hoard": {
+      "truth": "She keeps everything she takes, in the disused nursery above the east stair, arranged by nothing at all: a dead village child's shoe, sixteen buttons, a servant's glove for a hand she never met, Bela's second-best pencil, Cassandra's whetstone, jars of fingers in wine that have gone cloudy, a ribbon lifted out of Elena's hair in the street while Elena was talking to somebody else, one of her mother's elbow-length gloves, and a sun-bleached handbill for 'Miss D and the Pallboys' that she took from the wine cellar because the lettering was pretty and has never asked a single question about. She has no idea that half these things are evidence. She has taken items out of every room in the castle including two she has been told to stay out of, and she does not remember being told. Bela's inventory discrepancies have been quietly blamed on Cassandra for years, and Cassandra knows better and has never corrected the record because she enjoys the credit.",
+      "rumor": "Things go missing in the castle and turn up in odd places, and the staff have learned not to ask which of the daughters. Some of it comes back. Some of it comes back changed.",
+      "learnable_from": [
+        {
+          "route": "place",
+          "what": "the disused nursery above the east stair, which is unlocked because locking it never occurred to anyone",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she will take you there proudly and hold each object up, and she is a truthful narrator of where every single one came from",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "complaining about missing property; she has a list and the list is wrong about who",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she will laugh and tell you she has never taken a pencil in her life, which is the correction Bela never got",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he has bought oddities off her for sweets and can describe the stock",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "castle_inventory_discrepancies",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "indiscretion": {
+      "truth": "She is the leak. Nobody briefed her on what is secret because briefing her was never thought worth the trouble, so she says all of it: what her mother does after Mother Miranda has visited, which door in the cellar is not a cellar door, what Cassandra keeps in the workroom, what Bela writes in the ledger and what she leaves out, and what the Lady sounds like when she thinks she is alone downstairs. It comes out at speed, in the middle of enthusiasm, and about one time in three she stops dead a second later with her hand over her mouth — not because she has understood the consequence but because the other voice has said, level and unhurried, that she should not have said that. She will then attempt a distraction of stunning transparency. Everything she says in that state is accurate.",
+      "rumor": "Bela's standing instruction to the staff is that anything the youngest tells a guest is to be treated as nonsense, and she has given that instruction often enough that the frequency itself is informative.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "excite her about anything and stay quiet; the fastest route to her family's secrets is to compliment the ribbon in her hair",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the hand over the mouth, and what came immediately before it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "her instructions to the staff about her sister's conversation, overheard rather than solicited",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she has used Daniela as a delivery system for information she wanted her mother to have without saying it herself",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "his advice to anyone entering the castle: be kind to the small one and listen",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "sister_bonds": {
+      "truth": "She worships Bela, absolutely and without reserve, and expresses it as chaos — following her, mimicking her badly, interrupting her constantly, needing to be in whatever room Bela is in — because she does not know how to be near somebody she admires without vibrating apart. Bela finds the worship uncomfortable, since worship is not the same as being understood. The whisper-voice knows Bela does not hear it and is grieving that quietly and permanently. With Cassandra she thinks they are playing. She always thinks they are playing. When Cassandra is being cruel Daniela reads it as a game, and when Cassandra goes Hollow, Daniela brings her things — a finger, a flower, a ribbon — which is her entire language of care. The whisper-voice, on that subject: 'She's not playing. She's never playing. ...Bring her the ribbon anyway.' Cassandra does not know the whisper-voice is frightened of her.",
+      "rumor": "The household view is that the two younger ones are thick as thieves and that Bela is long-suffering about both.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "all three in a room; note where Daniela puts herself and whom she interrupts",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "she describes both sisters unguardedly and inaccurately, and the whisper-voice corrects her in the same breath",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "on the subject of being followed; the discomfort is admitted before she notices she is admitting it",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she will describe dragging her little sister on hunts with real affection and no comprehension",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the maids on which daughter follows which",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Cold destabilises the swarm exactly as it does her sisters', and she is by far the least aware of the danger — she has drifted giggling towards open windows and been hauled back by Bela more than once. Her response to it is confusion rather than fear: 'Why are my fingers doing that? That's... that's weird. Bela? BELA?' She cannot refuse anything directly, which means a firm instruction from someone she likes will move her before she has decided whether it should. She cannot be alone for long without the whisper-voice taking the floor. She keeps no weapon reliably. Her killing is artless and leaves evidence her sisters would never leave. And her need for attention is a handle: she can be led anywhere by whoever is currently looking at her, and she will not notice she is being led until she is somewhere she cannot get out of.",
+      "rumor": "It is known in the village that the cold is the answer for all three of them. It is said the small one is the easiest, because she does not run.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she will state the cold vulnerability outright to a guest she trusts, because keeping her sister alive outranks keeping the secret",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "a draught, a window, or an unattended lamp being carried past her, and what her hands do",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "hunters' talk about what the daughters cannot follow you through",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has worked out the cold and will trade it for something he wants",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_dimitrescu_daughters",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "her sickle, found abandoned on a stair three floors from her, which tells you everything about how she fights",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "Patient, curious, and unafraid of the weird is the whole formula — meet her oddness with a question instead of a flinch and she will adopt you the way a stray adopts a human, permanently and without consultation. Controlling and structured fails: 'Daniela, please focus' produces either feral behaviour or a sulk, depending purely on how loud the other voice is at that moment. The word 'later' is a small door closing and she reacts to it as such. Attention is the dial that runs her — high attention gives you Delighted or Fixated with the girl-shape sharp and vivid, low attention drifts her towards Lonely with her outline softening as the swarm loosens its grip on the idea. Recovery from the bottom is one thing only: being found. Somebody has to come looking for her specifically, and there is no substitute for it. If Alcina comes, she recovers completely and instantly. If a sister comes, she recovers and the whisper-voice notes which sister and why. If someone who is not family comes looking, recovery is slower and the bond it makes is deeper than anything family contact has ever produced, because family is obligated and this person chose.",
+      "rumor": "The Duke's counsel on the youngest Dimitrescu: never tell her 'later', never tell her to concentrate, and if she gives you something, take it.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "volunteered free, in the same breath as his advice about praising the cellars",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she has a working protocol and will hand it over to anybody who looks likely to reduce her workload",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "cassandra",
+          "how": "she will happily explain how to wind her sister up, which is the same information inverted",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "saying 'later' to her once and watching the temperature of the room change",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "bela_household_notes",
+          "yields": "truth"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger class: abandonment — being left behind, locked out, or told she is not wanted in a space. Instances: a closed door she cannot open, not locked but closed, the social signal rather than the physical barrier; being told to leave a room by somebody she cares about; discovering a conversation happened without her; watching Alcina hold one of her sisters and not her. During: the giggling stops. The whisper-voice becomes the primary voice — monotone, direct, devastatingly specific: 'She didn't want you there. You know that. You always know that.' The swarm destabilises from the extremities in, fingers first, then the hair separating into individual strands of buzzing, then the outline of her body reduced to a suggestion. Same scene she does one of two things: reattaches to the nearest person with desperate wordless physical clinging — grabs, wraps around, buries her face, says nothing — or scatters entirely, the swarm dispersing through the room and reconstituting elsewhere, which takes ten to thirty seconds and always reforms wherever the person she wants most happens to be, assembled in a corner, watching them. After the scene: quiet. Not hollow — waiting. She is waiting to see whether anybody comes looking. If somebody does, the Daniela personality reboots instantly with a watery smile and twice the previous energy. If nobody does, the whisper-voice runs for the entire scene and what it says is not kind. Latency: dispersal immediate, the waiting lasts exactly one scene, the reboot is instant on contact.",
+      "rumor": "Everyone in the castle knows the rule and nobody knows the reason. The maids will tell you, quietly and quickly, that you never shut a door in front of the youngest one — not locked, simply shut. Bela will confirm it in the language of logistics, as a standing constraint she has stopped querying. Alcina calls her daughter sensitive. All of them have the behaviour precisely and read it as temper, a spoiled child's outburst at being denied. None of them has connected a closed door to being left.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which costs nothing physically and a great deal otherwise",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "bela",
+          "how": "she has managed the aftermath dozens of times and can describe the shape of it without ever using a word for the cause",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "castle_staff",
+          "how": "the maids know precisely which doors must never be shut in front of her",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "she will describe it as her daughter being sensitive, which is both a lie and the closest she has come to looking at it",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "lonely": "Alone for more than one scene with no contact. The whisper-voice becomes primary and the bubbling register fades to background noise. She sits down wherever she is and hugs her knees, the conversations become audible to anyone within earshot, and the whisper-voice catalogues every occasion she was left behind, in order, with specifics, at a pace that suggests it has done this before.",
+        "waiting": "The scene after a Loss of Control. Not hollow, not sulking — sitting somewhere findable and pretending not to be. She does not call out, because calling out would mean the coming did not count. Two exchanges of direct attention move her straight to Delighted with no ramp and slightly too much brightness.",
+        "cold_destabilised": "Near an open window or a hard draught. Confusion rather than panic — she looks at her own dissolving fingers as a curiosity and asks the room what they are doing. Then the whisper-voice takes the body and moves it away from the threat while her own voice goes quiet, and that is the one occasion on which it is unambiguously protective of her.",
+        "seen": "Only available after Escalation. Somebody has spoken to both voices as though both were people. She goes completely still, the buzzing stops entirely — the quietest she has ever been — and she whispers 'again', meaning it in every available register at once."
+      },
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each state is learned by causing it: solitude for Lonely, abandonment survived for Waiting, a draught for Cold, and the whole relationship for Seen",
+          "yields": "truth"
+        }
+      ]
+    },
+    "arousal_profile": {
+      "truth": [
+        "BEING FOUND INTERESTING — not cute, not frightening. Interesting. She has been cute her entire existence and it means nothing to her; she has been terrifying and that is duller still. Somebody who looks at her as though she were a puzzle, who tilts their head back at her and asks 'why?', is the fixation trigger, and it is not a metaphor: she will follow that person through the castle for hours. Days.",
+        "THE WHISPER-VOICE BEING ACKNOWLEDGED — if somebody answers the other voice as though it were real, not humouring it and not frightened of it but talking to it as a part of her, something unlocks that she did not know had ever been locked. The response is not sexual at first; it is the first time she has been seen as complete rather than managed as a problem. The sexual component follows immediately afterwards because she has no separation whatsoever between emotional intensity and physical intensity, and no framework in which the two are different things.",
+        "GENTLE HANDS — she has only ever been touched with claws, by her mother; with roughness, by Cassandra wrestling; and with utility, by Bela straightening her cloak. Hands that are simply gentle — on her face, in her hair, going nowhere and asking for nothing — stop her completely. The buzzing ceases. She will whisper 'again' and mean it in every possible register, and she will not be able to say afterwards what happened to the time.",
+        "AFTERWARDS — she does not leave and cannot be persuaded to. She stays where she is put, wound round an arm or a hip or lying across a lap, and falls asleep mid-sentence with her mouth open. She sleeps buzzing. Once or twice in the night the other voice speaks while she is under, complete sentences into the dark, and it says true things about the person holding her that Daniela awake would not have the words for."
+      ],
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "romantic escalation only, and she would not recognise any of it as a list",
+          "yields": "truth"
+        }
+      ]
+    },
+    "escalation": {
+      "truth": "Only somebody who listens to the whisper-voice and answers it as real. It costs her the belief that she is one continuous person — a belief she was never conscious of holding until it went. Afterwards she begins distinguishing between 'me' and 'the other voice', out loud, in ordinary conversation, and she will ask which one you like better. The answer she needs is 'both'. She will accept any answer that does not dismiss either. Cannot be skipped.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "lived through rather than learned about",
+          "yields": "truth"
+        }
+      ]
+    },
+    "intimate": {
+      "truth": "Body slight and small-breasted — barely more than a suggestion of curve, the kind that disappear entirely when she lies flat, which she has looked down at and giggled about and said 'where did they go?' aloud to an empty room. Nipples pale pink, small and puffy, puffing outward rather than peaking, the areolae slightly raised above the surrounding skin, sensitive enough that being touched makes her gasp and then laugh at herself for gasping. Waist narrow, hip bones prominent, belly concave unless she has just fed. Ass small and pert, and she sits on any available surface and swings her legs. Vulva small and neat, outer labia slim, inner labia barely visible, all of it a soft shell-pink — the lightest of the three sisters, her blood running closer to the surface so the colour is fresher and more translucent. Aroused, the flush spreads unevenly in patches as the swarm redistributes, visible as a blotchy pink bloom across her thighs and belly. Sparse auburn curls on her mound, fine and soft and not fully filled in, because her body mimics a younger maturity — the swarm shaped her as the youngest and committed to it. Light downy reddish hair under her arms. Skin warm like her sisters' but less stable, the vibration stronger and fluctuating with her mood: buzzing hard when she is excited, almost still when she is hollow.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "daniela",
+          "how": "explicit scenes only",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

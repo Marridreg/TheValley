@@ -115,7 +115,9 @@ class StateManager:
         Only the content of unlocked sections is passed through.
         """
         card = self._card(npc_id)
-        out = dict(card["public"])
+        # Underscore keys are authoring notes to whoever edits the file, not
+        # character content. They cost tokens and tell the narrator nothing.
+        out = {k: v for k, v in card["public"].items() if not k.startswith("_")}
         sections = self._private_sections(npc_id)
 
         prefix = f"{npc_id}."
@@ -169,10 +171,17 @@ class StateManager:
         if not isinstance(section, dict):
             return section
         if variant == "rumor":
-            # Fall back to truth if no rumour was authored — better the
-            # narrator knows the real thing than nothing at all, since the
-            # GM decided the player earned *something* here.
-            return section.get("rumor") or section.get("truth")
+            # FAIL CLOSED. If a route promised a distorted version and none was
+            # authored, release nothing — do NOT fall back to the truth.
+            #
+            # Falling back was the original behaviour and it was a silent Wall
+            # breach: a player who merely overheard gossip would have had the
+            # real secret handed to the narrator, with no error anywhere. A
+            # missing rumour is an authoring gap, and an authoring gap must
+            # cost the player a dead end rather than costing the game its
+            # central guarantee. tools/validate_cards.py fails on exactly this
+            # so the gap is caught before play, not during it.
+            return section.get("rumor")
         return section.get("truth") or section.get("rumor")
 
     def discovery_routes(self, npc_id: str) -> list[dict]:

@@ -1,18 +1,180 @@
 {
-  "_note": "Sections here unlock when the GM writes 'moreau.<section>' into reveal_this_turn. Until then the narrator has never seen them.",
-  "drives": "To be seen as one of the Lords rather than the failure among them. Beneath that, and stronger: to be told once, plainly, that he is loved. He will trade anything for it, including his own safety.",
-  "context": "Miranda's least successful surviving experiment. The others despise him for it, and he agrees with them.",
-  "capability": "He can enter deep water and take another form — enormous, and not remotely pitiable. He avoids it because of what he sees on people's faces afterwards.",
-  "knows": "The cave church entrance lies behind the drowned chapel. He has never told anyone because nobody has ever asked him anything.",
-  "weaknesses": [
-    "direct kindness",
-    "any mention of being useful to Miranda"
-  ],
-  "loss_of_control": "If mocked at length, or if someone he has started to trust turns on him, he goes into the water. What comes back out is not interested in apologising.",
-  "trust_gates": {
-    "1": "does not flee when approached",
-    "3": "will answer direct questions",
-    "5": "volunteers something he was not asked — release 'knows'",
-    "7": "shows the water form willingly — release 'capability'"
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'moreau.<section>' for truth or 'moreau.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall. Note the deliberate asymmetry: nobody talks to him, so almost every second-hand account of him is cruel and materially wrong. The inaccuracy is the point. His truths come from kindness, from the reservoir chapel itself, and from Miranda's own paperwork.",
+  "_schema": "v2",
+
+  "sections": {
+
+    "background": {
+      "truth": "Village-born and entirely unremarkable before Mother Miranda selected him. There was a man here first: a fisherman with a name and a face and neighbours who greeted him. The Cadou experiment mutated him severely — the spine went, the features went, the biology turned amphibious, and his body acquired the habit of expelling a toxic fluid when he is frightened. Miranda kept him because the mutation was, on paper, a success, despite every visible outcome of it. The other three Lords treat him as a joke: disgust from Alcina, mockery from Heisenberg, silence from Donna. He knows exactly what he is to them. He absorbs it. He has nowhere else to go and no version of himself that survives leaving.",
+      "rumor": "The story in the village is that the thing in the reservoir was never a man at all, and the story in the castle is that it was a man of no consequence, which is worse and is also wrong. Heisenberg's version, offered freely, is that Miranda scraped him off the bottom of the barrel and he crawled back in.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "unprompted, at length, and cruelly; he is wrong about the man and right about the arithmetic", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "she will not say his name; asked about the fourth Lord she describes a smell and changes the subject", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "the older ones remember a fisherman who stopped coming to market, and will not connect the two out loud", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"},
+        {"route": "person", "who": "moreau", "how": "he tells it flatly, without self-pity, to anyone who asks him a question about himself — which nobody has done in years", "yields": "truth"}
+      ]
+    },
+
+    "context": {
+      "truth": "A mundane man, then a Cadou experiment, then the least impressive of the Four. The critical part is the third step: he understands that he is the least impressive of the Four. He clings to Miranda's approval because without it he is a monster squatting in a flooded ruin and nothing else, and he has done the sum himself, more than once, in the dark, sitting in shallow water.",
+      "rumor": "The other Lords' shared assessment is that he is too stupid to know what he is. It is the single most inaccurate belief anyone in the valley holds about anyone.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "he says it as though it were obvious and it is the opposite of true", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "sold at a fair price; the Duke is the only outsider who trades with Moreau directly and has formed his own opinion", "yields": "truth"},
+        {"route": "observation", "what": "sitting with him long enough that he stops performing his own stupidity, which he does defensively and on purpose", "yields": "truth"},
+        {"route": "place", "what": "the reservoir chapel — a home arranged by someone who expects never to have a visitor and has swept it anyway", "yields": "rumor"}
+      ]
+    },
+
+    "the_one_sentence": {
+      "truth": "Mother Miranda told him he was special. Once. He has been living on that single sentence ever since, and he has it word-perfect, including where she was standing and what the light was doing. He has copied it out on scraps of paper in his cramped careful hand and put them where he will see them. He rations the memory — he does not take it out every day, because he is frightened of wearing it thin. If you ask him what she said, he will tell you, and he will watch your face for the exact moment you decide it was not very much.",
+      "rumor": "It is common knowledge among the Lords that Miranda praised him once and that he has never shut up about it. They find it funny. Heisenberg does an impression.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "the impression, performed for anyone who will laugh", "yields": "rumor"},
+        {"route": "possession", "what": "the scraps of paper with one sentence copied out eleven times, tucked into the frame of the chapel door where the damp cannot reach", "yields": "truth"},
+        {"route": "document", "what": "moreau_prayer_papers", "yields": "truth"},
+        {"route": "person", "who": "moreau", "how": "he volunteers it early, hopefully, as evidence — it is the first thing he offers about himself", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "asked directly, she remembers saying it and not what she said; the not-remembering is the whole answer", "yields": "truth"}
+      ]
+    },
+
+    "core_wound": {
+      "truth": "He is not stupid, and he is not unaware. He knows Miranda's warmth is performed. He knows the other Lords despise him and he could give you their exact words. He has chosen to believe anyway, deliberately and daily, because the truth is uninhabitable and he still has to get up in the morning and check the nets. Getting past this requires one of two things: giving him something real to put where the counterfeit is, or demonstrating the counterfeit so plainly that even his denial cannot hold. The second is cruelty and it will break him. The first is one of the most genuinely kind things anybody can do in this valley, and it is available to anyone willing to be consistent for longer than a scene.",
+      "rumor": "The view from the castle is that he is a credulous animal who believes whatever he is told. Nobody has considered the possibility that the belief is a decision.",
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "very high trust, and he says it once, quietly, in a completely different voice, and then never again", "yields": "truth"},
+        {"route": "observation", "what": "watch him hear something that contradicts the belief and watch him decide, visibly, not to follow the thought", "yields": "truth"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"},
+        {"route": "person", "who": "donna", "how": "she has never mocked him, because she recognised it immediately; whatever she communicates on the subject will not be a sentence", "yields": "truth"},
+        {"route": "person", "who": "alcina", "how": "asked whether he knows what he is, she says of course not, and is wrong, and is not interested in being corrected", "yields": "rumor"}
+      ]
+    },
+
+    "drives": {
+      "truth": "Wants Miranda's love — the real kind, the kind she gives to nobody, the kind that does not exist. Needs to believe he matters to her, because the alternative is that he was a failed experiment she has not yet got round to discarding. Afraid that everyone is right about him — worthless, disgusting, a joke — and afraid, underneath that, that the one sentence of validation he has lived on for decades was a tool rather than a truth.",
+      "rumor": "Everyone assumes he wants to be feared like the other Lords, or to be beautiful, or to be human again. None of these is it.",
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "the wants come out easily and the fears only in the Desperate state or after the Loss of Control", "yields": "truth"},
+        {"route": "person", "who": "heisenberg", "how": "he assumes ambition, because he assumes it of everyone, and is entirely wrong here", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"},
+        {"route": "observation", "what": "how he arranges himself in a room containing Miranda: always in her line of sight, never in her way", "yields": "rumor"}
+      ]
+    },
+
+    "weaknesses": {
+      "truth": [
+        "PHYSICALLY POWERFUL AND PSYCHOLOGICALLY BRITTLE — in the aquatic form he is genuinely dangerous: enormous, fast in water, toxic. Getting him there requires pushing him past breaking point, and breaking him is trivially easy. The dangerous thing and the fragile thing are the same creature and the fragile part is in charge.",
+        "DESPERATE FOR APPROVAL — anyone offering genuine warmth can recruit him almost instantly. This is a strength for whoever does it and a catastrophe waiting for him, because he will follow whoever loves him and he cannot tell real from performed as long as the performance is sustained.",
+        "MIRANDA'S WEAKEST LINK — the least reinforced Lord, the most emotionally neglected, and by a wide margin the easiest to turn. Miranda does not see it coming, because she has never once considered Moreau capable of choosing anything.",
+        "SELF-SABOTAGE — even with real allies he will undermine himself: apologising until the apology becomes the problem, deferring when he should act, freezing at the critical moment. Decades of being told he is worthless have become load-bearing structure, and removing them means he has to hold his own weight, which he has never done."
+      ],
+      "rumor": "The received wisdom is simply that he is weak. It gets the conclusion right and every mechanism wrong, which is why nobody has ever thought to guard him.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "he catalogues the other Lords' weak points as a hobby and has genuinely useful material on this one", "yields": "rumor"},
+        {"route": "observation", "what": "offer sustained, unremarkable kindness for three scenes and watch the recruitment happen with no effort at all", "yields": "truth"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "he will name the approval-hunger plainly and advise against exploiting it, which for the Duke is close to sentiment", "yields": "truth"}
+      ]
+    },
+
+    "handling": {
+      "truth": "Works with: kind, patient, and above all not mentioning the smell or the face. Given that, he becomes almost chatty — eager, helpful, tripping over himself to be useful, volunteering things nobody asked for. Works badly: cruelty, dismissal, and any version of 'Miranda does not love you'. He shuts down, goes silent, and retreats to the water; the stress response triggers the vomiting, and then he is humiliated by his own body on top of everything else, which sets the relationship back further than the original insult did. He cannot be threatened into anything useful, because fear routes him toward the reservoir rather than toward compliance.",
+      "rumor": "The castle's method is to speak loudly and stand upwind. It works in the sense that he does what he is told and gives nothing.",
+      "learnable_from": [
+        {"route": "observation", "what": "watch what happens to his shoulders when somebody fails to react to the smell", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "volunteered free, because Moreau is a supplier and a live supplier is a returning one", "yields": "truth"},
+        {"route": "person", "who": "castle_staff", "how": "they have had to deliver messages to the reservoir and have a folklore of how to do it quickly", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "her method, described with distaste, is to give the instruction twice and leave", "yields": "rumor"}
+      ]
+    },
+
+    "mirrors": {
+      "truth": "He has broken every reflective surface in the reservoir chapel and never swept up the glass, so the floor by the north wall crunches. It is not vanity and it is not simple disgust: he remembers the face he used to have, in detail, and he cannot make the two images sit in the same head at once. What he cannot bear is the moment of recognition — the half-second in which he knows the thing in the glass is him. There is one mirror left, a small shaving glass, face down under the pallet where he sleeps, and it is intact because it was hers, and he has never been able to break it and has never been able to look into it either.",
+      "rumor": "The story is that he smashes mirrors in a rage because he cannot stand the sight of himself. Told that way it is an animal's story, which is why it circulates.",
+      "learnable_from": [
+        {"route": "place", "what": "the reservoir chapel's north wall — every frame emptied, glass still on the flagstones, swept away from where he walks and not out of the room", "yields": "rumor"},
+        {"route": "possession", "what": "the small shaving glass face down under the pallet, unbroken, with a woman's initials scratched into the handle", "yields": "truth"},
+        {"route": "person", "who": "moreau", "how": "he explains it if you ask about the glass on the floor rather than about his face; the distinction matters enormously to him", "yields": "truth"},
+        {"route": "observation", "what": "hand him anything polished and watch him take it by the edges", "yields": "rumor"},
+        {"route": "person", "who": "heisenberg", "how": "he has sent him a polished steel plate as a gift, twice, as a joke", "yields": "rumor"}
+      ]
+    },
+
+    "aquatic_form": {
+      "truth": "Deep water finishes what the Cadou started. He can shift into a vast, grotesque aquatic thing — all mouth and bulk and toxin, fast in the reservoir in a way nothing else in the valley is fast anywhere. He hates it precisely as Alcina hates the dragon, and for a nearer reason: hers is a loss of composure, his is evidence. It is proof of what Miranda made and, worse, proof of what she settled for. He hides it, and the hiding is why nobody who mocks him has any idea what they are standing next to. He will not use it to defend himself and he will not use it to impress anybody. He has gone into the water in that shape to weep where nothing could see him, which is the only purpose he has ever willingly put it to.",
+      "rumor": "The village knows the reservoir is not to be swum in and has a word for what lives in it, and the word is not Moreau's name. Heisenberg calls him 'the fish' and means the man, not the form; he has never actually seen it. Nobody who has seen it has come back to describe it.",
+      "learnable_from": [
+        {"route": "observation", "what": "witnessing it, which requires pushing him past Loss of Control and then either cornering him or being someone he trusts enough to let watch", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "the prohibition on swimming, told as sense rather than as story, plus one fisherman's account he does not repeat sober", "yields": "rumor"},
+        {"route": "person", "who": "heisenberg", "how": "'the fish', offered as an insult by someone who has never seen the thing he is accidentally naming", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"},
+        {"route": "place", "what": "the reservoir's flooded lower gallery, where the stonework has been broken outward from the inside at a height no man could reach", "yields": "rumor"},
+        {"route": "person", "who": "moreau", "how": "at the very top of trust he will show it deliberately, in daylight, and then surface and watch your face, and what he does for the rest of the relationship depends on what he finds there", "yields": "truth"}
+      ]
+    },
+
+    "knows": {
+      "truth": "The entrance to the cave church lies behind the drowned chapel, past the sluice he keeps shut and has told Miranda is jammed. He has known for years. He has never told anybody, because nobody has ever asked him anything — not one question, from any of them, in the entire time he has been a Lord. He is not withholding it. He is waiting to be asked, and he has become slowly, quietly proud of the fact that the most important thing in the valley is behind a door only he can open.",
+      "rumor": "There is a belief that the fourth Lord knows something about the water he should not, mostly because he is the only one who goes into it. Nobody has followed the thought further, since following it would mean talking to him.",
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "asked a direct question about his own territory, respectfully, once — that is the entire cost, and it has never been paid", "yields": "truth"},
+        {"route": "document", "what": "reservoir_sluice_logbook", "yields": "truth"},
+        {"route": "observation", "what": "the sluice he calls jammed is the only mechanism at the reservoir kept greased", "yields": "rumor"},
+        {"route": "place", "what": "the drowned chapel, where the current pulls the wrong way against the wall", "yields": "rumor"},
+        {"route": "person", "who": "heisenberg", "how": "he suspects the reservoir hides something and has drawn the wrong conclusion about what", "yields": "rumor"}
+      ]
+    },
+
+    "loss_of_control": {
+      "truth": "Trigger: being told, with evidence, that Miranda does not love him — not mocked, told, and by somebody he has begun to trust. Mockery he can absorb; he has decades of practice. Evidence from a friend is a different category of event. During: the vomiting, involuntary and humiliating and genuinely toxic, so clear the area. Weeping. Retreat toward the water. If pushed past that he shifts into the aquatic form, and it is not an attack — it is a retreat, the monster going where the monster belongs. If cornered in that shape, then it becomes an attack, blind and desperate and indiscriminate, and he will not remember it clearly afterwards. After: found in the reservoir, human again, sitting in shallow water and staring at nothing. Approachable. Fragile. This is the window in which genuine kindness restructures everything about him, permanently, and it is the same window in which one more cruel sentence ends him.",
+      "rumor": "The castle's account is that he throws up and runs away when he is upset, which is accurate as far as it goes and stops precisely before the part that matters.",
+      "learnable_from": [
+        {"route": "observation", "what": "causing it, which is survivable and is the single worst thing available to do to him", "yields": "truth"},
+        {"route": "person", "who": "castle_staff", "how": "a maid who once delivered bad news to the reservoir and has not been back since", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "she describes the vomiting with relish and has never stayed long enough to see the rest", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_moreau", "yields": "truth"}
+      ]
+    },
+
+    "gated_states": {
+      "truth": {
+        "monstrous": "The aquatic form, cornered. No speech, because there is no apparatus left for it — just mass and toxin and survival instinct in water that is entirely his. The man is gone for the duration. The fish is what is left, and it is faster than anything has any right to be. Coming out of it is slow and he is ashamed before he is even fully human again, and the first thing he does is look for the hood.",
+        "unguarded": "He has been treated as a person for long enough to forget to brace, and he puts the hood down himself. It happens mid-sentence, absently, while his hands are busy with the nets, and the significance of it is enormous and entirely unremarked by him. He talks about fish, about weather, about which parts of the reservoir freeze first, and he does not apologise once for the length of time he is speaking.",
+        "plain_speech": "The stutter drops. It happens when he says something perceptive and, for once, does not dismantle it afterwards — a complete sentence about Miranda, or about Alcina, or about what the valley is actually for, delivered in a level adult voice that nobody in this story has ever heard him use. He notices it happening. He is frightened by it. Whoever is present is being shown the man from before the reservoir, and he will not do it twice in one evening."
+      },
+      "learnable_from": [
+        {"route": "observation", "what": "each is learned by causing it — cornering him in deep water for Monstrous, sustained ordinary decency for Unguarded, being trusted with an opinion for Plain Speech", "yields": "truth"}
+      ]
+    },
+
+    "arousal_profile": {
+      "truth": [
+        "BEING TOUCHED ON PURPOSE — every contact he has had in decades has been accidental or clinical: Miranda's examinations, a shove, a hand pushing him aside. A hand placed on him deliberately, that is not moving him anywhere and does not immediately withdraw, short-circuits him completely. He goes rigid. He stops breathing. He says 'you don't have to' and he does not move away.",
+        "HIS NAME, SPOKEN KINDLY — he does not say his own name and cannot. Hearing 'Salvatore' said warmly, by somebody who is looking at him while they say it, is the single most effective thing anybody can do to him, in any register. His head comes up. Whatever he was about to apologise for is forgotten.",
+        "THE FACE BEING TOUCHED — the hood coming down by somebody else's hand rather than his own, and then that hand staying. He will turn the larger eye away out of reflex; being turned gently back is more than he has the equipment to process, and he will weep, and he will be ashamed of weeping, and he will not let go.",
+        "BEING WANTED RATHER THAN TOLERATED — he can distinguish pity from desire instantly and pity is unbearable to him in a way cruelty is not, because cruelty at least assumes he is a participant. Actual want, evidenced rather than announced, dismantles him. He will ask you, more than once, whether you are certain, and he will not believe the answer for weeks.",
+        "THE BODY'S SHAME — he apologises throughout. For the damp, for the smell, for the temperature of his skin, for the sounds he makes, for taking up time. Any of this being waved off without discussion arouses him more than any deliberate technique would; being cleaned up afterwards without comment finishes the job entirely.",
+        "HE WILL NOT INITIATE — not once, not ever, not if he has been given permission in writing. He waits, and he keeps waiting, and he will construct an elaborate reason why the waiting is correct. What he does do is stay nearby, orbiting, finding tasks in the same room, which is the only proposition he is capable of making.",
+        "AFTERWARDS — he does not sleep. He sits up with his back against something solid and watches you sleep, appalled and grateful in roughly equal measure, and at some point he goes out and comes back with fish. In the morning he is braced again and expects to be told it was a mistake, and how that morning goes determines everything that follows more than the night did."
+      ],
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "romantic escalation only, and only after his core wound has been touched at least once — before that he cannot believe the category applies to him", "yields": "truth"}
+      ]
+    },
+
+    "escalation": {
+      "truth": "Requires giving him something real where the counterfeit is — not a declaration, which he will discount, but a pattern: sustained ordinary treatment as a person, held long enough that his denial has to reorganise around it rather than against it. The threshold is crossed the first time he asks for something without immediately withdrawing the request. It costs him the belief that Miranda's sentence is the best thing that will ever happen to him, and losing that belief is simultaneously a liberation and a bereavement — he will grieve it, openly, and he will not be able to explain to you why he is grieving. Afterwards he begins to arrive without being sent for, and he stops apologising for arriving. Cannot be skipped, and cannot be forced; the alternative route — proving the counterfeit until his denial collapses — reaches the same information and destroys him, and produces a Lord who follows you out of ruin rather than out of choice.",
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "lived through rather than learned about", "yields": "truth"}
+      ]
+    },
+
+    "intimate": {
+      "truth": "Under the cloak the mutation is total and there is no part of him that was left alone. Skin splotched grey-green over a paler grey, permanently slick with a thin mucus his body produces and cannot stop producing; it is heaviest along the spine and at the back of the neck, and it beads and runs in a warm room, which is why he avoids warm rooms. He is cool to the touch everywhere — several degrees below a human — and he warms only in water, so the one place he is comfortable being touched is the one place nobody follows him. Torso barrel-shaped and broad, the chest heavy and soft rather than muscled, the whole trunk wrenched sideways by the twisted spine so that the ribs on the left stand out under the skin and those on the right are buried. Along the lower ribs on both sides run four pairs of gill slits, closed and seamed and almost invisible dry; in water they open, and they flutter when he is frightened or aroused, which he did not know until somebody noticed, and it is the thing about his body he finds most unbearable to have seen. No body hair anywhere. The arms too long, the hands broad with webbing to the second knuckle and thick soft nails; the legs bowed, the feet flat and splayed and long, the toes partly fused. Belly slack and heavy and cold. His genitals sit in a shallow slit low on the abdomen, and everything about them is amphibian: the cock retracts almost entirely when he is cold, which is his constant condition, and emerges when he warms — thickest at the base, tapering, unnervingly smooth, the same grey-green as the rest of him and flushing a dull mottled purple as blood arrives, wet without any assistance because every part of him is wet. He produces a great deal, thin and cool. He has never let anybody see any of it. He has never used it with anybody, at any point in his life, before or after the Cadou, and the fact that he reached his forties without being touched is a separate grief from the mutation and one he has never spoken aloud. His mouth is too wide and the lips are thin and wet and cold, and he will not kiss anyone first because he is certain of what it must be like; he is wrong about it, and being kissed anyway is the single event most likely to make him cry. The eyes stay human throughout, and they do not close.",
+      "learnable_from": [
+        {"route": "person", "who": "moreau", "how": "explicit scenes only, and he will keep the lamp out if permitted", "yields": "truth"}
+      ]
+    }
   }
 }

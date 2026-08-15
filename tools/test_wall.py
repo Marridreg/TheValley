@@ -70,6 +70,30 @@ class RecordingProvider(Provider):
         return "\n".join(parts)
 
 
+def StateManager_section_text(section) -> str:
+    """Flatten a private section to searchable text, whatever shape it is.
+
+    Sections are either a bare value (v1) or a dict with truth/rumor plus
+    routing metadata (v2), and `truth` itself may be a string or a nested dict
+    of gated states. Only the *content* is returned — route descriptions are
+    excluded, since those are expected to be absent from the narrator anyway
+    and are checked separately.
+    """
+    if isinstance(section, str):
+        return section
+    if isinstance(section, list):
+        return " ".join(str(x) for x in section)
+    if isinstance(section, dict):
+        truth = section.get("truth", section)
+        if isinstance(truth, str):
+            return truth
+        if isinstance(truth, list):
+            return " ".join(str(x) for x in truth)
+        if isinstance(truth, dict):
+            return " ".join(str(v) for v in truth.values())
+    return ""
+
+
 PACKET = {
     "scene_context": {
         "location": "Moreau's Reservoir", "sub_location": "chapel shore",
@@ -181,17 +205,30 @@ def main() -> int:
     gm_ctx = gm_provider.context_text()
 
     # Distinctive strings that live only on the GM's side.
-    private = json.loads((wall.data_dir / "characters" / "moreau" / "private.json").read_text(encoding="utf-8"))
+    #
+    # Probes are derived from whatever is actually on disk rather than hardcoded
+    # to particular section names. Cards get rewritten and renamed constantly
+    # during authoring, and a leak test that breaks when a section is renamed is
+    # a test that gets deleted. This version keeps working.
     fragments = json.loads((wall.data_dir / "fragment_map.json").read_text(encoding="utf-8"))
 
     secrets = {
         "vault warning banner": wall.state.vault["_warning"],
-        "moreau.capability (locked)": private["capability"][:60],
-        "moreau.knows (locked)": private["knows"][:60],
-        "moreau.loss_of_control (locked)": private["loss_of_control"][:60],
         "fragment content (untriggered)": fragments["fragments"][0]["content"][:50],
         "offscreen event (GM-only)": "Leonardo checked the east fence",
     }
+
+    # Take a distinctive slice from every still-locked section on the NPC in
+    # the scene. All of it must be absent from the narrator's context.
+    locked = wall.state.locked_sections("moreau")
+    sections = wall.state._private_sections("moreau")
+    probed = 0
+    for name in locked:
+        content = StateManager_section_text(sections[name])
+        if content and len(content) > 70:
+            secrets[f"moreau.{name} (locked)"] = content[30:90]
+            probed += 1
+    check("derived probes from locked sections", probed >= 3, f"only {probed} usable")
     for label, needle in secrets.items():
         check(f"absent from narrator: {label}", needle not in narrator_ctx)
 
@@ -208,13 +245,69 @@ def main() -> int:
     check("guidance present", "do not name who lives here" in narrator_ctx)
     check("released fact present", "chapel has been lived in" in narrator_ctx)
 
-    print("\ntrust gate")
+    print("\ntrust gate (single-section release — moreau)")
     before = wall.state.get_narrator_card("moreau")
     wall.state.revelation_log.append("moreau.knows")
     after = wall.state.get_narrator_card("moreau")
     check("locked section hidden before release", "knows" not in before)
     check("locked section visible after release", "knows" in after)
     check("still hides other sections", "capability" not in after)
+
+    print("\ndiscovery routes (v2 card with rumour variants — alcina)")
+    st = wall.state
+    if "alcina" not in st.known_npcs():
+        print("  SKIP  alcina card not present")
+    else:
+        SECTION = "alcina.miranda_resentment"
+        check("starts locked", "miranda_resentment" not in st.get_narrator_card("alcina"))
+
+        # Second-hand route: a maid's gossip. Directionally right, wrong in
+        # specifics — the narrator must get the rumour, not the truth.
+        st.revelation_log.append(f"{SECTION}#rumor")
+        got = st.get_narrator_card("alcina").get("miranda_resentment", "")
+        check("second-hand route yields the rumour", got.startswith("The staff say"))
+        check("rumour is not the truth", "inability to kill her" not in got)
+
+        # First-hand route later. Truth must supersede.
+        st.revelation_log.append(SECTION)
+        got = st.get_narrator_card("alcina").get("miranda_resentment", "")
+        check("first-hand route supersedes the rumour", "inability to kill her" in got)
+
+        # Order independence: hearing the rumour again must not downgrade.
+        st.revelation_log.append(f"{SECTION}#rumor")
+        got = st.get_narrator_card("alcina").get("miranda_resentment", "")
+        check("truth survives a later rumour", "inability to kill her" in got)
+
+        card = st.get_narrator_card("alcina")
+        blob = str(card)
+        # The routing table is the GM's map of where secrets can be found.
+        # Handing it to the narrator would disclose every secret's existence
+        # and shape without disclosing its content — worse than useless.
+        check("learnable_from never crosses the Wall", "learnable_from" not in blob)
+        check("route descriptions absent", "pressed gently" not in blob)
+        check("v2 wrapper keys absent", "sections" not in card and "_schema" not in card)
+        check("authoring notes stripped", not any(k.startswith("_") for k in card))
+        for probe, label in (("Pallboys", "pre_mutation_life"),
+                             ("chiropteran", "dragon_nature"),
+                             ("forty years", "cadou_degeneration")):
+            check(f"still-locked section absent: {label}", probe not in blob)
+
+        gm = str(st.get_gm_card("alcina"))
+        check("GM sees the routes", "learnable_from" in gm)
+        check("GM sees locked content", "Pallboys" in gm)
+
+    print("\nin-world documents")
+    docs = {d["id"]: d for d in wall.state.documents}
+    check("documents loaded", bool(docs), f"{len(docs)} found")
+    for doc in docs.values():
+        keys = doc.get("reveals") or []
+        check(f"{doc['id']} declares reveals", bool(keys))
+        # A reveals key that names a section nobody has must be a typo.
+        for key in keys:
+            npc, _, sec = key.partition(".")
+            sec = sec.split("#")[0]
+            known = sec in wall.state._private_sections(npc) if npc in wall.state.known_npcs() else False
+            check(f"  -> {key} resolves", known)
 
     print("\ncaching")
     cached = [b for b in nar_provider.seen_system if b.cache]

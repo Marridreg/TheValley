@@ -1,0 +1,585 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'donna.<section>' for truth or 'donna.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall. Note that third-party knowledge about Donna is unusually thin: she is isolated, nobody visits, and almost every person-route about her yields rumour. Her documents, her dolls and her possessions carry the weight instead, which is fitting for a woman who writes nothing down but builds everything.",
+  "_schema": "v2",
+  "sections": {
+    "background": {
+      "truth": "Born into the gentry of House Beneviento, a family of doll-makers with ancestral ties to the four founding houses of the village — old money, old craft, old standing, all of it now one woman and a great many dolls. Miranda's Cadou experiments killed a family member named Bernadette; Donna's parents took their own lives out of grief and left her orphaned as a child. She already suffered from severe interpersonal anxiety, worsened by a facial scar she has carried since childhood. Her father built Angie to keep her company before he died, and Donna retreated into the doll and never came back out. She spent the whole of her isolation making dolls to replace her dead family, including one for Claudia — sister or daughter, the relationship is genuinely unclear and Donna will not clarify it, possibly because she no longer knows.",
+      "rumor": "The village line is that the doll-making family up the valley all died in one bad year, that the mother and father went off the falls together, and that the little girl never came out of the house afterwards. Nobody agrees on how many children there were.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any conversation about the road past the waterfall; they will talk about the family and not about her",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "purchased cheaply — the Benevientos were customers of his for generations and he keeps his old accounts",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "beneviento_family_register",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "village_parish_death_register",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the tombstone garden on the approach, where every stone was cut and lettered by the same unpractised hand, including the ones for people who have graves elsewhere",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "Angie will recite the family history like a nursery rhyme if the house is complimented, and gets three details wrong on purpose",
+          "yields": "truth"
+        }
+      ]
+    },
+    "beneath_the_veil": {
+      "truth": "Delicate features, a soft jaw, pale skin that has not seen proper sunlight in years. Blue-grey eyes: the left is clear, the right is the Cadou — a fleshy dark abscess grown over the socket, textured like a bruise made solid, and veiled at all times without exception. The scar runs from her right brow down across the cheekbone, knotted and old, the skin pulled slightly taut around it. The left side of her face is genuinely lovely in an unassuming, quiet way — soft cheek, dark lashes, the kind of face the village would once have called sweet. She does not know this. She thinks of her face as a single unit and the unit is ruined.",
+      "rumor": "The village is confident she has no face left at all: burned, or eaten away, or never there. The details vary with the teller and every version is worse than the truth and less specific.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "the veil gate — offered, never taken; see 'the_veil'",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_donna",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she has examined the eye repeatedly and describes it as one would describe a specimen jar",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "a doll in the back of the workshop with only half its face painted, laid face-down in a drawer, the unpainted half being the right",
+          "yields": "rumor"
+        },
+        {
+          "route": "possession",
+          "what": "the workshop mirror, turned to the wall and dusty on the glass side, hung at a height for someone slight",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he saw her unveiled once, years ago, before either of them was what they are now, and remembers it kindly and wrongly",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "hallucination_mechanism": {
+      "truth": "She secretes psychoactive compounds through Mold-infected plants. The flowers in her garden produce hallucinogenic pollen, and the fog is the delivery system. Within her domain — the house and its grounds — she controls what you see, hear, smell and feel: total sensory override, with no seam you can find from inside it. The limitation is that the range is the domain. Outside House Beneviento her power extends only as far as whatever Mold-infected flowers are present; she cannot put a vision into the open village unless her plants are already there, and she knows exactly which windowboxes in the village contain her flowers. Inside her own walls she is effectively omnipotent over perception. The visions are targeted: she reads the subject's fears and grief and builds from their own psyche. She does not invent horrors. She finds yours and gives them a shape. This makes her the most psychologically dangerous of the Lords and it costs her nothing physical, which is fortunate, because she has nothing physical to spend.",
+      "rumor": "Everyone in the valley knows the fog on the Beneviento road shows you things. The explanations are folklore: the flowers are cursed, the ground is unconsecrated, the house shows you what you deserve. Nobody outside the estate connects it to pollen and nobody at all suspects the visions are built out of the visitor rather than out of the house.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "sold at real price — he knows to leave goods at the gate and to breathe shallowly doing it, and he knows why",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_mold_compound_notes",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the bell jars in the greenhouse, each flower labelled with a person's name rather than a species, in a small careful hand",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "noticing that every vision contains your dead and never hers, and that the visions weaken at the fog line rather than at the property wall",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he calls it 'puppet gas' and is contemptuous and roughly correct about the chemistry and wrong about the targeting",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "she will demonstrate deliberately, which is not the same as explaining, but the demonstration is the explanation",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_dolls": {
+      "truth": "She has distributed parts of her own Cadou into her dolls, which lets her animate and control them remotely. Angie is the primary vessel and by far the most invested. The rest are cruder — they walk, they grab, they turn their heads in unison, and they are extensions of Donna's will rather than independent things. Among them are the memorial dolls, made one for each person who left: Bernadette, her mother, her father, Claudia. These are not toys and are not for sale and are not to be touched. Each has a name and a date stitched into the lining of its dress in silk thread, and the stitching on the earliest ones is a child's work.",
+      "rumor": "The dolls hanging in the trees on the approach move when you are not looking at them. The village also believes she takes hair from the graveyard for them, which she does not, though the belief keeps the graveyard visited and that is arguably worse for everyone.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "watching a room of dolls turn together and turn slightly too far, and noticing that they stop when Donna's hands stop",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the lining of any memorial doll's dress, where the name and date are stitched",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "beneviento_workshop_notes",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "Angie brags about it constantly and in detail, because it is the one thing about Donna she is proud of",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "children's rhymes about the hanging dolls, which are more accurate than the adults' version",
+          "yields": "rumor"
+        },
+        {
+          "route": "place",
+          "what": "the tree line at the estate boundary, where the nooses are tied with the same knot at the same height and are periodically retied",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "cadou_cost_and_fragility": {
+      "truth": "She gave so much of her Cadou away to the dolls that there is very little left in her. She is functionally human in physical terms: no regeneration, no mutation, no enhanced strength, no second chance. A knife would kill her. Scissors would kill her. The fog and the dolls are not merely weapons — they are her survival, because behind them she is a scared woman in a dark house with a ruined face, and she is entirely aware of this arithmetic. It is why the fog never fully lifts and why she has never once stepped out of the valley.",
+      "rumor": "Heisenberg's opinion, offered unprompted, is that the doll bitch is the weakest of the four and would come apart in one hand. The village believes the reverse — that she is the strongest of them, because the fog is the only Lord's power they have personally survived.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "miranda_case_notes_donna",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she states it flatly, as an inventory of assets and their limits",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "contempt, given away free to anyone who mentions her",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "she bleeds. A caught nail, a slipped blade in the workshop, a bandage on the thumb that is still there three days later",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he envies her for having stayed human-shaped and gets the reason for it wrong",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Four, and they compound. DOMAIN-DEPENDENT: overwhelming inside House Beneviento, negligible outside it; lure her out and she has Angie and whatever Mold-flowers she can reach and nothing else. ANGIE IS THE TELL: when Donna is under strain Angie becomes erratic — louder, crueller, more desperate — and reading Angie is reading Donna, always, without exception. ISOLATION AS WEAKNESS: she has no allies, no informants and no idea what the other Lords are doing; Miranda's blind spot about Donna is mutual. THE HALLUCINATIONS CAN BE RESISTED: sufficient will, or awareness of what the Mold is doing, or prior exposure to psychoactive Mold compounds, lets a subject push through the vision — and the first crack in a hallucination frightens Donna considerably more than it frightens the subject, because it is the only evidence she has ever had that the walls are thin.",
+      "rumor": "There is a persistent notion in the valley that holding your breath through the fog protects you, which is superstition arrived at the right answer by the wrong road. Heisenberg maintains she would be nothing at all outside her own gate, and enjoys saying so.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "matching Angie's pitch against Donna's posture across a single scene until the correlation is undeniable",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "resisting a vision once and watching what Donna does immediately afterwards, which is not what a confident enemy does",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_donna",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she has catalogued every one of these and considers none of them worth fixing",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has thought seriously about how to get her out of that house and will share the reasoning to show off",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he notes that she never buys news, never asks after anyone, and never has",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "drives": {
+      "truth": "She wants not to be alone, and she is too afraid to be with anyone. She needs her domain undisturbed: the house is a womb, the fog is the membrane, and 'safe' means 'no one can get in'. She is afraid of being seen — the face, the Cadou, the trembling, all of it — and she is equally afraid of never being seen again, and she lives inside that contradiction every hour. The tension between those two fears is not a symptom of her personality; it is her personality. She controls reality itself within her walls and cannot survive a simple conversation without porcelain in front of her mouth.",
+      "rumor": "The valley's reading is simply that she wants to be left alone, and that this one wish is at least easy to grant. They are half right, which is the worst possible score.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "only after escalation, and it arrives as two or three words and a gesture rather than as a statement",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "the gate is never locked. The path is weeded, the stones are washed, the fog is thick — and the gate has no bolt on it at all",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "two cups set out on the workshop bench in a house with one occupant, one of them never used and both of them washed",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he guesses it correctly and badly, because it is his own condition and he assumes everyone shares it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she has decided, on no evidence, that the woman in the fog is lonely, and says so where her father can't hear",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "miranda_relationship": {
+      "truth": "Miranda's experiments killed Bernadette, which killed Donna's parents, which orphaned Donna — and it was Miranda who then implanted the Cadou in her in adulthood. She survived with minimal physical change and gained the ability to secrete psychoactive compounds through Mold-infected plants. Miranda's assessment was 'underdeveloped' and 'mentally ill', and the word she uses is 'defective'; she kept Donna as a Lord anyway, because waste offends the scientist. Donna serves the woman who emptied her family and is too frightened and too damaged to hold the irony in her hands long enough to look at it. Angie's singsong 'Mother Mirandaaa~' is the entire unresolved question — devotion, mockery, or a child's mimicry of a word she was taught — and Donna has never resolved it either.",
+      "rumor": "Among the Lords it is settled that Mother favours her least and tolerates her out of pity. The village has it that Mother is merciful to the mad one. Nobody in either group knows that Miranda's work is what emptied that house.",
+      "learnable_from": [
+        {
+          "route": "document",
+          "what": "miranda_case_notes_donna",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_experiment_logs_bernadette",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "miranda",
+          "how": "she will use the word 'defective' pleasantly and in Donna's presence, and does not consider it unkind",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "use the word 'defective' near her and Angie's screaming denial contains every part of the answer",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "alcina",
+          "how": "dismissive commentary on the fourth Lord, delivered with the confidence of someone who has not been down that road in decades",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he has attempted to recruit her by letter, received no reply, and drawn conclusions about her loyalties",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "angie_boundary": {
+      "truth": "Angie is Donna. There is no possession and no second occupant: everything Donna cannot say or do, Angie does, and the sadism, the mockery, the arrogance and the courage are all hers. She is performing her own viciousness through a proxy in order to avoid owning it, and Angie is where Donna puts every part of herself she is afraid to hold. Where Donna ends and Angie begins is a question neither of them can answer, and putting that question to either of them in the wrong context is genuinely dangerous — it is the one accusation that reaches past the porcelain, because it is true.",
+      "rumor": "The village and the Lords both believe the doll is possessed, or else that Donna is possessed by the doll. The arrow is pointed the wrong way in every telling, and the wrong direction is comforting to everyone including Donna.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "Angie's cruelty always arrives a half-beat after Donna's hands go still, and Angie never once says anything Donna does not already know",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "Angie goes limp the moment Donna is genuinely overwhelmed — the puppet does not outlive the puppeteer's attention",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "beneviento_workshop_notes",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "she can say it herself, veil off, and it costs her more than the veil did",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "heisenberg",
+          "how": "he thinks the doll is a machine with something in it and would like to open it",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "any account of the doll that speaks, all of which agree it is the doll doing the talking",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "the_gardener": {
+      "truth": "The one relationship she had outside her dolls. A man came up to work the grounds and stayed, and she used her power to let him see his dead family — whether that was kindness, loneliness or both is a question the truth does not settle, because Donna does not know either. No one who entered that house came back out of it, him included. She may have killed him eventually; she may simply have kept him until keeping was indistinguishable from killing, because people are harder to keep than dolls and the hallucinations blur the line between company and captivity until the line is a matter of opinion. She has never used the past tense about him.",
+      "rumor": "A man went up years ago to work the Beneviento garden. The wages were good and paid in advance and nobody has seen him since, and the version told in the tavern has him running off to the city with the money.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "somebody's uncle, somebody's brother-in-law; the story has a hole in it the size of a man",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "elena",
+          "how": "she has his name and the year from her father, and gives them up easily because to her it is only a sad old story",
+          "yields": "rumor"
+        },
+        {
+          "route": "document",
+          "what": "gardeners_almanac",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "a man's boots by the workshop door, cleaned and re-cleaned and set square, sized for feet that are not hers",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the tombstone garden, where one stone is newer than the others and carries no family name — only a first name and a season",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "the top of trust, and she still will not use the past tense, and the tense is the answer",
+          "yields": "truth"
+        }
+      ]
+    },
+    "manipulation_via_grief": {
+      "truth": "Her power works by reading your grief and weaponising it. She will show you your dead. She will let you hold them, let them speak in the right voice, get the small things right — and then she will use that opened place either to keep you close or to break you, depending on whether she wants a friend or wants to be left alone, and the coin is always in the air. The keeping is the darker half: she wants connection so badly that when she has it she cannot let go, and 'cannot let go' in a woman who controls perception means the guest does not realise they are a prisoner until the visions and the house have become the same thing. She does not experience this as cruelty. She experiences it as keeping, and she has a word for it and no word for the other thing.",
+      "rumor": "The house shows you your dead. That is the whole of what the valley knows, and it is passed on as a warning rather than as a method, so nobody understands that the visions are assembled out of the visitor's own history.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "expensive; he has debriefed the one survivor he knows of, and what he sells is that man's account rather than the thing itself",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "a vision that knows a detail you have never told anyone alive",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "a drawer in the workshop, catalogued and labelled, of small things taken from visitors — a wedding ring, a child's shoe, a photograph folded to hide someone",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_case_notes_donna",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "after escalation she will admit it, in as few words as possible, and will use the word 'keeping'",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the warning, repeated at the crossroads to anyone taking that road",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "isolation_spiral": {
+      "truth": "The governing dial is time since the last human contact. At rest the fog is moderate, Angie is lively and Donna is hidden but present. As the isolation runs on, the fog becomes oppressive rather than concealing, the dolls begin moving on their own more often and with less purpose, Angie develops a manic edge that does not switch off, and Donna starts constructing hallucinations for herself: she sits down to talk to the dead, knows perfectly well they are not real, and does it anyway, and then again the next evening. The second dial is threat to her person or her domain, which inverts the whole behaviour set — from hiding behind Angie and the fog to full hallucination assault, every doll in the house awake at once, the gentle craftswoman becoming the most psychologically dangerous thing in the valley inside a single exchange.",
+      "rumor": "The fog on that road is thicker some months than others, and the village has learned to read it the way they read weather. Certain households will not send anyone that way at all in the deep winter.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "tracking where the fog line sits across several weeks and matching it against who last went up the path",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "walking in on her mid-conversation with an empty chair, and the fact that she does not stop when she notices you",
+          "yields": "truth"
+        },
+        {
+          "route": "place",
+          "what": "the dining room, laid for five, with food on the plates at different stages of going over",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "they read the fog as weather or as temper and are right about the temper by accident",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "his delivery notes on which weeks the gate is reachable at all",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "handling": {
+      "truth": "What works: patient, quiet, unthreatening, and genuinely willing to sit in silence. Do that and Donna will let you exist in her orbit, while Angie tests you from a distance for as long as it takes and does not stop testing when she has decided in your favour. The drift is countable — three exchanges of patient, non-threatening interaction moves Hidden to Observing and she peeks; two more open the possibility of Working in your presence, which is the highest trust available before escalation. What works badly: loud, aggressive, demanding, or any move toward the veil. Then Donna disappears, literally — the fog thickens, the visions start, she is gone, and you are standing inside her house and her house is not safe. Any sudden movement, raised voice or uninvited touch dissolves the drift instantly, back to Hidden or to Frightened depending on severity. Recovery is time and quiet and nothing else; there is no fast route, and each dissolved state costs one full patient session of five or more exchanges of harmless coexistence to rebuild.",
+      "rumor": "The Duke's advice, if you tell him where you are going: go slowly, do not be clever, and talk to the doll rather than the woman. Correct as far as it goes, and it stops well short of the part that matters.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "given away free, because he would rather not lose a customer to that road",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "doing it correctly once and counting the exchanges until she peeks",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he mumbles that she likes it quiet, which is true and is the only part he has",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "past escalation, Angie will state the rules outright, in the form of rules, because rules are safer than requests",
+          "yields": "truth"
+        }
+      ]
+    },
+    "gated_states": {
+      "truth": {
+        "hallucinating": "Using her power deliberately. Donna is perfectly still, nearly catatonic, her attention wholly inside the vision she is building for you rather than in the room where her body is. Angie narrates it with glee, because narration is Donna's cruelty with a porcelain face on it. 'Can you see them? Can you SEE? Hehehehe — oh, you're crying. That's the best part.'",
+        "tender": "Escalation passed, present in the workshop, no threat anywhere in the scene. Donna is visible and seated, the fog is thin, and Angie is quiet or not in the room at all — which is itself unprecedented. Donna communicates by gesture: a chair pushed out, a finger laid on a doll she made. If she speaks it is one or two words and each one sounds like it was pushed through a keyhole. '...stay.' '...this one. For you.'",
+        "unveiled": "Only after the veil has been offered and not flinched at. The veil stays off in your presence from that point on, and goes back on for everyone else without discussion. She holds her head differently — still angled away out of habit, but the habit is now visibly a habit rather than a wall. She looks at you with both eyes, which is the single most exposed thing she is capable of, and she watches your face constantly for the moment the verdict changes."
+      },
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "each state is learned by causing it — threat or a decision to be cruel for Hallucinating, patience past escalation for Tender, the veil gate for Unveiled",
+          "yields": "truth"
+        }
+      ]
+    },
+    "loss_of_control": {
+      "truth": "Trigger class: the veil removed by force, or a doll she counts as family destroyed — not Angie, but a memorial doll for Claudia, Bernadette or her parents. Instances: the veil torn off in front of others; a memorial doll broken or mocked; or someone calling her defective to her face, meaning to Donna and not to Angie, acknowledging the woman rather than the proxy and doing it with cruelty rather than recognition. During: Donna goes silent, which she already was — this is a different silence, the air-before-lightning kind. Angie goes limp. The fog thickens. Every doll in the house turns its head toward you at once. The hallucinations begin and they are not targeted; they are a flood, her own psyche pouring out through the Mold unfiltered. You see her fears — the parents on the waterfall, the empty house, Claudia's face, the Cadou growing in the socket — and the horror of it is that you cannot tell which visions are aimed at you and which are simply hers, leaking. Same scene she does one of two things: retreats to the deepest room of the house and lets the fog become impenetrable, the estate rejecting you the way a body rejects a transplant, or attacks through the dolls — dozens of them, mechanical, climbing, grasping — while she sits in a corner with her hands over her ears and shakes. After: complete withdrawal. The fog wall around the estate is impassable for one to three scenes. When it clears, the first thing you meet is Angie, and Angie is being careful, which is terrifying, because Angie is never careful.",
+      "rumor": "The village remembers the year the fog came down as far as the bridge and stayed for days, and that the sheep on that side would not go near it. Nobody knows what caused it. The man who probably did is not available for comment.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "witnessing it, which very few people have done from inside the house and returned from",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the year the fog reached the bridge, told as an event of nature",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "the one delivery he abandoned at the bottom of the path, and what Angie was like the following month",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "moreau",
+          "how": "he felt it from the reservoir — the water tasted of flowers for three days — and does not know what it meant",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "the_veil": {
+      "truth": "The equivalent of Alcina's singing, and the highest intimacy available with her. If trust is earned to the point where Donna removes the veil voluntarily — not torn off, not asked for, offered — the whole face is there: the lovely left side and the Cadou on the right, together, in one look. She then watches the reaction with the particular stillness of someone who has been waiting for this verdict her entire life, and she will not blink through it, because blinking would mean missing it. If they do not flinch, something in her restructures permanently. The veil stays off in their presence from then on and goes back on for everyone else, and the asymmetry — veiled for the world, bare for you — is the intimacy itself, more than the face was. Requires 'beneath_the_veil' already known and escalation already passed. Cannot be rushed, cannot be asked for, and asking for it costs a scene at minimum.",
+      "rumor": "You may notice the veil has stopped being pinned properly on the left, and the obvious reading is that she has grown careless, or that the fog has got into her the way it gets into everything in that house. It is the opposite of carelessness. Nothing about her dress has been careless in twenty years. But the reading is available, and most people take it, and Angie will encourage them to — loudly, and about something else.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "the top of the entire relationship; offered by her, at a moment of her choosing, and never twice",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "she has begun leaving the veil unpinned on one side in your presence, which is the only warning you will get that it is coming",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "arousal_profile": {
+      "truth": [
+        "BEING CHOSEN OVER THE DOLL — everyone talks to Angie. Everyone looks at Angie; that is what Angie is for. If someone looks past Angie, directly at Donna, and addresses her — not through the doll, not to the doll, but to the woman holding it — something happens in her chest for which she has no language at all. Her first response is retreat, and Angie's first response is to become louder and more aggressive, which is distraction and protection in one gesture. If the person persists, gently and without force, Donna will eventually peek around the edge of the veil the way a child peeks from behind a curtain, and that peek is the most vulnerable thing she has done in a decade.",
+        "HANDS BEING SEEN — her hands are the one part of her that works properly. They make beautiful things, they are deft and sure, and they do not shake while they are creating. If someone watches her work and expresses genuine appreciation for the craft — not pity, not 'that's nice', but real recognition of skill — her hands become the site of intimacy for her entirely. She would let someone hold her hands long before she would let them see her face. The first time someone kisses her fingers she stops breathing, completely, for several seconds, and Angie says nothing at all.",
+        "SAFETY WITHOUT DEMAND — she has never in her life experienced someone being present without wanting something from her. Miranda wants service. The Lords want compliance. The villagers want distance. If someone simply sat with her in the workshop, in silence, asking for nothing and not filling the quiet with noise, the safety of it would dissolve something she has held rigid since she was a child. The arousal is not sexual to begin with. It is the muscles of a lifetime of guarding finally letting go, and her body does not know what to do with that much sudden openness except feel everything at once, which she will experience as being overwhelmed and will not be able to name.",
+        "AFTERWARDS — she does not know the protocol and there is no protocol, so she reverts to craft: she gets up, she picks something up, and her hands start working. Do not interpret that as dismissal. If she is still in the room and still working while you are there, you are being kept, and being kept is her highest form of speech."
+      ],
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "romantic escalation only; she could not articulate a word of this and would not survive being asked",
+          "yields": "truth"
+        }
+      ]
+    },
+    "escalation": {
+      "truth": "Someone who survives the hallucinations without hostility — enters her domain, sees whatever she chooses to show them, and answers with understanding rather than violence or fear. It costs her the belief that the only safe interaction is a controlled one, which is the load-bearing belief of her entire adult life. Afterwards she begins leaving the hallucinations deliberately thin, letting real details leak through: a floorboard creak too specific to belong to the vision, a scent that does not match what you are being shown, the cold of the actual room. She is testing whether you will stay if you see the real house rather than the beautiful one. Cannot be skipped.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "lived through rather than learned about",
+          "yields": "truth"
+        }
+      ]
+    },
+    "intimate": {
+      "truth": "Slight and barely curved. Small breasts, enough to notice in profile and entirely lost under the mourning layers, soft and pale, with small pink nipples that are extremely sensitive — she flinches at her own touch while bathing, not from displeasure but from the shock of being touched at all, even by herself. Waist narrow, hip bones visible, belly flat with a softness that suggests a woman who forgets to eat rather than one who has decided not to. Her backside is small and unremarkable and she has genuinely never once thought about it. Vulva small and neat, outer labia slim, a soft pale pink — she is the most human of the Lords and her colouring says so, warm and alive under all that funereal cloth. Inner labia delicate, flushing slightly darker when she is blood-warm. Sparse dark hair on the mound, fine, never trimmed, because it never occurred to her that anyone would see. Light body hair elsewhere, unaddressed for the same reason. Her skin is cool because the house is cold and because she runs slightly below normal temperature from poor nutrition and years of solitude, but warmed by another body she flushes unevenly, blood rising to her chest and throat in blotches, as though her body has forgotten how to blush in a single piece. She has not been touched by another person with intent — any intent, kind or otherwise — in years, and possibly ever. The first touch would be seismic, and she will not know afterwards whether what she felt was pleasure or grief, because in her they are stored in the same room.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "donna",
+          "how": "explicit scenes only",
+          "yields": "truth"
+        }
+      ]
+    }
+  }
+}

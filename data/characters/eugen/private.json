@@ -1,0 +1,120 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour for second-hand routes, and learnable_from — every way this can be found out. Release with '<id>.<section>' for truth or '<id>.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+  "sections": {
+    "what_he_carries": {
+      "truth": "Surgical instruments, sutures, glassware, ether, morphine, and latterly restraints. He collects them from the Duke, from the mill, and twice from a crate left at the treeline by nobody he has ever seen, and he delivers them to the church and leaves them inside the door at the top of the stair down. He has never been further than that door. He has heard things through it.",
+      "rumor": "The village understands that Eugen fetches medical supplies for the church, that the church tends the sick, and that this is entirely proper. Several people will tell you Mother Miranda healed someone they know, and they are not lying.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the accepted account of the church's medical work",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he has sold Eugen most of it and will itemise the list for a price, having noted that it is not the list a sick village needs",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "he has logged the schedule, the covered basket, and the deliberately long route past his window",
+          "yields": "truth"
+        },
+        {
+          "route": "possession",
+          "what": "the coat's inside pockets, and the carbolic smell that will not come out of the lining",
+          "yields": "rumor"
+        },
+        {
+          "route": "observation",
+          "what": "following him, which he will notice",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "eugen",
+          "how": "only if cornered with something specific and correct, and only if he has decided the PC is more dangerous to him than she is",
+          "yields": "truth"
+        }
+      ]
+    },
+    "which_man_he_is": {
+      "truth": "GM: choose one at session start and lock it. Do not leave it floating and do not change it later; the whole value of this thread is that it resolves into a specific person.\n\nCOMPLICIT — he knows precisely what she does with what he brings, and he serves out of ambition or because he decided long ago which side survives. Can be exposed to the village, which destroys him, or turned, which is expensive.\n\nCOERCED — he knows enough to be permanently frightened. It was explained to him once, in detail, with an example. He does what he is told and takes the long way round the window so that nobody develops an interest in him. This read is the most playable and the most sympathetic.\n\nIGNORANT — he believes he serves the church's medical needs and has never connected the restraints to anything, because connecting them is a thing his mind refuses to do. A useful idiot, and the cruellest version for the player to be the one who tells him.",
+      "rumor": "Nobody in the village has considered the question. He is Eugen, he runs errands for the church, and that is the whole of the village's model of him. Iulian distrusts him on general principle and cannot say why, which irritates Iulian considerably.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "iulian",
+          "how": "an instinct with no evidence behind it, correct in direction",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "eugen",
+          "how": "the read reveals itself under specific pressure — a complicit man negotiates, a coerced man warns you, an ignorant man is confused. Which one he does IS the answer",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "how he behaves at the church door: does he go in, hesitate, or refuse to look at it",
+          "yields": "truth"
+        },
+        {
+          "route": "document",
+          "what": "miranda_supply_requisitions",
+          "yields": "truth"
+        }
+      ]
+    },
+    "the_route": {
+      "truth": "He leaves before dawn twice a week, takes the east track rather than the road, and crosses to the church from behind rather than up the steps. The reason is not secrecy about the church — everyone knows he serves it — but that the east track does not pass Luiza's window. He has arranged his entire working week around not being watched by a man he has never spoken to.",
+      "rumor": "Anyone who has noticed assumes he takes the east track because it is shorter, which it is not, or to keep out of the wind, which it does.",
+      "learnable_from": [
+        {
+          "route": "person",
+          "who": "sebastian",
+          "how": "the entire schedule, unprompted, to anyone who has asked him anything twice",
+          "yields": "truth"
+        },
+        {
+          "route": "observation",
+          "what": "walking the east track and finding it longer",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the assumed reason",
+          "yields": "rumor"
+        }
+      ]
+    },
+    "weaknesses": {
+      "truth": "Specificity. He has a prepared deflection for every general question and nothing at all for a precise one — name the ether, name the restraints, name the day of the week, and the mildness holds while the movement stops. Also: being offered a way out that is more frightening to refuse than to accept, which is the only currency he understands, because it is the currency he was bought with.",
+      "rumor": "He is generally held to be a closed door and not worth pushing on, which is exactly the impression he has spent years cultivating.",
+      "learnable_from": [
+        {
+          "route": "observation",
+          "what": "the difference between how he answers a general question and a specific one",
+          "yields": "truth"
+        },
+        {
+          "route": "person",
+          "who": "villagers",
+          "how": "the impression he has cultivated",
+          "yields": "rumor"
+        },
+        {
+          "route": "person",
+          "who": "duke",
+          "how": "he has watched Eugen buy things and formed a view of what moves him",
+          "yields": "rumor"
+        }
+      ]
+    }
+  }
+}

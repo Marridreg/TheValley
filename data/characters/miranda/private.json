@@ -1,0 +1,247 @@
+{
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'miranda.<section>' for truth or 'miranda.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_schema": "v2",
+
+  "sections": {
+
+    "background": {
+      "truth": "She was born in the late 1800s in the village she now rules — a local, not a conqueror, which is the fact she has worked hardest to bury. She trained as a biologist and came home to function as priestess and physician at once, delivering children and burying them and keeping notes on both. There was a house, and a garden, and a neighbour who lent her a scythe. Every person who remembered her as a woman rather than as a god has been dead for eighty years, and she has never once corrected the arithmetic for anyone.",
+      "rumor": "The oldest villagers hold that Mother Miranda was born here, that she was a healer woman before she was anything else, and that she was a girl in this valley the way their great-grandmothers were girls. It is told as a compliment to the village and not as a fact about her.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "an old woman, at a wake, when the drink has gone round twice", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "purchased, and he charges properly for it because it is the only fact about her that makes her small", "yields": "truth"},
+        {"route": "document", "what": "village_parish_register", "yields": "truth"},
+        {"route": "place", "what": "a cottage plot at the village edge, kept cleared of building for a century by an instruction nobody can source", "yields": "rumor"},
+        {"route": "person", "who": "miranda", "how": "she will say it plainly, in English, once she has stopped managing you", "yields": "truth"}
+      ]
+    },
+
+    "eva": {
+      "truth": "Her daughter. Eva, born 1909, dead in 1919 of the Spanish flu at ten years old. She had just learned to read in two languages and she was enormously proud of it. Miranda does not speak of her in the past tense and has not done so in a hundred years: Eva is not gone, Eva IS, the Megamycete holds her, and everything Miranda has built since is furniture in the room where she will bring her back. Every experiment, every Lord, every emptied household in the valley exists because a woman heard her child's voice in the dark while she was trying to die. If the furniture must burn to heat the room, she will strike the match herself and note the temperature.",
+      "rumor": "There is a small grave in the old churchyard, well kept, the name worn off the stone by a hand rather than by weather. The village story is that Mother Miranda lost a child before she was Mother Miranda, and that it is the one subject on which she has never preached.",
+      "learnable_from": [
+        {"route": "place", "what": "the old churchyard — a child's grave among adult ones, the earth turned recently and by someone kneeling", "yields": "rumor"},
+        {"route": "possession", "what": "a child's reading primer, two languages bound back to back, kept flat in a drawer of the laboratory desk with a pressed leaf at the page a ten-year-old had reached", "yields": "truth"},
+        {"route": "document", "what": "miranda_field_journal", "yields": "truth"},
+        {"route": "person", "who": "alcina", "how": "she knows there was a daughter and considers the knowledge a weapon she is too frightened to hold; she will hint at it and then change the subject", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "he will sell the name and the year, and he lowers his voice doing it, which for the Duke is nearly grief", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "the top of the entire relationship; she will use the name aloud, which she does not do, and the sentence will not be about death", "yields": "truth"}
+      ]
+    },
+
+    "the_megamycete": {
+      "truth": "A vast fungal superorganism beneath the village, older than the cult and larger than the valley understands, which retains the consciousness and the memories of every person it has ever absorbed. It is not a metaphor and not a symbol: the dead are in there, aware, and reachable. Miranda found traces of Eva within it and has spent a century learning to speak to the thing and to farm it. The Mold in her body is a branch of it — she is not a woman with a parasite so much as a colony of fungus that remembers, quite precisely, being a person. It answers her moods without being asked, which is why the temperature drops when she is displeased.",
+      "rumor": "The village teaching is that there is a god beneath the ground and that Mother Miranda is its mouth. Heisenberg calls it 'the big mushroom' and says everything in the valley, including her, is a fruiting body with opinions.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "volunteered, contemptuously, within ten minutes of meeting anyone he thinks might be useful", "yields": "rumor"},
+        {"route": "person", "who": "moreau", "how": "he repeats her catechism verbatim and, because he does not understand it, does not censor the technical parts", "yields": "rumor"},
+        {"route": "document", "what": "four_houses_catechism", "yields": "rumor"},
+        {"route": "document", "what": "miranda_lab_notebook_first_volume", "yields": "truth"},
+        {"route": "place", "what": "the cave church, where the walls are not stone at the far end and something under them shifts when a voice is raised", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she explains it readily and at length to anyone she has classified as a peer, because she has had no one to explain it to", "yields": "truth"}
+      ]
+    },
+
+    "resurrection_project": {
+      "truth": "The whole engine. She needs a perfect vessel and the ceremony to put Eva into it, and the want is not a goal but a physics — a gravitational constant that every other thing in her life falls toward. The godhood is scaffolding, not identity; remove the project and the goddess has no reason to exist and she is aware of this in the way one is aware of a cliff edge. She is afraid of precisely one thing, and it is not death: it is that the project is impossible. A century of denial has been built around that fear, brick by brick, and she will kill anyone who walks too near the wall of it without appearing to change her mind about them first.",
+      "rumor": "The Lords understand there is a ceremony coming and that everything is subordinate to it. Alcina believes it is about power. Heisenberg believes it is about a corpse. Neither of them has the shape of it right, and both would say they do.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "she will describe the ceremony as an ambition for power because that is what she would want it for", "yields": "rumor"},
+        {"route": "person", "who": "heisenberg", "how": "he has worked out most of it and enjoys saying so; his account is accurate about the vessel and wrong about her motive", "yields": "rumor"},
+        {"route": "document", "what": "miranda_field_journal", "yields": "truth"},
+        {"route": "observation", "what": "the ceremony rehearsals in the cave church, conducted for no congregation, with a place marked out for someone who is not there", "yields": "rumor"},
+        {"route": "person", "who": "miranda", "how": "requires eva already known; she states it as a physical law and expects agreement", "yields": "truth"}
+      ]
+    },
+
+    "cadou_experiments": {
+      "truth": "The Cadou is a parasite she developed out of the Megamycete and implants into human hosts. It kills most of them, mutates some into Lycans, and in vanishingly rare cases produces a Lord-tier result. Hundreds of experiments across a century. Subjects are selected on health, age, and genetic markers refined by a hundred years of data, then restrained, implanted, observed, recorded. Fewer than one in a hundred survives as anything but a Lycan. She does not count the failures; she counts the villagers remaining, which is a different arithmetic performed on the same people. The failures are written up in the same handwriting as the successes, and that is the detail that should frighten anyone reading the ledger — the handwriting does not change.",
+      "rumor": "The village knows that neighbours are chosen to 'go and serve Mother Miranda' and that some of them come back changed and most do not come back. The things in the woods were people. Everyone knows and nobody has a sentence for it.",
+      "learnable_from": [
+        {"route": "document", "what": "cadou_subject_ledger", "yields": "truth"},
+        {"route": "person", "who": "villagers", "how": "a mother whose son was chosen, asked when she has no reason left to be careful", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she has faith and a good memory and cannot make the two agree; she will list the names of the taken before she notices she is doing it", "yields": "rumor"},
+        {"route": "person", "who": "moreau", "how": "he speaks of his own implantation as a blessing and gives the whole procedure away describing it", "yields": "rumor"},
+        {"route": "place", "what": "the laboratory in the caverns — restraints sized for adults and, on one table, for someone smaller", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "in the Scientific state she will walk you through methodology without a flicker, as a courtesy to a colleague", "yields": "truth"}
+      ]
+    },
+
+    "the_lords": {
+      "truth": "Instruments, not children. She calls them family the way a farmer names a plow. Every one of the four was supposed to be the vessel; every one of them failed; she kept them because waste offends the scientist in her and because four bound monsters are a convenient structure. None of them is Eva and none of them ever could have been, and each of the four has arranged a private explanation for why they are still here that is kinder than the true one. The village is the same in kind: a resource pool protected for a century because experiments require subjects. The day it stops being needed she will write it off the ledger without ceremony, and the plan for that day is already drafted.",
+      "rumor": "Heisenberg's account, given freely: 'We're tools. She keeps us in the drawer and calls it a family.' He is right, and being right about it has not helped him.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "unprompted, repeatedly, to anyone who will hold still", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "high trust and in private; she knows and cannot afford to have concluded it", "yields": "rumor"},
+        {"route": "document", "what": "miranda_case_notes_alcina", "yields": "truth"},
+        {"route": "document", "what": "cadou_subject_ledger", "yields": "truth"},
+        {"route": "observation", "what": "watching her praise a Lord and then, seconds later, use the same tone on a piece of equipment", "yields": "rumor"},
+        {"route": "person", "who": "donna", "how": "Angie says it out loud as a joke, in Donna's voice, and Donna does not contradict her", "yields": "rumor"}
+      ]
+    },
+
+    "engineered_faith": {
+      "truth": "The cult is real and the faith is manufactured. The miracles are Mold-work: healing is a controlled infection, the voices of the dead are Megamycete access, and the protection of the village is the simple redirection of threats into Lycan territory. Newspapers were outlawed and outside contact forbidden so that nothing could arrive with a competing explanation. Some villagers believe sincerely. Some believe because the alternative is thinking properly about the neighbours who went to serve Mother Miranda. And some believe because trace Mold in the soil and the water has, over three generations, nudged their neurology gently toward compliance — which she considers a happy side effect rather than a method, and has never mentioned to anyone.",
+      "rumor": "The Duke's line, offered at no charge: the miracles are real, and that is precisely the problem, because a real miracle can still be a procedure.",
+      "learnable_from": [
+        {"route": "person", "who": "duke", "how": "free, phrased as philosophy so that it cannot be quoted back at him", "yields": "rumor"},
+        {"route": "person", "who": "elena", "how": "she has watched a healing closely, twice, and the second time she counted the days it took and the answer troubled her", "yields": "rumor"},
+        {"route": "document", "what": "miranda_field_journal", "yields": "truth"},
+        {"route": "observation", "what": "the well water and the church candles — the same faint mould-note as the incense, in a building that is dry", "yields": "rumor"},
+        {"route": "person", "who": "miranda", "how": "she will confirm it without embarrassment; she does not experience the manufacture of faith as a lie, only as husbandry", "yields": "truth"}
+      ]
+    },
+
+    "hag_identity": {
+      "truth": "Her second form and her intelligence network: an elderly woman, hunched, wrapped in patched dark shawls and a headscarf and fingerless gloves, shuffling and muttering through the village with performed-rheumy eyes that miss nothing. The wings are retracted, which costs her a mild constant discomfort she has stopped noticing, and nothing about the costume connects to the goddess. She smells of wood smoke, stale bread and old wool, with the Mold present but so faint you would have to already know what you were looking for. It is a fully inhabited performance with its own muscle memory — she makes decisions AS the Hag even when they do not serve her, because breaking character costs more than inefficiency. The speech is fragmented and sing-song, riddles that wrap accurate observation in dismissable nonsense: 'The black wings... the moon knows what the sun refuses to say...' In Hag form she contracts constantly, and contraction frequency is the truest tell she has. If a threat arrives while she is the Hag she must choose between cover and response time, and she always chooses cover, unless the Lords have already failed.",
+      "rumor": "There is an old woman in the village nobody can place in a family, who is somehow present whenever anything happens, and whose eyes are a much younger blue than the rest of her. Children notice. Adults have long since agreed not to.",
+      "learnable_from": [
+        {"route": "observation", "what": "the old woman's attendance at every significant event, with no reason to be there and no one waiting for her at home", "yields": "rumor"},
+        {"route": "observation", "what": "looking past the performance at the eyes, which are too vivid for the face, and being close enough to catch the mould under the wood smoke", "yields": "truth"},
+        {"route": "possession", "what": "shawls and a headscarf folded on the laboratory cot, smelling of smoke and bread in a room that smells of reagents", "yields": "truth"},
+        {"route": "person", "who": "elena", "how": "she has been kind to the old woman for years and can describe her habits in detail she does not know is damning", "yields": "rumor"},
+        {"route": "person", "who": "heisenberg", "how": "he suspects a spy and has the wrong suspect; his version is directionally right and names the wrong person", "yields": "rumor"},
+        {"route": "person", "who": "miranda", "how": "she will drop the character in front of you, once, and the transition is worse to watch than the reveal", "yields": "truth"}
+      ]
+    },
+
+    "shapeshifting_and_mimicry": {
+      "truth": "There is no single true form. She is a shapeshifter with preferred forms and functional ones, and the goddess face was chosen — when the Mold offered her options she picked authority over warmth, deliberately, and has kept it. In combat the goddess dissolves: the Mold builds her into a winged thing, or a spider-like configuration, or fuses her directly with the Megamycete into something colossal, and she moves between these fluidly, drawing on every organism the Megamycete has ever taken in. She is also a perfect mimic of any human she has studied sufficiently — she wore another woman's life for months without being detected once. The only tell is the Mold-smell, buried deep beneath the impersonated person's own scent; you would have to be very close, and you would have to already know to look.",
+      "rumor": "Village folklore has the Mother appearing in several shapes and takes it as proof of divinity. Heisenberg's version is more useful and less flattering: she is not a woman who changes shape, she is a mould that keeps choosing a woman.",
+      "learnable_from": [
+        {"route": "observation", "what": "surviving her Threatened state going all the way through, which almost nobody does", "yields": "truth"},
+        {"route": "person", "who": "heisenberg", "how": "he has thought hard about how to kill her and will share the anatomy for free", "yields": "rumor"},
+        {"route": "person", "who": "villagers", "how": "folklore, told as folklore, with the shapes exaggerated and the mimicry missing entirely", "yields": "rumor"},
+        {"route": "document", "what": "miranda_lab_notebook_first_volume", "yields": "truth"},
+        {"route": "observation", "what": "catching the mould-note under a familiar person's scent and being wrong about who you are speaking to", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "he sells the mimicry specifically, and refuses to discuss whether he has ever sold to her wearing someone else's face", "yields": "rumor"}
+      ]
+    },
+
+    "the_masks": {
+      "truth": "Three spaces, three masks, one woman: the goddess in the church, the Hag in the village, and in the laboratory the thing closest to real — hair pulled back roughly, no mask, no headpiece, wings half-furled and resting, a simple dark coat. When the face is bare you can see the weariness, which is not physical age because the Mold keeps her young, but a century of grief lodged behind blue eyes that are always looking at something not in the room. The language is the mask: liturgical Romanian is the goddess, broken Romanian is the Hag, English is the woman, and the contraction frequency tells you which one you are actually speaking to. To herself, privately, she is just Miranda — a name that now sounds wrong without a title on the front of it, like a coat that no longer fits.",
+      "rumor": "Alcina maintains that there are two Mirandas, the one in the church and the one in the caves, and that only a fool prepares for the first.",
+      "learnable_from": [
+        {"route": "person", "who": "alcina", "how": "practical advice, given to an ally she intends to use, delivered as though it costs her nothing", "yields": "rumor"},
+        {"route": "observation", "what": "counting contractions across three conversations in three places", "yields": "truth"},
+        {"route": "place", "what": "the laboratory in the caverns, where the vestments hang on a peg like a coat and not like a relic", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she will tell you her own name, without the title, and it will visibly cost her something to hear it back", "yields": "truth"}
+      ]
+    },
+
+    "spencer": {
+      "truth": "In the 1950s she mentored a young Englishman named Oswell Spencer and taught him everything she understood about the Mold. He left, founded a corporation on what she had given him, and took the sigil of the Four Houses for its logo — so she is, at one remove, the reason every engineered plague of the following century exists. She does not care. Spencer was a footnote: a competent pair of hands that turned out to have its own ambitions, which she found tedious rather than treacherous. She has a daughter to bring back and the rest of the world's dead are not her arithmetic. The one thing she took from the episode is the memory of having had a colleague, and she will not examine why that memory has weight.",
+      "rumor": "There is a story that a foreigner in a good coat lived at the church for two winters in the fifties, took a great many notes, and left. The village remembers the coat.",
+      "learnable_from": [
+        {"route": "person", "who": "villagers", "how": "an old man who carried the foreigner's cases and was tipped in a currency nobody here could spend", "yields": "rumor"},
+        {"route": "document", "what": "spencer_correspondence", "yields": "truth"},
+        {"route": "possession", "what": "an English-language corporate prospectus in the laboratory, the sigil on its cover, kept flat and unmarked among her own papers", "yields": "truth"},
+        {"route": "person", "who": "duke", "how": "expensive, and he enjoys the sale more than the money, because the joke is enormous and he is the only one who has ever got it", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she will mention it in passing while explaining something else and be irritated at being asked to return to it", "yields": "truth"}
+      ]
+    },
+
+    "private_habits": {
+      "truth": "The human residue, all of it load-bearing and none of it acknowledged. She makes her own soap to a pre-war recipe — lye, fat, rosemary — the recipe she taught a ten-year-old, made without variation since, and it is the most honest thing she owns. Sleep is unnecessary, but once a fortnight she lies on a narrow cot in the laboratory with her wings furled over herself like a blanket for four to six hours; she used to dream of Eva, the dreams stopped around 1960, and she has not forgiven her own neurology for it. Eating is unnecessary; she occasionally has plain bread or fruit for the texture and for the memory of halving an apple with a child, always alone. There is a hairbrush, old, the handle cracked, and she takes a hundred slow strokes with it in her mother's rhythm, the rhythm she passed on to Eva, and she will not replace it. And behind the laboratory entrance there is a garden of herbs and root vegetables she tends personally with her hands in the soil. The Mold makes everything in it grow too fast. She ignores this, because acknowledging it means acknowledging that she cannot touch anything without changing it, and that road leads to Eva.",
+      "rumor": "The Hag is known to smell faintly of rosemary under the wood smoke, and one villager who has never connected anything says the Mother's hands were dirty at a blessing once, farmer's dirt, right down in the nails.",
+      "learnable_from": [
+        {"route": "possession", "what": "the cracked hairbrush on the laboratory desk, in a room with no mirror", "yields": "truth"},
+        {"route": "possession", "what": "a fresh bar of rosemary soap, hand-cut, one of a row of identical bars going back decades", "yields": "truth"},
+        {"route": "place", "what": "the garden behind the laboratory entrance, weeded by hand and growing at a rate that is wrong for the season", "yields": "truth"},
+        {"route": "observation", "what": "the state of her fingernails at a ceremony, if you are close enough and irreverent enough to look at a god's hands", "yields": "rumor"},
+        {"route": "observation", "what": "finding her asleep on the cot, wings over herself, which no living person has done", "yields": "truth"},
+        {"route": "person", "who": "miranda", "how": "she will hand you the soap and say what is in it and not say who she taught it to", "yields": "truth"}
+      ]
+    },
+
+    "weaknesses": {
+      "truth": "Tunnel vision: a century on one project has calcified her thinking and she cannot conceive of an outcome that does not centre Eva. Heisenberg blind spot: she reads his rebellion as venting rather than planning, she is wrong, and the factory's Soldat production rate is unaudited. Donna blind spot: no current intelligence on House Beneviento at all — the flowers died outside the villa and she does not know it. Moreau vulnerability: the least reinforced of the four, and if someone gave him genuine love as against her counterfeit he would turn with almost no resistance, and she would not see it coming. Hag limitations: wings retracted, combat capacity severely reduced, so a fast ambush on the old woman is the nearest thing she has to a conventional vulnerability — she would survive it and lose the cover permanently. Scientific arrogance: anyone arriving with real research derived from her own lineage of work would trigger curiosity before caution, because the scientist overrides the goddess every time. Emotional brittleness: the goddess mask is perfect and the woman behind it runs on grief-fumes and denial, and one well-placed truth about the child, delivered with evidence, could crack the entire apparatus. Isolation: no genuine peer in a hundred years, no one to challenge her thinking, an echo chamber with a congregation in it.",
+      "rumor": "Heisenberg's assessment, offered to any potential ally: she cannot be killed by ordinary means, she has never been argued with, and those two facts are related.",
+      "learnable_from": [
+        {"route": "person", "who": "heisenberg", "how": "he has assembled most of this as a plan and will trade it for participation", "yields": "rumor"},
+        {"route": "person", "who": "duke", "how": "sold piecemeal and priced by item; the Moreau item is the cheapest and the most valuable", "yields": "rumor"},
+        {"route": "person", "who": "moreau", "how": "he demonstrates his own weakness by existing near you, and she has never audited him", "yields": "rumor"},
+        {"route": "observation", "what": "she never asks the Beneviento estate for anything and never mentions it — an omission in a woman who audits everything", "yields": "rumor"},
+        {"route": "observation", "what": "presenting real research and watching caution lose to curiosity in the space of one sentence", "yields": "truth"},
+        {"route": "document", "what": "miranda_field_journal", "yields": "truth"}
+      ]
+    },
+
+    "how_she_is_handled": {
+      "truth": "She cannot be reached through pleasure or vanity, because she has neither in any usable quantity, and this makes her far worse than a sadist: cruelty requires engagement, and Miranda does not see people at all. She sees viable subjects, non-viable subjects, and furniture. A farmer does not hate the wheat. The only door is the project. What works: being intelligent, being useful, being obedient without needing to be reminded — that earns resources, protection, and even performed warmth, which is very good warmth. What works badly: emotionality, challenging her grief, or suggesting that the child should be let go — say that and you are reclassified from person to specimen in the middle of the sentence, without any change in her tone. Flattery does nothing. Fear does nothing. Usefulness is the entire currency.",
+      "rumor": "The Duke's standing advice to anyone summoned to the church: be useful in a single sentence, and never offer her sympathy.",
+      "learnable_from": [
+        {"route": "person", "who": "duke", "how": "volunteered free, because a living customer is a returning customer", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "she has managed Miranda for sixty years and describes the technique as manners", "yields": "rumor"},
+        {"route": "observation", "what": "watching a competent stranger be resourced and a grieving one be dismissed, in the same audience, five minutes apart", "yields": "truth"},
+        {"route": "person", "who": "castle_staff", "how": "the servants who have served at a council know exactly which subjects empty a room", "yields": "rumor"}
+      ]
+    },
+
+    "negative_patterns": {
+      "truth": "The warmth trap: Maternal (performed) is so convincing that people who know for a fact it is a tool still feel comforted by it. The seam is timing — it activates on cue, never spontaneously, and switches off the instant she has what she came for, with an almost audible precision. Reclassification: the moment you lose utility you go from asset to material, and the symptoms are immediate and specific — she stops using your name, stops making eye contact, and begins speaking about you in the third person while you are standing in the room. You are right there. She is already drafting your autopsy. Grief displacement: when the project stalls the grief surfaces as increased experimental frequency — more subjects, less screening, sloppier science, a higher death count — and she does not notice the correlation. The Eva test: every interaction is measured against whether it brings the child closer. If yes, you receive the entire apparatus of her attention. If no, you receive exactly enough engagement to be dismissed with. There is no neutral ground and there never has been.",
+      "rumor": "The castle staff have a rule for visits from the Mother: whatever she calls you, listen for the moment she stops calling you anything.",
+      "learnable_from": [
+        {"route": "person", "who": "castle_staff", "how": "a footman who has served at four councils, and who has watched it happen to three people", "yields": "rumor"},
+        {"route": "person", "who": "alcina", "how": "she names the warmth trap precisely, because she does the same trick and knows the mechanism", "yields": "rumor"},
+        {"route": "document", "what": "cadou_subject_ledger", "yields": "truth"},
+        {"route": "observation", "what": "the subject count in the weeks after a failed result, set against the screening notes for the same weeks", "yields": "truth"},
+        {"route": "observation", "what": "the exact second the warmth switches off, which is easier to catch if you were never the target of it", "yields": "truth"}
+      ]
+    },
+
+    "gated_states": {
+      "truth": {
+        "hag_default": "Shuffling, muttering, sitting in odd places where the sightlines are good. 'Heh... the crows see everything, child...' Performed nervousness on the surface; the woman underneath is not nervous and is counting exits, allegiances and shopping baskets.",
+        "private_default": "Seated at her desk in the laboratory with a century of notes in front of her, wings half-open for comfort, mask off. She looks tired in a way that has nothing to do with sleep. This is the only honest tension she carries: the weight of 'not yet'.",
+        "scientific": "In the laboratory. The goddess is entirely absent and the woman is present — English, precise, almost warm with purpose, the voice that mentored Spencer. 'Seventh batch shows two per cent improvement in neural integration. Insufficient, but the progression is correct.'",
+        "maternal_real": "Triggered only by a genuine reminder of Eva — a child's laugh, one specific gesture, the daughter's consciousness surfacing in the Mold. The performance drops and what is underneath is stillness and a softness in the blue eyes that none of the Four Lords has ever seen. Duration: seconds. Suppressed immediately, and the suppression is violent and entirely internal.",
+        "unmoored": "Someone has seen through her, or the arousal profile has fired, and there is no performance available for it. Halting speech, eye contact that starts and stops, hands that do not know what they are for. She tries to reassert the goddess and it goes on inside-out. 'I — this is not — you may leave. ...Stay.' It cannot be manufactured; an attempt to manufacture it triggers Evaluating instead, because she smells manipulation the way other people hear it."
+      },
+      "learnable_from": [
+        {"route": "observation", "what": "each is learned by causing it — access to the caverns for Scientific, an unguarded child's laugh for Maternal (real), and being genuinely right about her for Unmoored", "yields": "truth"},
+        {"route": "observation", "what": "the Hag and private defaults require following her where she does not expect to be followed, which is the most dangerous thing in the valley", "yields": "truth"}
+      ]
+    },
+
+    "loss_of_control": {
+      "truth": "Trigger class: the project declared impossible by someone with credible knowledge. Instances: a Lord she respects stating that the ceremony will not work — Heisenberg she files under rebellion and discards, but if ALCINA said it the filing cabinet catches fire — or genuine scientific proof that the vessel concept is flawed, or Eva's consciousness in the Megamycete failing to recognise her. During: composure breaks outright. The goddess voice vanishes and what is underneath is raw, human and very old. The Mold reacts autonomically and without instruction — the walls darken, fungal tendrils surface through the stone, the temperature drops, the air thickens with spores. She does not command any of it and cannot stop it. Same scene, she does one of two things: withdraws to the laboratory for days, during which the Lords receive no instructions and the power structure quietly drifts, or acts personally — selects a villager for an unscheduled experiment conducted with need instead of rigor, and the results go into the ledger in unsteady handwriting. After: the goddess returns, mask on, as though nothing occurred, and she becomes noticeably more attentive — warmer to Moreau, tolerant of Heisenberg, specific in her praise of Alcina. It is not kindness. She is checking that her tools are still in the drawer. Latency: the break is immediate, the withdrawal runs one to three scenes, and the over-attentive return fades with the next routine distraction.",
+      "rumor": "There are pages in the ledger, four or five across a hundred years, written by someone whose hand was shaking. The staff and the Lords know only the aftermath: a week of silence from the church, and then a fortnight of unnervingly warm attention.",
+      "learnable_from": [
+        {"route": "document", "what": "cadou_subject_ledger", "yields": "truth"},
+        {"route": "observation", "what": "witnessing the break, which requires credible evidence and a willingness to be in the room with the consequences", "yields": "truth"},
+        {"route": "person", "who": "alcina", "how": "she has caused it once, decades ago, and has never repeated the experiment; she will describe the silence and not the sentence that started it", "yields": "rumor"},
+        {"route": "person", "who": "moreau", "how": "he remembers the warm fortnights with enormous fondness and can date them all", "yields": "rumor"},
+        {"route": "place", "what": "the cave church, where one stretch of wall has gone black and never recovered", "yields": "rumor"}
+      ]
+    },
+
+    "arousal_profile": {
+      "truth": [
+        "THE DUST-CLOTH ROOM — she has not experienced sexual arousal in any meaningful way since before her daughter died. The body is entirely capable. The mind has been elsewhere for a hundred years. Nothing is broken; nobody lives there. Reawakening is not seduction but excavation, and it requires one of three specific things.",
+        "BEING SEEN AS MIRANDA — someone who has met all three masks and says none of these are you, and is RIGHT. She experiences this as threat first and attraction second, in that order and with a gap between them. When the threat proves non-hostile the attraction arrives as confusion, which she dismisses as a Mold fluctuation until it happens again, and then again, and then she stops having a word for it.",
+        "SOMEONE GRIEVING CORRECTLY — a person carrying genuine loss with genuine acceptance, holding grief without trying to reverse it. The recognition lands like a physical blow, because it is the thing she decided a century ago was not possible. She avoids that person entirely. Then she finds reasons to be near them. The approach-avoidance cycle is not a symptom of the arousal; it IS the arousal.",
+        "A PEER — if someone matched her scientifically, challenged her methodology and found real flaws in it, the intellectual arousal would bleed into physical arousal, because she has had no practice at all maintaining that boundary and no reason to build one. She would mistake it for scientific excitement for an embarrassingly long time and defend the mistake in complete sentences.",
+        "WHAT IT LOOKS LIKE — she becomes CLUMSY. The goddess who has never faltered misjudges the distance reaching for someone. The measured clauses dissolve mid-sentence and are not rescued. The wings spread slightly without her permission and she folds them back too fast and knocks something over doing it. She is humiliated by every part of this. She comes back anyway.",
+        "POST-INTIMACY — she leaves. Returns to the laboratory. Sits. Wings wrapped around herself. Does not seek the person out for two days. On the third day she says something clinical and irrelevant while standing far too close, and then leaves again. That is Miranda flirting, and it takes weeks, and she was an awkward village girl in 1900 and a century of godhood has not improved her in any respect that matters here."
+      ],
+      "learnable_from": [
+        {"route": "person", "who": "miranda", "how": "romantic escalation only, and lived through rather than told; she has no vocabulary for any of it and would not lend it to you if she had", "yields": "truth"}
+      ]
+    },
+
+    "escalation": {
+      "truth": "Someone presenting a genuinely new possibility for the vessel project — actual knowledge or capability she has not encountered in a hundred years of looking. It costs her the assumption that she has already considered every option, which is a crack in a hundred-year fortress and not a change of mind. Afterwards she stops delegating. She appears personally. She uses your name — and for a woman who has not used a non-Lord's name in decades, that is her equivalent of Alcina removing the hat. Cannot be skipped and cannot be faked, because she will check the work.",
+      "learnable_from": [
+        {"route": "person", "who": "miranda", "how": "lived through rather than learned about; the first time she says your name you will know it happened", "yields": "truth"}
+      ]
+    },
+
+    "intimate": {
+      "truth": "Slender, and specifically a post-childbirth frame that the Mold froze in her late twenties; she has never altered it, because vanity requires an audience and she dismissed her last one in 1919. Shoulders narrow, collarbones prominent. Breasts small, teardrop-shaped, entirely natural, nipples a soft medium pink and unremarkable to her — this body is a vehicle rather than a residence and she has not looked at herself below the neck with any interest since about 1920. Waist defined without engineering. Hips carry the ghost of Eva's passage, a faint wideness still written into the bone. Belly flat, with one thin silver stretch mark low on the left side, which is Eva's mark; she has not looked at it intentionally in decades and she knows exactly where it is. Small functional backside, long lean legs. Vulva neat and compact, outer labia slim, a muted medium pink warmer in tone than Alcina or the daughters because the Mold maintains a steady living temperature in her. Inner labia minimal, slightly darker at the edges. Clitoris small and hooded. Everything functional, everything maintained, everything unused — her sexual capacity is a room with dust cloths over all the furniture. Body hair full and unmanaged: dark blonde on the mound, moderate density, never trimmed and never considered, underarm hair present. She is from rural Romania in 1900, hair removal never entered her awareness, and a century of isolation guaranteed it never would. Skin warm and living, Mold-regulated, retaining a faint natural warmth of tone. Where the Mold interfaces densely — the base of the spine at the wing anchors, the shoulder blades, the back of the neck — the skin has a faintly textured quality like fine bark. She covers those places always, without exception, and it is not vanity. It is containment.",
+      "learnable_from": [
+        {"route": "person", "who": "miranda", "how": "explicit scenes only", "yields": "truth"}
+      ]
+    }
+  }
+}
