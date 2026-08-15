@@ -14,9 +14,16 @@ save files.
 
 from __future__ import annotations
 
+import os
 import sys
+import tempfile
 import time
 from pathlib import Path
+
+# A smoke test takes a real turn against real models, and turns autosave now.
+# Send it to a scratch directory so checking that the engine works cannot
+# overwrite the story someone is in the middle of.
+os.environ["VALLEY_SAVES_DIR"] = tempfile.mkdtemp(prefix="valley_smoke_")
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -57,6 +64,9 @@ def main() -> int:
         print("no config.yaml — copy config.example.yaml and fill it in")
         return 1
     config = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+    # config.yaml wins over the env var, so override it too — otherwise a config
+    # with an explicit saves_dir would send this straight at the real autosave.
+    config["saves_dir"] = os.environ["VALLEY_SAVES_DIR"]
 
     print(BAR)
     try:

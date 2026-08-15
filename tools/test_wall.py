@@ -17,8 +17,15 @@ leak, and no amount of prompt instruction will reliably stop it.
 from __future__ import annotations
 
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
+
+# Runs a REAL turn, and turns autosave now. Redirect saves somewhere disposable
+# before any engine import can resolve the directory, or this test overwrites
+# the player's autosave and the next launch resumes into the fixture.
+os.environ["VALLEY_SAVES_DIR"] = tempfile.mkdtemp(prefix="valley_test_")
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))

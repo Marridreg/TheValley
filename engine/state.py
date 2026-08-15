@@ -7,14 +7,46 @@ this file is bookkeeping.
 from __future__ import annotations
 
 import json
+import os
+import sys
 from pathlib import Path
 
 
+def default_saves_dir() -> Path:
+    """Runtime writes go OUTSIDE the project directory, deliberately.
+
+    This repo lives under OneDrive on the author's machine, and saves are
+    rewritten every turn. A cloud-sync daemon that locks a file mid-write, or
+    resolves a race by leaving a "file (2).json" conflict copy, corrupts saves
+    in a way nothing in the engine can detect or report. Cloud sync also cannot
+    merge two machines playing the same slot; it can only pick a loser.
+
+    So state lands in the platform's app-state directory, which is never synced.
+    Override with `saves_dir:` in config.yaml if you want it somewhere else.
+
+    VALLEY_SAVES_DIR wins over the platform default. Anything that runs a turn
+    without being a real session — the test suite, the smoke test — must set it,
+    because saving happens automatically now and a test that lands in the real
+    directory gets silently resumed into as if it were the player's story.
+    """
+    env = os.environ.get("VALLEY_SAVES_DIR")
+    if env:
+        return Path(env).expanduser()
+    if sys.platform == "win32":
+        base = os.environ.get("LOCALAPPDATA") or (Path.home() / "AppData" / "Local")
+        return Path(base) / "TheValley" / "saves"
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support" / "TheValley" / "saves"
+    xdg = os.environ.get("XDG_DATA_HOME")
+    base = Path(xdg) if xdg else Path.home() / ".local" / "share"
+    return base / "the_valley" / "saves"
+
+
 class StateManager:
-    def __init__(self, data_dir: Path):
+    def __init__(self, data_dir: Path, saves_dir: Path | str | None = None):
         self.data_dir = Path(data_dir)
         self.chars_dir = self.data_dir / "characters"
-        self.saves_dir = self.data_dir / "saves"
+        self.saves_dir = Path(saves_dir).expanduser() if saves_dir else default_saves_dir()
         self.saves_dir.mkdir(parents=True, exist_ok=True)
 
         # Narrator-visible. Public geography, culture, tone. No secrets.
@@ -287,8 +319,33 @@ class StateManager:
             "turn_count": self.turn_count,
         }
         path = self.saves_dir / f"{_safe_slot(slot)}.json"
-        path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        # Write a temp file, then rename over the target. os.replace is atomic,
+        # so a crash or a killed process mid-write leaves the previous save
+        # intact rather than a half-written file that will not parse. This
+        # matters most for the autosave, which overwrites every turn.
+        # Not with_suffix: on a slot containing a dot that would replace the
+        # existing extension instead of appending, and two slots could collide.
+        tmp = path.parent / (path.name + ".tmp")
+        tmp.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        os.replace(tmp, path)
         return path
+
+    def autosave(self) -> Path | None:
+        """Persist after every turn.
+
+        Saving used to happen only when the player asked (/save, /quicksave,
+        F9), so anything that ended the process discarded the session in
+        silence. That is the worst failure this engine can have: prose is
+        expensive and cannot be regenerated. Costs one small file write per
+        turn, against two model calls.
+
+        Never raises. A failed autosave must not destroy a turn that already
+        succeeded — it reports through the returned value instead.
+        """
+        try:
+            return self.save("_autosave")
+        except OSError:
+            return None
 
     def load(self, slot: str) -> None:
         path = self.saves_dir / f"{_safe_slot(slot)}.json"

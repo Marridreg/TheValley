@@ -60,9 +60,24 @@ class Wall:
         self.config = config
         self.data_dir = self.root / "data"
 
-        self.state = StateManager(self.data_dir)
+        # Saves live outside the project tree by default — see
+        # state.default_saves_dir() for why. Blank or absent means the default.
+        self.state = StateManager(self.data_dir, config.get("saves_dir") or None)
         self.presets = PresetManager(self.data_dir / "presets")
         self.dev_mode = bool(config.get("dev_mode"))
+
+        # Pick the story back up. An autosave nobody loads protects nothing, so
+        # resuming is the default and starting over is the explicit act: delete
+        # the slot, or /load another one. resumed_from feeds the banner, because
+        # silently continuing someone else's session would be its own surprise.
+        self.resumed_from: str | None = None
+        if (self.state.saves_dir / "_autosave.json").exists():
+            try:
+                self.state.load("_autosave")
+                self.resumed_from = f"turn {self.state.turn_count}"
+            except (OSError, ValueError) as exc:
+                # A corrupt autosave must not block launch — say so and start fresh.
+                self.resumed_from = f"autosave unreadable ({type(exc).__name__}), starting fresh"
 
         gm_block = dict(config.get("gm") or {})
         nar_block = dict(config.get("narrator") or {})
@@ -87,12 +102,16 @@ class Wall:
 
     def banner(self) -> str:
         g, n = self.gm.provider, self.narrator.provider
-        return (
-            f"GM       {g.name} / {g.model}\n"
-            f"         {g.caps.describe()}\n"
-            f"NARRATOR {n.name} / {n.model}\n"
-            f"         {n.caps.describe()}"
-        )
+        lines = [
+            f"GM       {g.name} / {g.model}",
+            f"         {g.caps.describe()}",
+            f"NARRATOR {n.name} / {n.model}",
+            f"         {n.caps.describe()}",
+            f"SAVES    {self.state.saves_dir}",
+        ]
+        if self.resumed_from:
+            lines.append(f"RESUMED  {self.resumed_from}")
+        return "\n".join(lines)
 
     def warnings(self) -> list[str]:
         """Things worth telling the player before they start."""
@@ -131,6 +150,15 @@ class Wall:
                 emit({"type": "debug", "text": traceback.format_exc()})
         finally:
             self.busy = False
+            # In the finally, not after a clean _turn: a turn that produced
+            # prose and then failed still advanced the state, and that progress
+            # is worth keeping. If it fails, SAY SO in the window — a save that
+            # silently stops working is how a session gets lost twice.
+            saved = self.state.autosave()
+            if saved is None:
+                emit({"type": "error", "text": "autosave failed — this turn is not on disk."})
+            elif self.dev_mode:
+                emit({"type": "debug", "text": f"autosaved → {saved}"})
             emit({"type": "done", "elapsed": round(time.time() - started, 1)})
 
     def _turn(self, player_input: str, emit: Emit) -> None:

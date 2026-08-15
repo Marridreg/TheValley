@@ -66,6 +66,16 @@ narrator:
 # local models.
 history_turns: 20
 
+# Where saves, the autosave, and the briefing log are written.
+# Blank = the platform app-state dir:
+#   Windows  %LOCALAPPDATA%\TheValley\saves
+#   macOS    ~/Library/Application Support/TheValley/saves
+#   Linux    ~/.local/share/the_valley/saves
+# Deliberately outside the project: saves are rewritten every turn, and a
+# cloud-sync folder (OneDrive, Dropbox, iCloud) can lock a file mid-write or
+# leave a "(2).json" conflict copy. Point this anywhere you like.
+saves_dir: ""
+
 # Show the GM's raw briefing packet in the debug panel (F5) and append every
 # packet to data/saves/_briefings.jsonl. Turn off for real play.
 dev_mode: true
