@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import json
 
+from .state import prose_reveals
+
 HELP = """\
 ═══ COMMANDS ═══
   GAME     /save [slot]  /load [slot]  /saves  /preset [name]  /status
@@ -121,7 +123,7 @@ class CommandRouter:
             lines += [f"  ★ {d}" for d in st.discovered]
         else:
             lines.append("  (nothing discovered yet)")
-        prose = [r for r in st.revelation_log if "." not in r.split(" ")[0]]
+        prose = prose_reveals(st.revelation_log)
         if prose:
             lines += ["  ───", "  known:"]
             lines += [f"    - {r}" for r in prose[-25:]]

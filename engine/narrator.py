@@ -19,6 +19,7 @@ from typing import Iterator
 
 from .promptfmt import dump
 from .providers import GenParams, Provider, SystemBlock
+from .state import prose_reveals
 
 NARRATOR_INSTRUCTIONS = """\
 You are the narrator of a gothic horror survival RPG set in a remote Eastern
@@ -95,19 +96,6 @@ and no internal or system XML tags in your output.
 """
 
 
-def _prose_reveals(entries: list[str]) -> list[str]:
-    """Filter card-unlock keys out of a revelation list.
-
-    Unlock keys ('alcina.miranda_resentment#rumor') are plumbing: they take
-    effect by widening the narrator's card, and their names carry GM-side
-    metadata — descriptive section labels, and the #rumor variant tag, which
-    tells the narrator that a released fact is unreliable when the design
-    requires it to play the rumour as fact. Only free-text reveals belong in
-    the narrator's context; a dot in the first word marks a key.
-    """
-    return [r for r in entries if "." not in r.split(" ")[0]]
-
-
 class Narrator:
     def __init__(self, provider: Provider, max_tokens: int = 4000, history_turns: int = 20):
         self.provider = provider
@@ -135,7 +123,7 @@ class Narrator:
                     parts.append(f"\n── {npc.upper()} ──\n{dump(card)}")
         # Unlock keys stay out: their content already arrived via the widened
         # cards above, and the raw keys leak section labels and the #rumor tag.
-        learned = _prose_reveals(state.revelation_log)
+        learned = prose_reveals(state.revelation_log)
         if learned:
             parts.append(
                 "\n[WHAT YOU HAVE LEARNED SO FAR]\n"
@@ -176,10 +164,10 @@ class Narrator:
 
         # Card-unlock keys are plumbing, not prose material — they take effect
         # by widening the card above, so they are filtered out here.
-        prose_reveals = _prose_reveals(release.get("reveal_this_turn") or [])
-        if prose_reveals:
+        reveals = prose_reveals(release.get("reveal_this_turn") or [])
+        if reveals:
             lines += ["", "NEWLY AVAILABLE TO YOU:"]
-            lines += [f"  - {r}" for r in prose_reveals]
+            lines += [f"  - {r}" for r in reveals]
 
         for d in packet.get("npc_direction") or []:
             lines += [

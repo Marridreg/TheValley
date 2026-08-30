@@ -280,6 +280,25 @@ def main() -> int:
     check("locked section visible after release", "knows" in after)
     check("still hides other sections", "capability" not in after)
 
+    print("\nunlock-key filter (prose_reveals)")
+    from engine.state import prose_reveals
+    # Keys are dropped. Every shape that actually reaches the revelation log:
+    # the GM's reveal_this_turn, a document's `reveals`, and dev /reveal.
+    for key in ("alcina.background", "alcina.miranda_resentment#rumor", "moreau.knows"):
+        check(f"key dropped: {key}", prose_reveals([key]) == [])
+    # Prose survives — including a fact opening with an abbreviation, which a
+    # looser "dot anywhere" test would silently eat for the rest of the game.
+    prose = [
+        "the chapel has been lived in recently",
+        "Mrs. Beneviento keeps the dolls dressed for weather.",
+        "Someone has been draining the reservoir at night.",
+        "Nightfall",
+    ]
+    check("prose kept, all of it", prose_reveals(prose) == prose)
+    check("mixed list keeps order and drops only keys",
+          prose_reveals([prose[0], "alcina.background#rumor", prose[1]])
+          == [prose[0], prose[1]])
+
     print("\ndiscovery routes (v2 card with rumour variants — alcina)")
     st = wall.state
     if "alcina" not in st.known_npcs():

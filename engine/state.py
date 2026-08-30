@@ -8,8 +8,36 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
+
+# An unlock key is `<npc>.<section>`, optionally `#<variant>`. Both card ids and
+# section names are written lowercase with underscores, everywhere they are
+# authored: character directory names, private.json section keys, and the keys
+# documents declare in their `reveals`.
+UNLOCK_KEY_RE = re.compile(r"^[a-z0-9_]+\.[a-z0-9_]+(#[a-z0-9_]+)?$")
+
+
+def prose_reveals(entries: list[str]) -> list[str]:
+    """Filter card-unlock keys out of a revelation list.
+
+    The revelation log holds two kinds of entry, and only one is prose. Free-text
+    facts ("the chapel has been lived in recently") are material the narrator may
+    draw on. Unlock keys ("alcina.miranda_resentment#rumor") are plumbing: they
+    take effect by widening the narrator's card in get_narrator_card, and their
+    names carry GM-side metadata. The section label is a spoiler in itself
+    (`dragon_nature`), and the #rumor tag would tell the narrator a released fact
+    is unreliable in exactly the case the design wants the rumour played as fact.
+
+    So the match is anchored to the documented key format rather than sniffed.
+    The looser tests are wrong in both directions, and both directions cost
+    something: keying on a dot anywhere drops any fact that opens with an
+    abbreviation ("Mrs. Beneviento keeps the dolls dressed"), and a dropped
+    reveal is a fact the player earned that the narrator never hears about —
+    silently, and for the rest of the game.
+    """
+    return [r for r in entries if not UNLOCK_KEY_RE.match(r)]
 
 
 def default_saves_dir() -> Path:
