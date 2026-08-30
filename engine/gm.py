@@ -299,7 +299,11 @@ class GameMaster:
             "pc_state": state.pc,
             "world_state": {k: v for k, v in state.world.items() if not k.startswith("_")},
             "npcs_in_scene_last_turn": state.current_npcs,
-            "already_revealed_to_narrator": state.revelation_log,
+            # Both entry kinds, deliberately: the prose facts so the GM does not
+            # release the same thing twice, and the unlock keys so it can see
+            # which sections are already open. Not named for the narrator — the
+            # keys were never shown to it, they widened its card.
+            "revelation_log": state.revelation_log,
             "discovered_secrets": state.discovered,
             "pending_offscreen": state.offscreen[-10:],
             "recent_narration": [
