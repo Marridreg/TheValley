@@ -182,6 +182,13 @@ def main() -> int:
     # below would fail for the right reason but the wrong cause.
     wall.state.current_npcs = ["moreau"]
 
+    # A secret released in a prior session, by a second-hand route. Its content
+    # reaches the narrator through card widening (when its owner is in the
+    # scene); the raw unlock KEY must never appear in the narrator's context —
+    # the #rumor tag alone tells the narrator the information is unreliable,
+    # when the design requires it to play the rumour as fact.
+    wall.state.revelation_log.append("alcina.background#rumor")
+
     events: list[dict] = []
     wall.run_turn("I approach the chapel, keeping low.", events.append)
 
@@ -245,6 +252,12 @@ def main() -> int:
     check("derived probes from locked sections", probed >= 3, f"only {probed} usable")
     for label, needle in secrets.items():
         check(f"absent from narrator: {label}", needle not in narrator_ctx)
+
+    # Unlock keys are plumbing: they act by widening the card, and their names
+    # carry GM-side metadata (section labels, the #rumor reliability tag).
+    check("absent from narrator: raw unlock key",
+          "alcina.background" not in narrator_ctx)
+    check("absent from narrator: #rumor variant tag", "#rumor" not in narrator_ctx)
 
     # And confirm the GM *did* see them, so the test isn't passing vacuously.
     print("\nGM context (sanity — these must be present)")
