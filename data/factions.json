@@ -1,0 +1,80 @@
+{
+  "_note": "GM ONLY. Never loaded into the narrator's context — court orthodoxies are honest about what the court collectively knows, which makes this file vault-adjacent. What crosses the Wall is only ever a resolved belief-plus-posture for a character in the scene. Tier-1 of the belief stack: resolution order is ledger -> seed_beliefs (private card) -> faction chain, nearest first -> miss (generate-and-commit). Orthodoxies do not bind their author: miranda is parentless because she wrote both faiths. Membership lists name the most specific faction only; parents are implied. default_member_of makes the resolver total over unnamed villagers.",
+  "_schema": "v1",
+  "default_member_of": "village",
+  "factions": {
+    "valley": {
+      "parent": null,
+      "enforcement": "soft",
+      "orthodoxies": {
+        "outside_world": "barely real; the valley is the world that counts",
+        "woods_at_night": "death; you do not go",
+        "strangers": "an omen or a problem, never neutral"
+      }
+    },
+    "village": {
+      "parent": "valley",
+      "enforcement": "hard",
+      "orthodoxies": {
+        "miranda": "the Holy Mother; she keeps the valley alive",
+        "ceremony": "a sacred blessing; questioning it is blasphemy",
+        "the_lords": "her instruments; revere at a distance, never approach",
+        "lycans": "punishment for faithlessness"
+      }
+    },
+    "fallow_plot": {
+      "parent": "village",
+      "enforcement": "soft",
+      "orthodoxies": {
+        "village_center": "looks down on us; we owe them nothing extra",
+        "trouble": "handled inside the family or not at all"
+      }
+    },
+    "church": {
+      "parent": "village",
+      "enforcement": "lethal",
+      "orthodoxies": {
+        "mirandas_word": "law, not guidance",
+        "doubt": "a confession waiting to happen — and reportable"
+      }
+    },
+    "court": {
+      "parent": "valley",
+      "enforcement": "lethal",
+      "orthodoxies": {
+        "miranda": "power, not divinity; her favor is the only survival",
+        "hierarchy": "the four serve; rivals watch rivals",
+        "the_village": "a resource, kept docile by its faith",
+        "experiments": "real, ongoing, never named below stairs"
+      }
+    },
+    "castle_dimitrescu": {
+      "parent": "court",
+      "enforcement": "lethal",
+      "orthodoxies": {
+        "the_mistress": "absolute; her moods are weather, not argument",
+        "blood": "family above all; everyone else is staff or prey",
+        "heisenberg": "vulgar; beneath this house"
+      }
+    }
+  },
+  "members": {
+    "alcina": ["castle_dimitrescu"],
+    "bela": ["castle_dimitrescu"],
+    "cassandra": ["castle_dimitrescu"],
+    "daniela": ["castle_dimitrescu"],
+    "heisenberg": ["court"],
+    "donna": ["court"],
+    "moreau": ["court"],
+    "eugen": ["church"],
+    "leonardo": ["fallow_plot"],
+    "elena": ["fallow_plot"],
+    "luiza": ["village"],
+    "iulian": ["village"],
+    "roxana": ["village"],
+    "anton": ["village"],
+    "sebastian": ["village"],
+    "duke": [],
+    "miranda": []
+  }
+}

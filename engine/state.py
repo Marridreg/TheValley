@@ -98,6 +98,11 @@ class StateManager:
 
         self.chat_history: list[dict] = []
         self.revelation_log: list[str] = []
+        # Tier 3 of the belief stack (engine/beliefs.py): per-NPC runtime
+        # beliefs — perception updates and generate-and-commit fills. Must
+        # survive saves, or "the miss never recurs" is false and a character
+        # re-rolls their opinion of the player between sessions.
+        self.beliefs: dict[str, dict] = {}
         self.discovered: list[str] = []
         self.offscreen: list[dict] = []
         self.authors_note = ""
@@ -341,6 +346,7 @@ class StateManager:
             "fragments": self.fragments,
             "chat_history": self.chat_history,
             "revelation_log": self.revelation_log,
+            "beliefs": self.beliefs,
             "discovered": self.discovered,
             "offscreen": self.offscreen,
             "authors_note": self.authors_note,
@@ -386,6 +392,7 @@ class StateManager:
         self.fragments = s.get("fragments", self.fragments)
         self.chat_history = s.get("chat_history", [])
         self.revelation_log = s.get("revelation_log", [])
+        self.beliefs = s.get("beliefs", {})
         self.discovered = s.get("discovered", [])
         self.offscreen = s.get("offscreen", [])
         self.authors_note = s.get("authors_note", "")
