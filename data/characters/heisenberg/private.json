@@ -1,6 +1,14 @@
 {
-  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'heisenberg.<section>' for truth or 'heisenberg.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall.",
+  "_note": "GM ONLY. Each section carries the truth, an optional rumour version for second-hand routes, and learnable_from — every way this can be found out. Release with 'heisenberg.<section>' for truth or 'heisenberg.<section>#rumor' for the distorted version. learnable_from NEVER crosses the Wall. seed_beliefs and reputation_sensitivity are belief-stack tier 2 (engine/beliefs.py) — divergent beliefs only, not sections, never releasable.",
   "_schema": "v2",
+  "reputation_sensitivity": "high",
+  "seed_beliefs": {
+    "_note": "Only where he departs from the court's line. The hatred of Miranda is public noise and reads as personality; the INTENTION is the secret, so the seeds carry it and the posture math keeps it buried in company — he lies to the other Lords, and that lie is the calibrated loyalty on miranda_hatred. Alone with someone worth grading, it comes out as the pitch.",
+    "miranda": "she made me a tool with her own hands; the same hands take her apart. Bark loud enough about hating her and nobody checks whether you mean it",
+    "hierarchy": "serving is scaffolding; it comes down when the build is done. There is one chair in the drawing",
+    "experiments": "hers made me; mine are better built. The racks below stairs are not hers to count",
+    "strangers": "omens are for peasants. A stranger is stock to be graded — and one nobody owns is the rarest part in the valley"
+  },
   "sections": {
     "background": {
       "truth": "German-Romanian lineage, and a working engineer or machinist long before Miranda took an interest in him. The skills predate the mutation entirely — the factory is not a gift of the Cadou, it is a trade he already had, wired afterwards to a power that could operate it at scale. He survived the Cadou when better-behaved subjects did not, and the survival is the only thing about Miranda's project he will grant any credit to, because it was his body that did the work. What she gave him was electromagnetism. What he does with it he learned with his hands.",

@@ -110,6 +110,20 @@ def main() -> int:
     b = r.resolve("anton", "ceremony")
     check("ledger beats seed", b is not None and b.source == "ledger")
 
+    print("\nheisenberg — the first authored seeds")
+    b = r.resolve("heisenberg", "miranda")
+    check("seed beats the court line", b is not None and b.source == "seed" and b.divergent)
+    # The intention stays buried in company: high sensitivity plus a lethal
+    # listener lands on 'lies' — which IS the calibrated loyalty on his card.
+    check("lies to the other Lords", r.posture("heisenberg", b, ["alcina"]) == "lies")
+    # And comes out as the pitch the moment nobody dangerous is listening —
+    # eager to use a capable stranger, exactly as long as no one else hears.
+    check("states it alone, when relevant",
+          r.posture("heisenberg", b, []) == "states_if_relevant")
+    s = r.resolve("heisenberg", "strangers")
+    check("a stranger is stock to be graded", s is not None and s.source == "seed" and s.divergent)
+    check("authoring notes are not subjects", r.resolve("heisenberg", "_note") is None)
+
     print("\nchains — multiple memberships stay nearest-first")
     r.members["_test_dual"] = ["church", "fallow_plot"]
     chain = r.faction_chain("_test_dual")

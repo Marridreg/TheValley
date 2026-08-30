@@ -337,7 +337,8 @@ class GameMaster:
         for npc in cast:
             subjects = set(state.beliefs.get(npc) or {})
             private = state._card(npc)["private"]
-            subjects |= set(private.get("seed_beliefs") or {})
+            # Underscore keys are authoring notes, not subjects.
+            subjects |= {k for k in (private.get("seed_beliefs") or {}) if not k.startswith("_")}
             for fid in resolver.faction_chain(npc):
                 subjects |= set((resolver.factions.get(fid) or {}).get("orthodoxies") or {})
             listeners = [c for c in cast if c != npc]

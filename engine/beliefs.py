@@ -123,6 +123,10 @@ class BeliefResolver:
         return None
 
     def _seed(self, npc_id: str, subject: str) -> str | None:
+        # Underscore keys are authoring notes, same convention as everywhere
+        # else in the cards — never content, never a subject.
+        if subject.startswith("_"):
+            return None
         private = self.state._card(npc_id)["private"]
         seeds = private.get("seed_beliefs") or {}
         return seeds.get(subject)
