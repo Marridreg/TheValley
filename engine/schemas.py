@@ -155,6 +155,33 @@ BRIEFING_SCHEMA = _obj(
                 }
             ),
         },
+        "belief_updates": {
+            "type": "array",
+            "description": "Tier-3 belief writes, GM-side only — never shown to "
+            "the narrator. One entry per NPC whose belief about a subject changed "
+            "this turn (witnessed something, was persuaded, drew a conclusion), "
+            "or a generate-and-commit fill for a subject the BELIEFS block did "
+            "not cover. Committed beliefs persist in saves and override faction "
+            "defaults from the next turn.",
+            "items": _obj(
+                {
+                    "npc": STR,
+                    "subject": {
+                        **STR,
+                        "description": "Short snake_case subject key, e.g. "
+                        "'miranda', 'the_stranger', 'ceremony'.",
+                    },
+                    "belief": {
+                        **STR,
+                        "description": "What they now hold true, in their own idiom.",
+                    },
+                    "reason": {
+                        **STR,
+                        "description": "Why it changed, for the debug log.",
+                    },
+                }
+            ),
+        },
         "offscreen_events": {
             "type": "array",
             "description": "Things that happened elsewhere this turn. These are "

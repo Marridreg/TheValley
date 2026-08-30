@@ -131,6 +131,11 @@ PACKET = {
         {"path": "world.calendar.time_of_day", "op": "set", "number": None,
          "text": "evening", "reason": "time passed"},
     ],
+    "belief_updates": [{
+        "npc": "moreau", "subject": "the_stranger",
+        "belief": "moves like a soldier; dangerous, but not one of Hers",
+        "reason": "watched the approach from the chapel window",
+    }],
     "offscreen_events": [{
         "summary": "Leonardo checked the east fence at dusk and was not attacked",
         "surfaces_when": "if the player asks Elena about her father",
@@ -218,6 +223,8 @@ def main() -> int:
     check("op=set applied", wall.state.world["calendar"]["time_of_day"] == "evening")
     check("revelation recorded",
           "the chapel has been lived in recently" in wall.state.revelation_log)
+    check("belief update committed to tier 3",
+          wall.state.beliefs.get("moreau", {}).get("the_stranger", "").startswith("moves like a soldier"))
     check("scene cast tracked", wall.state.current_npcs == ["moreau"])
 
     print("\nTHE WALL — narrator context")
@@ -237,6 +244,9 @@ def main() -> int:
         "vault warning banner": wall.state.vault["_warning"],
         "fragment content (untriggered)": fragments["fragments"][0]["content"][:50],
         "offscreen event (GM-only)": "Leonardo checked the east fence",
+        # Court orthodoxy, resolved into moreau's BELIEFS block. Honest about
+        # what the court collectively knows, so it must stay behind the Wall.
+        "faction orthodoxy (belief block)": "her favor is the only survival",
     }
 
     # Take a distinctive slice from every still-locked section on the NPC in
@@ -265,6 +275,8 @@ def main() -> int:
         if label.startswith("offscreen"):
             continue  # the GM generated it this turn; it isn't in its input
         check(f"present for GM: {label}", needle in gm_ctx)
+
+    check("GM got the BELIEFS block, with postures", "[BELIEFS —" in gm_ctx and '"posture"' in gm_ctx)
 
     print("\nnarrator got what it needed")
     check("public card present", "keeper of the reservoir" in narrator_ctx)

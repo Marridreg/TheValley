@@ -14,6 +14,7 @@ it costs nothing anyway.
 
 from __future__ import annotations
 
+from .beliefs import BeliefResolver
 from .promptfmt import dump
 from .providers import GenParams, Provider, SystemBlock
 from .schemas import BRIEFING_SCHEMA
@@ -104,6 +105,33 @@ experiences. Do not skip to the truth because it is tidier.
 
 When a route yields the truth directly — the person says it, the diary states
 it plainly — use the bare key.
+
+BELIEFS AND POSTURES
+
+Each turn you receive a BELIEFS block: for every character in the scene, what
+they hold true about the charged subjects of the valley, and a posture — how
+openly they treat that belief in exactly this company. The postures, open to
+closed: volunteers, states_if_relevant, admits_if_pressed, deflects, lies.
+
+Direct NPCs consistently with it. A believer does not wink at the player. A
+doubter marked `deflects` changes the subject rather than confess; `lies`
+means they assert the orthodoxy they do not hold. The posture is pressure
+math, not fate — override it when the fiction demands (a knife at the throat,
+a dying confession), and remember the math cannot see rank: Miranda outranks
+every table. It also cannot see the player; weigh for yourself what this
+character would say in front of a stranger.
+
+Beliefs are not releases. When an NPC voices a belief and the player hears
+it, that is a second-hand route like any other: if what they say touches a
+locked card section, put the key in reveal_this_turn — almost always #rumor,
+because a belief is somebody's account, not the truth.
+
+When an NPC's belief changes — they witnessed something, were persuaded, the
+player gave them real cause — write the new belief to belief_updates. And
+when a scene needs an NPC's view on a subject the block does not cover,
+invent it from their card and their factions, never from the vault, and
+COMMIT it to belief_updates so they still believe it tomorrow. An uncommitted
+improvisation is a character who changes their mind between scenes.
 
 TIME is the third pressure and answers to nobody: the ceremony clock advances
 whether or not the player is ready, and some things become known simply
@@ -288,6 +316,47 @@ class GameMaster:
 
         return {npc: state.get_gm_card(npc) for npc in ordered}
 
+    def _belief_block(self, state, cast: list[str]) -> dict:
+        """Resolved beliefs and postures for the scene's cast. GM eyes only.
+
+        Volatile by nature — a posture is computed against who else is in the
+        room — so it rides in the message with the scene cards, never in the
+        cached prefix. Listeners are the rest of the cast; the player is not
+        modelled (the stack has no entry for a stranger), which the GM
+        instructions tell the model to weigh for itself.
+
+        Subjects per character: everything their faction chain has an opinion
+        on, plus their seeds and their ledger. A resolver miss is simply not
+        listed — absence is what tells the GM to generate-and-commit.
+        """
+        try:
+            resolver = BeliefResolver(state.data_dir, state)
+        except FileNotFoundError:
+            return {}  # no factions.json — the stack is not installed
+        out: dict = {}
+        for npc in cast:
+            subjects = set(state.beliefs.get(npc) or {})
+            private = state._card(npc)["private"]
+            subjects |= set(private.get("seed_beliefs") or {})
+            for fid in resolver.faction_chain(npc):
+                subjects |= set((resolver.factions.get(fid) or {}).get("orthodoxies") or {})
+            listeners = [c for c in cast if c != npc]
+            entry: dict = {}
+            for subject in sorted(subjects):
+                belief = resolver.resolve(npc, subject)
+                if belief is None:
+                    continue
+                item: dict = {
+                    "believes": belief.text,
+                    "posture": resolver.posture(npc, belief, listeners),
+                }
+                if belief.divergent:
+                    item["divergent_from_their_faction"] = True
+                entry[subject] = item
+            if entry:
+                out[npc] = entry
+        return out
+
     def _turn_block(self, state, player_input: str, feedback: list[str]) -> str:
         """The volatile half. Changes every turn, so it goes below the cache
         breakpoint — in the message, not the system prompt."""
@@ -318,6 +387,13 @@ class GameMaster:
                 "\n\n[FULL CARDS — characters in this scene, complete text]\n"
                 + dump(scene)
             )
+            beliefs = self._belief_block(state, list(scene))
+            if beliefs:
+                text += (
+                    "\n\n[BELIEFS — what each present character holds true, and "
+                    "how openly they treat it in this company]\n"
+                    + dump(beliefs)
+                )
 
         if feedback:
             text += "\n\n[PLAYER FEEDBACK — steer accordingly]\n" + "\n".join(feedback)

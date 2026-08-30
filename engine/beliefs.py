@@ -20,8 +20,10 @@ and neither can the narrator, so the prose cannot confirm it.
 
 Nothing in this module may be imported by narrator.py. Faction orthodoxies
 are honest about what groups collectively know (see the court), which makes
-factions.json vault-adjacent. Only the resolved output for characters in
-the scene crosses the Wall, carried by the briefing.
+factions.json vault-adjacent. Nothing here crosses the Wall mechanically:
+resolved beliefs-plus-postures feed the GM's turn block (gm._belief_block),
+and reach the narrator only as the GM chooses to voice them through
+npc_direction — gated by reveal_this_turn like any other information.
 
 DIVERGENCE is computed, not authored: a belief diverges when it differs
 from what the faction chain alone would have said. That makes the

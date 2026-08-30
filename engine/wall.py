@@ -208,6 +208,17 @@ class Wall:
             if entry not in self.state.revelation_log:
                 self.state.revelation_log.append(entry)
 
+        # Tier-3 belief writes: perception updates and generate-and-commit
+        # fills. Last write wins — the GM re-deciding a belief IS the update.
+        committed: list[str] = []
+        for b in packet.get("belief_updates") or []:
+            npc, subject, belief = b.get("npc"), b.get("subject"), b.get("belief")
+            if npc and subject and belief:
+                self.state.beliefs.setdefault(npc, {})[subject] = belief
+                committed.append(f"  {npc}.{subject} ({b.get('reason', '')})")
+        if committed and self.dev_mode:
+            emit({"type": "debug", "text": "beliefs:\n" + "\n".join(committed)})
+
         unlock = (packet.get("information_release") or {}).get("discovery_unlock")
         if unlock and unlock not in self.state.discovered:
             self.state.discovered.append(unlock)
