@@ -12,3 +12,7 @@ anthropic>=0.80
 
 # provider: openrouter | openai | deepseek | groq | together | local | ollama | custom
 openai>=1.60
+
+# authoring only — tools/validate_schema.py and tools/test_schema.py. Playing
+# the game never imports it.
+jsonschema>=4.20

@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "thevalley/character/v0",
+  "title": "TheValley character package v0",
+  "description": "One character = meta + public card + private card. LAW (A2, ratified): every field names the code that consumes it in x-consumer; a field that cannot name a consumer does not belong in this file. x-visibility marks which side of the Wall a field lives on. Modules are optional by default — the rung in meta decides which are required (enforced by tools/validate_schema.py, since rung rules are cross-field). Runtime state (belief ledger, meter values, chronicle, promotion history) is NOT in this schema — it lives in saves and is written only by the appraisal pass. States precedence is an engine constant, not card data: the more recent stimulus wins; the displaced state persists as texture.",
+  "type": "object",
+  "required": ["meta", "public", "private"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["schema_version", "rung"],
+      "properties": {
+        "schema_version": { "const": "0" },
+        "rung": {
+          "description": "Promotion ladder position. Decides required modules (validator-enforced): walk_on needs identity only; named adds voice+quirk; recurring adds seed_beliefs or drives, one state, tells; principal adds self_concept, defense_filters, escalation, monologue. Promotion ADDS modules, never forbids them.",
+          "enum": ["walk_on", "named", "recurring", "principal"]
+        }
+      }
+    },
+    "public": {
+      "type": "object",
+      "description": "Narrator-visible. Nothing in here may encode vault or actual-tier material — the mask only.",
+      "required": ["identity"],
+      "additionalProperties": true,
+      "properties": {
+        "identity": {
+          "type": "string",
+          "x-consumer": "engine/narrator.py roster + scene cards (existing)",
+          "x-visibility": "public",
+          "description": "Protected, never trimmed (B1). Pipe-separated: name | age/sex | role | address forms."
+        },
+        "look": { "type": "string", "x-consumer": "narrator scene cards", "x-visibility": "public" },
+        "capacity": {
+          "type": "string",
+          "x-consumer": "narrator scene cards + GM plausibility checks",
+          "x-visibility": "public",
+          "description": "What they can do without permission | what needs sign-off | proxies | the one thing they cannot do (B6)."
+        },
+        "languages": {
+          "type": "string",
+          "x-consumer": "narrator scene cards; lint pass (code-switch fences)",
+          "x-visibility": "public",
+          "description": "Tier AND acquisition age, plus the explicit fence (B4). Child-acquired leaks; adult-acquired is deployed, never leaked."
+        },
+        "voice": {
+          "x-consumer": "narrator scene cards",
+          "x-visibility": "public",
+          "description": "Legacy cards use prose (accepted); new cards prefer the structured form so examples are individually lintable.",
+          "anyOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "style": { "type": "string" },
+                "examples": { "type": "array", "items": { "type": "string" }, "maxItems": 4 }
+              }
+            }
+          ]
+        },
+        "quirk": {
+          "type": "string",
+          "x-consumer": "briefing texture; promotion anchor; future idiolect anchor",
+          "x-visibility": "public",
+          "description": "Orthogonal, not opposed: neither follows from the archetype nor negates it. A significant absence is a valid answer (A7)."
+        },
+        "stated_faces": {
+          "type": "object",
+          "x-consumer": "narrator scene cards (the performed self)",
+          "x-visibility": "public",
+          "description": "The mask, by subject. Author ONLY where stated diverges from actual — an identical pair is noise. Every key here MUST have a counterpart in private.actual_faces (validator cross-check).",
+          "additionalProperties": { "type": "string" }
+        },
+        "fences": {
+          "type": "object",
+          "x-consumer": "lint pass (string-scan on drafts, engine constant style)",
+          "x-visibility": "public",
+          "description": "Negative space as data, not instruction (C6). The model never reads these as rules; the lint reads them as scan lists. 'Naturally' is licensed: a character may quote a fenced word flatly as evidence.",
+          "properties": {
+            "never_says": { "type": "array", "items": { "type": "string" } },
+            "never_does": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "private": {
+      "type": "object",
+      "description": "GM-side. Never enters the narrator's context; only computed outputs (resolved beliefs, posture, register, acting notes) cross the Wall.",
+      "additionalProperties": true,
+      "properties": {
+        "sections": {
+          "type": "object",
+          "x-consumer": "engine/state.py secret gates + card widening (existing)",
+          "x-visibility": "gm",
+          "description": "The existing v2 secret system: truth/rumor variants, sensitivity, learnable_from. Unchanged by this schema."
+        },
+        "seed_beliefs": {
+          "type": "object",
+          "x-consumer": "engine/beliefs.py BeliefResolver._seed (exists)",
+          "x-visibility": "gm",
+          "description": "Tier 2: only load-bearing DIVERGENT beliefs — where this person departs from faction default. Divergence is computed, never authored.",
+          "additionalProperties": { "type": "string" }
+        },
+        "reputation_sensitivity": {
+          "enum": ["low", "normal", "high"],
+          "x-consumer": "engine/beliefs.py posture() (exists)",
+          "x-visibility": "gm"
+        },
+        "internalization": {
+          "enum": ["none", "soft", "hard", "lethal"],
+          "x-consumer": "engine/beliefs.py posture() v2 — adds the self as a permanent listener at this enforcement level (superego)",
+          "x-visibility": "gm",
+          "description": "How hard the character enforces orthodoxy on themselves in an empty room. Moreau: lethal. Anton: none."
+        },
+        "actual_faces": {
+          "type": "object",
+          "x-consumer": "GM briefing (acting notes under pressure); appraisal pass (leak-through direction)",
+          "x-visibility": "gm",
+          "description": "The actual halves of public.stated_faces, same keys. The gap IS the character; the harness can steer leak-through deliberately.",
+          "additionalProperties": { "type": "string" }
+        },
+        "self_concept": {
+          "type": "object",
+          "x-consumer": "appraisal pass — the four reference beliefs the defense filters defend; shame = distance to feared",
+          "x-visibility": "gm",
+          "description": "Higgins quartet. Feared drives more behavior than ideal (loss aversion). 2-6 words each.",
+          "properties": {
+            "actual": { "type": "string" },
+            "ideal": { "type": "string" },
+            "ought": { "type": "string" },
+            "feared": { "type": "string" }
+          },
+          "required": ["actual", "feared"]
+        },
+        "drives": {
+          "type": "array",
+          "x-consumer": "appraisal pass (meter updates); GM action-cost preview (posture generalized)",
+          "x-visibility": "gm",
+          "description": "The id. Negative constraints compile HERE, never as prohibitions: 'ashamed of weakness' becomes a dignity meter with damage events and threshold states.",
+          "items": {
+            "type": "object",
+            "required": ["name", "want"],
+            "properties": {
+              "name": { "type": "string" },
+              "want": { "type": "string", "description": "Toward, in the character's terms." },
+              "away": { "type": "string", "description": "What loss this drive avoids, with the avoidance behavior." },
+              "meter": {
+                "type": "object",
+                "properties": {
+                  "value": { "type": "number", "minimum": 0, "maximum": 10 },
+                  "low_state": { "type": "string", "description": "State name entered when the meter bottoms out. Must name an entry in states." }
+                }
+              }
+            }
+          }
+        },
+        "logic_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "x-consumer": "appraisal pass decision scoring (logic/feeling framework; Haiku judges qualitatively, code weights)",
+          "x-visibility": "gm",
+          "description": "Baseline logic share; feeling = 1 - logic. Context modulation is engine policy, not card data. Divergent scores emit the computed state 'conflicted' as an acting note."
+        },
+        "defense_filters": {
+          "type": "array",
+          "x-consumer": "appraisal pass write-middleware — sits between perception events and ledger writes to defended subjects",
+          "x-visibility": "gm",
+          "description": "The mutability knob: plasticity IS defense strength; there is no separate plasticity field. Escalation is the one write that breaks through.",
+          "items": {
+            "type": "object",
+            "required": ["mechanism", "defends", "strength"],
+            "properties": {
+              "mechanism": {
+                "enum": ["denial", "rationalization", "reaction_formation", "displacement", "projection", "intellectualization", "compartmentalization", "sublimation"]
+              },
+              "defends": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1,
+                "description": "Subjects protected: self_concept keys (self.actual etc.) or belief subjects."
+              },
+              "strength": { "enum": ["weak", "moderate", "strong", "maximal"] }
+            }
+          }
+        },
+        "states": {
+          "type": "array",
+          "x-consumer": "appraisal/psyche pass (active-state tracking) -> briefing acting notes",
+          "x-visibility": "gm",
+          "description": "Triggers are STIMULI, not moods (C3). Precedence is the engine constant. Multi-stage collapses (Rey) are chained states.",
+          "items": {
+            "type": "object",
+            "required": ["name", "trigger", "fragment"],
+            "properties": {
+              "name": { "type": "string" },
+              "trigger": { "type": "string", "description": "A condition a model can evaluate: 'interrupted twice in one exchange', never 'when disrespected'." },
+              "fragment": { "type": "string", "maxLength": 90, "description": "<=10 words of dialogue. If you cannot write it, you do not know the state (C2)." },
+              "behavior": { "type": "string" }
+            }
+          }
+        },
+        "energy_map": {
+          "type": "object",
+          "x-consumer": "GM briefing register band (posture's sibling: situation -> register)",
+          "x-visibility": "gm",
+          "description": "Situation key -> register band. Suggested bands: hushed, guarded, level, animated, unbound.",
+          "additionalProperties": { "type": "string" }
+        },
+        "tells": {
+          "type": "object",
+          "x-consumer": "GM briefing acting notes — GM knows who is watching, so the right tell ships per scene (C7)",
+          "x-visibility": "gm",
+          "properties": {
+            "watched": { "type": "string", "description": "Performance leaking through." },
+            "unwatched": { "type": "string", "description": "Truth leaking out." }
+          }
+        },
+        "escalation": {
+          "type": "object",
+          "x-consumer": "appraisal pass gated permanent writes — the one write big enough to pass maximal defense filters (C11)",
+          "x-visibility": "gm",
+          "description": "Cannot be skipped is structural: no other write path reaches maximally defended beliefs.",
+          "required": ["only", "cost", "after"],
+          "properties": {
+            "only": { "type": "string", "description": "The one thing that permanently moves them." },
+            "cost": { "type": "string", "description": "The belief it breaks." },
+            "after": { "type": "string", "description": "The new permanent behavior." }
+          }
+        },
+        "carry_over": {
+          "type": "string",
+          "x-consumer": "GM offscreen queue — deferred consequences fire at the next scene with the relevant person (C12)",
+          "x-visibility": "gm",
+          "description": "The bridge rule for payloads that land after the scene ends."
+        },
+        "monologue": {
+          "type": "string",
+          "x-consumer": "FUTURE actor call (per-character dialogue model: card + ledger + monologue, nothing else). NEVER the narrator — total capture is its job description there and a defect everywhere else.",
+          "x-visibility": "gm",
+          "description": "60-120 words, first person, from inside the distortion (D1). Glancing blows intact (D2) — the eventual reader is supposed to fall all the way in. May close with 'This is who you are.'"
+        }
+      }
+    }
+  }
+}
